@@ -14,6 +14,7 @@
 		8A0B7A741E3BC48F00C53258 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A0B7A721E3BC48F00C53258 /* LaunchScreen.storyboard */; };
 		8A0B7A7F1E3BC48F00C53258 /* PopupFoodLoginScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0B7A7E1E3BC48F00C53258 /* PopupFoodLoginScreenTests.swift */; };
 		8A0B7A8A1E3BC49000C53258 /* PopupFoodLoginScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0B7A891E3BC49000C53258 /* PopupFoodLoginScreenUITests.swift */; };
+		8AE0E5841E3C106B00A577C6 /* BackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE0E5831E3C106B00A577C6 /* BackViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		8A0B7A851E3BC49000C53258 /* PopupFoodLoginScreenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopupFoodLoginScreenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A0B7A891E3BC49000C53258 /* PopupFoodLoginScreenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupFoodLoginScreenUITests.swift; sourceTree = "<group>"; };
 		8A0B7A8B1E3BC49000C53258 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8AE0E5831E3C106B00A577C6 /* BackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				8A0B7A701E3BC48F00C53258 /* Assets.xcassets */,
 				8A0B7A721E3BC48F00C53258 /* LaunchScreen.storyboard */,
 				8A0B7A751E3BC48F00C53258 /* Info.plist */,
+				8AE0E5831E3C106B00A577C6 /* BackViewController.swift */,
 			);
 			path = PopupFoodLoginScreen;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AE0E5841E3C106B00A577C6 /* BackViewController.swift in Sources */,
 				8A0B7A6C1E3BC48F00C53258 /* ViewController.swift in Sources */,
 				8A0B7A6A1E3BC48F00C53258 /* AppDelegate.swift in Sources */,
 			);
@@ -505,6 +509,7 @@
 				8A0B7A901E3BC49000C53258 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8A0B7A911E3BC49000C53258 /* Build configuration list for PBXNativeTarget "PopupFoodLoginScreenTests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +518,7 @@
 				8A0B7A931E3BC49000C53258 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8A0B7A941E3BC49000C53258 /* Build configuration list for PBXNativeTarget "PopupFoodLoginScreenUITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +527,7 @@
 				8A0B7A961E3BC49000C53258 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
