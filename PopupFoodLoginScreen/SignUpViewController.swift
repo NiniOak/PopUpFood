@@ -8,12 +8,18 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController {
+import Firebase
+import FirebaseAuth
+import GoogleSignIn
+
+class SignUpViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().uiDelegate = self
     }
     
 
@@ -22,16 +28,37 @@ class SignUpViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        let backBtn: UIBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(goBack))
-        self.navigationItem.leftBarButtonItem = backBtn
-        super.viewWillAppear(animated)
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
+        if let error = error{
+            print(error.localizedDescription)
+            return
+        }
+        let authentication = user.authentication
+        let credential = FIRGoogleAuthProvider.credential(withIDToken: (authentication?.idToken)!, accessToken: (authentication?.accessToken)!)
+        
+        FIRAuth.auth()?.signIn(with: credential, completion: {( user, error) in
+            
+            if error != nil {
+            print(error?.localizedDescription)
+            return
+            }
+            
+            print("User logged in with google")
+            
+        })
     }
     
-    func goBack() {
-        self.dismiss(animated: true, completion: nil)
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        
+        if let error = error{
+            print(error.localizedDescription)
+            return
+        }
+        
+        try! FIRAuth.auth()!.signOut()
     }
-    
 
     /*
     // MARK: - Navigation

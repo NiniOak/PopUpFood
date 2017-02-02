@@ -41,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3FB1607B1E43A4DC001DCA73 /* PopupFood-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PopupFood-Bridging-Header.h"; sourceTree = "<group>"; };
 		805B9759F4FA6C96C02B3A61 /* Pods_PopupFoodUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PopupFoodUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85E4FA7D9E6D5A37E54E033C /* Pods-PopupFoodTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopupFoodTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopupFoodTests/Pods-PopupFoodTests.release.xcconfig"; sourceTree = "<group>"; };
 		85F383E4FFDD7AFF10CA508E /* Pods-PopupFoodTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopupFoodTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopupFoodTests/Pods-PopupFoodTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -145,6 +146,7 @@
 				8A0B7A721E3BC48F00C53258 /* LaunchScreen.storyboard */,
 				8A0B7A751E3BC48F00C53258 /* Info.plist */,
 				8A320FF31E4275CC00F24B4E /* GoogleService-Info.plist */,
+				3FB1607B1E43A4DC001DCA73 /* PopupFood-Bridging-Header.h */,
 			);
 			path = PopupFoodLoginScreen;
 			sourceTree = "<group>";

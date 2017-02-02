@@ -7,8 +7,12 @@ target 'PopupFood' do
 
   # Pods for PopupFood
 
+  pod 'Firebase'
   pod 'Firebase/Core'
-  pod 'Firebase/Database'
+  pod 'FirebaseDatabase'
+  pod 'GoogleSignIn'
+  pod 'Firebase/Auth'
+  
 
   target 'PopupFoodTests' do
     inherit! :search_paths

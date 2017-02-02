@@ -22,15 +22,6 @@ class SignUpPageViewController: UIViewController {
     }
     
     
-    override func viewWillAppear(_ animated: Bool) {
-        let backButton: UIBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(back))
-        self.navigationItem.leftBarButtonItem = backButton
-        super.viewWillAppear(animated)
-    }
-    
-    func back() {
-        self.dismiss(animated: true, completion: nil)
-    }
     
 
     /*
