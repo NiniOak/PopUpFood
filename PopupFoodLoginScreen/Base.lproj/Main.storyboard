@@ -9,7 +9,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="landingVC" id="BYZ-38-t0r" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="landingVC" id="BYZ-38-t0r" customClass="ViewController" customModule="PopupFood" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -38,7 +38,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="vsh-hO-AAH" kind="show" id="pjc-Hi-ICN"/>
+                                    <segue destination="vsh-hO-AAH" kind="presentation" identifier="SignInDirectView" id="iFv-dl-Nry"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHO-oo-ypN">
@@ -61,7 +61,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="HEu-AR-5xi" kind="show" identifier="SignUpView" id="H0I-l6-ZNN"/>
+                                    <segue destination="HEu-AR-5xi" kind="presentation" identifier="SignUpView" id="9J1-W9-xoJ"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Delivering everyday convenience" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhK-tq-5SN">
@@ -92,10 +92,10 @@
             </objects>
             <point key="canvasLocation" x="1148" y="-1351"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign Up View Controller-->
         <scene sceneID="ZQU-rM-FN6">
             <objects>
-                <viewController id="HEu-AR-5xi" sceneMemberID="viewController">
+                <viewController id="HEu-AR-5xi" customClass="SignUpViewController" customModule="PopupFood" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oA8-dp-G3B"/>
                         <viewControllerLayoutGuide type="bottom" id="EV5-c7-bVF"/>
@@ -180,7 +180,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="eqL-y4-TFE" kind="show" identifier="signUpScreen" id="6XR-kq-2zL"/>
+                                    <segue destination="eqL-y4-TFE" kind="presentation" identifier="SignUpRegisterView" id="WZk-BO-368"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Already a member?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wVc-eb-CZ0">
@@ -198,7 +198,7 @@
                                     <color key="titleColor" red="1" green="0.15589778309999999" blue="0.19827053989999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="vsh-hO-AAH" kind="show" identifier="signInScreen" id="qZe-aU-uGy"/>
+                                    <segue destination="vsh-hO-AAH" kind="presentation" identifier="SignInMemberView" id="hs3-L6-TkO"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Or" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ej1-XL-XSE">
@@ -208,18 +208,28 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yRh-0v-Lb7">
+                                <items>
+                                    <navigationItem title="Sign Up" id="zpS-Kl-4q8"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="0.97156583019999998" green="0.97156583019999998" blue="0.97156583019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="yRh-0v-Lb7" secondAttribute="trailing" id="23w-S5-YRB"/>
+                            <constraint firstItem="yRh-0v-Lb7" firstAttribute="leading" secondItem="wGB-vE-Uj0" secondAttribute="leading" id="WEO-X6-yAk"/>
+                            <constraint firstItem="yRh-0v-Lb7" firstAttribute="top" secondItem="oA8-dp-G3B" secondAttribute="bottom" id="aYU-5Y-3qT"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yfq-ka-pSr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1021.6" y="-565.36731634182911"/>
+            <point key="canvasLocation" x="2088.8000000000002" y="-1352.473763118441"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign Up Page View Controller-->
         <scene sceneID="RCf-z8-Kz5">
             <objects>
-                <viewController id="eqL-y4-TFE" sceneMemberID="viewController">
+                <viewController id="eqL-y4-TFE" customClass="SignUpPageViewController" customModule="PopupFood" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rL0-EV-DEB"/>
                         <viewControllerLayoutGuide type="bottom" id="ypy-OE-kTR"/>
@@ -328,11 +338,8 @@
                                 <state key="normal" title="Sign In">
                                     <color key="titleColor" red="1" green="0.15589778309999999" blue="0.19827053989999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <segue destination="vsh-hO-AAH" kind="show" id="fqD-2P-mDu"/>
-                                </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sIO-wh-sTX">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="2" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sIO-wh-sTX">
                                 <frame key="frameInset" minX="47" minY="101" width="281" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -351,18 +358,28 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zDW-CK-Kmj">
+                                <items>
+                                    <navigationItem title="Sign Up" id="hqm-kN-Wtg"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="0.97156583019999998" green="0.97156583019999998" blue="0.97156583019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="zDW-CK-Kmj" secondAttribute="trailing" id="MFT-TG-Sdl"/>
+                            <constraint firstItem="zDW-CK-Kmj" firstAttribute="top" secondItem="rL0-EV-DEB" secondAttribute="bottom" id="NRa-NC-Nt0"/>
+                            <constraint firstItem="zDW-CK-Kmj" firstAttribute="leading" secondItem="kWd-Bq-SE7" secondAttribute="leading" id="UU2-gJ-fnc"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ucK-5u-Jnz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2009" y="-1351"/>
+            <point key="canvasLocation" x="711" y="-591"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign In View Controller-->
         <scene sceneID="qf6-P7-rnb">
             <objects>
-                <viewController id="vsh-hO-AAH" sceneMemberID="viewController">
+                <viewController id="vsh-hO-AAH" customClass="SignInViewController" customModule="PopupFood" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ojS-mz-PfT"/>
                         <viewControllerLayoutGuide type="bottom" id="Dja-XV-Tx8"/>
@@ -494,17 +511,28 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZsV-gO-keR">
+                                <items>
+                                    <navigationItem title="Sign In" id="M7A-0f-maR"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="0.97156583019999998" green="0.97156583019999998" blue="0.97156583019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ZsV-gO-keR" firstAttribute="leading" secondItem="q5M-et-OON" secondAttribute="leading" id="Qoh-xQ-KAP"/>
+                            <constraint firstItem="ZsV-gO-keR" firstAttribute="top" secondItem="ojS-mz-PfT" secondAttribute="bottom" id="cQg-27-Ahm"/>
+                            <constraint firstAttribute="trailing" secondItem="ZsV-gO-keR" secondAttribute="trailing" id="iNa-uM-D48"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NrH-WB-ujx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2008.8" y="-565.36731634182911"/>
+            <point key="canvasLocation" x="1622" y="-591"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZWV-nc-MJl">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kpV-Dq-nGz" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MoT-4w-AjH" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -517,7 +545,6 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Zlv-JF-AKE"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kpV-Dq-nGz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="215" y="-1350"/>
         </scene>
@@ -526,6 +553,6 @@
         <image name="logo" width="299" height="118"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fqD-2P-mDu"/>
+        <segue reference="hs3-L6-TkO"/>
     </inferredMetricsTieBreakers>
 </document>
