@@ -334,6 +334,9 @@
                                 <state key="normal" title="Sign In">
                                     <color key="titleColor" red="1" green="0.15589778309999999" blue="0.19827053989999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="vsh-hO-AAH" kind="show" identifier="signinEmailView" id="2Gb-3Y-2am"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="2" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sIO-wh-sTX">
                                 <rect key="frame" x="47" y="101" width="281" height="39"/>
@@ -540,6 +543,6 @@
         <image name="logo" width="299" height="118"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hs3-L6-TkO"/>
+        <segue reference="2Gb-3Y-2am"/>
     </inferredMetricsTieBreakers>
 </document>

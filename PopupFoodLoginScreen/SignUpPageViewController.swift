@@ -23,7 +23,7 @@ class SignUpPageViewController: UIViewController {
         
             if error != nil {
             
-                print("error")
+                print(error?.localizedDescription)
             }
             
             else {

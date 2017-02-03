@@ -26,7 +26,7 @@ class SignInViewController: UIViewController {
         
             if error != nil{
             
-                print("Error")
+                print(error?.localizedDescription)
                 
             }
             
