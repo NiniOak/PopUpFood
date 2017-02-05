@@ -12,7 +12,6 @@ import FirebaseAuth
 import FBSDKCoreKit
 
 
-//SARA
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
