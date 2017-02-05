@@ -11,6 +11,9 @@ target 'PopupFood' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKShareKit'
+  pod 'FBSDKLoginKit'
 
   target 'PopupFoodTests' do
     inherit! :search_paths
