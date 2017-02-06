@@ -215,7 +215,8 @@
                         <color key="backgroundColor" red="0.97156583019999998" green="0.97156583019999998" blue="0.97156583019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
-                        <outlet property="facebookButton" destination="Pqv-5S-dJP" id="9XR-cE-p0G"/>
+                        <outlet property="facebookButton" destination="Pqv-5S-dJP" id="pyF-p2-tbS"/>
+                        <outlet property="googleButton" destination="lyp-TZ-yBb" id="S32-O0-2qW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yfq-ka-pSr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -528,7 +529,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MoT-4w-AjH" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aNk-Gs-qHC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="aNk-Gs-qHC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

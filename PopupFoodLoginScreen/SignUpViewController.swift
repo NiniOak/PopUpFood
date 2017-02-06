@@ -6,25 +6,66 @@
 //  Copyright © 2017 Anita Conestoga. All rights reserved.
 //
 
+//Barbara -22:53 - 05022016
+
 import UIKit
 import Firebase
 import FirebaseAuth
-import FBSDKLoginKit
+import FBSDKLoginKit //Import Facebook SignIn Kit
+import GoogleSignIn //Import GoogleSignIn kit
 
-//SARA
-class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
+//NEW PROJECT!!!!!
+class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
     @IBOutlet weak var facebookButton: UIButton!
-
+    @IBOutlet weak var googleButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        //ADD CUSTOM FACEBOOK BUTTON HERE
-        let customFBButton = facebookButton
-        customFBButton?.addTarget(self, action: #selector(handleCustomFBLogin), for: .touchUpInside)
+        setupFacebookButton() //Method to set up Facebook button
+        
+        setupGoogleButton() //Method to set up Google Button
+        
     }
     
-
+    //Google Method called here
+    
+    fileprivate func setupGoogleButton() {
+        
+        //ADD CUSTOM GOOGLE BUTTON HERE
+        
+        //Commented Code below -> = GoogleUIButton
+        /* let googleButton = GIDSignInButton()
+         // Google Custom Button, will eventually remove for Custom button
+         googleButton.frame = CGRect(x:16, y:116 + 66, width:view.frame.width - 32, height:100)
+         view.addSubview(googleButton) */
+        
+        //Custom Google Sign in Button
+        let customButton = googleButton
+        customButton?.addTarget(self, action: #selector(handleCustomGoogleLogin), for: .touchUpInside)
+        
+        
+        
+        GIDSignIn.sharedInstance().uiDelegate = self
+        
+    }
+    
+    func handleCustomGoogleLogin() {
+        GIDSignIn.sharedInstance().signIn()
+    }
+    
+    //Facebook Method called here
+    
+    //ADD CUSTOM FACEBOOK BUTTON HERE
+    
+    fileprivate func setupFacebookButton() {
+        let customFBButton = facebookButton
+        customFBButton?.addTarget(self, action: #selector(handleCustomFBLogin), for: .touchUpInside)
+        
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -84,15 +125,15 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
 }
 /*
  
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}*/
+ 
+ /*
+ // MARK: - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+ // Get the new view controller using segue.destinationViewController.
+ // Pass the selected object to the new view controller.
+ }
+ */
+ 
+ }*/

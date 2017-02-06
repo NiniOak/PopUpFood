@@ -32,6 +32,14 @@
 				<string>https://popup-food.firebaseapp.com/__/auth/handler</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.861428268106-6eqvvufpo4e2e723vufrr4kveibqe76u</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
