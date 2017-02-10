@@ -12,6 +12,7 @@ import FirebaseAuth
 import FBSDKCoreKit
 import GoogleSignIn //eliminating error on click google button
 
+
 //NEW PROJECT
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -20,7 +21,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        //Modify Navigation Bar Colour
+        UINavigationBar.appearance().barTintColor = UIColor.rgb(red: 16, green: 186, blue: 225, alpha: 1 ) //Original blue
+        
+        //Update Status Bar of Device
+        /*let statusBarbackgroundColor = UIView()
+        statusBarbackgroundColor.backgroundColor = UIColor.rgb(red: 18, green: 225, blue: 225, alpha: 1)
+        window?.addSubview(statusBarbackgroundColor)
+        window?.addConstraintsWithFormat(format: "H:|[v0]|", views: statusBarbackgroundColor)
+        window?.addConstraintsWithFormat(format: "V:|[v0(20)]|", views: statusBarbackgroundColor)*/
         
         //DEFAULT PAGE CODE
         let layout = UICollectionViewFlowLayout()
@@ -72,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        
+    
         //Facebook signin code
         let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String, annotation: options[UIApplicationOpenURLOptionsKey.sourceApplication])
         

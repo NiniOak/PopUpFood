@@ -15,10 +15,41 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
         super.viewDidLoad()
         
         //DEFAULT PAGE CODE
-        navigationItem.title = "PopupFood" //align left
+        navigationItem.title = "Popup Food" //align left
+        navigationController?.navigationBar.isTranslucent = false
+        
+        //SET TITLE TEXT FOR NAVIGATION BAR
+        let titleLabel = UILabel(frame: CGRect(x:0, y:0, width:view.frame.width - 32, height:view.frame.height))
+        titleLabel.text = "Popup Food"
+        titleLabel.textColor = UIColor.black
+        titleLabel.font = UIFont.systemFont(ofSize: 19)
+        navigationItem.titleView = titleLabel
+        
         collectionView?.backgroundColor = UIColor.white
         //Register cellID
         collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: "cellID")
+        
+        //SET UP NAV BAR BUTTONS
+        setupNavBarButtons()
+    }
+    
+    //SET UP NAV BAR FUNC
+    func setupNavBarButtons() {
+        let searchImage = UIImage(named: "searchIcon")?.withRenderingMode(.alwaysOriginal)
+        let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch)) //create handle search function
+        
+        let profileIconBtn = UIBarButtonItem(image: UIImage(named: "profileIcon")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(showProfile))
+        navigationItem.rightBarButtonItems = [profileIconBtn, searchBarButtonItem]
+    }
+    
+    //Method to handle search button in future
+    func handleSearch() {
+        print(123)
+    }
+    
+    //Pass to show Profile class or method
+    func showProfile() {
+        
     }
     
     //DEFAULT PAGE CODE
@@ -33,57 +64,13 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width:view.frame.width, height:200)
+        let height = (view.frame.width - 16 - 16) * 9 / 16
+        return CGSize(width:view.frame.width, height:height + 16 + 68)
     }
     
     //Edit lineSpacing between cells
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
-    }
-    
-    //Implement Class for Video Cell
-    class VideoCell: UICollectionViewCell{
-        override init(frame: CGRect) {
-            super.init(frame: frame)
-            setupViews()
-        }
-        
-        //IMPLEMENT BIG IMAGE DISPLAY
-        let thumbnailImageView: UIImageView = {
-            let imageView = UIImageView()
-            imageView.backgroundColor = UIColor.blue
-            return imageView
-        }()
-        
-        //IMPLEMENT PROFILE IMAGE VIEW
-        let userProfileImageView: UIImageView = {
-            let imageView = UIImageView()
-            imageView.backgroundColor = UIColor.blue
-            return imageView
-        }()
-        
-        //ADD LINES BETWEEN CELLS
-        let separatorView: UIView = {
-            let view = UIView()
-            view.backgroundColor = UIColor.black
-            return view
-        }()
-        
-       func setupViews() {
-        addSubview(thumbnailImageView)
-        addSubview(separatorView)
-        
-        //Constraints for image cell
-        addConstraintsWithFormat(format:"H:|-16-[v0]-16-|", views: thumbnailImageView)
-        addConstraintsWithFormat(format:"V:|-16-[v0]-16-[v1(1)]|", views: thumbnailImageView, separatorView)
-        
-        //constraints for lines between cells
-        addConstraintsWithFormat(format:"H:|[v0]|", views: separatorView)
-        }
-        
-        required init?(coder aDecoder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-        }
     }
     
     //Default Method created with the Class
@@ -93,18 +80,6 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
     }
 }
 
-extension UIView {
-    func addConstraintsWithFormat(format: String, views: UIView...){
-        var viewsDictionary = [String: UIView]()
-        for (index, view) in views.enumerated() {
-            let key = "v\(index)"
-            view.translatesAutoresizingMaskIntoConstraints = false
-            viewsDictionary[key] = view
-        }
-        
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutFormatOptions(), metrics: nil, views: viewsDictionary))
-    }
-}
 
 
 

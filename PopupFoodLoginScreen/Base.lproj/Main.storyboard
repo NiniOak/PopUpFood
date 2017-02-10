@@ -93,7 +93,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2087.1999999999998" y="-1351.5742128935533"/>
+            <point key="canvasLocation" x="1570" y="-1352"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="ZQU-rM-FN6">
@@ -221,7 +221,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yfq-ka-pSr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3028" y="-1352.473763118441"/>
+            <point key="canvasLocation" x="2654" y="-1352"/>
         </scene>
         <!--Popup Food Landing Page-->
         <scene sceneID="KId-xU-T98">
@@ -240,7 +240,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uPC-gn-fJJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1303" y="-1352"/>
+            <point key="canvasLocation" x="3444" y="-591"/>
         </scene>
         <!--Sign Up Page View Controller-->
         <scene sceneID="RCf-z8-Kz5">
@@ -547,7 +547,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LmN-FB-WKO" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="YsO-Bf-tj4">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YsO-Bf-tj4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -558,13 +558,31 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bfe-TF-Ahb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="508" y="-1352.473763118441"/>
+            <point key="canvasLocation" x="2655" y="-591"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fro-kf-Da8">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yGb-IK-ujs" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HHP-fV-kLt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="cO2-YX-olD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RYH-7z-K4X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="710" y="-1352"/>
         </scene>
     </scenes>
     <resources>
         <image name="logo" width="299" height="118"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iFv-dl-Nry"/>
+        <segue reference="hs3-L6-TkO"/>
     </inferredMetricsTieBreakers>
 </document>
