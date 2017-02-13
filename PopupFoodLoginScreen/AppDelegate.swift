@@ -21,23 +21,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        
+        let layout = UICollectionViewFlowLayout()
+        window?.rootViewController = UINavigationController(rootViewController: defaultPageViewController(collectionViewLayout: layout))
         
         //Modify Navigation Bar Colour
         UINavigationBar.appearance().barTintColor = UIColor.rgb(red: 16, green: 186, blue: 225, alpha: 1 ) //Original blue
         
+        application.statusBarStyle = .lightContent
+        
         //Update Status Bar of Device
-        /*let statusBarbackgroundColor = UIView()
-        statusBarbackgroundColor.backgroundColor = UIColor.rgb(red: 18, green: 225, blue: 225, alpha: 1)
+        let statusBarbackgroundColor = UIView()
+        statusBarbackgroundColor.backgroundColor = UIColor.rgb(red: 15, green: 200, blue: 210, alpha: 1)
+        
         window?.addSubview(statusBarbackgroundColor)
         window?.addConstraintsWithFormat(format: "H:|[v0]|", views: statusBarbackgroundColor)
-        window?.addConstraintsWithFormat(format: "V:|[v0(20)]|", views: statusBarbackgroundColor)*/
+        window?.addConstraintsWithFormat(format: "V:|[v0(20)]|", views: statusBarbackgroundColor)
         
         //DEFAULT PAGE CODE
-        let layout = UICollectionViewFlowLayout()
-        
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.makeKeyAndVisible()
-        window?.rootViewController = UINavigationController(rootViewController: defaultPageViewController(collectionViewLayout: layout))
+
         
         //FACEBOOK CODE
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)

@@ -29,9 +29,6 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
         //Register cellID
         collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: "cellID")
         
-        //collectionView?.contentInset = UIEdgeInsetsMake(50, 0, 0, 0)
-        //collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0)
-        
         //SET UP NAV BAR BUTTONS
         setupNavBarButtons()
         
@@ -52,7 +49,10 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
     
     //Pass to show Profile class or method
     func showProfile() {
+        let storyboard = UIStoryboard(name: "ProfilePage", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "InitialController") as UIViewController
         
+        self.present(controller, animated: true, completion: nil)
     }
     
     //DEFAULT PAGE CODE

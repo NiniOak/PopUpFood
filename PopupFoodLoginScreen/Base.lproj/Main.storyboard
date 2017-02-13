@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="RiB-sG-GwV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yGb-IK-ujs">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -93,12 +93,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1274" y="-1432"/>
+            <point key="canvasLocation" x="1409" y="-1432"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="ZQU-rM-FN6">
             <objects>
-                <viewController id="HEu-AR-5xi" customClass="SignUpViewController" customModule="PopupFood" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpSocialMedia" id="HEu-AR-5xi" customClass="SignUpViewController" customModule="PopupFood" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oA8-dp-G3B"/>
                         <viewControllerLayoutGuide type="bottom" id="EV5-c7-bVF"/>
@@ -221,31 +221,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yfq-ka-pSr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1865" y="-1574"/>
-        </scene>
-        <!--Popup Food Landing Page-->
-        <scene sceneID="KId-xU-T98">
-            <objects>
-                <viewController id="RiB-sG-GwV" customClass="defaultPageViewController" customModule="PopupFood" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="vCW-in-toG"/>
-                        <viewControllerLayoutGuide type="bottom" id="8DG-ej-OoK"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="7AC-Oh-dk7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Popup Food Landing Page" id="oof-cm-2Gg" colorLabel="IBBuiltInLabel-Orange"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uPC-gn-fJJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2194" y="-567"/>
+            <point key="canvasLocation" x="2566" y="-1433"/>
         </scene>
         <!--Sign Up Page View Controller-->
         <scene sceneID="RCf-z8-Kz5">
             <objects>
-                <viewController id="eqL-y4-TFE" customClass="SignUpPageViewController" customModule="PopupFood" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signUpPage" id="eqL-y4-TFE" customClass="SignUpPageViewController" customModule="PopupFood" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rL0-EV-DEB"/>
                         <viewControllerLayoutGuide type="bottom" id="ypy-OE-kTR"/>
@@ -390,12 +371,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ucK-5u-Jnz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="711" y="-591"/>
+            <point key="canvasLocation" x="966" y="-707"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="qf6-P7-rnb">
             <objects>
-                <viewController id="vsh-hO-AAH" customClass="SignInViewController" customModule="PopupFood" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signInPage" id="vsh-hO-AAH" customClass="SignInViewController" customModule="PopupFood" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ojS-mz-PfT"/>
                         <viewControllerLayoutGuide type="bottom" id="Dja-XV-Tx8"/>
@@ -540,12 +521,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NrH-WB-ujx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1543" y="-592"/>
+            <point key="canvasLocation" x="1679" y="-654"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fro-kf-Da8">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yGb-IK-ujs" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavControl" automaticallyAdjustsScrollViewInsets="NO" id="yGb-IK-ujs" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="HHP-fV-kLt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -558,13 +539,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RYH-7z-K4X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="710" y="-1352"/>
+            <point key="canvasLocation" x="625" y="-1457"/>
         </scene>
     </scenes>
     <resources>
         <image name="logo" width="299" height="118"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hs3-L6-TkO"/>
+        <segue reference="2Gb-3Y-2am"/>
     </inferredMetricsTieBreakers>
 </document>

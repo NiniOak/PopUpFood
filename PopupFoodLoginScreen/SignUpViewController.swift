@@ -62,6 +62,32 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignI
     fileprivate func setupFacebookButton() {
         let customFBButton = facebookButton
         customFBButton?.addTarget(self, action: #selector(handleCustomFBLogin), for: .touchUpInside)
+        //BARBARA: handle login to another screen
+        //hide login button if logged in already
+        //customFBButton?.isHidden = true
+        
+        FIRAuth.auth()?.addStateDidChangeListener{ auth, user in
+            if user != nil {
+                //User signed in
+                //Redirect to home screen after sign in
+                let mainStoryboard: UIStoryboard = UIStoryboard(name: "defaultTimeline", bundle:nil)
+                let profileViewController: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "DefaultPage")
+                //show new storyboard
+                self.present(profileViewController, animated: true, completion: nil)
+                
+            }else{
+                //no user signed in
+                //Show login button
+                
+                //BARBARA: causing instant re-login, so removed.
+                
+                //  self.handleCustomFBLogin()
+                
+                //show login button
+                customFBButton?.isHidden = false
+            }
+        }
+
         
     }
     

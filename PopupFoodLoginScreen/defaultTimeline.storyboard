@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Hcs-CW-j9c">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Popup Food Landing Page-->
+        <scene sceneID="Tpd-8x-exM">
+            <objects>
+                <viewController storyboardIdentifier="DefaultPage" id="Hcs-CW-j9c" customClass="defaultPageViewController" customModule="PopupFood" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rru-lX-8U6"/>
+                        <viewControllerLayoutGuide type="bottom" id="YD4-AP-OKs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="f3U-MG-vH0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Popup Food Landing Page" id="ewe-wy-hHl" colorLabel="IBBuiltInLabel-Orange"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="667"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RpP-Lr-eGX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="192" y="-50.824587706146929"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="ppo-Nz-XDC">
+            <objects>
+                <collectionViewController storyboardIdentifier="newDefaultPage" id="jtL-Ms-0th" customClass="defaultPageViewController" customModule="PopupFood" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="B2o-Wf-hiR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="u41-L0-e3O">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="jtL-Ms-0th" id="9Ff-57-R0s"/>
+                            <outlet property="delegate" destination="jtL-Ms-0th" id="JOl-jW-gOY"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Title" id="qdv-Tn-3vA"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sAN-7m-KNg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1060" y="-51"/>
+        </scene>
+    </scenes>
+</document>
