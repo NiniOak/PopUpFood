@@ -38,7 +38,7 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
     func setupNavBarButtons() {
         let searchImage = UIImage(named: "searchIcon")?.withRenderingMode(.alwaysOriginal)
         let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
-        let profileIconBtn = UIBarButtonItem(image: UIImage(named: "profileIcon")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(showProfile))
+        let profileIconBtn = UIBarButtonItem(image: UIImage(named: "account")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(showProfile))
         navigationItem.rightBarButtonItems = [profileIconBtn, searchBarButtonItem]
     }
     

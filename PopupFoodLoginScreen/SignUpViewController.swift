@@ -70,8 +70,8 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignI
             if user != nil {
                 //User signed in
                 //Redirect to home screen after sign in
-                let mainStoryboard: UIStoryboard = UIStoryboard(name: "defaultTimeline", bundle:nil)
-                let profileViewController: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "DefaultPage")
+                let mainStoryboard: UIStoryboard = UIStoryboard(name: "HomePage", bundle:nil)
+                let profileViewController: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "newHomePage")
                 //show new storyboard
                 self.present(profileViewController, animated: true, completion: nil)
                 

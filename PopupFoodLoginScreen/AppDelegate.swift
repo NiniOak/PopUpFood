@@ -21,7 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-
+        
+        //DEFAULT PAGE CODE
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
@@ -40,8 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         window?.addSubview(statusBarbackgroundColor)
         window?.addConstraintsWithFormat(format: "H:|[v0]|", views: statusBarbackgroundColor)
         window?.addConstraintsWithFormat(format: "V:|[v0(20)]|", views: statusBarbackgroundColor)
-        
-        //DEFAULT PAGE CODE
 
         
         //FACEBOOK CODE
