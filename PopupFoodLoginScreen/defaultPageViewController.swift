@@ -29,15 +29,18 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
         //Register cellID
         collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: "cellID")
         
+        //collectionView?.contentInset = UIEdgeInsetsMake(50, 0, 0, 0)
+        //collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0)
+        
         //SET UP NAV BAR BUTTONS
         setupNavBarButtons()
+        
     }
     
     //SET UP NAV BAR FUNC
     func setupNavBarButtons() {
         let searchImage = UIImage(named: "searchIcon")?.withRenderingMode(.alwaysOriginal)
-        let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch)) //create handle search function
-        
+        let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
         let profileIconBtn = UIBarButtonItem(image: UIImage(named: "profileIcon")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(showProfile))
         navigationItem.rightBarButtonItems = [profileIconBtn, searchBarButtonItem]
     }
