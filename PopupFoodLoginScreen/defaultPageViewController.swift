@@ -13,7 +13,7 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         //DEFAULT PAGE CODE
         navigationItem.title = "Popup Food" //align left
         navigationController?.navigationBar.isTranslucent = false
