@@ -18,6 +18,8 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
         self.present(controller, animated: true, completion: nil)
 
     }
+    
+    //MenuDescription
     @IBOutlet weak var menuDescription: UITextField!
     
     //BARBARA: Create an array for the picker view
