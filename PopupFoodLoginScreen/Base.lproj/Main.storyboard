@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yGb-IK-ujs">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yGb-IK-ujs">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -528,7 +528,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NavControl" automaticallyAdjustsScrollViewInsets="NO" id="yGb-IK-ujs" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HHP-fV-kLt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="HHP-fV-kLt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -546,6 +546,6 @@
         <image name="logo" width="299" height="118"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2Gb-3Y-2am"/>
+        <segue reference="hs3-L6-TkO"/>
     </inferredMetricsTieBreakers>
 </document>

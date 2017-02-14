@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 //Iteration 1
 class defaultPageViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
@@ -39,7 +41,11 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
         let searchImage = UIImage(named: "searchIcon")?.withRenderingMode(.alwaysOriginal)
         let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
         let profileIconBtn = UIBarButtonItem(image: UIImage(named: "profileIcon")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(showProfile))
+        
         navigationItem.rightBarButtonItems = [profileIconBtn, searchBarButtonItem]
+        
+        
+
     }
     
     //Method to handle search button in future
@@ -49,10 +55,27 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
     
     //Pass to show Profile class or method
     func showProfile() {
-        let storyboard = UIStoryboard(name: "ProfilePage", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "InitialController") as UIViewController
-        
-        self.present(controller, animated: true, completion: nil)
+    
+        //Check if user is logged in
+        FIRAuth.auth()?.addStateDidChangeListener{ auth, user in
+            
+            //If user is logged in, show profile storyboard
+            if user != nil {
+                
+                let storyboard = UIStoryboard(name: "ProfilePage", bundle: nil)
+                let controller = storyboard.instantiateViewController(withIdentifier: "InitialController") as UIViewController
+                self.present(controller, animated: true, completion: nil)
+                
+            }else{
+                
+                //If user is NOT logged in, show signup storyboard
+                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                let profileViewController: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "SignUpSocialMedia")
+                //show new storyboard
+                self.present(profileViewController, animated: true, completion: nil)
+                
+            }
+        }
     }
     
     //DEFAULT PAGE CODE
