@@ -51,7 +51,7 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
     func showProfile() {
         let storyboard = UIStoryboard(name: "ProfilePage", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "InitialController") as UIViewController
-        
+
         self.present(controller, animated: true, completion: nil)
     }
     

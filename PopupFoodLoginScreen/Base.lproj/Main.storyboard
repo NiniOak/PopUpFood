@@ -93,7 +93,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1409" y="-1432"/>
+            <point key="canvasLocation" x="1524" y="-1433"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="ZQU-rM-FN6">
@@ -221,7 +221,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yfq-ka-pSr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2566" y="-1433"/>
+            <point key="canvasLocation" x="2081" y="-1434"/>
         </scene>
         <!--Sign Up Page View Controller-->
         <scene sceneID="RCf-z8-Kz5">
@@ -528,7 +528,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NavControl" automaticallyAdjustsScrollViewInsets="NO" id="yGb-IK-ujs" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HHP-fV-kLt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="HHP-fV-kLt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -539,13 +539,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RYH-7z-K4X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="625" y="-1457"/>
+            <point key="canvasLocation" x="997" y="-1434"/>
         </scene>
     </scenes>
     <resources>
         <image name="logo" width="299" height="118"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2Gb-3Y-2am"/>
+        <segue reference="hs3-L6-TkO"/>
     </inferredMetricsTieBreakers>
 </document>
