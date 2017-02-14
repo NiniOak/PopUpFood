@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 //Iteration 1
 class defaultPageViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
@@ -39,7 +41,11 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
         let searchImage = UIImage(named: "searchIcon")?.withRenderingMode(.alwaysOriginal)
         let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
         let profileIconBtn = UIBarButtonItem(image: UIImage(named: "profileIcon")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(showProfile))
+        
         navigationItem.rightBarButtonItems = [profileIconBtn, searchBarButtonItem]
+        
+        
+
     }
     
     //Method to handle search button in future

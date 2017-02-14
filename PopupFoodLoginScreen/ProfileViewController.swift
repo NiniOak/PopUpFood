@@ -11,10 +11,19 @@ import FirebaseAuth
 import FBSDKCoreKit
 
 class ProfileViewController: UIViewController {
+    //FEATURES
     @IBOutlet weak var ImageViewProfilePic: UIImageView!
     @IBOutlet weak var labelName: UILabel!
 
     //ACTIONS:
+    
+    //BARBARA: Selling onclick
+    @IBAction func sellingButton(_ sender: Any) {
+        startSelling()
+        
+    }
+    
+    
     //BARBARA: Handle onclick logout
     @IBAction func logoutButton(_ sender: Any) {
         //Signout of Firebase app
@@ -30,6 +39,14 @@ class ProfileViewController: UIViewController {
         self.present(controller, animated: true, completion: nil)
         /////////////////////////////////////////////////////////////////////////////
         print("User Logged out")
+    }
+    
+    //Call viewcontroller for selling page
+    func startSelling() {
+        let storyboard = UIStoryboard(name: "startSelling", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "startSelling") as UIViewController
+        
+        self.present(controller, animated: true, completion: nil)
     }
 
     override func viewDidLoad() {
