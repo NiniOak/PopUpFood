@@ -33,14 +33,6 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignI
     
     fileprivate func setupGoogleButton() {
         
-        //ADD CUSTOM GOOGLE BUTTON HERE
-        
-        //Commented Code below -> = GoogleUIButton
-        /* let googleButton = GIDSignInButton()
-         // Google Custom Button, will eventually remove for Custom button
-         googleButton.frame = CGRect(x:16, y:116 + 66, width:view.frame.width - 32, height:100)
-         view.addSubview(googleButton) */
-        
         //Custom Google Sign in Button
         let customButton = googleButton
         customButton?.addTarget(self, action: #selector(handleCustomGoogleLogin), for: .touchUpInside)
@@ -72,24 +64,16 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignI
             if user != nil {
                 //User signed in
                 //Redirect to home screen after sign in
-                //let mainStoryboard: UIStoryboard = UIStoryboard(name: "HomePage", bundle:nil)
-                //let profileViewController = mainStoryboard.instantiateViewController(withIdentifier: "HomePage") as UICollectionView
+                let mainStoryboard: UIStoryboard = UIStoryboard(name: "HomePage", bundle:nil)
+                let profileViewController = mainStoryboard.instantiateViewController(withIdentifier: "newHomePage")
                 
-                let profileViewController = HomeAfterSignIn()
                 self.present(profileViewController, animated: true, completion:nil)
-                //self.navigationController?.pushViewController(profileViewController, animated: true)
-                
                 
             } else{
-                //no user signed in
-                //Show login button
+                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                let profileViewController = mainStoryboard.instantiateViewController(withIdentifier: "SignUpSocialMedia")
                 
-                //BARBARA: causing instant re-login, so removed.
-                
-                //  self.handleCustomFBLogin()
-                
-                //show login button
-                //customFBButton?.isHidden = false
+                self.present(profileViewController, animated: true, completion:nil)
             }
         }
     }

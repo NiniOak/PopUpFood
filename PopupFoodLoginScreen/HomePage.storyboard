@@ -28,11 +28,11 @@
             </objects>
             <point key="canvasLocation" x="-319.19999999999999" y="-282.00899550224892"/>
         </scene>
-        <!--Home After Sign In-->
+        <!--Title-->
         <scene sceneID="bnM-nV-TTG">
             <objects>
                 <collectionViewController storyboardIdentifier="newHomePage" id="xwk-io-O9s" customClass="HomeAfterSignIn" customModule="PopupFood" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="1Tk-RX-qb7">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="1Tk-RX-qb7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -48,7 +48,10 @@
                             <outlet property="delegate" destination="xwk-io-O9s" id="XVU-Gi-4XL"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="OtV-Ob-aax"/>
+                    <navigationItem key="navigationItem" title="Title" id="f7a-H3-D4a"/>
+                    <connections>
+                        <outlet property="ProblematicBar" destination="f7a-H3-D4a" id="8P1-yF-GJu"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1LN-K3-0M0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -59,7 +62,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6xg-gj-uSa" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aC2-Yf-L6E">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="aC2-Yf-L6E">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -77,7 +80,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="P73-Xd-bWF" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="chd-Sb-bHE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="chd-Sb-bHE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
