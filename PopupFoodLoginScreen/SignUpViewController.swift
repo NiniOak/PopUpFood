@@ -65,22 +65,20 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignI
         //BARBARA: handle login to another screen
         //hide login button if logged in already
         //customFBButton?.isHidden = true
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         FIRAuth.auth()?.addStateDidChangeListener{ auth, user in
             if user != nil {
                 //User signed in
                 //Redirect to home screen after sign in
                 //let mainStoryboard: UIStoryboard = UIStoryboard(name: "HomePage", bundle:nil)
                 //let profileViewController = mainStoryboard.instantiateViewController(withIdentifier: "HomePage") as UICollectionView
-
+                
                 let profileViewController = HomeAfterSignIn()
-                self.present(profileViewController, animated: true)
+                self.present(profileViewController, animated: true, completion:nil)
+                //self.navigationController?.pushViewController(profileViewController, animated: true)
                 
-                //self.navigationController.pushViewController(nextViewController, animated: true)
-                
-                
-                //show new storyboard
-                //self.present(profileViewController, animated: true, completion: nil)
                 
             } else{
                 //no user signed in
@@ -91,11 +89,9 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignI
                 //  self.handleCustomFBLogin()
                 
                 //show login button
-                customFBButton?.isHidden = false
+                //customFBButton?.isHidden = false
             }
         }
-
-        
     }
     
     

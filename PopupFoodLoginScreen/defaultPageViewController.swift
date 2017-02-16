@@ -64,7 +64,8 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
                 let controller = storyboard.instantiateViewController(withIdentifier: "InitialController") as UIViewController
                 self.present(controller, animated: true, completion: nil)
                 
-            }else{
+            }
+            else{
                 
                 //If user is NOT logged in, show signup storyboard
                 let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
