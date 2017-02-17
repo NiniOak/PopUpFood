@@ -23,11 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         //Ignore storyboard and build UI page
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.makeKeyAndVisible()
+        //window = UIWindow(frame: UIScreen.main.bounds)
+        //window?.makeKeyAndVisible()
         
-        let layout = UICollectionViewFlowLayout()
-        window?.rootViewController = UINavigationController(rootViewController: defaultPageViewController(collectionViewLayout: layout))
+        //let layout = UICollectionViewFlowLayout()
+        //window?.rootViewController = UINavigationController(rootViewController: defaultPageViewController(collectionViewLayout: layout))
         
         //Modify Navigation Bar Colour
         UINavigationBar.appearance().barTintColor = UIColor.rgb(red: 16, green: 186, blue: 225, alpha: 1 ) //Original blue
