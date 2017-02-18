@@ -37,8 +37,6 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignI
         let customButton = googleButton
         customButton?.addTarget(self, action: #selector(handleCustomGoogleLogin), for: .touchUpInside)
         
-        
-        
         GIDSignIn.sharedInstance().uiDelegate = self
         
     }
@@ -62,22 +60,28 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignI
     override func viewWillAppear(_ animated: Bool) {
         FIRAuth.auth()?.addStateDidChangeListener{ auth, user in
             if user != nil {
-                //User signed in
-                //Redirect to home screen after sign in
-                let mainStoryboard: UIStoryboard = UIStoryboard(name: "HomePage", bundle:nil)
-                let profileViewController = mainStoryboard.instantiateViewController(withIdentifier: "newHomePage")
+               
+                self.displaydefaultPage()
                 
-                self.present(profileViewController, animated: true, completion:nil)
-                
-            } else{
-                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                let profileViewController = mainStoryboard.instantiateViewController(withIdentifier: "SignUpSocialMedia")
-                
-                self.present(profileViewController, animated: true, completion:nil)
+            }
+            else{
+                //self.displaylandingPage()
             }
         }
     }
     
+    func displaylandingPage() {
+        
+        let storyboard = UIStoryboard(name: "defaultTimeline", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "testing") as UIViewController
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func displaydefaultPage() {
+        let storyboard = UIStoryboard(name: "HomePage", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "newhomePage") as UIViewController
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

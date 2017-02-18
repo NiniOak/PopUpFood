@@ -12,6 +12,21 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        
+        collectionView?.backgroundColor = UIColor.white
+        
+        collectionView?.register(foodCell.self, forCellWithReuseIdentifier: "cellId")
+        
+        collectionView?.contentInset = UIEdgeInsetsMake(100, 0, 0, 0)//for menu bar
+        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(100, 0, 0, 0)//for menu bar
+        
+        setupMenuBar()//for menu bar
+        navigationBar() //for navigationBar
+        setupNavBarButtons() //add items to NavBar
+    }
+    
+    func navigationBar() {
         
         navigationItem.title = "Home"
         navigationController?.navigationBar.isTranslucent = false
@@ -24,15 +39,27 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
         titleLabel.textColor = UIColor.white
         navigationItem.titleView = titleLabel
         
-        collectionView?.backgroundColor = UIColor.white
-        
-        collectionView?.register(foodCell.self, forCellWithReuseIdentifier: "cellId")
-        
-        collectionView?.contentInset = UIEdgeInsetsMake(50, 0, 0, 0)//for menu bar
-        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(50, 0, 0, 0)//for menu bar
-        
-        setupMenuBar()//for menu bar
     }
+    
+    //SET UP NAV BAR FUNC
+    func setupNavBarButtons() {
+        let searchImage = UIImage(named: "searchIcon")?.withRenderingMode(.alwaysOriginal)
+        let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
+        let profileIconBtn = UIBarButtonItem(image: UIImage(named: "profileIcon")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(showProfile))
+        
+        navigationItem.rightBarButtonItems = [profileIconBtn, searchBarButtonItem]
+        
+    }
+    
+    func handleSearch() {
+        print("Will add search functionality in the future")
+    }
+    
+    //Pass to show Profile class or method
+    func showProfile() {
+        print("Profile will be displayed")
+    }
+
     
     //for menu bar
     let menuBar: MenuBar = {
@@ -47,6 +74,11 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
         view.addConstraintsWithFormat(format: "V:|[v0(50)]|", views: menuBar)
     }
     //end of for menu bar
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.navigationController?.isNavigationBarHidden = false
+    }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5

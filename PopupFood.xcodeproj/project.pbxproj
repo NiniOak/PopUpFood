@@ -19,6 +19,7 @@
 		08EDF63D1E4A226200C7B234 /* defaultPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EDF63C1E4A226200C7B234 /* defaultPageViewController.swift */; };
 		08F4D0E51E4D60AF007EF202 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F4D0E41E4D60AF007EF202 /* Extentions.swift */; };
 		08F4D0E81E4D6212007EF202 /* Video Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F4D0E71E4D6212007EF202 /* Video Cell.swift */; };
+		08F9C6A81E57746400312520 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F9C6A71E57746400312520 /* ViewController.swift */; };
 		3170FA4E1E52859D00203E3B /* startSelling.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3170FA4D1E52859D00203E3B /* startSelling.storyboard */; };
 		3170FA501E52864500203E3B /* startSellingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3170FA4F1E52864500203E3B /* startSellingViewController.swift */; };
 		8A0B7A6A1E3BC48F00C53258 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0B7A691E3BC48F00C53258 /* AppDelegate.swift */; };
@@ -62,6 +63,7 @@
 		08EDF63C1E4A226200C7B234 /* defaultPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = defaultPageViewController.swift; sourceTree = "<group>"; };
 		08F4D0E41E4D60AF007EF202 /* Extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		08F4D0E71E4D6212007EF202 /* Video Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Video Cell.swift"; sourceTree = "<group>"; };
+		08F9C6A71E57746400312520 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3170FA4D1E52859D00203E3B /* startSelling.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = startSelling.storyboard; path = ../startSelling.storyboard; sourceTree = "<group>"; };
 		3170FA4F1E52864500203E3B /* startSellingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = startSellingViewController.swift; path = ../startSellingViewController.swift; sourceTree = "<group>"; };
 		805B9759F4FA6C96C02B3A61 /* Pods_PopupFoodUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PopupFoodUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,8 +191,8 @@
 		08F4D0E91E4D628C007EF202 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				089F613F1E562D25003DFF88 /* HomePageGroup */,
 				089F613E1E562CFB003DFF88 /* LaunchPageGroup */,
+				089F613F1E562D25003DFF88 /* HomePageGroup */,
 				089F613D1E562CD6003DFF88 /* ProfileGroup */,
 				089F613C1E562CBC003DFF88 /* StartSellingGroup */,
 				089F613B1E562CAB003DFF88 /* SignInGroup */,
@@ -241,11 +243,12 @@
 				08F4D0E61E4D61EE007EF202 /* Views */,
 				08F4D0E31E4D6046007EF202 /* Helpers */,
 				8A0B7A691E3BC48F00C53258 /* AppDelegate.swift */,
-				3170FA4D1E52859D00203E3B /* startSelling.storyboard */,
+				08F9C6A71E57746400312520 /* ViewController.swift */,
 				8A0B7A6D1E3BC48F00C53258 /* Main.storyboard */,
-				08B421411E513748005399D6 /* ProfilePage.storyboard */,
 				08B421431E51E57C005399D6 /* defaultTimeline.storyboard */,
 				08B421451E5263AA005399D6 /* HomePage.storyboard */,
+				08B421411E513748005399D6 /* ProfilePage.storyboard */,
+				3170FA4D1E52859D00203E3B /* startSelling.storyboard */,
 				8A0B7A701E3BC48F00C53258 /* Assets.xcassets */,
 				8A0B7A721E3BC48F00C53258 /* LaunchScreen.storyboard */,
 				8A0B7A751E3BC48F00C53258 /* Info.plist */,
@@ -576,6 +579,7 @@
 				8A0B7A6A1E3BC48F00C53258 /* AppDelegate.swift in Sources */,
 				8A320FFE1E42B38300F24B4E /* SignInViewController.swift in Sources */,
 				8A320FFC1E42B35600F24B4E /* SignUpPageViewController.swift in Sources */,
+				08F9C6A81E57746400312520 /* ViewController.swift in Sources */,
 				08B421401E5130A7005399D6 /* ProfileViewController.swift in Sources */,
 				08EDF63D1E4A226200C7B234 /* defaultPageViewController.swift in Sources */,
 				08F4D0E51E4D60AF007EF202 /* Extentions.swift in Sources */,

@@ -10,33 +10,14 @@
     </dependencies>
     <scenes>
         <!--Home After Sign In-->
-        <scene sceneID="rUd-Sb-HOO">
+        <scene sceneID="86c-Y2-OCA">
             <objects>
-                <viewController storyboardIdentifier="HomePage" id="Pvk-Bl-1em" customClass="HomeAfterSignIn" customModule="PopupFood" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="U3p-Nf-xvH"/>
-                        <viewControllerLayoutGuide type="bottom" id="hXs-bt-tbm"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="WMO-ih-6uj">
+                <collectionViewController storyboardIdentifier="newhomePage" id="o3R-oQ-log" customClass="HomeAfterSignIn" customModule="PopupFood" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="Iiw-dr-INY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="fLO-mP-SX5"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7Cs-m3-lsO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-319.19999999999999" y="-282.00899550224892"/>
-        </scene>
-        <!--Title-->
-        <scene sceneID="bnM-nV-TTG">
-            <objects>
-                <collectionViewController storyboardIdentifier="newHomePage" id="xwk-io-O9s" customClass="HomeAfterSignIn" customModule="PopupFood" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="1Tk-RX-qb7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IQJ-hD-dR8">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zbJ-bg-SnZ">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -44,15 +25,15 @@
                         </collectionViewFlowLayout>
                         <cells/>
                         <connections>
-                            <outlet property="dataSource" destination="xwk-io-O9s" id="PWJ-NM-TZM"/>
-                            <outlet property="delegate" destination="xwk-io-O9s" id="XVU-Gi-4XL"/>
+                            <outlet property="dataSource" destination="o3R-oQ-log" id="0my-aX-LC9"/>
+                            <outlet property="delegate" destination="o3R-oQ-log" id="I22-EG-jze"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Title" id="f7a-H3-D4a"/>
+                    <navigationItem key="navigationItem" id="jZT-8c-BFI"/>
                 </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1LN-K3-0M0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eMR-8d-3Y6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="538" y="-282"/>
+            <point key="canvasLocation" x="2519" y="-484"/>
         </scene>
     </scenes>
 </document>

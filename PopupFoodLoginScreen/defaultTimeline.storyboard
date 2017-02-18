@@ -9,36 +9,15 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Popup Food Landing Page-->
-        <scene sceneID="Tpd-8x-exM">
-            <objects>
-                <viewController storyboardIdentifier="DefaultPage" id="Hcs-CW-j9c" customClass="defaultPageViewController" customModule="PopupFood" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="rru-lX-8U6"/>
-                        <viewControllerLayoutGuide type="bottom" id="YD4-AP-OKs"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="f3U-MG-vH0">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Popup Food Landing Page" id="ewe-wy-hHl" colorLabel="IBBuiltInLabel-Orange"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="667"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RpP-Lr-eGX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="446" y="-66"/>
-        </scene>
         <!--Default Page View Controller-->
-        <scene sceneID="Qg6-L3-SfV">
+        <scene sceneID="keM-OG-wvb">
             <objects>
-                <collectionViewController id="lmy-3T-iaQ" customClass="defaultPageViewController" customModule="PopupFood" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="6hg-U0-hCH">
+                <collectionViewController storyboardIdentifier="testing" id="vAQ-gd-N3J" customClass="defaultPageViewController" customModule="PopupFood" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="uS8-L1-s9R">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="saw-PW-Y6w">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0hU-Dq-zWK">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -46,14 +25,33 @@
                         </collectionViewFlowLayout>
                         <cells/>
                         <connections>
-                            <outlet property="dataSource" destination="lmy-3T-iaQ" id="7Cr-HB-xkG"/>
-                            <outlet property="delegate" destination="lmy-3T-iaQ" id="QWd-2T-FCv"/>
+                            <outlet property="dataSource" destination="vAQ-gd-N3J" id="ewG-FD-Ffs"/>
+                            <outlet property="delegate" destination="vAQ-gd-N3J" id="4bh-xG-F0k"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" id="VWg-eM-ugS"/>
                 </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Tes-Db-cgS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oux-4G-RrK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1294" y="-66"/>
+            <point key="canvasLocation" x="1551" y="-67"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="OeG-YR-Pr5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9VZ-E2-eCS" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ppC-82-Iit">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vAQ-gd-N3J" kind="relationship" relationship="rootViewController" id="iKz-Q4-Sxl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XkI-P8-kcy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="825" y="-67"/>
         </scene>
     </scenes>
 </document>

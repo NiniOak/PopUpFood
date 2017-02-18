@@ -60,21 +60,33 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
             //If user is logged in, show profile storyboard
             if user != nil {
                 
-                let storyboard = UIStoryboard(name: "ProfilePage", bundle: nil)
-                let controller = storyboard.instantiateViewController(withIdentifier: "InitialController") as UIViewController
-                self.present(controller, animated: true, completion: nil)
-                
+                //If user is logged in, show profile storyboard
+                self.displayProfilePage()
             }
             else{
                 
                 //If user is NOT logged in, show signup storyboard
-                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                let profileViewController: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "SignUpSocialMedia")
-                //show new storyboard
-                self.present(profileViewController, animated: true, completion: nil)
+                self.displaySignUpPage()
                 
             }
         }
+    }
+    
+    func displayProfilePage() {
+        let storyboard = UIStoryboard(name: "ProfilePage", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "InitialController") as UIViewController
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func displaySignUpPage() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "SignUpSocialMedia") as UIViewController
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     //DEFAULT PAGE CODE
