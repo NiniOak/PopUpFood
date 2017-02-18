@@ -305,7 +305,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yfq-ka-pSr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3207" y="-1433"/>
+            <point key="canvasLocation" x="3205.5999999999999" y="-1433.433283358321"/>
         </scene>
         <!--Sign Up Page View Controller-->
         <scene sceneID="RCf-z8-Kz5">
@@ -600,6 +600,8 @@
                     </view>
                     <connections>
                         <outlet property="emailSignInTxt" destination="4xQ-Gx-eiA" id="NzY-Hi-h31"/>
+                        <outlet property="facebookBtn" destination="pTK-WU-l7O" id="Rn1-Sa-GV4"/>
+                        <outlet property="googleBtn" destination="FYS-6y-6b3" id="k7e-o5-Bdh"/>
                         <outlet property="passwordSignInTxt" destination="Ev1-84-ZoV" id="qHI-1Z-TVn"/>
                     </connections>
                 </viewController>

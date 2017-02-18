@@ -56,7 +56,7 @@ class ProfileViewController: UIViewController {
         
         //BARBARA: Make profile picture round
       
-        self.ImageViewProfilePic.layer.cornerRadius = self.ImageViewProfilePic.frame.size.height/2
+        self.ImageViewProfilePic.layer.cornerRadius = self.ImageViewProfilePic.frame.size.height/80
         self.ImageViewProfilePic.clipsToBounds = true
         
         //if the user is signed in

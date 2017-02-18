@@ -18,8 +18,9 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
         
         collectionView?.register(foodCell.self, forCellWithReuseIdentifier: "cellId")
         
-        collectionView?.contentInset = UIEdgeInsetsMake(100, 0, 0, 0)//for menu bar
-        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(100, 0, 0, 0)//for menu bar
+        collectionView?.contentInset = UIEdgeInsetsMake(50, 0, 0, 0)//for menu bar
+        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(50
+            , 0, 0, 0)//for menu bar
         
         setupMenuBar()//for menu bar
         navigationBar() //for navigationBar
