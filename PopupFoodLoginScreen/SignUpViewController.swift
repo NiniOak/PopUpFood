@@ -57,31 +57,6 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignI
         //customFBButton?.isHidden = true
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        FIRAuth.auth()?.addStateDidChangeListener{ auth, user in
-            if user != nil {
-               
-                self.displaydefaultPage()
-                
-            }
-            else{
-                //self.displaylandingPage()
-            }
-        }
-    }
-    
-    func displaylandingPage() {
-        
-        let storyboard = UIStoryboard(name: "defaultTimeline", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "testing") as UIViewController
-        self.navigationController?.pushViewController(controller, animated: true)
-    }
-    
-    func displaydefaultPage() {
-        let storyboard = UIStoryboard(name: "HomePage", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "newhomePage") as UIViewController
-        self.navigationController?.pushViewController(controller, animated: true)
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -139,18 +114,31 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignI
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("Did log out of facebook")
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        FIRAuth.auth()?.addStateDidChangeListener{ auth, user in
+            if user != nil {
+                
+                self.displaydefaultPage()
+                
+            }
+            else{
+                //self.displaylandingPage()
+            }
+        }
+    }
+    
+    func displaylandingPage() {
+        
+        let storyboard = UIStoryboard(name: "defaultTimeline", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "testing") as UIViewController
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func displaydefaultPage() {
+        let storyboard = UIStoryboard(name: "HomePage", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "newhomePage") as UIViewController
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+
 }
-/*
- 
- 
- /*
- // MARK: - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
- // Get the new view controller using segue.destinationViewController.
- // Pass the selected object to the new view controller.
- }
- */
- 
- }*/

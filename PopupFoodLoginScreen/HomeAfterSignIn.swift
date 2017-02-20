@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
@@ -58,7 +60,35 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
     
     //Pass to show Profile class or method
     func showProfile() {
-        print("Profile will be displayed")
+        
+        //Check if user is logged in
+        FIRAuth.auth()?.addStateDidChangeListener{ auth, user in
+            
+            //If user is logged in, show profile storyboard
+            if user != nil {
+                
+                //If user is logged in, show profile storyboard
+                self.displayProfilePage()
+            }
+            else{
+                
+                //If user is NOT logged in, show signup storyboard
+                self.displaySignUpPage()
+                
+            }
+        }
+    }
+    
+    func displayProfilePage() {
+        let storyboard = UIStoryboard(name: "ProfilePage", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "InitialController") as UIViewController
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func displaySignUpPage() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "SignUpSocialMedia") as UIViewController
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 
     

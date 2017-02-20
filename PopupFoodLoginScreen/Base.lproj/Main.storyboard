@@ -449,8 +449,10 @@
                         <color key="backgroundColor" red="0.97156583019999998" green="0.97156583019999998" blue="0.97156583019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
-                        <outlet property="emailSignUpTxt" destination="sIO-wh-sTX" id="a5l-tC-wBW"/>
-                        <outlet property="pwdSignUpTxt" destination="oHZ-qN-yEs" id="2mA-iy-57R"/>
+                        <outlet property="RepasswordTextField" destination="5xh-wz-d71" id="uji-DQ-LgX"/>
+                        <outlet property="emailTextField" destination="sIO-wh-sTX" id="gap-AG-lvy"/>
+                        <outlet property="passwordTextField" destination="oHZ-qN-yEs" id="Vc6-Fv-dda"/>
+                        <outlet property="usernameTextField" destination="pKJ-Ig-SxF" id="9W4-f2-8el"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ucK-5u-Jnz" userLabel="First Responder" sceneMemberID="firstResponder"/>

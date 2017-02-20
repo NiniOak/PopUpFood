@@ -38,38 +38,32 @@ class SignInViewController: UIViewController {
     //Implementation for Sign In Button
     
     @IBAction func signInBtn(_ sender: UIButton) {
+
+    handleSignIn()
+    }
     
-        FIRAuth.auth()?.signIn(withEmail: emailSignInTxt.text!, password: passwordSignInTxt.text!, completion: { (user, error) in
+    func handleSignIn() {
         
-            if error != nil{
+        
+        FIRAuth.auth()?.signIn(withEmail: emailSignInTxt.text!, password: passwordSignInTxt.text!, completion: { (user, error) in
             
-                print(error?.localizedDescription as Any)
+            if error != nil{
+                
+                print(error as Any)
                 
             }
-            
+                
             else{
                 
                 print("User Logged In")
             }
-        
+            
         })
     
     }
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

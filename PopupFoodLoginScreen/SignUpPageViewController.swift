@@ -13,23 +13,54 @@ import FirebaseAuth
 class SignUpPageViewController: UIViewController {
 
     // Fields Declaration
-    @IBOutlet weak var emailSignUpTxt: UITextField!
-    @IBOutlet weak var pwdSignUpTxt: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var RepasswordTextField: UITextField!
+
     
     //Impelmenation for Sign Up button
     @IBAction func signUpBtn(_ sender: UIButton) {
         
-        FIRAuth.auth()?.createUser(withEmail: emailSignUpTxt.text!, password: pwdSignUpTxt.text!, completion: { (user, error ) in
+        handleRegister()
+    }
+    
+    func handleRegister() {
         
+        guard let email = emailTextField.text, let username = usernameTextField.text, let password = passwordTextField.text else {
+            print ("Form filled inappropriately")
+            return
+        }
+        
+        FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user: FIRUser?, error ) in
+            
             if error != nil {
-            
-                print(error?.localizedDescription as Any)
+                print(error as Any)
+                return
             }
-            
             else {
-            
-                    print("User Created")
+                print("User Created")
             }
+            
+            //Push entered information to Firebase Database
+            //Guard statment gives us access to UID similar to email, Username and Password above.
+            guard let uid = user?.uid else {
+                return
+            }
+            //Collect entered User information and input in Database
+            var ref: FIRDatabaseReference!
+        
+            ref = FIRDatabase.database().reference(fromURL: "https://popup-food.firebaseio.com/")
+            let usersReference = ref.child("customers").child(uid)
+            let values = ["name": username, "email": email, "password": password]
+            usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
+                
+                if err != nil {
+                    print(err as Any)
+                    return
+                }
+                print ("User Data saved to Firebase Database!")
+            })
         })
         
     }
@@ -44,19 +75,5 @@ class SignUpPageViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

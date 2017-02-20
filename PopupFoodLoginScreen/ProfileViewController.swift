@@ -64,14 +64,15 @@ class ProfileViewController: UIViewController {
             //User signed in
             let name = user.displayName
             //   let email = user.email
-            let photoURL = user.photoURL
             //    let uid = user.uid
-            
             self.labelName.text = name
             
-            let data = NSData(contentsOf: photoURL!)
-            self.ImageViewProfilePic.image = UIImage(data: data! as Data)
-            
+            if let photoURL = user.photoURL {
+                let data = NSData(contentsOf: photoURL)
+                self.ImageViewProfilePic.image = UIImage(data: data! as Data)
+            } else {
+                self.ImageViewProfilePic.image = UIImage(named: "defaultImage")
+            }
         } else {
             //No user signed in
         }
