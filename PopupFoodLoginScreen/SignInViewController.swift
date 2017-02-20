@@ -19,9 +19,9 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var googleBtn: UIButton!
     @IBOutlet weak var facebookBtn: UIButton!
     
-    @IBOutlet weak var emailSignInTxt: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
     
-    @IBOutlet weak var passwordSignInTxt: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     
     
     override func viewDidLoad() {
@@ -32,7 +32,15 @@ class SignInViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        //If user is signed in, display homepage
+        FIRAuth.auth()?.addStateDidChangeListener{ auth, user in
+            
+            if user != nil {
+            self.returnHomePage()
+            }
+            else{
+            }
+        }
     }
     
     //Implementation for Sign In Button
@@ -43,23 +51,28 @@ class SignInViewController: UIViewController {
     }
     
     func handleSignIn() {
+        guard let email = emailTextField.text, let password = passwordTextField.text else {
+            print ("Incorrect details entered")
+            return
+        }
         
-        
-        FIRAuth.auth()?.signIn(withEmail: emailSignInTxt.text!, password: passwordSignInTxt.text!, completion: { (user, error) in
+        FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
             
             if error != nil{
-                
                 print(error as Any)
-                
+                return
             }
-                
             else{
-                
                 print("User Logged In")
             }
-            
         })
     
+    }
+    
+    func returnHomePage() {
+        let storyboard = UIStoryboard(name: "HomePage", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "newhomePage") as UIViewController
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 
     override func didReceiveMemoryWarning() {

@@ -47,7 +47,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="vsh-hO-AAH" kind="show" identifier="SignInDirectView" id="iFv-dl-Nry"/>
+                                    <segue destination="xwe-Cm-iIw" kind="show" identifier="SignInDirectView" id="iFv-dl-Nry"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHO-oo-ypN">
@@ -233,7 +233,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="eqL-y4-TFE" kind="show" identifier="SignUpRegisterView" id="WZk-BO-368"/>
+                                    <segue destination="ahB-6R-Ut8" kind="show" identifier="SignUpRegisterView" id="WZk-BO-368"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already a member?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wVc-eb-CZ0">
@@ -256,7 +256,7 @@
                                     <color key="titleColor" red="1" green="0.15589778309999999" blue="0.19827053989999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="vsh-hO-AAH" kind="show" identifier="SignInMemberView" id="hs3-L6-TkO"/>
+                                    <segue destination="xwe-Cm-iIw" kind="show" identifier="SignInMemberView" id="hs3-L6-TkO"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ej1-XL-XSE">
@@ -297,7 +297,9 @@
                             <constraint firstItem="u2v-Qm-Cc3" firstAttribute="top" secondItem="oA8-dp-G3B" secondAttribute="bottom" constant="26" id="xbU-DE-EHA"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="I0p-ac-qi1"/>
+                    <navigationItem key="navigationItem" id="I0p-ac-qi1">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="Bc6-6o-t6h"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="facebookButton" destination="Pqv-5S-dJP" id="pyF-p2-tbS"/>
                         <outlet property="googleButton" destination="lyp-TZ-yBb" id="S32-O0-2qW"/>
@@ -423,7 +425,7 @@
                                     <color key="titleColor" red="1" green="0.15589778309999999" blue="0.19827053989999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="vsh-hO-AAH" kind="show" identifier="signinEmailView" id="2Gb-3Y-2am"/>
+                                    <segue destination="xwe-Cm-iIw" kind="show" identifier="signinEmailView" id="2Gb-3Y-2am"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="2" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sIO-wh-sTX">
@@ -448,6 +450,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.97156583019999998" green="0.97156583019999998" blue="0.97156583019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="CJo-Hx-abz">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="BN8-6x-cEQ"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="RepasswordTextField" destination="5xh-wz-d71" id="uji-DQ-LgX"/>
                         <outlet property="emailTextField" destination="sIO-wh-sTX" id="gap-AG-lvy"/>
@@ -457,7 +462,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ucK-5u-Jnz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="966" y="-707"/>
+            <point key="canvasLocation" x="1904.8" y="-707.49625187406298"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="qf6-P7-rnb">
@@ -600,16 +605,19 @@
                         </subviews>
                         <color key="backgroundColor" red="0.97156583019999998" green="0.97156583019999998" blue="0.97156583019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="f55-Cy-vX3">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="Ruo-Hv-uCd"/>
+                    </navigationItem>
                     <connections>
-                        <outlet property="emailSignInTxt" destination="4xQ-Gx-eiA" id="NzY-Hi-h31"/>
+                        <outlet property="emailTextField" destination="4xQ-Gx-eiA" id="dvU-02-kDx"/>
                         <outlet property="facebookBtn" destination="pTK-WU-l7O" id="Rn1-Sa-GV4"/>
                         <outlet property="googleBtn" destination="FYS-6y-6b3" id="k7e-o5-Bdh"/>
-                        <outlet property="passwordSignInTxt" destination="Ev1-84-ZoV" id="qHI-1Z-TVn"/>
+                        <outlet property="passwordTextField" destination="Ev1-84-ZoV" id="Wqq-G5-7gg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NrH-WB-ujx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1679" y="-654"/>
+            <point key="canvasLocation" x="3556" y="-654.42278860569718"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fro-kf-Da8">
@@ -649,11 +657,47 @@
             </objects>
             <point key="canvasLocation" x="2360.8000000000002" y="-1433.433283358321"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8Gg-Ua-gba">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xwe-Cm-iIw" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3C5-Na-O5s">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vsh-hO-AAH" kind="relationship" relationship="rootViewController" id="5Sr-Mw-ZOL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HVJ-fI-AzP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2616.8000000000002" y="-654.42278860569718"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="E4f-fS-Trn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ahB-6R-Ut8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4eE-P5-wXK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="eqL-y4-TFE" kind="relationship" relationship="rootViewController" id="Kkq-ge-Wat"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z5x-TM-9a5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="965.60000000000002" y="-707.49625187406298"/>
+        </scene>
     </scenes>
     <resources>
         <image name="logo" width="299" height="118"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hs3-L6-TkO"/>
+        <segue reference="2Gb-3Y-2am"/>
     </inferredMetricsTieBreakers>
 </document>
