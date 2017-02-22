@@ -13,26 +13,14 @@ import FirebaseAuth
 class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet weak var cuisineTypeLabel: UILabel!
     @IBOutlet weak var cuisineTypePickerView: UIPickerView!
-    @IBOutlet weak var leftBarButtonItem: UIBarButtonItem!
 
     //BARBARA: Create an array for the picker view
     var cuisine = ["Carribbean", "Chinese", "French","Indian", "Italian", "Thai", "Other"]
     
     override func viewDidLoad() {
     super.viewDidLoad()
-
-        let closeButton = UIImage(named: "xBtn")?.withRenderingMode(.alwaysOriginal)
-        let leftBarButtonItem = UIBarButtonItem(image: closeButton, style: UIBarButtonItemStyle.plain, target: self, action: #selector(displayProfilePage))
-        self.navigationItem.leftBarButtonItem = leftBarButtonItem
-        
         cuisineTypePickerView.delegate = self
         cuisineTypePickerView.dataSource = self
-    }
-    
-    func displayProfilePage() {
-        let storyboard = UIStoryboard(name: "ProfilePage", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "InitialController") as UIViewController
-        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {

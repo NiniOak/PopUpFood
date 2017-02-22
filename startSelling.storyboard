@@ -52,7 +52,7 @@
                                                 </constraints>
                                             </pickerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter a description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mlf-qO-Kbr">
-                                                <rect key="frame" x="26" y="568" width="160" height="21"/>
+                                                <rect key="frame" x="26" y="568.5" width="160" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="160" id="Lv5-dM-bAb"/>
                                                 </constraints>
@@ -61,7 +61,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Max 300 characters" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1SM-0c-l9z">
-                                                <rect key="frame" x="26" y="606" width="326" height="80"/>
+                                                <rect key="frame" x="26" y="606.5" width="326" height="80"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="80" id="8l0-3N-dJa"/>
                                                 </constraints>
@@ -70,13 +70,13 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter a price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FRw-pn-pRh">
-                                                <rect key="frame" x="26" y="694" width="160" height="21"/>
+                                                <rect key="frame" x="26" y="694.5" width="160" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TcP-CG-Mbc">
-                                                <rect key="frame" x="47" y="822" width="281" height="59"/>
+                                                <rect key="frame" x="47" y="822.5" width="281" height="59"/>
                                                 <color key="backgroundColor" red="0.14793276790000001" green="0.67037338020000004" blue="0.82231175899999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="59" id="7Qo-GY-Erc"/>
@@ -99,7 +99,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.00" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sel-3a-qQo">
-                                                <rect key="frame" x="26" y="723" width="329" height="30"/>
+                                                <rect key="frame" x="26" y="723.5" width="329" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -180,7 +180,6 @@
                     <connections>
                         <outlet property="cuisineTypeLabel" destination="xyq-pj-gbM" id="qIB-2u-fqO"/>
                         <outlet property="cuisineTypePickerView" destination="2t9-0k-Ogh" id="exu-Bv-pGe"/>
-                        <outlet property="leftBarButtonItem" destination="b2F-ao-HvG" id="qGp-WH-74l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9cj-5O-5Ws" userLabel="First Responder" sceneMemberID="firstResponder"/>
