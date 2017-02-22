@@ -13,14 +13,14 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = UIColor.rgb(red: 230, green: 32, blue: 31, alpha: 1)
+        cv.backgroundColor = UIColor.rgb(red: 221, green: 242, blue: 236, alpha: 1)
         cv.dataSource = self
         cv.delegate = self
         return cv
     }()
     
     let cellId = "cellId"
-    let imageNames = ["home", "trending", "subscriptions", "account"]
+    let imageNames = ["Home", "trending", "Messages", "selling"]
     
     override init(frame: CGRect){
         super.init(frame: frame)
@@ -68,7 +68,7 @@ class MenuCell: BaseCell{
     
     let imageView: UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named: "home")?.withRenderingMode(.alwaysTemplate) //specify the name of the photo from Assets
+        iv.image = UIImage(named: "Home")?.withRenderingMode(.alwaysTemplate) //specify the name of the photo from Assets
         iv.tintColor = UIColor.rgb(red: 91, green: 14, blue: 13, alpha: 1)
         return iv
     }()

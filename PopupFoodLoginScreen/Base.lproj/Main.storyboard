@@ -662,7 +662,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xwe-Cm-iIw" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3C5-Na-O5s">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="3C5-Na-O5s">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -680,7 +680,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ahB-6R-Ut8" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4eE-P5-wXK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="4eE-P5-wXK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -698,6 +698,6 @@
         <image name="logo" width="299" height="118"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2Gb-3Y-2am"/>
+        <segue reference="iFv-dl-Nry"/>
     </inferredMetricsTieBreakers>
 </document>

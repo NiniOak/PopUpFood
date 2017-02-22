@@ -7,44 +7,39 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet weak var cuisineTypeLabel: UILabel!
     @IBOutlet weak var cuisineTypePickerView: UIPickerView!
-    @IBAction func backButton(_ sender: Any) {
-       // Onclick back button, load profile page
-        let storyboard = UIStoryboard(name: "ProfilePage", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "InitialController") as UIViewController
-        self.present(controller, animated: true, completion: nil)
+    @IBOutlet weak var leftBarButtonItem: UIBarButtonItem!
 
-    }
-    
-    //MenuDescription
-    @IBOutlet weak var menuDescription: UITextField!
-    
     //BARBARA: Create an array for the picker view
     var cuisine = ["Carribbean", "Chinese", "French","Indian", "Italian", "Thai", "Other"]
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
+    super.viewDidLoad()
+
+        let closeButton = UIImage(named: "xBtn")?.withRenderingMode(.alwaysOriginal)
+        let leftBarButtonItem = UIBarButtonItem(image: closeButton, style: UIBarButtonItemStyle.plain, target: self, action: #selector(displayProfilePage))
+        self.navigationItem.leftBarButtonItem = leftBarButtonItem
         
         cuisineTypePickerView.delegate = self
         cuisineTypePickerView.dataSource = self
-
-        //Call Nav Bar
-       /* navigationItem.title = "Start Selling"
+    }
+    
+    func displayProfilePage() {
+        let storyboard = UIStoryboard(name: "ProfilePage", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "InitialController") as UIViewController
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.isTranslucent = false
-        
-        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
-        //repeated?
-        navigationItem.titleView = titleLabel
-        
-        titleLabel.text = "Start Selling"
-        titleLabel.textColor = UIColor.white
-        navigationItem.titleView = titleLabel
-        
-        view.backgroundColor = UIColor.white*/
-        
-        
+        //navigationItem.title = "Start Selling"
     }
 
     override func didReceiveMemoryWarning() {
