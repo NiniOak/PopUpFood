@@ -16,6 +16,7 @@
 		08B421481E526441005399D6 /* HomeAfterSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B421471E526441005399D6 /* HomeAfterSignIn.swift */; };
 		08B4214A1E52649B005399D6 /* FoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B421491E52649B005399D6 /* FoodCell.swift */; };
 		08B4214C1E52649F005399D6 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4214B1E52649F005399D6 /* MenuBar.swift */; };
+		08E83A231E5DD3EE0043B84A /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E83A221E5DD3EE0043B84A /* user.swift */; };
 		08EDF63D1E4A226200C7B234 /* defaultPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EDF63C1E4A226200C7B234 /* defaultPageViewController.swift */; };
 		08F4D0E51E4D60AF007EF202 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F4D0E41E4D60AF007EF202 /* Extentions.swift */; };
 		08F4D0E81E4D6212007EF202 /* Video Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F4D0E71E4D6212007EF202 /* Video Cell.swift */; };
@@ -62,6 +63,7 @@
 		08B421471E526441005399D6 /* HomeAfterSignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeAfterSignIn.swift; sourceTree = "<group>"; };
 		08B421491E52649B005399D6 /* FoodCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCell.swift; sourceTree = "<group>"; };
 		08B4214B1E52649F005399D6 /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
+		08E83A221E5DD3EE0043B84A /* user.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = user.swift; sourceTree = "<group>"; };
 		08EDF63C1E4A226200C7B234 /* defaultPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = defaultPageViewController.swift; sourceTree = "<group>"; };
 		08F4D0E41E4D60AF007EF202 /* Extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		08F4D0E71E4D6212007EF202 /* Video Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Video Cell.swift"; sourceTree = "<group>"; };
@@ -174,6 +176,14 @@
 			name = HomePageGroup;
 			sourceTree = "<group>";
 		};
+		08E83A211E5DD3DF0043B84A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				08E83A221E5DD3EE0043B84A /* user.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		08F4D0E31E4D6046007EF202 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,7 +205,7 @@
 		08F4D0E91E4D628C007EF202 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3F3FBE801E5D231B0099EE97 /* BeforeStartSelling */,
+				3F3FBE801E5D231B0099EE97 /* BeforeStartSellingGroup */,
 				089F613E1E562CFB003DFF88 /* LaunchPageGroup */,
 				089F613F1E562D25003DFF88 /* HomePageGroup */,
 				089F613D1E562CD6003DFF88 /* ProfileGroup */,
@@ -219,12 +229,12 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		3F3FBE801E5D231B0099EE97 /* BeforeStartSelling */ = {
+		3F3FBE801E5D231B0099EE97 /* BeforeStartSellingGroup */ = {
 			isa = PBXGroup;
 			children = (
 				3F3FBE831E5D283F0099EE97 /* BeforeStartSellingViewController.swift */,
 			);
-			name = BeforeStartSelling;
+			name = BeforeStartSellingGroup;
 			sourceTree = "<group>";
 		};
 		8A0B7A5D1E3BC48D00C53258 = {
@@ -252,6 +262,7 @@
 		8A0B7A681E3BC48F00C53258 /* PopupFoodLoginScreen */ = {
 			isa = PBXGroup;
 			children = (
+				08E83A211E5DD3DF0043B84A /* Model */,
 				08F4D0E91E4D628C007EF202 /* Controller */,
 				08F4D0E61E4D61EE007EF202 /* Views */,
 				08F4D0E31E4D6046007EF202 /* Helpers */,
@@ -591,6 +602,7 @@
 				08B4214C1E52649F005399D6 /* MenuBar.swift in Sources */,
 				08F4D0E81E4D6212007EF202 /* Video Cell.swift in Sources */,
 				08B421481E526441005399D6 /* HomeAfterSignIn.swift in Sources */,
+				08E83A231E5DD3EE0043B84A /* user.swift in Sources */,
 				8A0B7A6A1E3BC48F00C53258 /* AppDelegate.swift in Sources */,
 				8A320FFE1E42B38300F24B4E /* SignInViewController.swift in Sources */,
 				3F3FBE841E5D283F0099EE97 /* BeforeStartSellingViewController.swift in Sources */,

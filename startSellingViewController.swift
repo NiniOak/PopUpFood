@@ -8,15 +8,52 @@
 
 import UIKit
 import Firebase
-import FirebaseAuth
 
 class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet weak var cuisineTypeLabel: UILabel!
     @IBOutlet weak var cuisineTypePickerView: UIPickerView!
+    @IBOutlet weak var menuNameTextField: UITextField!
+    @IBOutlet weak var menuDescriptionTextField: UITextField!
+    @IBOutlet weak var enterPriceTextField: UITextField!
+    var user: User?
+
+    @IBAction func startSellingBtn(_ sender: Any) {
+        handleStartSelling()
+    }
+    
 
     //BARBARA: Create an array for the picker view
     var cuisine = ["Carribbean", "Chinese", "French","Indian", "Italian", "Thai", "Other"]
     
+    //Go back to the orevious page of menu list
+
+    @IBAction func backButton(_ sender: Any) {
+        goBackToStartSelling()
+    }
+    
+    //This method handles collecting information entered by the user and storing in the database
+    func handleStartSelling() {
+        guard let foodName = menuNameTextField.text, let foodDescription = menuDescriptionTextField.text, let price = enterPriceTextField.text, let cuisine = cuisineTypeLabel.text else {
+            print("Data filled is incorrect")
+            return
+        }
+        let ref = FIRDatabase.database().reference().child("chef")
+        let childRef = ref.childByAutoId()
+        //Add user id
+       // let toID = user!.id!
+        let values = ["dishes": foodName, "description": foodDescription, "price": price, "cuisine": cuisine] as [String : Any]
+        childRef.updateChildValues(values) { (err, ref) in
+            
+            if err != nil {
+                print (err as Any)
+                return
+            }
+            print ("User stored in database")
+        }
+        
+        print("User information input in database")
+    }
+
     override func viewDidLoad() {
     super.viewDidLoad()
         cuisineTypePickerView.delegate = self
@@ -28,6 +65,14 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
         self.navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.isTranslucent = false
         //navigationItem.title = "Start Selling"
+    }
+    //Call a new class to instantiate method
+    var profileController: BeforeStartSellingViewController?
+    
+    func goBackToStartSelling() {
+        let storyboard = UIStoryboard(name: "BeforeSellingPage", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "BeforeSellingPage") as UIViewController
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 
     override func didReceiveMemoryWarning() {

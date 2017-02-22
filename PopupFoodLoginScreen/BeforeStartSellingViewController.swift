@@ -12,44 +12,37 @@ import UIKit
 class BeforeStartSellingViewController: UIViewController{
     
     //plus button functionality
-    @IBAction func addButton(_ sender: UIBarButtonItem) {
+    @IBAction func addButton(_ sender: Any) {
         
-        startSelling()
-        
+            startSelling()
     }
     
-    //Call viewcontroller for selling page
-    func startSelling() {
-     let storyboard = UIStoryboard(name: "startSelling", bundle: nil)
-     let controller = storyboard.instantiateViewController(withIdentifier: "startSelling") as UIViewController
-     
-     self.present(controller, animated: true, completion: nil)
-     }
-    
-    
-    
-    
-    //Cancel button functionality
-    @IBAction func cancelButon(_ sender: UIBarButtonItem) {
+    @IBAction func cancelButton(_ sender: Any) {
         
         goBackToLoggedInView()
     }
+    override func viewDidLoad() {
+        self.navigationItem.title = "Start Selling"
+    }
+    
+    //This methid displays navigation Bar
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
+    //Call viewcontroller and navigation bar for selling page
+    func startSelling() {
+     let storyboard = UIStoryboard(name: "startSelling", bundle: nil)
+     let controller = storyboard.instantiateViewController(withIdentifier: "startSelling") as UIViewController
+     self.navigationController?.pushViewController(controller, animated: true)
+     }
     
     func goBackToLoggedInView(){
-        let storyboard = UIStoryboard(name: "ProfilePage", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "InitialController") as UIViewController
-        
-        self.present(controller, animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "HomePage", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "newhomePage") as UIViewController
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 }
 
 
-
-
-//before start selling ViewController with the X and + button
-/*func startSelling() {
- let storyboard = UIStoryboard(name: "startSelling", bundle: nil)
- let controller = storyboard.instantiateViewController(withIdentifier: "startSelling") as UIViewController
- 
- self.present(controller, animated: true, completion: nil)
- }*/
