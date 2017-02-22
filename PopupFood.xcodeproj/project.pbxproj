@@ -22,6 +22,8 @@
 		08F9C6A81E57746400312520 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F9C6A71E57746400312520 /* ViewController.swift */; };
 		3170FA4E1E52859D00203E3B /* startSelling.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3170FA4D1E52859D00203E3B /* startSelling.storyboard */; };
 		3170FA501E52864500203E3B /* startSellingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3170FA4F1E52864500203E3B /* startSellingViewController.swift */; };
+		3F3FBE821E5D24860099EE97 /* BeforeSellingPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F3FBE811E5D24860099EE97 /* BeforeSellingPage.storyboard */; };
+		3F3FBE841E5D283F0099EE97 /* BeforeStartSellingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3FBE831E5D283F0099EE97 /* BeforeStartSellingViewController.swift */; };
 		8A0B7A6A1E3BC48F00C53258 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0B7A691E3BC48F00C53258 /* AppDelegate.swift */; };
 		8A0B7A6F1E3BC48F00C53258 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A0B7A6D1E3BC48F00C53258 /* Main.storyboard */; };
 		8A0B7A711E3BC48F00C53258 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A0B7A701E3BC48F00C53258 /* Assets.xcassets */; };
@@ -66,6 +68,8 @@
 		08F9C6A71E57746400312520 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3170FA4D1E52859D00203E3B /* startSelling.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = startSelling.storyboard; path = ../startSelling.storyboard; sourceTree = "<group>"; };
 		3170FA4F1E52864500203E3B /* startSellingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = startSellingViewController.swift; path = ../startSellingViewController.swift; sourceTree = "<group>"; };
+		3F3FBE811E5D24860099EE97 /* BeforeSellingPage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BeforeSellingPage.storyboard; sourceTree = "<group>"; };
+		3F3FBE831E5D283F0099EE97 /* BeforeStartSellingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeforeStartSellingViewController.swift; sourceTree = "<group>"; };
 		805B9759F4FA6C96C02B3A61 /* Pods_PopupFoodUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PopupFoodUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85E4FA7D9E6D5A37E54E033C /* Pods-PopupFoodTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopupFoodTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PopupFoodTests/Pods-PopupFoodTests.release.xcconfig"; sourceTree = "<group>"; };
 		85F383E4FFDD7AFF10CA508E /* Pods-PopupFoodTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PopupFoodTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PopupFoodTests/Pods-PopupFoodTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -191,6 +195,7 @@
 		08F4D0E91E4D628C007EF202 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				3F3FBE801E5D231B0099EE97 /* BeforeStartSelling */,
 				089F613E1E562CFB003DFF88 /* LaunchPageGroup */,
 				089F613F1E562D25003DFF88 /* HomePageGroup */,
 				089F613D1E562CD6003DFF88 /* ProfileGroup */,
@@ -212,6 +217,14 @@
 				E0EF5EA436B305328C07525C /* Pods-PopupFoodUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		3F3FBE801E5D231B0099EE97 /* BeforeStartSelling */ = {
+			isa = PBXGroup;
+			children = (
+				3F3FBE831E5D283F0099EE97 /* BeforeStartSellingViewController.swift */,
+			);
+			name = BeforeStartSelling;
 			sourceTree = "<group>";
 		};
 		8A0B7A5D1E3BC48D00C53258 = {
@@ -249,6 +262,7 @@
 				08B421451E5263AA005399D6 /* HomePage.storyboard */,
 				08B421411E513748005399D6 /* ProfilePage.storyboard */,
 				3170FA4D1E52859D00203E3B /* startSelling.storyboard */,
+				3F3FBE811E5D24860099EE97 /* BeforeSellingPage.storyboard */,
 				8A0B7A701E3BC48F00C53258 /* Assets.xcassets */,
 				8A0B7A721E3BC48F00C53258 /* LaunchScreen.storyboard */,
 				8A0B7A751E3BC48F00C53258 /* Info.plist */,
@@ -409,6 +423,7 @@
 				08B421461E5263AB005399D6 /* HomePage.storyboard in Resources */,
 				8A0B7A6F1E3BC48F00C53258 /* Main.storyboard in Resources */,
 				08B421441E51E57C005399D6 /* defaultTimeline.storyboard in Resources */,
+				3F3FBE821E5D24860099EE97 /* BeforeSellingPage.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,6 +593,7 @@
 				08B421481E526441005399D6 /* HomeAfterSignIn.swift in Sources */,
 				8A0B7A6A1E3BC48F00C53258 /* AppDelegate.swift in Sources */,
 				8A320FFE1E42B38300F24B4E /* SignInViewController.swift in Sources */,
+				3F3FBE841E5D283F0099EE97 /* BeforeStartSellingViewController.swift in Sources */,
 				8A320FFC1E42B35600F24B4E /* SignUpPageViewController.swift in Sources */,
 				08F9C6A81E57746400312520 /* ViewController.swift in Sources */,
 				08B421401E5130A7005399D6 /* ProfileViewController.swift in Sources */,

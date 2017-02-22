@@ -19,10 +19,17 @@ class ProfileViewController: UIViewController {
     //ACTIONS:
     
     //BARBARA: Selling onclick
-    @IBAction func sellingButton(_ sender: Any) {
+    /*@IBAction func sellingButton(_ sender: Any) {
         startSelling()
         
+    }*/
+    
+    @IBAction func sellingButton(_ sender: Any) {
+        //startSelling() move to before page and assign to plus button
+        
+        goToBeforeSelling()
     }
+    
     
     
     //BARBARA: Handle onclick logout
@@ -90,13 +97,27 @@ class ProfileViewController: UIViewController {
         self.ImageViewProfilePic.clipsToBounds = true
     }
     
-    //Call viewcontroller for selling page
-    func startSelling() {
+    //Call viewcontroller for selling page //move to before page!!!!!!!!!!!!!!!!!!!!!!!!!
+    /*func startSelling() {
         let storyboard = UIStoryboard(name: "startSelling", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "startSelling") as UIViewController
         
         self.present(controller, animated: true, completion: nil)
+    }*/
+    
+    
+    
+    //Olek refactoring to insert SELLING view before startSellingViewController
+    func goToBeforeSelling() {
+        let storyboard = UIStoryboard(name: "BeforeSellingPage", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "BeforeSellingPage") as UIViewController
+        
+        self.present(controller, animated: true, completion: nil)
     }
+    
+    
+    
+    
     
      //handle Logout Button
     func handleLogOut() {
