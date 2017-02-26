@@ -56,6 +56,8 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Add Food Image</string>
 	<key>UILaunchImageFile</key>
 	<string>PopupSplash</string>
 	<key>UILaunchStoryboardName</key>

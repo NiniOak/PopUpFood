@@ -9,12 +9,15 @@
 import UIKit
 import Firebase
 
-class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var cuisineTypeLabel: UILabel!
     @IBOutlet weak var cuisineTypePickerView: UIPickerView!
     @IBOutlet weak var menuNameTextField: UITextField!
     @IBOutlet weak var menuDescriptionTextField: UITextField!
     @IBOutlet weak var enterPriceTextField: UITextField!
+    @IBOutlet weak var foodImage: UIImageView!
+    
+    
     var user: User?
 
     @IBAction func startSellingBtn(_ sender: Any) {
@@ -29,6 +32,30 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
 
     @IBAction func backButton(_ sender: Any) {
         goBackToStartSelling()
+    }
+    
+    @IBAction func changeFoodImage(_ sender: AnyObject) {
+        
+        let selectImage = UIImagePickerController()
+        selectImage.delegate = self
+        
+        selectImage.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        
+        //selectImage.allowsEditing = false
+        self.present(selectImage, animated: true)
+    }
+    
+    //Select image from gallery
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let selectImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        {
+            foodImage.image = selectImage
+        }
+        else
+        {
+            //Display Error Message
+        }
+        self.dismiss(animated: true, completion: nil)
     }
     
     //This method handles collecting information entered by the user and storing in the database
@@ -70,7 +97,7 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
     var profileController: BeforeStartSellingViewController?
     
     func goBackToStartSelling() {
-        let storyboard = UIStoryboard(name: "BeforeSellingPage", bundle: nil)
+        let storyboard = UIStoryboard(name: "startSelling", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "BeforeSellingPage") as UIViewController
         self.navigationController?.pushViewController(controller, animated: true)
     }

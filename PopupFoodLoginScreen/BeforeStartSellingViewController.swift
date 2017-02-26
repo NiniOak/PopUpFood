@@ -9,7 +9,24 @@
 //OLEK class!!!!!! for Before selling page with CANCEL and ADD button
 import UIKit
 
-class BeforeStartSellingViewController: UIViewController{
+class BeforeStartSellingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    let foodImages = ["test_pizza", "pasta", "defaultImage"]
+    
+    //Set up Table view rows
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+     return (foodImages.count)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! DisplayMenuTableViewCell
+        
+        cell.foodImage.image = UIImage(named: (foodImages[indexPath.row]))
+        cell.foodLabel.text = foodImages[indexPath.row]
+        return (cell)
+    }
     
     //plus button functionality
     @IBAction func addButton(_ sender: Any) {

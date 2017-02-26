@@ -18,19 +18,11 @@ class ProfileViewController: UIViewController {
 
     //ACTIONS:
     
-    //BARBARA: Selling onclick
-    /*@IBAction func sellingButton(_ sender: Any) {
-        startSelling()
-        
-    }*/
-    
     @IBAction func sellingButton(_ sender: Any) {
         //startSelling() move to before page and assign to plus button
         
         goToBeforeSelling()
     }
-    
-    
     
     //BARBARA: Handle onclick logout
     @IBAction func logoutButton(_ sender: Any) {
@@ -93,7 +85,7 @@ class ProfileViewController: UIViewController {
     
     func makeProfileImageRound() {
         //BARBARA: Make profile picture round
-        self.ImageViewProfilePic.layer.cornerRadius = self.ImageViewProfilePic.frame.size.height/80
+        self.ImageViewProfilePic.layer.cornerRadius = self.ImageViewProfilePic.frame.size.height/89
         self.ImageViewProfilePic.clipsToBounds = true
     }
     
@@ -109,7 +101,7 @@ class ProfileViewController: UIViewController {
     
     //Olek refactoring to insert SELLING view before startSellingViewController
     func goToBeforeSelling() {
-        let storyboard = UIStoryboard(name: "BeforeSellingPage", bundle: nil)
+        let storyboard = UIStoryboard(name: "startSelling", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "BeforeSellingPage") as UIViewController
         self.navigationController?.pushViewController(controller, animated: true)
     }
