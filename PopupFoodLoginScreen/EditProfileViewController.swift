@@ -47,7 +47,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     @IBAction func saveProfile(_ sender: Any) {
         updateProfile()
         
-        print("123")
+       // print("123")
     }
     
     override func viewDidLoad() {
