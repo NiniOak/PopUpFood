@@ -68,7 +68,7 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
         let childRef = ref.childByAutoId()
         //Add user id
        // let toID = user!.id!
-        let values = ["dishes": foodName, "description": foodDescription, "price": price, "cuisine": cuisine] as [String : Any]
+        let values = ["food": foodName, "description": foodDescription, "price": "$" + price, "cuisine": cuisine] as [String : Any]
         childRef.updateChildValues(values) { (err, ref) in
             
             if err != nil {
@@ -122,15 +122,4 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         cuisineTypeLabel.text = cuisine[row]
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
