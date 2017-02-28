@@ -23,6 +23,9 @@ class ProfileViewController: UIViewController {
         
         goToBeforeSelling()
     }
+    @IBAction func editProfile(_ sender: Any) {
+        editProfile()
+    }
     
     //BARBARA: Handle onclick logout
     @IBAction func logoutButton(_ sender: Any) {
@@ -33,6 +36,7 @@ class ProfileViewController: UIViewController {
         
         print("User Logged out")
     }
+    //BARBARA: On click, launch edit profile page
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +46,7 @@ class ProfileViewController: UIViewController {
 
     }
     
-    func checkIfUserIsLoggedIn() {
+     func checkIfUserIsLoggedIn() {
         if FIRAuth.auth()?.currentUser?.uid == nil {
             perform(#selector(handleLogOut), with: nil, afterDelay: 0)
         } else {
@@ -126,6 +130,12 @@ class ProfileViewController: UIViewController {
         self.present(controller, animated: true, completion: nil)
         /////////////////////////////////////////////////////////////////////////////
 
+    }
+    //Display edit profile page
+    func editProfile() {
+        let storyboard = UIStoryboard(name: "ProfilePage", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "editProfile") as UIViewController
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 
     override func didReceiveMemoryWarning() {

@@ -94,7 +94,7 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
         //navigationItem.title = "Start Selling"
     }
     //Call a new class to instantiate method
-    var profileController: BeforeStartSellingViewController?
+    //var profileController: BeforeStartSellingViewController?
     
     func goBackToStartSelling() {
         let storyboard = UIStoryboard(name: "startSelling", bundle: nil)
