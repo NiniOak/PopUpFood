@@ -75,6 +75,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         }
     }
     
+    //Update the text label and image to be sent into DB
     func updateProfile() {
         //check if user is logged in
         if let userID = FIRAuth.auth()?.currentUser?.uid
@@ -85,11 +86,8 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             //upload to Firebase storage
             //get all new entries and store
             
-           // guard let newUsername = self.usernameText.text!, let newEmail = self.emailText.text!, let newPassword = self.passwordText.text! else {
-            //    return
-           // }
             
-            //save in dictionary
+            //save in new entry in object
             let newValuesForProfile =
             ["name": self.usernameText.text!,
              "email": self.emailText.text!,
@@ -107,7 +105,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         }
     }
     
-    
+    //set user default image in edit profile page
     func defaultProfileImage() {
         let uid = FIRAuth.auth()?.currentUser?.uid
         FIRDatabase.database().reference().child("customers").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
