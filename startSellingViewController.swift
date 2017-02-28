@@ -18,7 +18,7 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet weak var foodImage: UIImageView!
     
     
-    var user: User?
+    //var user: User?
 
     @IBAction func startSellingBtn(_ sender: Any) {
         handleStartSelling()
