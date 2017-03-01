@@ -16,6 +16,7 @@ target 'PopupFood' do
   pod 'FBSDKShareKit'
   pod 'FBSDKLoginKit'
   pod 'GoogleSignIn'
+  pod 'SDWebImage'
 
   target 'PopupFoodTests' do
     inherit! :search_paths

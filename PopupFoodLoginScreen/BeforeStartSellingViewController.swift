@@ -61,9 +61,14 @@ class BeforeStartSellingViewController: UITableViewController {
         let menu = foodMenu[indexPath.row]
         cell.foodLabel.text = menu.food
         cell.foodPrice.text = menu.price
+        //cell.foodImage.image = UIImage(named: menu)
         
-       // cell.foodImage.image = UIImage(named: menu)
-        //cell.foodLabel.text = menu
+        if let foodImageUrl = menu.foodImageUrl {
+            let url = URL(string: foodImageUrl)
+            cell.foodImage.sd_setImage(with: url)
+        } else {
+            cell.foodImage.image = UIImage(named: "test_pizza")
+        }
         return (cell)
     }
     

@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SDWebImage
 
 class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var cuisineTypeLabel: UILabel!
@@ -122,7 +123,6 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
         }
         
     }
-
     
     override func viewWillAppear(_ animated: Bool) {
         
