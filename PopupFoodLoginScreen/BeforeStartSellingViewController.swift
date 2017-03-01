@@ -32,9 +32,10 @@ class BeforeStartSellingViewController: UITableViewController {
             if let dictionary = snapshot.value as? [String: AnyObject] {
                 let menu = Menu()
                 
-                //This calls the entire 
+                //This calls the entire database for menu input by a user
                 menu.food = dictionary["food"] as? String
                 menu.price = dictionary["price"] as? String
+                menu.foodImageUrl = dictionary["foodImageUrl"] as? String
                 
                 self.foodMenu.append(menu)
                 DispatchQueue.main.async {

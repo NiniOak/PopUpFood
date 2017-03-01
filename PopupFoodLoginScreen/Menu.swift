@@ -11,9 +11,10 @@ import UIKit
 class Menu: NSObject {
     var id: String?
     var food: String?
-    //var description: String?
     var cuisine: String?
     var price: String?
+    var foodImageUrl: String?
+    //var description: String?
     //var foodImageUrl: String?
 
 }

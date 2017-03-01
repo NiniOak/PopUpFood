@@ -17,11 +17,20 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet weak var enterPriceTextField: UITextField!
     @IBOutlet weak var foodImage: UIImageView!
     
+    var foodMenu = [Menu]()
+    var userDetails = [User]()
+
     
-    //var user: User?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        cuisineTypePickerView.delegate = self
+        cuisineTypePickerView.dataSource = self
+    }
 
     @IBAction func startSellingBtn(_ sender: Any) {
         handleStartSelling()
+        goBackToStartSelling()
     }
     
 
@@ -39,6 +48,8 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
         let selectImage = UIImagePickerController()
         selectImage.delegate = self
         
+        selectImage.allowsEditing = true
+        
         selectImage.sourceType = UIImagePickerControllerSourceType.photoLibrary
         
         //selectImage.allowsEditing = false
@@ -47,28 +58,60 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     //Select image from gallery
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let selectImage = info[UIImagePickerControllerOriginalImage] as? UIImage
-        {
-            foodImage.image = selectImage
+        
+        //store selected image in the variable below
+        var selectedImagefromGallery: UIImage?
+        
+        //Select edited image first
+        
+        if let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+            selectedImagefromGallery = editedImage
         }
-        else
-        {
-            //Display Error Message
+        else if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            
+            //If edited image not available, then select original image
+            selectedImagefromGallery = originalImage
+        }
+        //display selected type of image to imageView
+        if let selectedImage = selectedImagefromGallery {
+            foodImage.image = selectedImage
         }
         self.dismiss(animated: true, completion: nil)
     }
     
     //This method handles collecting information entered by the user and storing in the database
     func handleStartSelling() {
+        
         guard let foodName = menuNameTextField.text, let foodDescription = menuDescriptionTextField.text, let price = enterPriceTextField.text, let cuisine = cuisineTypeLabel.text else {
             print("Data filled is incorrect")
             return
         }
+        
+        //after user is successfully autheticated
+        let imageName = NSUUID().uuidString
+        let storageRef = FIRStorage.storage().reference().child("food_Images").child("\(imageName).png")
+        if let uploadData = UIImagePNGRepresentation(self.foodImage.image!) {
+            
+            storageRef.put(uploadData, metadata: nil, completion: { (metadata, error) in
+                
+                if error != nil {
+                    print(error!)
+                    return
+                }
+                if let foodImageUrl = metadata?.downloadURL()?.absoluteString {
+                    
+                    let values = ["food": foodName, "description": foodDescription, "price": "$" + price, "cuisine": cuisine, "foodImageUrl": foodImageUrl]
+                    
+                    self.registerChefIntoDatabaseWithMenuID(values: values)
+                }
+            })
+        }
+    }
+    
+    private func registerChefIntoDatabaseWithMenuID(values: [String: Any]) {
+        
         let ref = FIRDatabase.database().reference().child("chef")
         let childRef = ref.childByAutoId()
-        //Add user id
-       // let toID = user!.id!
-        let values = ["food": foodName, "description": foodDescription, "price": "$" + price, "cuisine": cuisine] as [String : Any]
         childRef.updateChildValues(values) { (err, ref) in
             
             if err != nil {
@@ -78,14 +121,8 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
             print ("User stored in database")
         }
         
-        print("User information input in database")
     }
 
-    override func viewDidLoad() {
-    super.viewDidLoad()
-        cuisineTypePickerView.delegate = self
-        cuisineTypePickerView.dataSource = self
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         
