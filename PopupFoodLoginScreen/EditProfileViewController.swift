@@ -99,6 +99,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                     print(error!)
                     return
                 }
+                //self.dismiss(animated: true, completion: nil)
                 print("Profile details successfully updated")
             })
             

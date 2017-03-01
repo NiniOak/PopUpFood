@@ -23,6 +23,7 @@ class SignUpPageViewController: UIViewController {
     @IBAction func signUpBtn(_ sender: UIButton) {
         
         handleRegister()
+
     }
     
     func handleRegister() {

@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -205,7 +205,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9cj-5O-5Ws" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3149.5999999999999" y="130.43478260869566"/>
+            <point key="canvasLocation" x="4088.8000000000002" y="130.43478260869566"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pzI-Vn-NUS">
@@ -223,102 +223,90 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ODe-s8-Mll" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2210" y="1"/>
+            <point key="canvasLocation" x="3148" y="0.44977511244377816"/>
         </scene>
         <!--Start Selling-->
-        <scene sceneID="Mmx-oT-sHx">
+        <scene sceneID="80a-ng-oH5">
             <objects>
-                <viewController storyboardIdentifier="BeforeSellingPage" id="Y3a-rU-AuL" customClass="BeforeStartSellingViewController" customModule="PopupFood" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="cYl-IL-f5c"/>
-                        <viewControllerLayoutGuide type="bottom" id="91J-z1-cFB"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="gDg-B0-DSx">
+                <tableViewController storyboardIdentifier="BeforeSellingPage" id="2c8-Qq-Eff" customClass="BeforeStartSellingViewController" customModule="PopupFood" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="28" sectionFooterHeight="28" id="bgc-p6-nGS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="94" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vlE-fM-Ot7">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="94" id="7xw-w6-Sqx" customClass="DisplayMenuTableViewCell" customModule="PopupFood" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="94"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7xw-w6-Sqx" id="hfV-z6-K3w">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="93"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ajc-OY-9OV">
-                                                    <rect key="frame" x="8" y="10" width="102" height="73"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pzy-jS-bIX">
-                                                    <rect key="frame" x="126" y="52" width="96" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="0.2687045231817996" blue="0.19519543715129439" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Shaffar's Pepproni" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1vJ-It-XkQ">
-                                                    <rect key="frame" x="126" y="24" width="241" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="foodImage" destination="Ajc-OY-9OV" id="bV2-Pd-0Qg"/>
-                                            <outlet property="foodLabel" destination="1vJ-It-XkQ" id="eAd-IK-6Yf"/>
-                                            <outlet property="foodPrice" destination="pzy-jS-bIX" id="wA3-gc-b5V"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="Y3a-rU-AuL" id="YgI-Zt-4Wg"/>
-                                    <outlet property="delegate" destination="Y3a-rU-AuL" id="GaW-rK-gE4"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Start Selling" id="4rv-kP-i0T">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="0qE-u3-PnO"/>
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="w9m-GR-0yN">
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationLevel="1" indentationWidth="1" reuseIdentifier="cell" rowHeight="95" id="8Af-1v-Kh6" customClass="DisplayMenuTableViewCell" customModule="PopupFood" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="95"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Af-1v-Kh6" id="Im0-Hu-RsA">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="94"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pzy-jS-bIX">
+                                            <rect key="frame" x="126" y="48" width="96" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="1" green="0.2687045231817996" blue="0.19519543715129439" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Shaffar's Pepproni" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1vJ-It-XkQ">
+                                            <rect key="frame" x="126" y="20" width="241" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ajc-OY-9OV">
+                                            <rect key="frame" x="8" y="8" width="102" height="73"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="foodImage" destination="Ajc-OY-9OV" id="QSx-0h-axa"/>
+                                    <outlet property="foodLabel" destination="1vJ-It-XkQ" id="6TC-1C-6zO"/>
+                                    <outlet property="foodPrice" destination="pzy-jS-bIX" id="6Ex-Z6-Ndc"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="2c8-Qq-Eff" id="5PI-Od-EKP"/>
+                            <outlet property="delegate" destination="2c8-Qq-Eff" id="yrs-PN-IoM"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Start Selling" id="IsW-YT-IW9">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="5Pp-he-jVs">
                             <connections>
-                                <action selector="cancelButton:" destination="Y3a-rU-AuL" id="DLw-zD-gWm"/>
+                                <action selector="cancelButton:" destination="2c8-Qq-Eff" id="asi-ng-ADm"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="VtU-2X-j66">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="f55-TM-uF3">
                             <connections>
-                                <action selector="addButton:" destination="Y3a-rU-AuL" id="deY-yJ-zFY"/>
+                                <action selector="addButton:" destination="2c8-Qq-Eff" id="7wo-PG-9wd"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3Ri-7t-hht" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jup-gm-3Bo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1468" y="2.2488755622188905"/>
+            <point key="canvasLocation" x="2229.5999999999999" y="-0.44977511244377816"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="m9O-J6-3bg">
+        <scene sceneID="d0D-PT-ZI7">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1Yy-LN-gnH" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xKF-m1-5pv" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="YdL-Cd-PGY">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ESi-pa-mHa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Y3a-rU-AuL" kind="relationship" relationship="rootViewController" id="QtU-CH-b7s"/>
+                        <segue destination="2c8-Qq-Eff" kind="relationship" relationship="rootViewController" id="2kL-Mc-Ho3"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="K1w-2P-4rP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ohr-Vr-ruR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="528.79999999999995" y="1.3493253373313345"/>
+            <point key="canvasLocation" x="1230" y="0.0"/>
         </scene>
     </scenes>
     <resources>

@@ -8,40 +8,73 @@
 
 //OLEK class!!!!!! for Before selling page with CANCEL and ADD button
 import UIKit
+import Firebase
 
-class BeforeStartSellingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class BeforeStartSellingViewController: UITableViewController {
     
-    let foodImages = ["test_pizza", "pasta", "defaultImage"]
+    //Test data to display array of food items
+    //let foodMenu = ["test_pizza", "pasta", "defaultImage"]
+    //Menu array to display food items
+    var foodMenu = [Menu]()
+    let cellId = "cell"
     
-    //Set up Table view rows
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
-     return (foodImages.count)
+    override func viewDidLoad() {
+        //self.navigationItem.title = "Start Selling"
+        
+        fetchMenu()
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    //Fetch all menu items from database
+    func fetchMenu() {
+        FIRDatabase.database().reference().child("chef").observe(.childAdded, with: { (snapshot) in
+            
+            //store chef/menu info in "snapshot" and display snapshot
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+                let menu = Menu()
+                
+                //This calls the entire 
+                menu.food = dictionary["food"] as? String
+                menu.price = dictionary["price"] as? String
+                
+                self.foodMenu.append(menu)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+
+            }
+
+        }, withCancel: nil)
+    }
+    
+    //Set up number of cells in Table view
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! DisplayMenuTableViewCell
+     return foodMenu.count
+    }
+    
+    //Display images, test and amount in cells
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! DisplayMenuTableViewCell
         
-        cell.foodImage.image = UIImage(named: (foodImages[indexPath.row]))
-        cell.foodLabel.text = foodImages[indexPath.row]
+        let menu = foodMenu[indexPath.row]
+        cell.foodLabel.text = menu.food
+        cell.foodPrice.text = menu.price
+        
+       // cell.foodImage.image = UIImage(named: menu)
+        //cell.foodLabel.text = menu
         return (cell)
     }
     
     //plus button functionality
     @IBAction func addButton(_ sender: Any) {
-        
             startSelling()
     }
     
     @IBAction func cancelButton(_ sender: Any) {
-        
         goBackToLoggedInView()
     }
-    override func viewDidLoad() {
-        self.navigationItem.title = "Start Selling"
-    }
-    
+
     //This methid displays navigation Bar
     override func viewWillAppear(_ animated: Bool) {
         
@@ -56,8 +89,8 @@ class BeforeStartSellingViewController: UIViewController, UITableViewDataSource,
      }
     
     func goBackToLoggedInView(){
-        let storyboard = UIStoryboard(name: "HomePage", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "newhomePage") as UIViewController
+        let storyboard = UIStoryboard(name: "ProfilePage", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "InitialController") as UIViewController
         self.navigationController?.pushViewController(controller, animated: true)
     }
 }
