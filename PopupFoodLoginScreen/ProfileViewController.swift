@@ -12,6 +12,28 @@ import FirebaseAuth
 import FBSDKCoreKit
 
 class ProfileViewController: UIViewController {
+    
+    var user = [User]()
+    
+    @IBOutlet weak var homeButton: UIBarButtonItem!
+    
+    @IBAction func homeButton(_ sender: Any) {
+        returnHomePage()
+  
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "home"), for: .normal)
+        button.sizeToFit()
+        self.homeButton = UIBarButtonItem(customView: button)
+        
+        // Check if user exists in database when logged in
+        checkIfUserIsLoggedIn()
+        
+    }
     //FEATURES
     @IBOutlet weak var ImageViewProfilePic: UIImageView!
     @IBOutlet weak var labelName: UILabel!
@@ -38,13 +60,6 @@ class ProfileViewController: UIViewController {
     }
     //BARBARA: On click, launch edit profile page
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Check if user exists in database when logged in
-        checkIfUserIsLoggedIn()
-
-    }
     
      func checkIfUserIsLoggedIn() {
         if FIRAuth.auth()?.currentUser?.uid == nil {
@@ -52,11 +67,16 @@ class ProfileViewController: UIViewController {
         } else {
             
             makeProfileImageRound()
-            
             let uid = FIRAuth.auth()?.currentUser?.uid
+            let user = User()
+            user.id = uid
+            
             FIRDatabase.database().reference().child("customers").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
+
                 
                 if let dictionary = snapshot.value as? [String: AnyObject] {
+
+
                     let name = dictionary["name"] as? String
                     self.labelName.text = name
                     
@@ -136,6 +156,15 @@ class ProfileViewController: UIViewController {
         let storyboard = UIStoryboard(name: "ProfilePage", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "editProfile") as UIViewController
         self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func returnHomePage() {
+        
+        let signInViewCOntroller = SignInViewController()
+        let nextViewController: UINavigationController = UINavigationController(rootViewController: signInViewCOntroller)
+        self.present(nextViewController, animated: true, completion: nil)
+
+        
     }
 
     override func didReceiveMemoryWarning() {

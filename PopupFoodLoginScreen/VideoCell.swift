@@ -25,7 +25,7 @@ class VideoCell: UICollectionViewCell{
     //IMPLEMENT BIG IMAGE DISPLAY
     let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "test_pizza")
+        //imageView.image = UIImage(named: "test_pizza")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
@@ -44,7 +44,7 @@ class VideoCell: UICollectionViewCell{
     let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Best Pizza in Kitchener"
+        //label.text = "Best Pizza in Kitchener"
         return label
     }()
     
@@ -52,9 +52,9 @@ class VideoCell: UICollectionViewCell{
     let subtitleLabelTextview: UITextView = {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.text = "Pizza Boss"
+        //textView.text = "Pizza Boss"
         textView.textContainerInset = UIEdgeInsetsMake(0, -4, 0, 0) //Remove text spacing above label
-        textView.textColor = UIColor.lightGray
+        textView.textColor = UIColor.red
         return textView
     }()
 

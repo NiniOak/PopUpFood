@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 import SDWebImage
 
 class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -18,8 +19,10 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet weak var enterPriceTextField: UITextField!
     @IBOutlet weak var foodImage: UIImageView!
     
+
     var foodMenu = [Menu]()
-    var userDetails = [User]()
+
+    var userDetails: User! = nil
 
     
     
@@ -36,7 +39,7 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
     
 
     //BARBARA: Create an array for the picker view
-    var cuisine = ["Carribbean", "Chinese", "French","Indian", "Italian", "Thai", "Other"]
+    var cuisine = ["", "Carribbean", "Chinese", "French","Indian", "Italian", "Thai", "Other"]
     
     //Go back to the orevious page of menu list
 
@@ -83,6 +86,10 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
     //This method handles collecting information entered by the user and storing in the database
     func handleStartSelling() {
         
+        //Add user's id to Database
+        guard let customerID = FIRAuth.auth()?.currentUser?.uid else{
+            return
+        }
         guard let foodName = menuNameTextField.text, let foodDescription = menuDescriptionTextField.text, let price = enterPriceTextField.text, let cuisine = cuisineTypeLabel.text else {
             print("Data filled is incorrect")
             return
@@ -100,8 +107,8 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
                     return
                 }
                 if let foodImageUrl = metadata?.downloadURL()?.absoluteString {
-                    
-                    let values = ["food": foodName, "description": foodDescription, "price": "$" + price, "cuisine": cuisine, "foodImageUrl": foodImageUrl]
+
+                    let values = ["food": foodName, "foodDescription": foodDescription, "price": "$" + price, "cuisine": cuisine, "foodImageUrl": foodImageUrl, "customerID": customerID]
                     
                     self.registerChefIntoDatabaseWithMenuID(values: values)
                 }
@@ -113,6 +120,7 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
         
         let ref = FIRDatabase.database().reference().child("chef")
         let childRef = ref.childByAutoId()
+
         childRef.updateChildValues(values) { (err, ref) in
             
             if err != nil {
@@ -130,8 +138,10 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
         navigationController?.navigationBar.isTranslucent = false
         //navigationItem.title = "Start Selling"
     }
+    
     //Call a new class to instantiate method
-    //var profileController: BeforeStartSellingViewController?
+    /*var profileController: BeforeStartSellingViewController?
+     self.profileController?.goBackToLoggedInView()*/
     
     func goBackToStartSelling() {
         let storyboard = UIStoryboard(name: "startSelling", bundle: nil)
@@ -139,10 +149,6 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
         self.navigationController?.pushViewController(controller, animated: true)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }

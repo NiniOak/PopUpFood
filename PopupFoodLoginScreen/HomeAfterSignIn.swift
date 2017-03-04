@@ -12,13 +12,16 @@ import FirebaseAuth
 
 class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    var cellId = "cellID"
+    var foodMenu = [Menu]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         
         collectionView?.backgroundColor = UIColor.white
         
-        collectionView?.register(foodCell.self, forCellWithReuseIdentifier: "cellId")
+        collectionView?.register(foodCell.self, forCellWithReuseIdentifier: cellId)
         
         collectionView?.contentInset = UIEdgeInsetsMake(50, 0, 0, 0)//for menu bar
         collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(50
@@ -27,6 +30,7 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
         setupMenuBar()//for menu bar
         navigationBar() //for navigationBar
         setupNavBarButtons() //add items to NavBar
+        fetchMenu()
     }
     
     func navigationBar() {
@@ -41,6 +45,8 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
         titleLabel.text = "Home"
         titleLabel.textColor = UIColor.white
         navigationItem.titleView = titleLabel
+        
+
         
     }
     
@@ -78,20 +84,7 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
             }
         }
     }
-    
-    func displayProfilePage() {
-        let storyboard = UIStoryboard(name: "ProfilePage", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "InitialController") as UIViewController
-        self.navigationController?.pushViewController(controller, animated: true)
-    }
-    
-    func displaySignUpPage() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "SignUpSocialMedia") as UIViewController
-        self.navigationController?.pushViewController(controller, animated: true)
-    }
 
-    
     //for menu bar
     let menuBar: MenuBar = {
         let mb = MenuBar()
@@ -111,13 +104,56 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
         self.navigationController?.isNavigationBarHidden = false
     }
     
+    func fetchMenu() {
+        
+        FIRDatabase.database().reference().child("chef").observe(.childAdded, with: { (snapshot) in
+            
+            //store chef/menu info in "snapshot" and display snapshot
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+                
+                let menu = Menu()
+                
+                
+                self.foodMenu.append(menu)
+                
+                //This calls the entire database for menu input by a user
+                menu.food = dictionary["food"] as? String
+                menu.price = dictionary["price"] as? String
+                menu.foodImageUrl = dictionary["foodImageUrl"] as? String
+                
+                
+                //self.foodMenu.append(menu)
+                DispatchQueue.main.async {
+                    self.collectionView?.reloadData()
+                }
+                
+            }
+            
+        }, withCancel: nil)
+    }
+    
+
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return foodMenu.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! foodCell
+        
+        let menu = foodMenu[indexPath.row]
+        
+        cell.titleLabel.text = menu.food
+        cell.subtitleTextView.text = menu.price
+        
+        //Display image
+        if let foodImageUrl = menu.foodImageUrl {
+            let url = URL(string: foodImageUrl)
+            cell.thumbnailImageView.sd_setImage(with: url)
+        } else {
+            cell.thumbnailImageView.image = UIImage(named: "test_pizza")
+        }
         
         return cell
     }
@@ -130,4 +166,19 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
+    
+    
+    func displayProfilePage() {
+        let storyboard = UIStoryboard(name: "ProfilePage", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "InitialController") as UIViewController
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func displaySignUpPage() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "SignUpSocialMedia") as UIViewController
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    
 }//end of HomeAfterSignIn class

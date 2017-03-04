@@ -9,12 +9,11 @@
 import UIKit
 
 class Menu: NSObject {
-    var id: String?
+    var customerID: String?
     var food: String?
     var cuisine: String?
     var price: String?
     var foodImageUrl: String?
-    //var description: String?
-    //var foodImageUrl: String?
+    var foodDescription: String?
 
 }

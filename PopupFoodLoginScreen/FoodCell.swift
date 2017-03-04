@@ -31,7 +31,7 @@ class foodCell: BaseCell {
     //blue cell (food)
     let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "pasta") //specify the name of the photo from Assets
+        //imageView.image = UIImage(named: "pasta") //specify the name of the photo from Assets
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
@@ -58,7 +58,6 @@ class foodCell: BaseCell {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Mike Saj my boy"
         return label
     }()
     
@@ -66,9 +65,8 @@ class foodCell: BaseCell {
     let subtitleTextView: UITextView = {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.text = "Ha ha"
         textView.textContainerInset = UIEdgeInsetsMake(0, -4, 0, 0)
-        textView.textColor = UIColor.lightGray
+        textView.textColor = UIColor.red
         return textView
     }()
     

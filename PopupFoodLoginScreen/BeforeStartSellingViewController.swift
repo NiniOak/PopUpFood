@@ -23,21 +23,27 @@ class BeforeStartSellingViewController: UITableViewController {
         
         fetchMenu()
     }
-    
+
     //Fetch all menu items from database
     func fetchMenu() {
+
         FIRDatabase.database().reference().child("chef").observe(.childAdded, with: { (snapshot) in
             
             //store chef/menu info in "snapshot" and display snapshot
             if let dictionary = snapshot.value as? [String: AnyObject] {
+
                 let menu = Menu()
+
                 
+                self.foodMenu.append(menu)
+
                 //This calls the entire database for menu input by a user
                 menu.food = dictionary["food"] as? String
                 menu.price = dictionary["price"] as? String
                 menu.foodImageUrl = dictionary["foodImageUrl"] as? String
                 
-                self.foodMenu.append(menu)
+
+                //self.foodMenu.append(menu)
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }

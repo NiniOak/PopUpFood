@@ -113,6 +113,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             
             if let dictionary = snapshot.value as? [String: AnyObject] {
                 
+                
                 if let profileImage = dictionary["image"] as? UIImage {
                     self.updateProfileImage.image = profileImage
                 } else {

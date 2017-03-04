@@ -15,7 +15,6 @@ class ViewController: UIViewController {
     @IBAction func closeBtn(_ sender: UIButton) {
         
         displayHomePage()
-        print("I am an Image")
     }
     
     
@@ -34,20 +33,11 @@ class ViewController: UIViewController {
         let controller = storyboard.instantiateViewController(withIdentifier: "testing") as UIViewController
         self.navigationController?.pushViewController(controller, animated: true)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         
         self.navigationController?.isNavigationBarHidden = true
     }
-
-    /*override func viewDidAppear(_ animated: Bool) {
-        self.performSegue(withIdentifier: "SignUpView", sender: self);
-    }*/
     
 
 }
