@@ -102,7 +102,7 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="closeBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BfV-j0-eog"/>
+                                    <action selector="closeBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gtV-AR-gRT"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -131,12 +131,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="ASn-tm-2aI"/>
                     <connections>
-                        <outlet property="xButton" destination="GWY-8Y-sPY" id="2rm-k1-L5q"/>
+                        <outlet property="xButton" destination="GWY-8Y-sPY" id="sgU-u5-DDB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1524" y="-1433.433283358321"/>
+            <point key="canvasLocation" x="1628" y="-1433"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="ZQU-rM-FN6">

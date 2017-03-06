@@ -12,8 +12,8 @@
         <!--Default Page View Controller-->
         <scene sceneID="keM-OG-wvb">
             <objects>
-                <collectionViewController storyboardIdentifier="testing" id="vAQ-gd-N3J" customClass="defaultPageViewController" customModule="PopupFood" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="uS8-L1-s9R">
+                <collectionViewController storyboardIdentifier="initialController" id="vAQ-gd-N3J" customClass="defaultPageViewController" customModule="PopupFood" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="uS8-L1-s9R">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

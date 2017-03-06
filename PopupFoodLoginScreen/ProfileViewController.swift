@@ -15,24 +15,21 @@ class ProfileViewController: UIViewController {
     
     var user = [User]()
     
-    @IBOutlet weak var homeButton: UIBarButtonItem!
-    
-    @IBAction func homeButton(_ sender: Any) {
-        returnHomePage()
-  
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "home"), for: .normal)
-        button.sizeToFit()
-        self.homeButton = UIBarButtonItem(customView: button)
-        
         // Check if user exists in database when logged in
         checkIfUserIsLoggedIn()
-        
+        cancelButtonForNavbar()
+    }
+    
+    func cancelButtonForNavbar() {
+        //Set up home button for profile page
+        let button = UIButton.init(type: .custom)
+        button.setImage(UIImage.init(named: "Home"), for: UIControlState.normal)
+        button.addTarget(self, action:#selector(returnHomePage), for: UIControlEvents.touchUpInside)
+        button.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30)
+        let barButton = UIBarButtonItem.init(customView: button)
+        self.navigationItem.leftBarButtonItem = barButton
     }
     //FEATURES
     @IBOutlet weak var ImageViewProfilePic: UIImageView!
@@ -113,16 +110,6 @@ class ProfileViewController: UIViewController {
         self.ImageViewProfilePic.clipsToBounds = true
     }
     
-    //Call viewcontroller for selling page //move to before page!!!!!!!!!!!!!!!!!!!!!!!!!
-    /*func startSelling() {
-        let storyboard = UIStoryboard(name: "startSelling", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "startSelling") as UIViewController
-        
-        self.present(controller, animated: true, completion: nil)
-    }*/
-    
-    
-    
     //Olek refactoring to insert SELLING view before startSellingViewController
     func goToBeforeSelling() {
         let storyboard = UIStoryboard(name: "startSelling", bundle: nil)
@@ -146,10 +133,8 @@ class ProfileViewController: UIViewController {
         //Send user back to home screen
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "landingVC") as UIViewController
-        
         self.present(controller, animated: true, completion: nil)
         /////////////////////////////////////////////////////////////////////////////
-
     }
     //Display edit profile page
     func editProfile() {
@@ -163,16 +148,7 @@ class ProfileViewController: UIViewController {
         let signInViewCOntroller = SignInViewController()
         let nextViewController: UINavigationController = UINavigationController(rootViewController: signInViewCOntroller)
         self.present(nextViewController, animated: true, completion: nil)
-
-        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
 
 //

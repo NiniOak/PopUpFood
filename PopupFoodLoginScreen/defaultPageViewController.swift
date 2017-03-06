@@ -19,17 +19,18 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.navigationItem.hidesBackButton = true
         //DEFAULT PAGE CODE
-        navigationItem.title = "Popup Food" //align left
         navigationController?.navigationBar.isTranslucent = false
         
         //SET TITLE TEXT FOR NAVIGATION BAR
-        let titleLabel = UILabel(frame: CGRect(x:0, y:0, width:view.frame.width - 32, height:view.frame.height))
+        /*let titleLabel = UILabel(frame: CGRect(x:30, y:0, width:view.frame.width - 32, height:view.frame.height))
         titleLabel.text = "Popup Food"
         titleLabel.textColor = UIColor.black
-        titleLabel.font = UIFont.systemFont(ofSize: 19)
-        navigationItem.titleView = titleLabel
+        titleLabel.font = UIFont.systemFont(ofSize: 21)
+        navigationItem.titleView = titleLabel*/
+        logoForNavbar()
         
         collectionView?.backgroundColor = UIColor.white
         //Register cellID
@@ -39,6 +40,15 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
         setupNavBarButtons()
         fetchMenu()
         
+    }
+    
+    func logoForNavbar() {
+        //Set up home button for profile page
+        let button = UIButton.init(type: .custom)
+        button.setImage(UIImage.init(named: "logo2"), for: UIControlState.normal)
+        button.frame = CGRect.init(x: 0, y: 0, width: 120, height: 50)
+        let barButton = UIBarButtonItem.init(customView: button)
+        self.navigationItem.leftBarButtonItem = barButton
     }
     
     //SET UP NAV BAR FUNC

@@ -132,21 +132,9 @@
                             <constraint firstItem="ZjA-wz-cuL" firstAttribute="top" secondItem="VvM-d7-mAQ" secondAttribute="bottom" constant="21" id="yCp-tV-mcO"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Profile" id="BzD-Ok-25B">
-                        <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="kdY-sL-Q1Z">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Uzw-Ea-afL">
-                                <rect key="frame" x="16" y="7" width="83" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <connections>
-                                <action selector="homeButton:" destination="m7X-bU-Rpi" id="Av9-HQ-8U1"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Profile" id="BzD-Ok-25B"/>
                     <connections>
                         <outlet property="ImageViewProfilePic" destination="koa-sx-Kbk" id="GLt-ia-tFa"/>
-                        <outlet property="homeButton" destination="kdY-sL-Q1Z" id="Efq-zj-tdK"/>
                         <outlet property="labelName" destination="VvM-d7-mAQ" id="Vg2-FN-mew"/>
                     </connections>
                 </viewController>

@@ -21,16 +21,18 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let closeButton = UIImage(named: "xBtn")?.withRenderingMode(.alwaysOriginal)
-        xButton.setImage(closeButton, for: .normal)
-
+        self.navigationController?.isNavigationBarHidden = true;
+        closeBtn()
     }
     
+    func closeBtn() {
+        let closeButton = UIImage(named: "xBtn")?.withRenderingMode(.alwaysOriginal)
+        xButton.setImage(closeButton, for: .normal)
+    }
     
     func displayHomePage() {
-        
         let storyboard = UIStoryboard(name: "defaultTimeline", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "testing") as UIViewController
+        let controller = storyboard.instantiateViewController(withIdentifier: "initialController") as UIViewController
         self.navigationController?.pushViewController(controller, animated: true)
     }
     

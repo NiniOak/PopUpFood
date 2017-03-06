@@ -18,9 +18,9 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationItem.hidesBackButton = true
         
         collectionView?.backgroundColor = UIColor.white
-        
         collectionView?.register(foodCell.self, forCellWithReuseIdentifier: cellId)
         
         collectionView?.contentInset = UIEdgeInsetsMake(50, 0, 0, 0)//for menu bar
@@ -34,20 +34,14 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
     }
     
     func navigationBar() {
-        
-        navigationItem.title = "Home"
         navigationController?.navigationBar.isTranslucent = false
         
-        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
-        //repeated?
-        navigationItem.titleView = titleLabel
-        
-        titleLabel.text = "Home"
-        titleLabel.textColor = UIColor.white
-        navigationItem.titleView = titleLabel
-        
-
-        
+            //Set up home button for profile page
+            let button = UIButton.init(type: .custom)
+            button.setImage(UIImage.init(named: "logo2"), for: UIControlState.normal)
+            button.frame = CGRect.init(x: 0, y: 0, width: 120, height: 50)
+            let barButton = UIBarButtonItem.init(customView: button)
+            self.navigationItem.leftBarButtonItem = barButton
     }
     
     //SET UP NAV BAR FUNC
