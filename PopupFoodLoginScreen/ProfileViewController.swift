@@ -59,10 +59,15 @@ class ProfileViewController: UIViewController {
                 if let dictionary = snapshot.value as? [String: AnyObject] {
                     let name = dictionary["name"] as? String
                     self.labelName.text = name
-                    
-                    if let profileImage = dictionary["image"] as? UIImage {
+                    ////////
+                    if let ProfileImageURL = dictionary["photo"] as? String {
+                        //load the photo from ImageViewer id
+                        self.ImageViewProfilePic.sd_setImage(with: URL(string: ProfileImageURL))
+                    }
+                    /////
+                   /* if let profileImage = dictionary["image"] as? UIImage {
                         self.ImageViewProfilePic.image = profileImage
-                    } else {
+                    } */else {
                         self.ImageViewProfilePic.image = UIImage (named: "defaultImage")
                     }
                     

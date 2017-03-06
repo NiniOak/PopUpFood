@@ -20,11 +20,12 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     }()
     
     let cellId = "cellId"
-    let imageNames = ["Home", "trending", "Messages", "selling"]
+    let imageNames = ["home", "favorites", "messages", "selling"]
     
     override init(frame: CGRect){
         super.init(frame: frame)
         
+        //Add cell for adding icons
         collectionView.register(MenuCell.self, forCellWithReuseIdentifier: cellId)
         
         addSubview(collectionView)
@@ -32,6 +33,7 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         addConstraintsWithFormat(format: "H:|[v0]|", views: collectionView)
         addConstraintsWithFormat(format: "V:|[v0]|", views: collectionView)
         
+        //ensure current menu position button is ALWAYS selected
         let selectedIndexPath = IndexPath(row: 0, section: 0)
         collectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: (UICollectionViewScrollPosition.left))
     }
@@ -44,11 +46,12 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! MenuCell
         
         cell.imageView.image = UIImage(named: imageNames[indexPath.item])?.withRenderingMode(.alwaysTemplate)
+        //cell.imageView.image = UIImage(named: #imageLiteral(resourceName: "favorites"))?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(showFavorites())
         cell.tintColor = UIColor.rgb(red: 91, green: 14, blue: 13, alpha: 1)
         
         return cell
     }
-    
+    //get frame and height of menu
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: frame.width / 4, height: frame.height)
     }
@@ -63,7 +66,7 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     }
 }//end of MenuBar class
 
-
+//for entering icons
 class MenuCell: BaseCell{
     
     let imageView: UIImageView = {
@@ -81,13 +84,16 @@ class MenuCell: BaseCell{
         }
     }//end of is Hightlighted
     
+    //when a cell is selected, a new color is put on icons
     override var isSelected: Bool{
         didSet {
             imageView.tintColor = isSelected ? UIColor.white : UIColor.rgb(red: 91, green: 14, blue: 13, alpha: 1)
+            selectMenuItems()
+           
         }
     }//end of isSelected
 
-        
+        //calling from videocell
     override func setupViews(){
         super.setupViews()
         
@@ -100,6 +106,16 @@ class MenuCell: BaseCell{
         
         addConstraints([NSLayoutConstraint(item: imageView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0)])
     }
-
+    
+    func selectMenuItems() {
+        let iv = UIImageView()
+        if iv.image == UIImage(named: "favorites") {
+            print("favorite selected")
+        }else {
+            print("fave not selected")
+        }
+}
     
 }//end of Menu Bar class
+
+
