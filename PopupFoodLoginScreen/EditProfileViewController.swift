@@ -30,27 +30,16 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         
         //selectImage.allowsEditing = false
         self.present(selectImage, animated: true)
-        
 
-    }
-
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let selectImage = info[UIImagePickerControllerOriginalImage] as? UIImage
-        {
-            updateProfileImage.image = selectImage
-        }
-        else
-        {
-            //Display Error Message
-        }
-        self.dismiss(animated: true, completion: nil)
     }
     
+    //Save Edited info button
     @IBAction func saveProfile(_ sender: Any) {
         updateProfile()
         
        // print("123")
     }
+    
     
     override func viewDidLoad() {
         
@@ -63,6 +52,20 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         loadProfileData()
         
     }
+    
+    //Image Picker
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let selectImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        {
+            updateProfileImage.image = selectImage
+        }
+        else
+        {
+            //Display Error Message
+        }
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     //Inputs existing info from DB in the text label
     //BARBARA: Uplaoded today
     func loadProfileData() {
