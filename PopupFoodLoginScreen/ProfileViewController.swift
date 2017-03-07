@@ -63,6 +63,7 @@ class ProfileViewController: UIViewController {
             perform(#selector(handleLogOut), with: nil, afterDelay: 0)
         } else {
             
+            
             makeProfileImageRound()
             let uid = FIRAuth.auth()?.currentUser?.uid
             let user = User()
@@ -72,17 +73,19 @@ class ProfileViewController: UIViewController {
 
                 
                 if let dictionary = snapshot.value as? [String: AnyObject] {
-
-
                     let name = dictionary["name"] as? String
                     self.labelName.text = name
-                    
-                    if let profileImage = dictionary["image"] as? UIImage {
-                        self.ImageViewProfilePic.image = profileImage
-                    } else {
+                    ////////
+                    if let ProfileImageURL = dictionary["photo"] as? String {
+                        //load the photo from ImageViewer id
+                        self.ImageViewProfilePic.sd_setImage(with: URL(string: ProfileImageURL))
+                    }
+                        /////
+                        /* if let profileImage = dictionary["image"] as? UIImage {
+                         self.ImageViewProfilePic.image = profileImage
+                     } */else {
                         self.ImageViewProfilePic.image = UIImage (named: "defaultImage")
                     }
-                    
                 }
             }, withCancel: nil)
             // Do any additional steps if the user is signed in
