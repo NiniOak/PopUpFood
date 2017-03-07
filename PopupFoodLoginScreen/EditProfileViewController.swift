@@ -64,7 +64,9 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         
     }
     //Inputs existing info from DB in the text label
+    //BARBARA: Uplaoded today
     func loadProfileData() {
+        
         if let userID = FIRAuth.auth()?.currentUser?.uid{
             databaseRef.child("customers").child(userID).observe(.value, with: { (snapshot) in
                 
