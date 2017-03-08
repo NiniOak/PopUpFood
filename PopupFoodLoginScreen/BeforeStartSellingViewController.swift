@@ -9,6 +9,7 @@
 //OLEK class!!!!!! for Before selling page with CANCEL and ADD button
 import UIKit
 import Firebase
+import FirebaseAuth
 
 class BeforeStartSellingViewController: UITableViewController {
     
@@ -21,10 +22,45 @@ class BeforeStartSellingViewController: UITableViewController {
     override func viewDidLoad() {
         //self.navigationItem.title = "Start Selling"
         
-        fetchMenu()
+        //fetchMenu()
+        fetchUserMenu()
+    }
+    
+    //FETCH ITEMS BY SINGLE USER ENTRY
+    func fetchUserMenu() {
+        guard let uid = FIRAuth.auth()?.currentUser?.uid else {
+            return
+        }
+        
+        let ref = FIRDatabase.database().reference().child("chef-menu").child(uid)
+        ref.observe(.childAdded, with: { (snapshot) in
+            
+            let menuID = snapshot.key
+            let menuReference = FIRDatabase.database().reference().child("chef").child(menuID)
+            
+            menuReference.observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                //store chef/menu info in "snapshot" and display snapshot
+                if let dictionary = snapshot.value as? [String: AnyObject] {
+                    
+                    let menu = Menu()
+                    
+                    self.foodMenu.append(menu)
+                    
+                    //This calls the entire database for menu input by a user
+                    menu.food = dictionary["food"] as? String
+                    menu.price = dictionary["price"] as? String
+                    menu.foodImageUrl = dictionary["foodImageUrl"] as? String
+                    
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
+            }, withCancel: nil)
+        }, withCancel: nil)
     }
 
-    //Fetch all menu items from database
+    //FETCH ALL MENU FROM DATABASE
     func fetchMenu() {
 
         FIRDatabase.database().reference().child("chef").observe(.childAdded, with: { (snapshot) in

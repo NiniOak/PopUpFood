@@ -23,8 +23,6 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
     var foodMenu = [Menu]()
 
     var userDetails: User! = nil
-
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,11 +83,7 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     //This method handles collecting information entered by the user and storing in the database
     func handleStartSelling() {
-        
-        //Add user's id to Database
-        guard let customerID = FIRAuth.auth()?.currentUser?.uid else{
-            return
-        }
+
         guard let foodName = menuNameTextField.text, let foodDescription = menuDescriptionTextField.text, let price = enterPriceTextField.text, let cuisine = cuisineTypeLabel.text else {
             print("Data filled is incorrect")
             return
@@ -108,7 +102,7 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
                 }
                 if let foodImageUrl = metadata?.downloadURL()?.absoluteString {
 
-                    let values = ["food": foodName, "foodDescription": foodDescription, "price": "$" + price, "cuisine": cuisine, "foodImageUrl": foodImageUrl, "customerID": customerID]
+                    let values = ["food": foodName, "foodDescription": foodDescription, "price": "$" + price, "cuisine": cuisine, "foodImageUrl": foodImageUrl]
                     
                     self.registerChefIntoDatabaseWithMenuID(values: values)
                 }
@@ -117,6 +111,10 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
     
     private func registerChefIntoDatabaseWithMenuID(values: [String: Any]) {
+        
+        guard let customerID = FIRAuth.auth()?.currentUser?.uid else{
+            return
+        }
         
         let ref = FIRDatabase.database().reference().child("chef")
         let childRef = ref.childByAutoId()
@@ -127,7 +125,11 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
                 print (err as Any)
                 return
             }
-            print ("User stored in database")
+            let userMenuRef = FIRDatabase.database().reference().child("chef-menu").child(customerID)
+            
+            let menuId = childRef.key
+            userMenuRef.updateChildValues([menuId: 1])
+            //print ("User stored in database")
         }
         
     }

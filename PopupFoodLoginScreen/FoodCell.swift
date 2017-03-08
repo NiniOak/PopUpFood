@@ -32,7 +32,7 @@ class foodCell: BaseCell {
     let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
         //imageView.image = UIImage(named: "pasta") //specify the name of the photo from Assets
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
         return imageView
     }()
