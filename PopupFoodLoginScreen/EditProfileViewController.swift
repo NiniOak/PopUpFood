@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import SDWebImage
 
 class EditProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var usernameText: UITextField!
@@ -17,6 +18,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var updateProfileImage: UIImageView!
  
     var databaseRef: FIRDatabaseReference!
+    var storageRef: FIRStorageReference!
     
     //Change Image button
     @IBAction func changeImage(_ sender: Any) {
@@ -28,10 +30,30 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         
         //selectImage.allowsEditing = false
         self.present(selectImage, animated: true)
-        
 
     }
-
+    
+    //Save Edited info button
+    @IBAction func saveProfile(_ sender: Any) {
+        updateProfile()
+        
+       // print("123")
+    }
+    
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        databaseRef = FIRDatabase.database().reference()
+        storageRef = FIRStorage.storage().reference()
+        
+        //defaultProfileImage()
+        loadProfileData()
+        
+    }
+    
+    //Image Picker
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let selectImage = info[UIImagePickerControllerOriginalImage] as? UIImage
         {
@@ -44,68 +66,88 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func saveProfile(_ sender: Any) {
-        updateProfile()
-        
-       // print("123")
-    }
-    
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        
-        databaseRef = FIRDatabase.database().reference()
-        
-        defaultProfileImage()
-        loadProfileData()
-        
-    }
     //Inputs existing info from DB in the text label
+    //BARBARA: Uplaoded today
     func loadProfileData() {
+        
         if let userID = FIRAuth.auth()?.currentUser?.uid{
             databaseRef.child("customers").child(userID).observe(.value, with: { (snapshot) in
                 
                 //Store users data in dictionary
                 let values = snapshot.value as? NSDictionary
                 
+                // If there is a profile image url, load it
+                if let ProfileImageURL = values?["photo"] as? String {
+                    //load the photo from ImageViewer id
+                    self.updateProfileImage.sd_setImage(with: URL(string: ProfileImageURL))
+                }else {
+                    self.updateProfileImage.image = UIImage (named: "defaultImage")
+                }
+                //self.updateProfileImage.image = values?["photo"]as? UIImage
+                ///////////////////
                 self.usernameText.text = values?["name"] as? String
                 self.emailText.text = values?["email"] as? String
                 self.passwordText.text = values?["password"] as? String
             })
         }
     }
+
     
     //Update the text label and image to be sent into DB
     func updateProfile() {
         //check if user is logged in
         if let userID = FIRAuth.auth()?.currentUser?.uid
-          
+            
         {
-            //get access to user profit pic storage
+            //get access to user profile pic storage
+            let storageItem = storageRef.child("profile_photo").child(userID)
             //get image from gallery
-            //upload to Firebase storage
-            //get all new entries and store
-            
-            
-            //save in new entry in object
-            let newValuesForProfile =
-            ["name": self.usernameText.text!,
-             "email": self.emailText.text!,
-             "password": self.passwordText.text!]
-            
-            //Update the Database
-            self.databaseRef.child("customers").child(userID).updateChildValues(newValuesForProfile, withCompletionBlock: { (error, ref) in
-                if error != nil {
-                    print(error!)
-                    return
-                }
-                //self.dismiss(animated: true, completion: nil)
-                print("Profile details successfully updated")
-            })
+            guard let image = updateProfileImage.image
+                else{return}
+            if let newImage = UIImagePNGRepresentation(image){
+                //upload to Firebase storage
+                storageItem.put(newImage, metadata: nil, completion: { (metadata, error) in
+                    if error != nil {
+                        print(error!)
+                        return
+                    }
+                    storageItem.downloadURL(completion: { (url, error) in
+                        if error != nil {
+                            print(error!)
+                            return
+                        }
+                        if let ProfileImageURL = url?.absoluteString{
+                            guard let newName = self.usernameText.text else { return }
+                            guard let newEmail = self.emailText.text else { return }
+                            guard let newPassword = self.passwordText.text else { return }
+                            
+                            //save in new entry in object
+                            let newValuesForProfile =
+                                ["photo": ProfileImageURL,
+                                 "name": newName,
+                                 "email": newEmail,
+                                 "password": newPassword]
+                            
+                            //Update the Database
+                            self.databaseRef.child("customers").child(userID).updateChildValues(newValuesForProfile, withCompletionBlock: { (error, ref) in
+                                if error != nil {
+                                    print(error!)
+                                    return
+                                }
+                                print("Profile details successfully updated")
+                                
+                            })
+                        }
+                    })
+                    
+                })
+                
+                
+            } //closed UIImagePNGRepresentation
             
         }
+        
     }
-    
     //set user default image in edit profile page
     func defaultProfileImage() {
         let uid = FIRAuth.auth()?.currentUser?.uid

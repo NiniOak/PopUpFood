@@ -896,6 +896,7 @@
 		B647FF22D3F3D9E3A028A169D07FC81D /* GTMReadMonitorInputStream.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMReadMonitorInputStream.h; path = Source/GTMReadMonitorInputStream.h; sourceTree = "<group>"; };
 		B66995EAF4DD385C64E0587A7E2E0E27 /* FBSDKTimeSpentData.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSDKTimeSpentData.m; path = FBSDKCoreKit/FBSDKCoreKit/Internal/AppEvents/FBSDKTimeSpentData.m; sourceTree = "<group>"; };
 		B7330801FF05DD97617B5A86F6C42BDF /* Pods-PopupFood-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PopupFood-frameworks.sh"; sourceTree = "<group>"; };
+		B7541E17AE55EDFF63764D38319FBD4B /* BFAppLinkReturnToRefererView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BFAppLinkReturnToRefererView.m; path = Bolts/iOS/BFAppLinkReturnToRefererView.m; sourceTree = "<group>"; };
 		B76BFE4FC1C537F2B9DBA2E6E463472B /* Pods-PopupFood-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PopupFood-dummy.m"; sourceTree = "<group>"; };
 		B818A92796C91B1325FD52C68D6908E6 /* FBSDKShareMediaContent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKShareMediaContent.h; path = FBSDKShareKit/FBSDKShareKit/FBSDKShareMediaContent.h; sourceTree = "<group>"; };
 		B8438D51C6EFE2315F3DD136D3B18388 /* FBSDKError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSDKError.h; path = FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKError.h; sourceTree = "<group>"; };
@@ -1752,6 +1753,48 @@
 			path = "Target Support Files/Pods-PopupFoodUITests";
 			sourceTree = "<group>";
 		};
+		7C72B93FB33DC5D07881DF41621722F4 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C2C3FC61E3938E93F3B885CF6CA4ED92 /* NSData+ImageContentType.h */,
+				49FA8D4E7A99F30054D314B42E83E41D /* NSData+ImageContentType.m */,
+				E8ABC940B7F86374974B420C51FCCB57 /* NSImage+WebCache.h */,
+				68B1A3D5FBF90A2625B95E91284295DF /* NSImage+WebCache.m */,
+				3302A047703D4FD056A7EC6A724C6BC8 /* SDImageCache.h */,
+				6BBF8EE06FA36D3FB60F796C72B544C2 /* SDImageCache.m */,
+				44BCEEA965CA103006DE0F59E0DAFAA2 /* SDImageCacheConfig.h */,
+				56C5B1F4A1242C204FA47C3814749493 /* SDImageCacheConfig.m */,
+				C5424152BA38628E17445D4A50F0DBF0 /* SDWebImageCompat.h */,
+				B2669978CF05A775B74D90CAF58A82E1 /* SDWebImageCompat.m */,
+				A255CF10EBAEF8479B8EBBAF8E37C753 /* SDWebImageDecoder.h */,
+				E35190DA0F670F9184AEEB5B340E49BB /* SDWebImageDecoder.m */,
+				D508ED7406262C3FAED33052199E4616 /* SDWebImageDownloader.h */,
+				96612F90A6584603260EE4155E772AE2 /* SDWebImageDownloader.m */,
+				91F276D888B4F17621C95AA3A705C529 /* SDWebImageDownloaderOperation.h */,
+				C97C424219EF4F3C7D05B44C468D03B3 /* SDWebImageDownloaderOperation.m */,
+				06DFD5DAD63400A9255CC3958955E0F1 /* SDWebImageManager.h */,
+				199A441BCF1D89C3EB2931708BAD9DD9 /* SDWebImageManager.m */,
+				45E63C081AF7DA2FBD266BD499C48702 /* SDWebImageOperation.h */,
+				5CB391C773D5E309F518A6365D785CC7 /* SDWebImagePrefetcher.h */,
+				0575472C7F328C07072EFE00B48370DB /* SDWebImagePrefetcher.m */,
+				137EA2FC26F6F22EFBBE92054BA6F803 /* UIButton+WebCache.h */,
+				1EED2F5B6805034307659A32903BA3C2 /* UIButton+WebCache.m */,
+				E7E7DA4F57C3E1AEBDC12C8B15966715 /* UIImage+GIF.h */,
+				36DC61BD45F981E9928CF1C31DC25F64 /* UIImage+GIF.m */,
+				6F9D121419F1F10D973B35D79FC0D7CC /* UIImage+MultiFormat.h */,
+				DACB6A02206CA9F00648C8D9855AA505 /* UIImage+MultiFormat.m */,
+				6EE5D8D0806E00BB11E3B67BC828A51C /* UIImageView+HighlightedWebCache.h */,
+				4B7D4EDF2B35FD2CD80E6FA2783313D1 /* UIImageView+HighlightedWebCache.m */,
+				C7F9F20924DC3D6A34092E51A2A65BE0 /* UIImageView+WebCache.h */,
+				EC3A0BD9DCDDCEDA91271D48C63318AB /* UIImageView+WebCache.m */,
+				A7553C83A42832EE535537AB2868C6DA /* UIView+WebCache.h */,
+				0A604A49F64AB12181C4AC10483CBFBA /* UIView+WebCache.m */,
+				A3A878DE827953CF1B40845FE92F4BA6 /* UIView+WebCacheOperation.h */,
+				A651474FAE035125CC33233EE72D67FE /* UIView+WebCacheOperation.m */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
@@ -1838,14 +1881,13 @@
 			name = Core;
 			sourceTree = "<group>";
 		};
-		9ED0E2328717A9D65DCC3BAD5A7176C7 /* Targets Support Files */ = {
+		B6F79DF575C9F647BF6665D4DCD299F6 /* FirebaseDatabase */ = {
 			isa = PBXGroup;
 			children = (
-				66C775F4717157FF35790A260EC09633 /* Pods-PopupFood */,
-				5D583DFB8E4113AE98C6224D7A52F7EE /* Pods-PopupFoodTests */,
-				7C6410B9DBCB4C404B10340EBAC35EC4 /* Pods-PopupFoodUITests */,
+				BE3C3BA63FFB88BB72CD2B3BD0B1E48B /* Frameworks */,
 			);
-			name = "Targets Support Files";
+			name = FirebaseDatabase;
+			path = FirebaseDatabase;
 			sourceTree = "<group>";
 		};
 		A6EEABFC891B840F248B0178FB81518A /* Support Files */ = {
@@ -1878,8 +1920,7 @@
 			children = (
 				5823E899BA684B6CEFF385F1D2B2B20B /* Frameworks */,
 			);
-			name = FirebaseAuth;
-			path = FirebaseAuth;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		B6CFC68A35D19767942D848D14D86855 /* NSDictionary+URLArguments */ = {
@@ -2013,7 +2054,8 @@
 				635FF1F45680759801C91B0059974254 /* Pods_PopupFoodUITests.framework */,
 				76C90B53BE1F57AA810629767A164B09 /* SDWebImage.framework */,
 			);
-			name = Products;
+			name = Bolts;
+			path = Bolts;
 			sourceTree = "<group>";
 		};
 		EFD788BD21490BD581ED890E153D5A26 /* NSString+URLArguments */ = {
