@@ -12,7 +12,7 @@
         <!--Start Selling-->
         <scene sceneID="cq1-A1-pu1">
             <objects>
-                <viewController storyboardIdentifier="BeforeSellingPage" id="L1m-Xr-9L3" customClass="BeforeStartSellingViewController" customModule="PopupFood" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FavoritesPage" id="L1m-Xr-9L3" customClass="FavoritesViewController" customModule="PopupFood" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OJ7-Mp-0bP"/>
                         <viewControllerLayoutGuide type="bottom" id="TUH-sa-TS2"/>

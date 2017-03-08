@@ -96,7 +96,6 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
                 
                 let menu = Menu()
                 
-                
                 self.foodMenu.append(menu)
                 
                 //This calls the entire database for menu input by a user
