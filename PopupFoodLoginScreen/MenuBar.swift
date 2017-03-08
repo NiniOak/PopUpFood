@@ -46,7 +46,7 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! MenuCell
         
         cell.imageView.image = UIImage(named: imageNames[indexPath.item])?.withRenderingMode(.alwaysTemplate)
-        //cell.imageView.image = UIImage(named: #imageLiteral(resourceName: "favorites"))?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(showFavorites())
+    
         cell.tintColor = UIColor.rgb(red: 91, green: 14, blue: 13, alpha: 1)
         
         return cell
@@ -59,15 +59,32 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-    
+    //BARBARA: Return position of item selected
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if (indexPath.row == 1) {
+            
+            // print("selected item is:", indexPath.row)
+            
+            /*let storyboard = UIStoryboard(name: "FavoritePage", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "FavoritesViewController") as UIViewController
+            self.present (controller, animated: true)*/
+
+        }else{
+            print("Other selected")
+        }
+       
+    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
+
 }//end of MenuBar class
 
 //for entering icons
-class MenuCell: BaseCell{
+class MenuCell: BaseCell {
     
     let imageView: UIImageView = {
         let iv = UIImageView()
@@ -88,8 +105,8 @@ class MenuCell: BaseCell{
     override var isSelected: Bool{
         didSet {
             imageView.tintColor = isSelected ? UIColor.white : UIColor.rgb(red: 91, green: 14, blue: 13, alpha: 1)
-            selectMenuItems()
-           
+           // selectMenuItems(_ collectionView: UICollectionView, didSelectRowAtIndexPath: IndexPath)
+
         }
     }//end of isSelected
 
@@ -106,16 +123,18 @@ class MenuCell: BaseCell{
         
         addConstraints([NSLayoutConstraint(item: imageView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0)])
     }
+  
+}//end of Menu Cell class
+
+
+class MenuItems: UIViewController {
     
-    func selectMenuItems() {
-        let iv = UIImageView()
-        if iv.image == UIImage(named: "favorites") {
-            print("favorite selected")
-        }else {
-            print("fave not selected")
-        }
 }
-    
-}//end of Menu Bar class
+
+
+
+
+
+
 
 
