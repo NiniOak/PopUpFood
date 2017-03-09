@@ -21,9 +21,8 @@ class SignUpPageViewController: UIViewController {
     
     //Impelmenation for Sign Up button
     @IBAction func signUpBtn(_ sender: UIButton) {
-        
         handleRegister()
-
+        goToHomePage()
     }
     
     func handleRegister() {
@@ -52,7 +51,7 @@ class SignUpPageViewController: UIViewController {
             var ref: FIRDatabaseReference!
         
             ref = FIRDatabase.database().reference(fromURL: "https://popup-food.firebaseio.com/")
-            let usersReference = ref.child("customers").child(uid)
+            let usersReference = ref.child("user").child(uid)
             let values = ["name": username, "email": email, "password": password]
             usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
                 
@@ -66,15 +65,14 @@ class SignUpPageViewController: UIViewController {
         
     }
     
+    func goToHomePage() {
+        let signInViewCOntroller = SignInViewController()
+        let nextViewController: UINavigationController = UINavigationController(rootViewController: signInViewCOntroller)
+        self.present(nextViewController, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 }

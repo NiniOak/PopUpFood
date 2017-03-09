@@ -14,6 +14,7 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
     
     var cellId = "cellID"
     var foodMenu = [Menu]()
+    var user = [User]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +31,8 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
         setupMenuBar()//for menu bar
         navigationBar() //for navigationBar
         setupNavBarButtons() //add items to NavBar
-        fetchMenu()
+        fetchMenuCollection()
+        //fetchMenu()
     }
     
     func navigationBar() {
@@ -98,10 +100,84 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
         self.navigationController?.isNavigationBarHidden = false
     }
     
+    //////////////////////
+    let ref = FIRDatabase.database().reference()
+    
+    func fetchMenuCollection(){
+        ref.child("user").observe(.childAdded, with: { (snapshot) in
+            
+            let dictionary = snapshot.value as? [String: AnyObject]
+            
+            if dictionary != nil {
+                
+                    let userID = snapshot.key
+                print (userID)
+                // gets menu details
+                self.ref.child("menu").queryOrderedByKey().queryEqual(toValue: userID)
+                    .observe(.childAdded, with: { (chefSnapshot) in
+                        let value = chefSnapshot.value as? [String: AnyObject]
+                        if value != nil{
+                            
+                            print(chefSnapshot)
+                            /*self.hikeId     .append(chefSnapshot.key)
+                            self.trail      .append((value?["trail"])! as! String)
+                            let vare = value?["trailId"]
+                            self.trailId    .append( String(describing: vare) )
+                            self.hikeDate   .append(value?["date"] as! String)
+                            self.hikeScheduleListTableView.reloadData()*/
+                        }
+                    }) { (error) in
+                        print(error.localizedDescription)
+                }
+            }
+        }) { (error) in
+                print(error.localizedDescription)
+        }
+    }
+    //////////////////////
+    
     func fetchMenu() {
         
-        FIRDatabase.database().reference().child("chef").observe(.childAdded, with: { (snapshot) in
+        ///////////////////
+        let ref = FIRDatabase.database().reference().child("user")
+        ref.observe(.childAdded, with: { (snapshot) in
             
+            let userID = snapshot.key
+            var userProfileImage = ""
+            if let userDictionary = snapshot.value as? [String: AnyObject] {
+                userProfileImage = (userDictionary["photo"] as? String)!
+            }
+            let menuReference = FIRDatabase.database().reference().child("menu").queryOrderedByKey().queryEqual(toValue: userID)
+            
+            menuReference.observe(.childAdded, with: { (menuSnapshot) in
+                
+            //store chef/menu info in "snapshot" and display snapshot
+            if let dictionary = menuSnapshot.value as? [String : AnyObject] {
+            let menu = Menu()
+    
+            self.foodMenu.append(menu)
+            
+            //This calls the entire database for menu input by a user
+            //menu.customerID = userID
+            menu.food = dictionary["food"] as? String
+            menu.price = dictionary["price"] as? String
+            menu.foodImageUrl = dictionary["foodImageUrl"] as? String
+            menu.profileImageUrl = userProfileImage
+            
+            //self.foodMenu.append(menu)
+            DispatchQueue.main.async {
+            self.collectionView?.reloadData()
+            }
+                
+            }
+                
+            }, withCancel: nil)
+            }, withCancel: nil)
+        ///////////////////
+        
+        /*FIRDatabase.database().reference().child("chef").observe(.childAdded, with: { (snapshot) in
+            
+            //Add firebase
             //store chef/menu info in "snapshot" and display snapshot
             if let dictionary = snapshot.value as? [String: AnyObject] {
                 
@@ -123,7 +199,7 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
                 
             }
             
-        }, withCancel: nil)
+        }, withCancel: nil)*/
     }
     
 
@@ -141,12 +217,20 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
         cell.titleLabel.text = menu.food
         cell.subtitleTextView.text = menu.price
         
-        //Display image
+        //Display food image
         if let foodImageUrl = menu.foodImageUrl {
             let url = URL(string: foodImageUrl)
             cell.thumbnailImageView.sd_setImage(with: url)
         } else {
             cell.thumbnailImageView.image = UIImage(named: "test_pizza")
+        }
+        
+        //Display user profile image in menu cell on home page
+        if let profileImageUrl = menu.profileImageUrl {
+            let url = URL(string: profileImageUrl)
+            cell.userProfileImage.sd_setImage(with: url)
+        } else {
+            cell.userProfileImage.image = UIImage(named: "defaultImage")
         }
         
         return cell

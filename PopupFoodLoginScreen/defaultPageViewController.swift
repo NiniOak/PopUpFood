@@ -89,7 +89,7 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
     
     func fetchMenu() {
         
-        FIRDatabase.database().reference().child("chef").observe(.childAdded, with: { (snapshot) in
+        FIRDatabase.database().reference().child("menu").observe(.childAdded, with: { (snapshot) in
             
             //store chef/menu info in "snapshot" and display snapshot
             if let dictionary = snapshot.value as? [String: AnyObject] {

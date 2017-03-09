@@ -69,7 +69,7 @@ class ProfileViewController: UIViewController {
             let user = User()
             user.id = uid
             
-            FIRDatabase.database().reference().child("customers").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
+            FIRDatabase.database().reference().child("user").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
 
                 
                 if let dictionary = snapshot.value as? [String: AnyObject] {

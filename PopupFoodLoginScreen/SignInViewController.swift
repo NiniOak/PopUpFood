@@ -38,8 +38,6 @@ class SignInViewController: UIViewController {
             if user != nil {
             self.returnHomePage()
             }
-            else{
-            }
         }
     }
     

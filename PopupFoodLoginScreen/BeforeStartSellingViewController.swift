@@ -36,7 +36,7 @@ class BeforeStartSellingViewController: UITableViewController {
         ref.observe(.childAdded, with: { (snapshot) in
             
             let menuID = snapshot.key
-            let menuReference = FIRDatabase.database().reference().child("chef").child(menuID)
+            let menuReference = FIRDatabase.database().reference().child("menu").child(menuID)
             
             menuReference.observeSingleEvent(of: .value, with: { (snapshot) in
                 
@@ -63,7 +63,7 @@ class BeforeStartSellingViewController: UITableViewController {
     //FETCH ALL MENU FROM DATABASE
     func fetchMenu() {
 
-        FIRDatabase.database().reference().child("chef").observe(.childAdded, with: { (snapshot) in
+        FIRDatabase.database().reference().child("menu").observe(.childAdded, with: { (snapshot) in
             
             //store chef/menu info in "snapshot" and display snapshot
             if let dictionary = snapshot.value as? [String: AnyObject] {

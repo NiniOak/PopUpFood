@@ -36,21 +36,16 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     //Save Edited info button
     @IBAction func saveProfile(_ sender: Any) {
         updateProfile()
-        
-       // print("123")
+        goToProfilePage()
     }
-    
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
         databaseRef = FIRDatabase.database().reference()
         storageRef = FIRStorage.storage().reference()
-        
         //defaultProfileImage()
         loadProfileData()
-        
     }
     
     //Image Picker
@@ -58,10 +53,6 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         if let selectImage = info[UIImagePickerControllerOriginalImage] as? UIImage
         {
             updateProfileImage.image = selectImage
-        }
-        else
-        {
-            //Display Error Message
         }
         self.dismiss(animated: true, completion: nil)
     }
@@ -71,7 +62,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     func loadProfileData() {
         
         if let userID = FIRAuth.auth()?.currentUser?.uid{
-            databaseRef.child("customers").child(userID).observe(.value, with: { (snapshot) in
+            databaseRef.child("user").child(userID).observe(.value, with: { (snapshot) in
                 
                 //Store users data in dictionary
                 let values = snapshot.value as? NSDictionary
@@ -92,12 +83,10 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         }
     }
 
-    
     //Update the text label and image to be sent into DB
     func updateProfile() {
         //check if user is logged in
         if let userID = FIRAuth.auth()?.currentUser?.uid
-            
         {
             //get access to user profile pic storage
             let storageItem = storageRef.child("profile_photo").child(userID)
@@ -129,11 +118,12 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                                  "password": newPassword]
                             
                             //Update the Database
-                            self.databaseRef.child("customers").child(userID).updateChildValues(newValuesForProfile, withCompletionBlock: { (error, ref) in
+                            self.databaseRef.child("user").child(userID).updateChildValues(newValuesForProfile, withCompletionBlock: { (error, ref) in
                                 if error != nil {
                                     print(error!)
                                     return
                                 }
+                                self.dismiss(animated: true, completion: nil)
                                 print("Profile details successfully updated")
                                 
                             })
@@ -141,20 +131,15 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                     })
                     
                 })
-                
-                
-            } //closed UIImagePNGRepresentation
-            
+            }
         }
-        
     }
     //set user default image in edit profile page
     func defaultProfileImage() {
         let uid = FIRAuth.auth()?.currentUser?.uid
-        FIRDatabase.database().reference().child("customers").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
+        FIRDatabase.database().reference().child("user").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String: AnyObject] {
-                
                 
                 if let profileImage = dictionary["image"] as? UIImage {
                     self.updateProfileImage.image = profileImage
@@ -164,22 +149,11 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             }
         }, withCancel: nil)
     }
-
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func goToProfilePage() {
+        let storyboard = UIStoryboard(name: "ProfilePage", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "InitialController") as UIViewController
+        self.navigationController?.pushViewController(controller, animated: true)
     }
-    */
 
 }

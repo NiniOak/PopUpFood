@@ -15,5 +15,6 @@ class Menu: NSObject {
     var price: String?
     var foodImageUrl: String?
     var foodDescription: String?
+    var profileImageUrl: String?
 
 }

@@ -83,6 +83,9 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     //This method handles collecting information entered by the user and storing in the database
     func handleStartSelling() {
+        guard let chefID = FIRAuth.auth()?.currentUser?.uid else{
+            return
+        }
 
         guard let foodName = menuNameTextField.text, let foodDescription = menuDescriptionTextField.text, let price = enterPriceTextField.text, let cuisine = cuisineTypeLabel.text else {
             print("Data filled is incorrect")
@@ -102,7 +105,7 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
                 }
                 if let foodImageUrl = metadata?.downloadURL()?.absoluteString {
 
-                    let values = ["food": foodName, "foodDescription": foodDescription, "price": "$" + price, "cuisine": cuisine, "foodImageUrl": foodImageUrl]
+                    let values = ["food": foodName, "foodDescription": foodDescription, "price": "$" + price, "cuisine": cuisine, "foodImageUrl": foodImageUrl, "chefID": chefID]
                     
                     self.registerChefIntoDatabaseWithMenuID(values: values)
                 }
@@ -116,7 +119,7 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
             return
         }
         
-        let ref = FIRDatabase.database().reference().child("chef")
+        let ref = FIRDatabase.database().reference().child("menu")
         let childRef = ref.childByAutoId()
 
         childRef.updateChildValues(values) { (err, ref) in
