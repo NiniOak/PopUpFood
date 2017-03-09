@@ -20,7 +20,7 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     }()
     
     let cellId = "cellId"
-    let imageNames = ["home", "favorites", "messages", "selling"]
+    let imageNames = ["home", "favorites", "Messages", "selling"]
     
     override init(frame: CGRect){
         super.init(frame: frame)
@@ -33,9 +33,32 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         addConstraintsWithFormat(format: "H:|[v0]|", views: collectionView)
         addConstraintsWithFormat(format: "V:|[v0]|", views: collectionView)
         
+        //Add white line to show selected
+        setUpHorizontalBar()
+        
         //ensure current menu position button is ALWAYS selected
         let selectedIndexPath = IndexPath(row: 0, section: 0)
         collectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: (UICollectionViewScrollPosition.left))
+    }
+    var horizontalBarLeftAnchorConstraint: NSLayoutConstraint?
+    
+    //Add white line to show selected
+    func setUpHorizontalBar() {
+        let horizontalBarView = UIView()
+        //Set color to white
+        horizontalBarView.backgroundColor = UIColor(white: 1, alpha: 1)
+        //Display the bar under cells
+        horizontalBarView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(horizontalBarView)
+        
+         //Get the x, y, width and height axis
+        //Setting the bar in the cells
+        horizontalBarLeftAnchorConstraint = horizontalBarView.leftAnchor.constraint(equalTo: self.leftAnchor)
+        horizontalBarLeftAnchorConstraint?.isActive = true
+        
+        horizontalBarView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        horizontalBarView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1/4).isActive = true
+        horizontalBarView.heightAnchor.constraint(equalToConstant: 4).isActive = true
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -61,18 +84,22 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     }
     //BARBARA: Return position of item selected
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //get the current select cell and move cellbar on click
+        let x = CGFloat(indexPath.item) * frame.width/4
+        horizontalBarLeftAnchorConstraint?.constant = x
+        
+        //Animate cellbar to slide on click
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {self.layoutIfNeeded()}, completion: nil)
+        
         if (indexPath.row == 1) {
+            print("selected item is:", indexPath.row)
             
-            // print("selected item is:", indexPath.row)
             
-            /*let storyboard = UIStoryboard(name: "FavoritePage", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: "FavoritesViewController") as UIViewController
-            self.present (controller, animated: true)*/
+            
 
         }else{
             print("Other selected")
         }
-       
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -87,9 +87,15 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
     
     //for menu bar
     private func setupMenuBar(){
+        //Scroll menu bar away when scrolling
+        navigationController?.hidesBarsOnSwipe = true
+        
         view.addSubview(menuBar)
         view.addConstraintsWithFormat(format: "H:|[v0]|", views: menuBar)
         view.addConstraintsWithFormat(format: "V:|[v0(50)]|", views: menuBar)
+        
+        //lock menu bar to top of page
+        menuBar.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
     }
     //end of for menu bar
     
