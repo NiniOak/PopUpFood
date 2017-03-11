@@ -80,8 +80,10 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
     }
 
     //for menu bar
-    let menuBar: MenuBar = {
+    lazy var menuBar: MenuBar = {
         let mb = MenuBar()
+        //handle navigation
+        mb.homeController = self
         return mb
     }()
     
@@ -167,6 +169,14 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
         return 0
     }
     
+    //BARBARA: HANDLE ALL click functions for Food Cells
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Food Cell Tapped!! Yay")
+        //Change page linked to individual storyboard designed with display
+        //and viewController
+        displayFavorites() //temporary
+    }
+    
     
     func displayProfilePage() {
         let storyboard = UIStoryboard(name: "ProfilePage", bundle: nil)
@@ -178,6 +188,15 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "SignUpSocialMedia") as UIViewController
         self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    //BARBARA: Handle ALL menu clicks navigation
+    //onClick Favorites icon, load fave view storyboard
+    func displayFavorites() {
+        let storyboard = UIStoryboard(name: "favoritesPage", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "FavoritesPage") as UIViewController
+        self.navigationController?.pushViewController(controller, animated: true)
+
     }
     
     

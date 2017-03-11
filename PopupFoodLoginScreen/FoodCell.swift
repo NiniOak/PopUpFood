@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseCell: UICollectionViewCell {
+class BaseCell: UICollectionViewCell, UICollectionViewDelegate {
     
     override init(frame: CGRect){
         super.init(frame: frame)
@@ -83,6 +83,8 @@ class foodCell: BaseCell {
         
         addConstraintsWithFormat(format: "H:|-16-[v0(44)]", views: userProfileImage)
         
+        
+        
         //vertical constraints
         addConstraintsWithFormat(format: "V:|-16-[v0]-8-[v1(44)]-16-[v2(1)]|", views: thumbnailImageView, userProfileImage, separatorView)
         
@@ -116,6 +118,7 @@ class foodCell: BaseCell {
         addConstraints([NSLayoutConstraint(item: subtitleTextView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 30)])
         
     }//end of setup views
-
+    
+  
 }//end of foodCell class
 

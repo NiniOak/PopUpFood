@@ -22,6 +22,10 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     let cellId = "cellId"
     let imageNames = ["home", "favorites", "Messages", "selling"]
     
+    //Instantiate class to call navigation button
+    var homeController: HomeAfterSignIn?
+    //var menuController: MenuBarNavigation?
+    
     override init(frame: CGRect){
         super.init(frame: frame)
         
@@ -92,11 +96,14 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {self.layoutIfNeeded()}, completion: nil)
         
         if (indexPath.row == 1) {
+            
+            //menuController?.displayFavorites()
+            
             print("selected item is:", indexPath.row)
             
+            homeController?.displayFavorites()
+       
             
-            
-
         }else{
             print("Other selected")
         }
