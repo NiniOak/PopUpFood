@@ -99,110 +99,78 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
         
         self.navigationController?.isNavigationBarHidden = false
     }
+
     
-    //////////////////////
-    let ref = FIRDatabase.database().reference()
-    
-    func fetchMenuCollection(){
-        ref.child("user").observe(.childAdded, with: { (snapshot) in
-            
-            let dictionary = snapshot.value as? [String: AnyObject]
-            
-            if dictionary != nil {
-                
-                    let userID = snapshot.key
-                print (userID)
-                // gets menu details
-                self.ref.child("menu").queryOrderedByKey().queryEqual(toValue: userID)
-                    .observe(.childAdded, with: { (chefSnapshot) in
-                        let value = chefSnapshot.value as? [String: AnyObject]
-                        if value != nil{
-                            
-                            print(chefSnapshot)
-                            /*self.hikeId     .append(chefSnapshot.key)
-                            self.trail      .append((value?["trail"])! as! String)
-                            let vare = value?["trailId"]
-                            self.trailId    .append( String(describing: vare) )
-                            self.hikeDate   .append(value?["date"] as! String)
-                            self.hikeScheduleListTableView.reloadData()*/
-                        }
-                    }) { (error) in
-                        print(error.localizedDescription)
-                }
-            }
-        }) { (error) in
-                print(error.localizedDescription)
-        }
-    }
-    //////////////////////
-    
-    func fetchMenu() {
-        
-        ///////////////////
+    func fetchMenuCollection() {
         let ref = FIRDatabase.database().reference().child("user")
         ref.observe(.childAdded, with: { (snapshot) in
             
             let userID = snapshot.key
-            var userProfileImage = ""
-            if let userDictionary = snapshot.value as? [String: AnyObject] {
-                userProfileImage = (userDictionary["photo"] as? String)!
-            }
-            let menuReference = FIRDatabase.database().reference().child("menu").queryOrderedByKey().queryEqual(toValue: userID)
+            var profileImageUrl: String? = ""
             
-            menuReference.observe(.childAdded, with: { (menuSnapshot) in
-                
-            //store chef/menu info in "snapshot" and display snapshot
-            if let dictionary = menuSnapshot.value as? [String : AnyObject] {
-            let menu = Menu()
-    
-            self.foodMenu.append(menu)
-            
-            //This calls the entire database for menu input by a user
-            //menu.customerID = userID
-            menu.food = dictionary["food"] as? String
-            menu.price = dictionary["price"] as? String
-            menu.foodImageUrl = dictionary["foodImageUrl"] as? String
-            menu.profileImageUrl = userProfileImage
-            
-            //self.foodMenu.append(menu)
-            DispatchQueue.main.async {
-            self.collectionView?.reloadData()
-            }
-                
-            }
-                
-            }, withCancel: nil)
-            }, withCancel: nil)
-        ///////////////////
-        
-        /*FIRDatabase.database().reference().child("chef").observe(.childAdded, with: { (snapshot) in
-            
-            //Add firebase
-            //store chef/menu info in "snapshot" and display snapshot
             if let dictionary = snapshot.value as? [String: AnyObject] {
-                
-                let menu = Menu()
-                
-                
-                self.foodMenu.append(menu)
-                
-                //This calls the entire database for menu input by a user
-                menu.food = dictionary["food"] as? String
-                menu.price = dictionary["price"] as? String
-                menu.foodImageUrl = dictionary["foodImageUrl"] as? String
-                
-                
-                //self.foodMenu.append(menu)
-                DispatchQueue.main.async {
-                    self.collectionView?.reloadData()
-                }
-                
+                profileImageUrl = dictionary["photo"] as? String
             }
             
-        }, withCancel: nil)*/
+            //Refer to sub menu after identifying all child keys. User table -> Child key for every table -> All User data
+            let UserMenuReference = FIRDatabase.database().reference().child("user").child(userID).child("menu")
+            
+            UserMenuReference.observe(.childAdded, with: { (snapshot) in
+                let menuID = snapshot.key
+                
+            let menuReference = FIRDatabase.database().reference().child("menu").child(menuID)
+                menuReference.observeSingleEvent(of: .value, with: { (snapshot) in
+                    
+                    print(snapshot)
+                    //store chef/menu info in "snapshot" and display snapshot
+                    if let dictionary = snapshot.value as? [String: AnyObject] {
+                        
+                        let menu = Menu()
+                        
+                        self.foodMenu.append(menu)
+                        
+                        //This calls the entire database for menu input by a user
+                        menu.food = dictionary["food"] as? String
+                        menu.price = dictionary["price"] as? String
+                        menu.foodImageUrl = dictionary["foodImageUrl"] as? String
+                        menu.profileImageUrl = profileImageUrl
+                        
+                        DispatchQueue.main.async {
+                            self.collectionView?.reloadData()
+                        }
+                    }
+                }, withCancel: nil)
+            }, withCancel: nil)
+        }, withCancel: nil)
     }
     
-
+    func fetchMenu() {
+        
+        FIRDatabase.database().reference().child("menu").observe(.childAdded, with: { (snapshot) in
+         
+         //Add firebase
+         //store chef/menu info in "snapshot" and display snapshot
+         if let dictionary = snapshot.value as? [String: AnyObject] {
+         
+         let menu = Menu()
+         
+         self.foodMenu.append(menu)
+         
+         //This calls the entire database for menu input by a user
+         menu.food = dictionary["food"] as? String
+         menu.price = dictionary["price"] as? String
+         menu.foodImageUrl = dictionary["foodImageUrl"] as? String
+         
+         
+         //self.foodMenu.append(menu)
+         DispatchQueue.main.async {
+         self.collectionView?.reloadData()
+         }
+         
+         }
+         
+         }, withCancel: nil)
+    }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return foodMenu.count

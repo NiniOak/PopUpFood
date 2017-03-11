@@ -128,9 +128,11 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
                 print (err as Any)
                 return
             }
-            let userMenuRef = FIRDatabase.database().reference().child("chef-menu").child(customerID)
-            
             let menuId = childRef.key
+            let userMenuChild = FIRDatabase.database().reference().child("user").child(customerID).child("menu")
+            userMenuChild.updateChildValues([menuId: 1])
+            
+            let userMenuRef = FIRDatabase.database().reference().child("chef-menu").child(customerID)
             userMenuRef.updateChildValues([menuId: 1])
             //print ("User stored in database")
         }

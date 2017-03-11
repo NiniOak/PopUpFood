@@ -50,7 +50,7 @@ class SignUpPageViewController: UIViewController {
             //Collect entered User information and input in Database
             var ref: FIRDatabaseReference!
         
-            ref = FIRDatabase.database().reference(fromURL: "https://popup-food.firebaseio.com/")
+            ref = FIRDatabase.database().reference()
             let usersReference = ref.child("user").child(uid)
             let values = ["name": username, "email": email, "password": password]
             usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
@@ -73,6 +73,7 @@ class SignUpPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
 }

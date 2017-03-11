@@ -32,7 +32,7 @@ class BeforeStartSellingViewController: UITableViewController {
             return
         }
         
-        let ref = FIRDatabase.database().reference().child("chef-menu").child(uid)
+        let ref = FIRDatabase.database().reference().child("user").child(uid).child("menu")
         ref.observe(.childAdded, with: { (snapshot) in
             
             let menuID = snapshot.key
@@ -40,6 +40,7 @@ class BeforeStartSellingViewController: UITableViewController {
             
             menuReference.observeSingleEvent(of: .value, with: { (snapshot) in
                 
+                print(snapshot)
                 //store chef/menu info in "snapshot" and display snapshot
                 if let dictionary = snapshot.value as? [String: AnyObject] {
                     
@@ -67,7 +68,7 @@ class BeforeStartSellingViewController: UITableViewController {
             
             //store chef/menu info in "snapshot" and display snapshot
             if let dictionary = snapshot.value as? [String: AnyObject] {
-
+                
                 let menu = Menu()
 
                 
