@@ -14,7 +14,6 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
     
     var cellId = "cellID"
     var foodMenu = [Menu]()
-    var user = [User]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,7 +107,8 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
         self.navigationController?.isNavigationBarHidden = false
     }
 
-    
+    //Fetch entire Menu by user who created the menu
+    //This enables adding user info such as profile image and data not available in Menu Node
     func fetchMenuCollection() {
         let ref = FIRDatabase.database().reference().child("user")
         ref.observe(.childAdded, with: { (snapshot) in
@@ -125,11 +125,10 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
             
             UserMenuReference.observe(.childAdded, with: { (snapshot) in
                 let menuID = snapshot.key
-                
+            
             let menuReference = FIRDatabase.database().reference().child("menu").child(menuID)
                 menuReference.observeSingleEvent(of: .value, with: { (snapshot) in
                     
-                    print(snapshot)
                     //store chef/menu info in "snapshot" and display snapshot
                     if let dictionary = snapshot.value as? [String: AnyObject] {
                         
@@ -152,6 +151,7 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
         }, withCancel: nil)
     }
     
+    //Fetch every item in the database without specific user id
     func fetchMenu() {
         
         FIRDatabase.database().reference().child("menu").observe(.childAdded, with: { (snapshot) in

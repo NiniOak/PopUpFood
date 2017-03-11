@@ -22,6 +22,9 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     let cellId = "cellId"
     let imageNames = ["Home", "favorites", "Messages", "selling"]
     
+    //instantiate class to call navigation button
+    var homeController: HomeAfterSignIn?
+    
     override init(frame: CGRect){
         super.init(frame: frame)
         
@@ -108,8 +111,6 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
 
 }//end of MenuBar class
 

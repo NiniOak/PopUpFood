@@ -113,9 +113,13 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
         }
     }
     
+    //Create menu table to store user entry
+    //In user table, sorted by currently signed in user; Create "menu" sub node 
+    //OR child node in user table, then give the menu child node the value of 
+    //menuID from menu table
     private func registerChefIntoDatabaseWithMenuID(values: [String: Any]) {
         
-        guard let customerID = FIRAuth.auth()?.currentUser?.uid else{
+        guard let userID = FIRAuth.auth()?.currentUser?.uid else{
             return
         }
         
@@ -129,11 +133,8 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
                 return
             }
             let menuId = childRef.key
-            let userMenuChild = FIRDatabase.database().reference().child("user").child(customerID).child("menu")
+            let userMenuChild = FIRDatabase.database().reference().child("user").child(userID).child("menu")
             userMenuChild.updateChildValues([menuId: 1])
-            
-            let userMenuRef = FIRDatabase.database().reference().child("chef-menu").child(customerID)
-            userMenuRef.updateChildValues([menuId: 1])
             //print ("User stored in database")
         }
         

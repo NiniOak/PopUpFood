@@ -39,8 +39,7 @@ class BeforeStartSellingViewController: UITableViewController {
             let menuReference = FIRDatabase.database().reference().child("menu").child(menuID)
             
             menuReference.observeSingleEvent(of: .value, with: { (snapshot) in
-                
-                print(snapshot)
+
                 //store chef/menu info in "snapshot" and display snapshot
                 if let dictionary = snapshot.value as? [String: AnyObject] {
                     
