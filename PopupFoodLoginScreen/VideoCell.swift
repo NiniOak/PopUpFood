@@ -40,6 +40,15 @@ class VideoCell: UICollectionViewCell{
         return imageView
     }()
     
+    //IMPLEMENT FAVE IMAGE VIEW
+//    let faveButton: UIImageView = {
+//        let imageView = UIImageView()
+//        imageView.image = UIImage(named: "open_heart")
+//        imageView.layer.cornerRadius = 22        //Make profile image circular (to calculate the corner radius, it is half of the height)
+//        imageView.layer.masksToBounds = true     //Make profile image circular
+//        return imageView
+//    }()
+    
     //IMPLEMENT TITLE VIEW FOR BIG IMAGE
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -63,6 +72,7 @@ class VideoCell: UICollectionViewCell{
         addSubview(thumbnailImageView)
         addSubview(separatorView)
         addSubview(userProfileImageView)
+       // addSubview(faveButton)
         addSubview(titleLabel)
         addSubview(subtitleLabelTextview)
         
@@ -71,9 +81,12 @@ class VideoCell: UICollectionViewCell{
         
         addConstraintsWithFormat(format: "H:|-16-[v0(44)]", views: userProfileImageView)
         
+       // addConstraintsWithFormat(format: "H:|-16-[v0(44)]", views: faveButton)
+        
         ///CONSTRAINTS FOR TEXT LABEL
         //Specify Vertical Constraints
         addConstraintsWithFormat(format:"V:|-16-[v0]-8-[v1(44)]-16-[v2(1)]|", views: thumbnailImageView, userProfileImageView, separatorView)
+        
         //constraints for lines between cells
         addConstraintsWithFormat(format:"H:|[v0]|", views: separatorView)
         //Top Constraints for titleLabel; Constraint declares that title label is underneath the thumbnail (big image) by 8px

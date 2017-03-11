@@ -7,14 +7,21 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
-class FavoritesViewController: UIViewController {
+class FavoritesViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+        
+        sample1()
+        
+    }    
+    
+    func sample1() {
+        
+        print("Favorites clicked")    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
