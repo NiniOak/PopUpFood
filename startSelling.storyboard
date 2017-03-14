@@ -55,7 +55,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Max 300 characters" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1SM-0c-l9z">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="roundedRect" placeholder="Max 300 characters" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1SM-0c-l9z">
                                                 <rect key="frame" x="26" y="481" width="326" height="80"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="80" id="rRm-sV-mxG"/>
@@ -117,7 +117,7 @@
                                                 <color key="textColor" red="1" green="0.13708657069999999" blue="0.044254575099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter menu name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rbk-Mx-1t9">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="roundedRect" placeholder="Enter menu name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rbk-Mx-1t9">
                                                 <rect key="frame" x="26" y="32" width="329" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="3xb-wQ-h2x"/>
@@ -227,7 +227,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Izr-vG-nF2" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="AUW-kc-EA9">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AUW-kc-EA9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -310,7 +310,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xKF-m1-5pv" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ESi-pa-mHa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ESi-pa-mHa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

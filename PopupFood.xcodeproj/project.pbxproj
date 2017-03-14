@@ -10,6 +10,8 @@
 		0555D0B016E19F2B6D017050 /* Pods_PopupFoodTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA180AE63860E503E793D546 /* Pods_PopupFoodTests.framework */; };
 		0598268A3EB553A559C786BF /* Pods_PopupFoodUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 805B9759F4FA6C96C02B3A61 /* Pods_PopupFoodUITests.framework */; };
 		080233EF1E6A051100806B69 /* PresentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080233EE1E6A051100806B69 /* PresentViewController.swift */; };
+		087721A11E786E2D00E2DE63 /* mainFoodCell.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 087721A01E786E2C00E2DE63 /* mainFoodCell.storyboard */; };
+		087721A41E78757400E2DE63 /* foodCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087721A31E78757400E2DE63 /* foodCellViewController.swift */; };
 		08AA990D1E660D5A00B438FC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA990C1E660D5A00B438FC /* User.swift */; };
 		08AA990F1E660DD200B438FC /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA990E1E660DD200B438FC /* Menu.swift */; };
 		08B421401E5130A7005399D6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B4213F1E5130A7005399D6 /* ProfileViewController.swift */; };
@@ -63,6 +65,8 @@
 
 /* Begin PBXFileReference section */
 		080233EE1E6A051100806B69 /* PresentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentViewController.swift; sourceTree = "<group>"; };
+		087721A01E786E2C00E2DE63 /* mainFoodCell.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = mainFoodCell.storyboard; sourceTree = "<group>"; };
+		087721A31E78757400E2DE63 /* foodCellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = foodCellViewController.swift; sourceTree = "<group>"; };
 		08AA990C1E660D5A00B438FC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		08AA990E1E660DD200B438FC /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		08B4213F1E5130A7005399D6 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +149,14 @@
 				08F9C6A71E57746400312520 /* ViewController.swift */,
 			);
 			name = LandingPageGroup;
+			sourceTree = "<group>";
+		};
+		087721A21E78754300E2DE63 /* FoodCell Group */ = {
+			isa = PBXGroup;
+			children = (
+				087721A31E78757400E2DE63 /* foodCellViewController.swift */,
+			);
+			name = "FoodCell Group";
 			sourceTree = "<group>";
 		};
 		089F613A1E562C86003DFF88 /* SignUpGroup */ = {
@@ -230,6 +242,7 @@
 		08F4D0E91E4D628C007EF202 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				087721A21E78754300E2DE63 /* FoodCell Group */,
 				31A5C3EA1E6F92D900E0FC94 /* Menu Group */,
 				080233ED1E69FDE800806B69 /* LandingPageGroup */,
 				089F613E1E562CFB003DFF88 /* LaunchPageGroup */,
@@ -296,6 +309,7 @@
 				8A0B7A691E3BC48F00C53258 /* AppDelegate.swift */,
 				8A0B7A6D1E3BC48F00C53258 /* Main.storyboard */,
 				08B421431E51E57C005399D6 /* defaultTimeline.storyboard */,
+				087721A01E786E2C00E2DE63 /* mainFoodCell.storyboard */,
 				08B421451E5263AA005399D6 /* HomePage.storyboard */,
 				08B421411E513748005399D6 /* ProfilePage.storyboard */,
 				3170FA4D1E52859D00203E3B /* startSelling.storyboard */,
@@ -455,6 +469,7 @@
 				8A0B7A741E3BC48F00C53258 /* LaunchScreen.storyboard in Resources */,
 				8A320FF41E4275CC00F24B4E /* GoogleService-Info.plist in Resources */,
 				3170FA4E1E52859D00203E3B /* startSelling.storyboard in Resources */,
+				087721A11E786E2D00E2DE63 /* mainFoodCell.storyboard in Resources */,
 				8A0B7A711E3BC48F00C53258 /* Assets.xcassets in Resources */,
 				08B421421E513748005399D6 /* ProfilePage.storyboard in Resources */,
 				08B421461E5263AB005399D6 /* HomePage.storyboard in Resources */,
@@ -639,6 +654,7 @@
 				8A320FFC1E42B35600F24B4E /* SignUpPageViewController.swift in Sources */,
 				08F9C6A81E57746400312520 /* ViewController.swift in Sources */,
 				080233EF1E6A051100806B69 /* PresentViewController.swift in Sources */,
+				087721A41E78757400E2DE63 /* foodCellViewController.swift in Sources */,
 				08B421401E5130A7005399D6 /* ProfileViewController.swift in Sources */,
 				08EDF63D1E4A226200C7B234 /* defaultPageViewController.swift in Sources */,
 				08F4D0E51E4D60AF007EF202 /* Extentions.swift in Sources */,

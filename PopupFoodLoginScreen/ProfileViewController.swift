@@ -59,16 +59,18 @@ class ProfileViewController: UIViewController {
 
     
      func checkIfUserIsLoggedIn() {
+    
+        displayFacebookandGoogleUsers()
+        
         if FIRAuth.auth()?.currentUser?.uid == nil {
             perform(#selector(handleLogOut), with: nil, afterDelay: 0)
         } else {
             
-            
-            makeProfileImageRound()
-            let uid = FIRAuth.auth()?.currentUser?.uid
+            let uid = FIRAuth.auth()?.currentUser?.uid 
             let user = User()
             user.id = uid
             
+            //PULL USERS IMAGE FROM FIREBASE
             FIRDatabase.database().reference().child("user").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
 
                 
@@ -78,32 +80,38 @@ class ProfileViewController: UIViewController {
                     ////////
                     if let ProfileImageURL = dictionary["photo"] as? String {
                         //load the photo from ImageViewer id
+                        self.makeProfileImageRound()
                         self.ImageViewProfilePic.sd_setImage(with: URL(string: ProfileImageURL))
                     }
                         /////
                         /* if let profileImage = dictionary["image"] as? UIImage {
                          self.ImageViewProfilePic.image = profileImage
                      } */else {
+                        self.makeProfileImageRound()
                         self.ImageViewProfilePic.image = UIImage (named: "defaultImage")
                     }
                 }
             }, withCancel: nil)
-            // Do any additional steps if the user is signed in
-            /*if let user = FIRAuth.auth()?.currentUser{
-                //User signed in
-                let name = user.displayName
-                //   let email = user.email
-                //    let uid = user.uid
-                self.labelName.text = name
-                
-                //Set image to default image if user has no Profile Image
-                if let photoURL = user.photoURL {
-                    let data = NSData(contentsOf: photoURL)
-                    self.ImageViewProfilePic.image = UIImage(data: data! as Data)
-                } else {
-                    self.ImageViewProfilePic.image = UIImage(named: "defaultImage")
-                }
-            }*/
+        }
+    }
+    
+    func displayFacebookandGoogleUsers() {
+        //PUSH GOOGLE AND FACEBOOK USERS DETAILS
+        // Do any additional steps if the user is signed in
+        if let user = FIRAuth.auth()?.currentUser{
+            //User signed in
+            let name = user.displayName
+            //   let email = user.email
+            //    let uid = user.uid
+            self.labelName.text = name
+            
+            //Set image to default image if user has no Profile Image
+            if let photoURL = user.photoURL {
+                let data = NSData(contentsOf: photoURL)
+                self.ImageViewProfilePic.image = UIImage(data: data! as Data)
+            } else {
+                self.ImageViewProfilePic.image = UIImage(named: "defaultImage")
+            }
         }
     }
     
@@ -141,6 +149,7 @@ class ProfileViewController: UIViewController {
     }
     //Display edit profile page
     func editProfile() {
+        
         let storyboard = UIStoryboard(name: "ProfilePage", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "editProfile") as UIViewController
         self.navigationController?.pushViewController(controller, animated: true)

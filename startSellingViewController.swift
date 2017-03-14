@@ -26,6 +26,8 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         cuisineTypePickerView.delegate = self
         cuisineTypePickerView.dataSource = self
     }

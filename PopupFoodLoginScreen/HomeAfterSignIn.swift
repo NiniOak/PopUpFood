@@ -152,6 +152,7 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
     }
     
     //Fetch every item in the database without specific user id
+    //CURRENTLY NOT IN USE ======
     func fetchMenu() {
         
         FIRDatabase.database().reference().child("menu").observe(.childAdded, with: { (snapshot) in
@@ -178,7 +179,7 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
          }
          
          }, withCancel: nil)
-    }
+    } //===========
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return foodMenu.count
@@ -245,8 +246,8 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
     //BARBARA: Handle ALL menu clicks navigation
     //onClick Favorites icon, load fave view storyboard
     func displayFavorites() {
-        let storyboard = UIStoryboard(name: "favoritesPage", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "FavoritesPage") as UIViewController
+        let storyboard = UIStoryboard(name: "mainFoodCell", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "foodCell") as UIViewController
         self.navigationController?.pushViewController(controller, animated: true)
 
     }
