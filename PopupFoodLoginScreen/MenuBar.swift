@@ -100,7 +100,7 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
             
             print("selected item is:", indexPath.row)
             
-            homeController?.displayFavorites()
+            homeController?.displayAllFavorites()
        
             
         }else{

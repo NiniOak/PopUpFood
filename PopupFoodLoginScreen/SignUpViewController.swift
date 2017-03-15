@@ -57,12 +57,6 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignI
         //customFBButton?.isHidden = true
     }
     
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     //FACEBOOK CLICK FUNCTIONALITY
     func handleCustomFBLogin() {
         FBSDKLoginManager().logIn(withReadPermissions: ["email", "public_profile"], from: self) { (result, err) in
