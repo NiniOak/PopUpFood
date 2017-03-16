@@ -72,22 +72,21 @@ class ProfileViewController: UIViewController {
             
             //PULL USERS IMAGE FROM FIREBASE
             FIRDatabase.database().reference().child("user").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
-
                 
+                self.makeProfileImageRound()
                 if let dictionary = snapshot.value as? [String: AnyObject] {
                     let name = dictionary["name"] as? String
                     self.labelName.text = name
                     ////////
                     if let ProfileImageURL = dictionary["photo"] as? String {
                         //load the photo from ImageViewer id
-                        self.makeProfileImageRound()
+
                         self.ImageViewProfilePic.sd_setImage(with: URL(string: ProfileImageURL))
                     }
                         /////
                         /* if let profileImage = dictionary["image"] as? UIImage {
                          self.ImageViewProfilePic.image = profileImage
                      } */else {
-                        self.makeProfileImageRound()
                         self.ImageViewProfilePic.image = UIImage (named: "defaultImage")
                     }
                 }

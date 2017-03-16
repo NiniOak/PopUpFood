@@ -33,6 +33,7 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
         fetchMenuCollection()
         //fetchMenu()
     }
+    var foodCellView : foodCellViewController?
     
     func navigationBar() {
         navigationController?.navigationBar.isTranslucent = false
@@ -107,10 +108,13 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
             
             let userID = snapshot.key
             var profileImageUrl: String? = ""
+            var userName: String? = ""
             
             if let dictionary = snapshot.value as? [String: AnyObject] {
                 profileImageUrl = dictionary["photo"] as? String
+                userName = dictionary["name"] as? String
             }
+
             
             //Refer to sub menu after identifying all child keys. User table -> Child key for every table -> All User data
             let UserMenuReference = FIRDatabase.database().reference().child("user").child(userID).child("menu")
@@ -133,6 +137,13 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
                         menu.price = dictionary["price"] as? String
                         menu.foodImageUrl = dictionary["foodImageUrl"] as? String
                         menu.profileImageUrl = profileImageUrl
+                        
+                        //To be used for clicked Cells
+                        menu.cuisine = dictionary["cuisine"] as? String
+                        menu.foodDescription = dictionary["foodDescription"] as? String
+                        menu.customerID = userID
+                        menu.menuID = menuID
+                        menu.userName = userName
                         
                         DispatchQueue.main.async {
                             self.collectionView?.reloadData()
@@ -175,6 +186,16 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
         return cell
     }
     
+    // var foodCellView: foodCellViewController?
+    
+    //BARBARA: HANDLE ALL click functions for Food Cells
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let menu = self.foodMenu[indexPath.row]
+        showClickedFoodCell(menu: menu)
+        
+        //print(menu.cuisine, menu.foodImageUrl, menu.food, menu.foodDescription, menu.price, menu.customerID)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = (view.frame.width - 16 - 16) * 9 / 16
         return CGSize(width: view.frame.width, height: height + 16 + 68)
@@ -183,19 +204,6 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-    
-    
-    
-    //BARBARA: HANDLE ALL click functions for Food Cells
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Food Cell Tapped!! Yay")
-        //Change page linked to individual storyboard designed with display
-        //and viewController
-        let menu = self.foodMenu[indexPath.row]
-        returnfoodCellPage(menu: menu)
-        //dismiss(animated: true, completion: nil)
-    }
-    
     
     func displayProfilePage() {
         let storyboard = UIStoryboard(name: "ProfilePage", bundle: nil)
@@ -218,13 +226,13 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
     self.navigationController?.pushViewController(controller, animated: true)
     }
     
-    var foodCellVC: foodCellViewController?
-    
-    func returnfoodCellPage(menu: Menu) {
-        let foodCellController = foodCellViewController()
-        foodCellController.menu = menu
-        self.navigationController?.pushViewController(foodCellController, animated: true)
+    func showClickedFoodCell(menu: Menu) {
+        let storyboard = UIStoryboard(name: "mainFoodCell", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "foodCell") as! foodCellViewController
+        controller.menu = menu
+        self.navigationController?.pushViewController(controller, animated: true)
     }
+
 
     //for menu bar
     lazy var menuBar: MenuBar = {
@@ -233,16 +241,6 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
         mb.homeController = self
         return mb
     }()
-    
-    
-    //for foodCell bar
-    lazy var foodCellController: foodCellViewController = {
-        let foodCellCtrl = foodCellViewController()
-        //handle navigation
-        foodCellCtrl.homeController = self
-        return foodCellCtrl
-    }()
-    
     
     
 }//end of HomeAfterSignIn class
