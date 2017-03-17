@@ -23,13 +23,6 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
         self.navigationItem.hidesBackButton = true
         //DEFAULT PAGE CODE
         navigationController?.navigationBar.isTranslucent = false
-        
-        //SET TITLE TEXT FOR NAVIGATION BAR
-        /*let titleLabel = UILabel(frame: CGRect(x:30, y:0, width:view.frame.width - 32, height:view.frame.height))
-        titleLabel.text = "Popup Food"
-        titleLabel.textColor = UIColor.black
-        titleLabel.font = UIFont.systemFont(ofSize: 21)
-        navigationItem.titleView = titleLabel*/
         logoForNavbar()
         
         collectionView?.backgroundColor = UIColor.white
@@ -55,7 +48,7 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
     func setupNavBarButtons() {
         let searchImage = UIImage(named: "search")?.withRenderingMode(.alwaysOriginal)
         let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
-        let profileIconBtn = UIBarButtonItem(image: UIImage(named: "profileIcon")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(showProfile))
+        let profileIconBtn = UIBarButtonItem(image: UIImage(named: "profile")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(showProfile))
         
         navigationItem.rightBarButtonItems = [profileIconBtn, searchBarButtonItem]
 
