@@ -57,7 +57,14 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
     
     func handleSearch() {
         print("Will add search functionality in the future")
+        
+        let storyboard = UIStoryboard(name: "SearchFood", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "SearchFood") as UIViewController
+        self.navigationController?.pushViewController(controller, animated: true)
+     
     }
+    
+
     
     //Pass to show Profile class or method
     func showProfile() {
