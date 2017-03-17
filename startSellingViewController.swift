@@ -18,7 +18,6 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
     @IBOutlet weak var menuDescriptionTextField: UITextField!
     @IBOutlet weak var enterPriceTextField: UITextField!
     @IBOutlet weak var foodImage: UIImageView!
-    
 
     var foodMenu = [Menu]()
 
@@ -26,7 +25,6 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         cuisineTypePickerView.delegate = self
         cuisineTypePickerView.dataSource = self
@@ -36,7 +34,6 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
         handleStartSelling()
         goBackToStartSelling()
     }
-    
 
     //BARBARA: Create an array for the picker view
     var cuisine = ["", "Carribbean", "Chinese", "French","Indian", "Italian", "Thai", "Other"]
