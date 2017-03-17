@@ -15,6 +15,7 @@ class FavoritesViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        showNavBar()
         sample1()
         
     }    
@@ -28,4 +29,7 @@ class FavoritesViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func showNavBar() {
+        navigationItem.title = "Favorites"
+    }
 }

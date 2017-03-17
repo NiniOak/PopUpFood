@@ -13,14 +13,14 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = UIColor.rgb(red: 221, green: 242, blue: 236, alpha: 1)
+        cv.backgroundColor = UIColor.white
         cv.dataSource = self
         cv.delegate = self
         return cv
     }()
     
     let cellId = "cellId"
-    let imageNames = ["home", "favorites", "Messages", "selling"]
+    let imageNames = ["home", "favorites", "message", "profile"]
     
     //instantiate class to call navigation button
     var homeController: HomeAfterSignIn?
@@ -48,8 +48,9 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     //Add white line to show selected
     func setUpHorizontalBar() {
         let horizontalBarView = UIView()
-        //Set color to white
-        horizontalBarView.backgroundColor = UIColor(white: 1, alpha: 1)
+        //Set color to yellow
+        //horizontalBarView.backgroundColor = UIColor(white: 1, alpha: 1)
+        horizontalBarView.backgroundColor = UIColor.rgb(red: 248, green: 212, blue: 0, alpha: 1)
         //Display the bar under cells
         horizontalBarView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(horizontalBarView)
@@ -73,7 +74,7 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         
         cell.imageView.image = UIImage(named: imageNames[indexPath.item])?.withRenderingMode(.alwaysTemplate)
     
-        cell.tintColor = UIColor.rgb(red: 91, green: 14, blue: 13, alpha: 1)
+        cell.tintColor = UIColor.rgb(red: 63, green: 176, blue: 172, alpha: 1) // blue colour
         
         return cell
     }
@@ -95,15 +96,15 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {self.layoutIfNeeded()}, completion: nil)
         
         if (indexPath.row == 1) {
-            
             //menuController?.displayFavorites()
-            
             print("selected item is:", indexPath.row)
-            
             homeController?.displayFavorites()
        
+        } else if (indexPath.row == 3) {
+            homeController?.showProfile()
             
-        }else{
+        } else{
+            
             print("Other selected")
         }
     }
@@ -120,7 +121,7 @@ class MenuCell: BaseCell {
     let imageView: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "Home")?.withRenderingMode(.alwaysTemplate) //specify the name of the photo from Assets
-        iv.tintColor = UIColor.rgb(red: 91, green: 14, blue: 13, alpha: 1)
+        iv.tintColor = UIColor.rgb(red: 63, green: 176, blue: 172, alpha: 1) //Blue Color
         return iv
     }()
     
@@ -128,15 +129,14 @@ class MenuCell: BaseCell {
     //block for hightlights
     override var isHighlighted: Bool{
         didSet {
-            imageView.tintColor = isHighlighted ? UIColor.white : UIColor.rgb(red: 91, green: 14, blue: 13, alpha: 1)
+            imageView.tintColor = isHighlighted ? UIColor.rgb(red: 248, green: 212, blue: 0, alpha: 1) : UIColor.rgb(red: 63, green: 176, blue: 172, alpha: 1) //Blue color
         }
     }//end of is Hightlighted
     
     //when a cell is selected, a new color is put on icons
     override var isSelected: Bool{
         didSet {
-            imageView.tintColor = isSelected ? UIColor.white : UIColor.rgb(red: 91, green: 14, blue: 13, alpha: 1)
-           // selectMenuItems(_ collectionView: UICollectionView, didSelectRowAtIndexPath: IndexPath)
+            imageView.tintColor = isSelected ? UIColor.rgb(red: 248, green: 212, blue: 0, alpha: 1) : UIColor.rgb(red: 63, green: 176, blue: 172, alpha: 1)//Blue color
 
         }
     }//end of isSelected
