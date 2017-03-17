@@ -45,15 +45,15 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
     func logoForNavbar() {
         //Set up home button for profile page
         let button = UIButton.init(type: .custom)
-        button.setImage(UIImage.init(named: "logo2"), for: UIControlState.normal)
-        button.frame = CGRect.init(x: 0, y: 0, width: 120, height: 50)
+        button.setImage(UIImage.init(named: "logo2_new"), for: UIControlState.normal)
+        button.frame = CGRect.init(x: 0, y: 0, width: 120, height: 40)
         let barButton = UIBarButtonItem.init(customView: button)
         self.navigationItem.leftBarButtonItem = barButton
     }
     
     //SET UP NAV BAR FUNC
     func setupNavBarButtons() {
-        let searchImage = UIImage(named: "searchIcon")?.withRenderingMode(.alwaysOriginal)
+        let searchImage = UIImage(named: "search")?.withRenderingMode(.alwaysOriginal)
         let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
         let profileIconBtn = UIBarButtonItem(image: UIImage(named: "profileIcon")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(showProfile))
         

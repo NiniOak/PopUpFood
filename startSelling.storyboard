@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -73,32 +73,6 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TcP-CG-Mbc">
-                                                <rect key="frame" x="47" y="656" width="281" height="59"/>
-                                                <color key="backgroundColor" red="0.14793276790000001" green="0.67037338020000004" blue="0.82231175899999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="59" id="xt3-iL-I5s"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <state key="normal" title="Start Selling">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="8"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                        <integer key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
-                                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="startSellingBtn:" destination="F6B-V9-GUH" eventType="touchUpInside" id="Jtz-ol-8il"/>
-                                                </connections>
-                                            </button>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.00" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sel-3a-qQo">
                                                 <rect key="frame" x="26" y="598" width="329" height="30"/>
                                                 <constraints>
@@ -138,6 +112,32 @@
                                                     <action selector="changeFoodImage:" destination="F6B-V9-GUH" eventType="touchUpInside" id="Fa3-Ju-Tbb"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TcP-CG-Mbc">
+                                                <rect key="frame" x="62" y="674" width="257" height="43"/>
+                                                <color key="backgroundColor" red="0.2470588235" green="0.69019607839999997" blue="0.67450980390000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="43" id="xt3-iL-I5s"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="Start Selling">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="startSellingBtn:" destination="F6B-V9-GUH" eventType="touchUpInside" id="Jtz-ol-8il"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -149,10 +149,10 @@
                                             <constraint firstItem="El1-dx-dV4" firstAttribute="trailing" secondItem="mdj-lH-KLZ" secondAttribute="trailing" id="B4M-wf-vDc"/>
                                             <constraint firstItem="mlf-qO-Kbr" firstAttribute="trailing" secondItem="FRw-pn-pRh" secondAttribute="trailing" id="Bg6-zY-PC1"/>
                                             <constraint firstItem="2t9-0k-Ogh" firstAttribute="top" secondItem="mdj-lH-KLZ" secondAttribute="bottom" constant="24" id="FOh-9j-ULv"/>
-                                            <constraint firstItem="mdj-lH-KLZ" firstAttribute="leading" secondItem="TcP-CG-Mbc" secondAttribute="leading" id="Gtn-xa-hl3"/>
+                                            <constraint firstItem="mdj-lH-KLZ" firstAttribute="leading" secondItem="TcP-CG-Mbc" secondAttribute="leading" constant="-15" id="Gtn-xa-hl3"/>
                                             <constraint firstItem="El1-dx-dV4" firstAttribute="top" secondItem="Rbk-Mx-1t9" secondAttribute="bottom" constant="13" id="HHE-DF-lYq"/>
                                             <constraint firstItem="Rbk-Mx-1t9" firstAttribute="leading" secondItem="iqN-t9-ber" secondAttribute="leading" id="HUh-cI-KkN"/>
-                                            <constraint firstAttribute="bottom" secondItem="TcP-CG-Mbc" secondAttribute="bottom" constant="46" id="JMW-Pl-SD9"/>
+                                            <constraint firstAttribute="bottom" secondItem="TcP-CG-Mbc" secondAttribute="bottom" constant="44" id="JMW-Pl-SD9"/>
                                             <constraint firstItem="El1-dx-dV4" firstAttribute="leading" secondItem="mdj-lH-KLZ" secondAttribute="leading" id="Mf4-0a-IlP"/>
                                             <constraint firstItem="iqN-t9-ber" firstAttribute="top" secondItem="mdj-lH-KLZ" secondAttribute="bottom" constant="9" id="NX7-7q-KiR"/>
                                             <constraint firstItem="G6q-KF-VKn" firstAttribute="leading" secondItem="Rbk-Mx-1t9" secondAttribute="leading" id="PEm-dq-nx7"/>
@@ -168,9 +168,9 @@
                                             <constraint firstItem="El1-dx-dV4" firstAttribute="centerX" secondItem="0by-qY-jM0" secondAttribute="centerX" id="XnC-EL-1eJ"/>
                                             <constraint firstItem="Sel-3a-qQo" firstAttribute="top" secondItem="FRw-pn-pRh" secondAttribute="bottom" constant="8" symbolic="YES" id="aCC-2D-hQY"/>
                                             <constraint firstItem="FRw-pn-pRh" firstAttribute="top" secondItem="1SM-0c-l9z" secondAttribute="bottom" constant="8" symbolic="YES" id="amQ-mt-Gm1"/>
-                                            <constraint firstItem="mdj-lH-KLZ" firstAttribute="trailing" secondItem="TcP-CG-Mbc" secondAttribute="trailing" id="eMQ-4S-ZCB"/>
+                                            <constraint firstItem="mdj-lH-KLZ" firstAttribute="trailing" secondItem="TcP-CG-Mbc" secondAttribute="trailing" constant="9" id="eMQ-4S-ZCB"/>
                                             <constraint firstItem="1SM-0c-l9z" firstAttribute="top" secondItem="mlf-qO-Kbr" secondAttribute="bottom" constant="17" id="fsy-lX-Prb"/>
-                                            <constraint firstItem="TcP-CG-Mbc" firstAttribute="top" secondItem="Sel-3a-qQo" secondAttribute="bottom" constant="28" id="le8-77-YPl"/>
+                                            <constraint firstItem="TcP-CG-Mbc" firstAttribute="top" secondItem="Sel-3a-qQo" secondAttribute="bottom" constant="46" id="le8-77-YPl"/>
                                             <constraint firstAttribute="trailing" secondItem="2t9-0k-Ogh" secondAttribute="trailing" constant="32" id="nmA-bf-XIh"/>
                                             <constraint firstItem="iqN-t9-ber" firstAttribute="leading" secondItem="2t9-0k-Ogh" secondAttribute="leading" id="oS8-Xn-bsV"/>
                                             <constraint firstItem="mlf-qO-Kbr" firstAttribute="leading" secondItem="1SM-0c-l9z" secondAttribute="leading" id="oV0-Wn-csi"/>
@@ -227,7 +227,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Izr-vG-nF2" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="AUW-kc-EA9">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AUW-kc-EA9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -310,7 +310,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xKF-m1-5pv" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ESi-pa-mHa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ESi-pa-mHa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
