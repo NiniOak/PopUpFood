@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "trending.png",
+      "filename" : "favourites.png",
       "scale" : "1x"
     },
     {

@@ -57,12 +57,6 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignI
         //customFBButton?.isHidden = true
     }
     
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     //FACEBOOK CLICK FUNCTIONALITY
     func handleCustomFBLogin() {
         FBSDKLoginManager().logIn(withReadPermissions: ["email", "public_profile"], from: self) { (result, err) in
@@ -116,16 +110,6 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignI
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        FIRAuth.auth()?.addStateDidChangeListener{ auth, user in
-            if user != nil {
-                
-                self.displaydefaultPage()
-                
-            }
-            else{
-                //self.displaylandingPage()
-            }
-        }
     }
     
     func displaylandingPage() {
@@ -134,11 +118,4 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignI
         let controller = storyboard.instantiateViewController(withIdentifier: "testing") as UIViewController
         self.navigationController?.pushViewController(controller, animated: true)
     }
-    
-    func displaydefaultPage() {
-        let storyboard = UIStoryboard(name: "HomePage", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "newhomePage") as UIViewController
-        self.navigationController?.pushViewController(controller, animated: true)
-    }
-
 }
