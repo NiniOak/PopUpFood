@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -28,7 +28,7 @@
                                     <constraint firstAttribute="height" constant="21" id="q6d-N4-4xa"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <color key="textColor" red="0.16290381550788879" green="0.72468513250350952" blue="0.9028812050819397" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.88235294119999996" green="0.67843137249999996" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="with the click of a button." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xkE-pt-imh">
@@ -37,25 +37,25 @@
                                     <constraint firstAttribute="height" constant="21" id="ZCA-Xs-0os"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <color key="textColor" red="0.16290381550788879" green="0.72468513250350952" blue="0.9028812050819397" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.88235294119999996" green="0.67843137249999996" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="mOZ-sD-EkG">
-                                <rect key="frame" x="88" y="154" width="199" height="114"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_new" translatesAutoresizingMaskIntoConstraints="NO" id="mOZ-sD-EkG">
+                                <rect key="frame" x="88" y="82" width="214" height="186"/>
                                 <color key="backgroundColor" red="0.96708454849756309" green="0.96708454849756309" blue="0.96708454849756309" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.97156583020355325" green="0.97156583020355325" blue="0.97156583020355325" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="mOZ-sD-EkG" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="62" id="6a3-RQ-OQm"/>
                             <constraint firstItem="xkE-pt-imh" firstAttribute="top" secondItem="iDj-JL-zV4" secondAttribute="bottom" constant="8" symbolic="YES" id="Ei5-5Q-l37"/>
                             <constraint firstItem="iDj-JL-zV4" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="KGM-SH-fsB"/>
                             <constraint firstItem="iDj-JL-zV4" firstAttribute="leading" secondItem="xkE-pt-imh" secondAttribute="leading" id="Loy-gO-M19"/>
-                            <constraint firstItem="mOZ-sD-EkG" firstAttribute="centerX" secondItem="iDj-JL-zV4" secondAttribute="centerX" id="Wka-rg-w3M"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mOZ-sD-EkG" secondAttribute="trailing" constant="57" id="SrK-TI-s2G"/>
                             <constraint firstItem="iDj-JL-zV4" firstAttribute="trailing" secondItem="xkE-pt-imh" secondAttribute="trailing" id="bTh-8Q-cU1"/>
-                            <constraint firstItem="iDj-JL-zV4" firstAttribute="top" secondItem="mOZ-sD-EkG" secondAttribute="bottom" constant="35" id="blt-Dp-3EN"/>
                             <constraint firstItem="iDj-JL-zV4" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailingMargin" id="eXt-X8-z76"/>
-                            <constraint firstItem="mOZ-sD-EkG" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="134" id="hGW-vA-yfK"/>
-                            <constraint firstItem="mOZ-sD-EkG" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="72" id="jhK-Fb-rbx"/>
+                            <constraint firstItem="mOZ-sD-EkG" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="72" id="oEc-As-Wmm"/>
+                            <constraint firstItem="iDj-JL-zV4" firstAttribute="top" secondItem="mOZ-sD-EkG" secondAttribute="bottom" constant="35" id="uk0-Dd-wrI"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="xkE-pt-imh" secondAttribute="bottom" constant="314" id="wHa-b2-xVp"/>
                         </constraints>
                     </view>
@@ -66,6 +66,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="299" height="118"/>
+        <image name="logo_new" width="317" height="322"/>
     </resources>
 </document>

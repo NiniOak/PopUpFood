@@ -30,7 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         //window?.rootViewController = UINavigationController(rootViewController: defaultPageViewController(collectionViewLayout: layout))
         
         //Modify Navigation Bar Colour
-        UINavigationBar.appearance().barTintColor = UIColor.rgb(red: 16, green: 186, blue: 225, alpha: 1 ) //Original blue
+       // UINavigationBar.appearance().barTintColor = UIColor.rgb(red: 255, green: 255, blue: 225, alpha: 0.5 ) //Original blue
+        UINavigationBar.appearance().barTintColor = UIColor(white: 1, alpha: 1) //White Color
+        //UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.rgb(red: 248, green: 212, blue: 0, alpha: 1)]
         
         application.statusBarStyle = .lightContent
         
