@@ -11,7 +11,7 @@ import Firebase
 import FirebaseAuth
 import FBSDKCoreKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UINavigationControllerDelegate {
     
     var user = [User]()
     
@@ -43,7 +43,7 @@ class ProfileViewController: UIViewController {
         goToBeforeSelling()
     }
     @IBAction func editProfile(_ sender: Any) {
-        editProfile()
+        displayEditProfile()
     }
     
     //BARBARA: Handle onclick logout
@@ -70,7 +70,6 @@ class ProfileViewController: UIViewController {
     }
     
     func fetchUserProfileDetails() {
-        
         guard let uid = FIRAuth.auth()?.currentUser?.uid else {
             return
         }
@@ -129,7 +128,7 @@ class ProfileViewController: UIViewController {
     //Olek refactoring to insert SELLING view before startSellingViewController
     func goToBeforeSelling() {
         let storyboard = UIStoryboard(name: "startSelling", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "BeforeSellingPage") as UIViewController
+        let controller = storyboard.instantiateViewController(withIdentifier: "BeforeSellingPage") as! BeforeStartSellingViewController
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -140,24 +139,23 @@ class ProfileViewController: UIViewController {
         } catch let logoutError {
             print(logoutError)
         }
-        displayHomePage()
+        returnHomePage()
     }
-
 
     //Display homepage if not signed in
     func displayHomePage() {
         //Send user back to home screen
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "landingVC") as UIViewController
+        let controller = storyboard.instantiateViewController(withIdentifier: "landingVC") as! ViewController
         self.present(controller, animated: true, completion: nil)
         /////////////////////////////////////////////////////////////////////////////
     }
+    
     //Display edit profile page
-    func editProfile() {
-        let editViewController = EditProfileViewController()
-        editViewController.profileViewController = self
+    func displayEditProfile() {
         let storyboard = UIStoryboard(name: "ProfilePage", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "editProfile") as! EditProfileViewController
+        controller.profilePageController = self
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -166,6 +164,7 @@ class ProfileViewController: UIViewController {
         let nextViewController: UINavigationController = UINavigationController(rootViewController: signInViewCOntroller)
         self.present(nextViewController, animated: true, completion: nil)
     }
+
 }
 
 //

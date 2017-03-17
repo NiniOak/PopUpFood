@@ -209,7 +209,7 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
     
     func displayProfilePage() {
         let storyboard = UIStoryboard(name: "ProfilePage", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "InitialController") as UIViewController
+        let controller = storyboard.instantiateViewController(withIdentifier: "InitialController") as! ProfileViewController
         self.navigationController?.pushViewController(controller, animated: true)
     }
     

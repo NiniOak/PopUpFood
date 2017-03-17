@@ -69,7 +69,7 @@ class SignInViewController: UIViewController {
     
     func returnHomePage() {
         let storyboard = UIStoryboard(name: "HomePage", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "newhomePage") as UIViewController
+        let controller = storyboard.instantiateViewController(withIdentifier: "newhomePage") as! HomeAfterSignIn
         self.navigationController?.pushViewController(controller, animated: true)
     }
 

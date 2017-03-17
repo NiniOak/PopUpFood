@@ -13,7 +13,7 @@ import SDWebImage
 
 class EditProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    var profileViewController: ProfileViewController?
+    var profilePageController: ProfileViewController?
     
     @IBOutlet weak var usernameText: UITextField!
     @IBOutlet weak var emailText: UITextField!
@@ -39,7 +39,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     //Save Edited info button
     @IBAction func saveProfile(_ sender: Any) {
         updateProfile()
-        goToProfilePage()
+        profilePageController?.returnHomePage()
     }
     
     override func viewDidLoad() {
@@ -120,8 +120,6 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                                     print(error!)
                                     return
                                 }
-                                self.profileViewController?.fetchUserProfileDetails()
-                                
                             })
                         }
                     })
@@ -129,12 +127,4 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             }
         }
     }
-    
-    func goToProfilePage() {
-        let storyboard = UIStoryboard(name: "ProfilePage", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "InitialController") as! ProfileViewController
-        self.navigationController?.pushViewController(controller, animated: true)
-    }
-
-
 }
