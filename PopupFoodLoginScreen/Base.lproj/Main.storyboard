@@ -90,10 +90,6 @@
                                 <color key="textColor" red="0.25451343911917101" green="0.25451343911917101" blue="0.25451343911917101" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="jRp-NN-FNW">
-                                <rect key="frame" x="76" y="159" width="231" height="109"/>
-                                <color key="backgroundColor" red="0.97156583019999998" green="0.97156583019999998" blue="0.97156583019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="xButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GWY-8Y-sPY">
                                 <rect key="frame" x="16" y="28" width="33" height="34"/>
                                 <constraints>
@@ -102,9 +98,13 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="closeBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BfV-j0-eog"/>
+                                    <action selector="closeBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gtV-AR-gRT"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="jRp-NN-FNW">
+                                <rect key="frame" x="105" y="174" width="172" height="83"/>
+                                <color key="backgroundColor" red="0.97156583019999998" green="0.97156583019999998" blue="0.97156583019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.97156583019999998" green="0.97156583019999998" blue="0.97156583019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -113,30 +113,30 @@
                             <constraint firstItem="Qmn-S1-HHV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="36" identifier="id13" id="CGZ-h2-QUP"/>
                             <constraint firstItem="Qmn-S1-HHV" firstAttribute="top" secondItem="tHO-oo-ypN" secondAttribute="top" identifier="id14" id="DEK-wq-6cT"/>
                             <constraint firstItem="tHO-oo-ypN" firstAttribute="baseline" secondItem="Qmn-S1-HHV" secondAttribute="firstBaseline" identifier="id18" id="EaZ-08-yHZ"/>
-                            <constraint firstItem="1yp-HJ-vru" firstAttribute="top" secondItem="jRp-NN-FNW" secondAttribute="bottom" constant="45" identifier="id06" id="H7g-iB-dPE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tHO-oo-ypN" secondAttribute="trailing" constant="27" identifier="id19" id="Jro-m1-34r"/>
                             <constraint firstItem="Qmn-S1-HHV" firstAttribute="baseline" secondItem="tHO-oo-ypN" secondAttribute="firstBaseline" identifier="id16" id="KHV-bx-alo"/>
                             <constraint firstItem="dhK-tq-5SN" firstAttribute="top" secondItem="1yp-HJ-vru" secondAttribute="bottom" constant="8" symbolic="YES" identifier="id09" id="MiS-vl-0ot"/>
                             <constraint firstItem="1yp-HJ-vru" firstAttribute="centerX" secondItem="dhK-tq-5SN" secondAttribute="centerX" identifier="id07" id="NGY-YM-Ga9"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Qmn-S1-HHV" secondAttribute="bottom" constant="192" identifier="id20" id="OU0-F1-1ZX"/>
-                            <constraint firstItem="jRp-NN-FNW" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="139" identifier="id03" id="Rgf-hg-Ebv"/>
-                            <constraint firstItem="jRp-NN-FNW" firstAttribute="centerX" secondItem="1yp-HJ-vru" secondAttribute="centerX" identifier="id04" id="bLf-gv-PPS"/>
+                            <constraint firstItem="jRp-NN-FNW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="89" id="ZFB-KL-3bl"/>
                             <constraint firstItem="GWY-8Y-sPY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" identifier="id01" id="cV6-yR-amK"/>
+                            <constraint firstItem="jRp-NN-FNW" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="154" id="dVN-Pz-9K3"/>
                             <constraint firstItem="GWY-8Y-sPY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" identifier="id02" id="hos-AB-cii"/>
                             <constraint firstAttribute="trailingMargin" secondItem="dhK-tq-5SN" secondAttribute="trailing" constant="-4" identifier="id10" id="lbM-7Q-owT"/>
                             <constraint firstItem="dhK-tq-5SN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" identifier="id11" id="uiw-yt-OjA"/>
+                            <constraint firstItem="1yp-HJ-vru" firstAttribute="top" secondItem="jRp-NN-FNW" secondAttribute="bottom" constant="56" id="vss-Ff-nCr"/>
                             <constraint firstItem="1yp-HJ-vru" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="42" identifier="id08" id="wBb-dM-GoA"/>
-                            <constraint firstItem="jRp-NN-FNW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="60" identifier="id05" id="zpx-cF-ygl"/>
+                            <constraint firstItem="jRp-NN-FNW" firstAttribute="centerX" secondItem="1yp-HJ-vru" secondAttribute="centerX" id="wQ0-zJ-gvk"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ASn-tm-2aI"/>
                     <connections>
-                        <outlet property="xButton" destination="GWY-8Y-sPY" id="2rm-k1-L5q"/>
+                        <outlet property="xButton" destination="GWY-8Y-sPY" id="sgU-u5-DDB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1524" y="-1433.433283358321"/>
+            <point key="canvasLocation" x="1628" y="-1433.433283358321"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="ZQU-rM-FN6">
@@ -662,7 +662,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xwe-Cm-iIw" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3C5-Na-O5s">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="3C5-Na-O5s">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -680,7 +680,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ahB-6R-Ut8" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4eE-P5-wXK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="4eE-P5-wXK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -698,6 +698,6 @@
         <image name="logo" width="299" height="118"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2Gb-3Y-2am"/>
+        <segue reference="hs3-L6-TkO"/>
     </inferredMetricsTieBreakers>
 </document>

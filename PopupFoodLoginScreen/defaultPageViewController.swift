@@ -12,28 +12,43 @@ import FirebaseAuth
 
 //Iteration 1
 class defaultPageViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    
+    var cellId = "cellID"
+    var foodMenu = [Menu]()
+    let userDetails = [User]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.navigationItem.hidesBackButton = true
         //DEFAULT PAGE CODE
-        navigationItem.title = "Popup Food" //align left
         navigationController?.navigationBar.isTranslucent = false
         
         //SET TITLE TEXT FOR NAVIGATION BAR
-        let titleLabel = UILabel(frame: CGRect(x:0, y:0, width:view.frame.width - 32, height:view.frame.height))
+        /*let titleLabel = UILabel(frame: CGRect(x:30, y:0, width:view.frame.width - 32, height:view.frame.height))
         titleLabel.text = "Popup Food"
         titleLabel.textColor = UIColor.black
-        titleLabel.font = UIFont.systemFont(ofSize: 19)
-        navigationItem.titleView = titleLabel
+        titleLabel.font = UIFont.systemFont(ofSize: 21)
+        navigationItem.titleView = titleLabel*/
+        logoForNavbar()
         
         collectionView?.backgroundColor = UIColor.white
         //Register cellID
-        collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: "cellID")
+        collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: cellId)
         
         //SET UP NAV BAR BUTTONS
         setupNavBarButtons()
+        fetchMenu()
         
+    }
+    
+    func logoForNavbar() {
+        //Set up home button for profile page
+        let button = UIButton.init(type: .custom)
+        button.setImage(UIImage.init(named: "logo2"), for: UIControlState.normal)
+        button.frame = CGRect.init(x: 0, y: 0, width: 120, height: 50)
+        let barButton = UIBarButtonItem.init(customView: button)
+        self.navigationItem.leftBarButtonItem = barButton
     }
     
     //SET UP NAV BAR FUNC
@@ -72,30 +87,55 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
         }
     }
     
-    func displayProfilePage() {
-        let storyboard = UIStoryboard(name: "ProfilePage", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "InitialController") as UIViewController
-        self.navigationController?.pushViewController(controller, animated: true)
-    }
-    
-    func displaySignUpPage() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "SignUpSocialMedia") as UIViewController
-        self.navigationController?.pushViewController(controller, animated: true)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
+    func fetchMenu() {
         
-        self.navigationController?.isNavigationBarHidden = false
+        FIRDatabase.database().reference().child("menu").observe(.childAdded, with: { (snapshot) in
+            
+            //store chef/menu info in "snapshot" and display snapshot
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+                
+                let menu = Menu()
+                
+                self.foodMenu.append(menu)
+                
+                //This calls the entire database for menu input by a user
+                menu.food = dictionary["food"] as? String
+                menu.price = dictionary["price"] as? String
+                menu.foodImageUrl = dictionary["foodImageUrl"] as? String
+                
+                
+                //self.foodMenu.append(menu)
+                DispatchQueue.main.async {
+                    self.collectionView?.reloadData()
+                }
+                
+            }
+            
+        }, withCancel: nil)
     }
+
     
     //DEFAULT PAGE CODE
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return foodMenu.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath)
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! VideoCell
+        
+        let menu = foodMenu[indexPath.row]
+        
+        cell.titleLabel.text = menu.food
+        cell.subtitleLabelTextview.text = menu.price
+        
+        //Display image
+        if let foodImageUrl = menu.foodImageUrl {
+            let url = URL(string: foodImageUrl)
+            cell.thumbnailImageView.sd_setImage(with: url)
+        } else {
+            cell.thumbnailImageView.image = UIImage(named: "test_pizza")
+        }
         
         return cell
     }
@@ -110,11 +150,25 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
         return 0
     }
     
-    //Default Method created with the Class
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.navigationController?.isNavigationBarHidden = false
     }
+    
+    
+    func displayProfilePage() {
+        let storyboard = UIStoryboard(name: "ProfilePage", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "InitialController") as UIViewController
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func displaySignUpPage() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "SignUpSocialMedia") as UIViewController
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+
 }
 
 

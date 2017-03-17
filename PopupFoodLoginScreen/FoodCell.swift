@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseCell: UICollectionViewCell {
+class BaseCell: UICollectionViewCell, UICollectionViewDelegate {
     
     override init(frame: CGRect){
         super.init(frame: frame)
@@ -31,8 +31,8 @@ class foodCell: BaseCell {
     //blue cell (food)
     let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "pasta") //specify the name of the photo from Assets
-        imageView.contentMode = .scaleAspectFill
+        //imageView.image = UIImage(named: "pasta") //specify the name of the photo from Assets
+        imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
         return imageView
     }()
@@ -58,7 +58,6 @@ class foodCell: BaseCell {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Mike Saj my boy"
         return label
     }()
     
@@ -66,9 +65,8 @@ class foodCell: BaseCell {
     let subtitleTextView: UITextView = {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.text = "Ha ha"
         textView.textContainerInset = UIEdgeInsetsMake(0, -4, 0, 0)
-        textView.textColor = UIColor.lightGray
+        textView.textColor = UIColor.red
         return textView
     }()
     
@@ -84,6 +82,8 @@ class foodCell: BaseCell {
         addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: thumbnailImageView)
         
         addConstraintsWithFormat(format: "H:|-16-[v0(44)]", views: userProfileImage)
+        
+        
         
         //vertical constraints
         addConstraintsWithFormat(format: "V:|-16-[v0]-8-[v1(44)]-16-[v2(1)]|", views: thumbnailImageView, userProfileImage, separatorView)
@@ -118,6 +118,7 @@ class foodCell: BaseCell {
         addConstraints([NSLayoutConstraint(item: subtitleTextView, attribute: .height, relatedBy: .equal, toItem: self, attribute: .height, multiplier: 0, constant: 30)])
         
     }//end of setup views
-
+    
+  
 }//end of foodCell class
 
