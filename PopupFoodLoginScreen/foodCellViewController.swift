@@ -113,18 +113,41 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
     func favouriteBtnClicked() {
         favouriteButton?.setImage(clickFavBtn, for: .normal)
         favClicked = true
-        self.registerFavouriteIntoDatabaseWithFavouriteID(values: values)
+        //addFavourites()
         
     }
+    
+    func displaySendMessagePage() {
+        let storyboard = UIStoryboard(name: "Messages", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "sendChefMessage") as! sendMessageCollectionController
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
     //Add Favorites to the Database
-    private func registerFavouriteIntoDatabaseWithFavouriteID() {
+    private func addFavourites() {
+        //Add userID to Favorites table
+        guard let userID = FIRAuth.auth()?.currentUser?.uid else{
+            return
+        }
+        
+        //Add userID to existing menuID
+        
+        let values = ["userID": userID]
+        
+        self.registerFavouritesIntoDatabaseWithFavoriteID(values: values)
+
+        }
+    
+    //Get favourites
+    private func registerFavouritesIntoDatabaseWithFavoriteID(values: [String: Any]) {
         
         guard let userID = FIRAuth.auth()?.currentUser?.uid else{
             return
         }
         
-        let ref = FIRDatabase.database().reference().child("favourites")
-        let childRef = ref.childByAutoId()
+        let ref = FIRDatabase.database().reference().child("menu")//.child(menuID).child("favourites")
+        //get existing menuID
+        let childRef = ref.childByAutoId() //Switch this to get existing menuID, add existing menuID to user as favorites
         
         childRef.updateChildValues(values) { (err, ref) in
             
@@ -133,20 +156,10 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
                 return
             }
             let faveId = childRef.key
-            //Navigate to user, then menu, then favourites
-            let userMenuChild = FIRDatabase.database().reference().child("user").child(userID).child("menu")
-            userMenuChild.observe(.childAdded, with: { (snapshot) in
-            let menuID = snapshot.key
-            
-            let userFaveChild = FIRDatabase.database().reference().child("user").child(userID).child("menu").child(menuID).child("favourites")
-            
+            let userFaveChild = FIRDatabase.database().reference().child("user").child(userID).child("favourites")
             userFaveChild.updateChildValues([faveId: 1])
-            //print ("Fave stored in database")
-            
-            
-        }, withCancel: nil)
+            //print ("User stored in database")
         }
         
     }
-
 }
