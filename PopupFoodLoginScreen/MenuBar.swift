@@ -20,7 +20,7 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     }()
     
     let cellId = "cellId"
-    let imageNames = ["home", "favorites", "message", "profile"]
+    let imageNames = ["Home", "favorites", "message", "profile"]
     
     //instantiate class to call navigation button
     var homeController: HomeAfterSignIn?

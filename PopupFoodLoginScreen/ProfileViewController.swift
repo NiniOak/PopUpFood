@@ -25,7 +25,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
     func cancelButtonForNavbar() {
         //Set up home button for profile page
         let button = UIButton.init(type: .custom)
-        button.setImage(UIImage.init(named: "home"), for: UIControlState.normal)
+        button.setImage(UIImage.init(named: "Home"), for: UIControlState.normal)
         button.addTarget(self, action:#selector(returnHomePage), for: UIControlEvents.touchUpInside)
         button.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30)
         let barButton = UIBarButtonItem.init(customView: button)

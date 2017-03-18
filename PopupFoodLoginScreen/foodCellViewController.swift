@@ -45,6 +45,7 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
     
     func displayFoodItems() {
         //Declare menuID to be used to retrieve menu details
+        
         guard let menuID = menu?.menuID, let chefName = menu?.userName else {
             return
         }
@@ -119,6 +120,7 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
     func displaySendMessagePage() {
         let storyboard = UIStoryboard(name: "Messages", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "sendChefMessage") as! sendMessageCollectionController
+        controller.menu = menu
         self.navigationController?.pushViewController(controller, animated: true)
     }
     

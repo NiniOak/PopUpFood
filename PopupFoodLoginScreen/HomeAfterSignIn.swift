@@ -171,16 +171,14 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
         
         //Display food image
         if let foodImageUrl = menu.foodImageUrl {
-            let url = URL(string: foodImageUrl)
-            cell.thumbnailImageView.sd_setImage(with: url)
+            cell.thumbnailImageView.sd_setImage(with: URL(string: foodImageUrl))
         } else {
             cell.thumbnailImageView.image = UIImage(named: "test_pizza")
         }
         
         //Display user profile image in menu cell on home page
         if let profileImageUrl = menu.profileImageUrl {
-            let url = URL(string: profileImageUrl)
-            cell.userProfileImage.sd_setImage(with: url)
+            cell.userProfileImage.sd_setImage(with: URL(string: profileImageUrl))
         } else {
             cell.userProfileImage.image = UIImage(named: "defaultImage")
         }

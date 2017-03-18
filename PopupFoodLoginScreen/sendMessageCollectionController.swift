@@ -7,19 +7,40 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
-class sendMessageCollectionController: UICollectionViewController {
+private let reuseIdentifier = "Cell"
+
+class sendMessageCollectionController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UITextFieldDelegate {
+    
+    @IBOutlet weak var messageTextField: UITextField!
+    
+    var menu: Menu? {
+        didSet{
+
+        }
+    }
+    
+    @IBAction func sendButton(_ sender: Any) {
+        handleSend()
+    }
     
     var cellId = "cell"
     
-    let sentMessages = ["We nearly had some drama at the end and could have gone into extra time, but United hold on and progress to the quarter-finals of the Europa League.", "Sometimes fans just demand too much from managers. Defensive Mourinho is taking us to the last eight of the Europa League."]
+    var sentMessages = [Message]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        messageTextField.delegate = self
         // Register cell classes
-        self.collectionView!.register(chatMessageCell.self, forCellWithReuseIdentifier: cellId)
+        self.collectionView!.register(chatMessageCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
+    }
+    
+    func retrieveMessagesFromDatabase() {
+        
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -28,11 +49,38 @@ class sendMessageCollectionController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! chatMessageCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! chatMessageCell
         
         let messages = sentMessages[indexPath.item]
-        //cell.messageLabel.text = messages.text
-    
+        cell.messageLabel.text = messages.text
+
+        if let foodImageUrl = menu?.foodImageUrl {
+            cell.foodImage.sd_setImage(with: URL(string: foodImageUrl))
+        } else {
+            cell.foodImage.image = UIImage(named: "test_pizza")
+        }
+        
+        if let foodName = menu?.food {
+            cell.foodName.text = foodName
+        }
+        
         return cell
     }
+    
+    func handleSend() {
+        guard let sendMesageTextField = messageTextField.text else {
+            return
+        }
+        
+        let ref = FIRDatabase.database().reference().child("messages")
+        let childRef = ref.childByAutoId()
+        let values = ["text": sendMesageTextField]
+        childRef.updateChildValues(values)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        handleSend()
+        return true
+    }
+    
 }

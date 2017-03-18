@@ -11,5 +11,7 @@ import UIKit
 class chatMessageCell: UICollectionViewCell {
     
     @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var foodImage: UIImageView!
+    @IBOutlet weak var foodName: UILabel!
 
 }
