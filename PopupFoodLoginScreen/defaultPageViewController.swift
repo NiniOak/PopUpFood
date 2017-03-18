@@ -23,13 +23,6 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
         self.navigationItem.hidesBackButton = true
         //DEFAULT PAGE CODE
         navigationController?.navigationBar.isTranslucent = false
-        
-        //SET TITLE TEXT FOR NAVIGATION BAR
-        /*let titleLabel = UILabel(frame: CGRect(x:30, y:0, width:view.frame.width - 32, height:view.frame.height))
-        titleLabel.text = "Popup Food"
-        titleLabel.textColor = UIColor.black
-        titleLabel.font = UIFont.systemFont(ofSize: 21)
-        navigationItem.titleView = titleLabel*/
         logoForNavbar()
         
         collectionView?.backgroundColor = UIColor.white
@@ -45,17 +38,17 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
     func logoForNavbar() {
         //Set up home button for profile page
         let button = UIButton.init(type: .custom)
-        button.setImage(UIImage.init(named: "logo2"), for: UIControlState.normal)
-        button.frame = CGRect.init(x: 0, y: 0, width: 120, height: 50)
+        button.setImage(UIImage.init(named: "logo2_new"), for: UIControlState.normal)
+        button.frame = CGRect.init(x: 0, y: 0, width: 120, height: 40)
         let barButton = UIBarButtonItem.init(customView: button)
         self.navigationItem.leftBarButtonItem = barButton
     }
     
     //SET UP NAV BAR FUNC
     func setupNavBarButtons() {
-        let searchImage = UIImage(named: "searchIcon")?.withRenderingMode(.alwaysOriginal)
+        let searchImage = UIImage(named: "search")?.withRenderingMode(.alwaysOriginal)
         let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
-        let profileIconBtn = UIBarButtonItem(image: UIImage(named: "profileIcon")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(showProfile))
+        let profileIconBtn = UIBarButtonItem(image: UIImage(named: "profile")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(showProfile))
         
         navigationItem.rightBarButtonItems = [profileIconBtn, searchBarButtonItem]
 

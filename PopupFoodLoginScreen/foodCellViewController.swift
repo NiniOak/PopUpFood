@@ -13,12 +13,15 @@ import FirebaseAuth
 class foodCellViewController: UIViewController, UINavigationControllerDelegate {
 
     @IBOutlet weak var messageButton: UIButton? = nil
+    //@IBOutlet weak var messageButton: UIImageView!
     @IBOutlet weak var favouriteButton: UIButton? = nil
+    //@IBOutlet weak var favouriteButton: UIImageView!
     @IBOutlet weak var foodImage: UIImageView!
     @IBOutlet weak var foodLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var cuisineLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    //@IBOutlet weak var chefUsername: UILabel!
     @IBOutlet weak var chefUsername: UILabel!
     
     
@@ -83,9 +86,8 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
     
     //Declare method to display Message image for message button
     func messageBtn() {
-        if let msgButton = UIImage(named: "Messages")?.withRenderingMode(.alwaysOriginal) {
+        if let msgButton = UIImage(named: "message")?.withRenderingMode(.alwaysOriginal) {
             messageButton?.setImage(msgButton, for: .normal)
-            messageButton?.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30)
         }
     }
 
@@ -105,13 +107,11 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
     
     func favouriteBtnNotClicked() {
         favouriteButton?.setImage(favBtn, for: .normal)
-        favouriteButton?.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30)
         favClicked = false
     }
     
     func favouriteBtnClicked() {
         favouriteButton?.setImage(clickFavBtn, for: .normal)
-        favouriteButton?.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30)
         favClicked = true
         
     }
