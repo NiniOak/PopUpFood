@@ -113,6 +113,40 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
     func favouriteBtnClicked() {
         favouriteButton?.setImage(clickFavBtn, for: .normal)
         favClicked = true
+        self.registerFavouriteIntoDatabaseWithFavouriteID(values: values)
         
     }
+    //Add Favorites to the Database
+    private func registerFavouriteIntoDatabaseWithFavouriteID() {
+        
+        guard let userID = FIRAuth.auth()?.currentUser?.uid else{
+            return
+        }
+        
+        let ref = FIRDatabase.database().reference().child("favourites")
+        let childRef = ref.childByAutoId()
+        
+        childRef.updateChildValues(values) { (err, ref) in
+            
+            if err != nil {
+                print (err as Any)
+                return
+            }
+            let faveId = childRef.key
+            //Navigate to user, then menu, then favourites
+            let userMenuChild = FIRDatabase.database().reference().child("user").child(userID).child("menu")
+            userMenuChild.observe(.childAdded, with: { (snapshot) in
+            let menuID = snapshot.key
+            
+            let userFaveChild = FIRDatabase.database().reference().child("user").child(userID).child("menu").child(menuID).child("favourites")
+            
+            userFaveChild.updateChildValues([faveId: 1])
+            //print ("Fave stored in database")
+            
+            
+        }, withCancel: nil)
+        }
+        
+    }
+
 }
