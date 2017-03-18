@@ -58,7 +58,7 @@ class BeforeStartSellingViewController: UITableViewController {
         }, withCancel: nil)
     }
 
-    //FETCH ALL MENU FROM DATABASE
+ /*   //FETCH ALL MENU FROM DATABASE
     func fetchMenu() {
 
         FIRDatabase.database().reference().child("menu").observe(.childAdded, with: { (snapshot) in
@@ -83,7 +83,7 @@ class BeforeStartSellingViewController: UITableViewController {
             }
 
         }, withCancel: nil)
-    }
+    }*/
     
     //Set up number of cells in Table view
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
