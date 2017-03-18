@@ -90,6 +90,7 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
     }
 
     @IBAction func messageBtn(_ sender: Any) {
+        displaySendMessagePage()
     }
     
     @IBAction func favouriteBtn(_ sender: UIButton) {
@@ -114,4 +115,11 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
         favClicked = true
         
     }
+    
+    func displaySendMessagePage() {
+        let storyboard = UIStoryboard(name: "Messages", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "sendChefMessage") as! sendMessageCollectionController
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
 }
