@@ -92,7 +92,7 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
     }
 
     @IBAction func messageBtn(_ sender: Any) {
-        print("Messages coming sooonnnn!")
+        displaySendMessagePage()
     }
     
     @IBAction func favouriteBtn(_ sender: UIButton) {

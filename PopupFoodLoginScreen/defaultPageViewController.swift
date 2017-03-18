@@ -27,7 +27,7 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
         
         collectionView?.backgroundColor = UIColor.white
         //Register cellID
-        collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(foodCell.self, forCellWithReuseIdentifier: cellId)
         
         //SET UP NAV BAR BUTTONS
         setupNavBarButtons()
@@ -115,19 +115,27 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! VideoCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! foodCell
         
         let menu = foodMenu[indexPath.row]
         
         cell.titleLabel.text = menu.food
-        cell.subtitleLabelTextview.text = menu.price
+        cell.subtitleTextView.text = menu.price
         
-        //Display image
+        //Display food image
         if let foodImageUrl = menu.foodImageUrl {
             let url = URL(string: foodImageUrl)
             cell.thumbnailImageView.sd_setImage(with: url)
         } else {
             cell.thumbnailImageView.image = UIImage(named: "test_pizza")
+        }
+        
+        //Display user profile image in menu cell on home page
+        if let profileImageUrl = menu.profileImageUrl {
+            let url = URL(string: profileImageUrl)
+            cell.userProfileImage.sd_setImage(with: url)
+        } else {
+            cell.userProfileImage.image = UIImage(named: "defaultImage")
         }
         
         return cell
@@ -145,8 +153,6 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
     
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        self.navigationController?.isNavigationBarHidden = false
     }
     
     
