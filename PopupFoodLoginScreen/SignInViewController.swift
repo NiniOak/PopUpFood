@@ -14,21 +14,24 @@ import GoogleSignIn //Import GoogleSignIn kit
 
 //SIGN IN PAGE WITH FACEBOOK AND GOOGLE BUTTONS
 class SignInViewController: UIViewController {
+    
+    var signUpController: SignUpViewController?
 
     //Field Declaration
-    @IBOutlet weak var googleBtn: UIButton!
-    @IBOutlet weak var facebookBtn: UIButton!
     
     @IBOutlet weak var emailTextField: UITextField!
     
     @IBOutlet weak var passwordTextField: UITextField!
     
+    @IBAction func facebookBtn(_ sender: Any) {
+        signUpController?.handleCustomFBLogin()
+    }
+    @IBAction func googleBtn(_ sender: Any) {
+        signUpController?.handleCustomGoogleLogin()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let callGoogleBtn = SignUpViewController()
-        callGoogleBtn.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,7 +64,7 @@ class SignInViewController: UIViewController {
                 return
             }
             else{
-                print("User Logged In")
+//                print("User Logged In")
             }
         })
     
@@ -72,9 +75,15 @@ class SignInViewController: UIViewController {
         let controller = storyboard.instantiateViewController(withIdentifier: "newhomePage") as! HomeAfterSignIn
         self.navigationController?.pushViewController(controller, animated: true)
     }
+    
+//    func displayLandingPage() {
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let controller = storyboard.instantiateViewController(withIdentifier: "landingVC") as UIViewController
+//        self.navigationController?.pushViewController(controller, animated: true)
+//    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func backToLandingPage(_ sender: Any) {
+        //displayLandingPage()
     }
+    
 }

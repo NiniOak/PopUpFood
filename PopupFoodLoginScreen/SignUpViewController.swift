@@ -52,9 +52,6 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignI
     fileprivate func setupFacebookButton() {
         let customFBButton = facebookButton
         customFBButton?.addTarget(self, action: #selector(handleCustomFBLogin), for: .touchUpInside)
-        //BARBARA: handle login to another screen
-        //hide login button if logged in already
-        //customFBButton?.isHidden = true
     }
     
     //FACEBOOK CLICK FUNCTIONALITY
@@ -110,6 +107,13 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignI
     }
     
     override func viewWillAppear(_ animated: Bool) {
+    }
+    
+    func displaySignInPage() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "signInPage") as! SignInViewController
+        controller.signUpController = self
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     func displaylandingPage() {
