@@ -33,25 +33,28 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
         fetchMenuCollection()
         //fetchMenu()
     }
+    var foodCellView : foodCellViewController?
     
     func navigationBar() {
         navigationController?.navigationBar.isTranslucent = false
         
             //Set up home button for profile page
             let button = UIButton.init(type: .custom)
-            button.setImage(UIImage.init(named: "logo2"), for: UIControlState.normal)
-            button.frame = CGRect.init(x: 0, y: 0, width: 120, height: 50)
+            button.setImage(UIImage.init(named: "logo2_new"), for: UIControlState.normal)
+            button.frame = CGRect.init(x: 0, y: 0, width: 120, height: 40)
             let barButton = UIBarButtonItem.init(customView: button)
             self.navigationItem.leftBarButtonItem = barButton
     }
     
     //SET UP NAV BAR FUNC
     func setupNavBarButtons() {
-        let searchImage = UIImage(named: "searchIcon")?.withRenderingMode(.alwaysOriginal)
-        let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
-        let profileIconBtn = UIBarButtonItem(image: UIImage(named: "profileIcon")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(showProfile))
+        let searchImage = UIImageView()
+        searchImage.image = UIImage(named: "search")?.withRenderingMode(.alwaysOriginal)
+        searchImage.backgroundColor = UIColor.rgb(red: 63, green: 176, blue: 172, alpha: 1)
+        searchImage.frame = CGRect.init(x: 0, y: 0, width: 50, height: 30)
+        let searchBarButtonItem = UIBarButtonItem(image: searchImage.image, style: .plain, target: self, action: #selector(handleSearch))
         
-        navigationItem.rightBarButtonItems = [profileIconBtn, searchBarButtonItem]
+        navigationItem.rightBarButtonItems = [searchBarButtonItem]
         
     }
     
@@ -88,14 +91,6 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
     }
 
     //for menu bar
-    lazy var menuBar: MenuBar = {
-        let mb = MenuBar()
-        //handle navigation
-        mb.homeController = self
-        return mb
-    }()
-    
-    //for menu bar
     private func setupMenuBar(){
         //Scroll menu bar away when scrolling
         navigationController?.hidesBarsOnSwipe = true
@@ -122,10 +117,13 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
             
             let userID = snapshot.key
             var profileImageUrl: String? = ""
+            var userName: String? = ""
             
             if let dictionary = snapshot.value as? [String: AnyObject] {
                 profileImageUrl = dictionary["photo"] as? String
+                userName = dictionary["name"] as? String
             }
+
             
             //Refer to sub menu after identifying all child keys. User table -> Child key for every table -> All User data
             let UserMenuReference = FIRDatabase.database().reference().child("user").child(userID).child("menu")
@@ -149,6 +147,13 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
                         menu.foodImageUrl = dictionary["foodImageUrl"] as? String
                         menu.profileImageUrl = profileImageUrl
                         
+                        //To be used for clicked Cells
+                        menu.cuisine = dictionary["cuisine"] as? String
+                        menu.foodDescription = dictionary["foodDescription"] as? String
+                        menu.customerID = userID
+                        menu.menuID = menuID
+                        menu.userName = userName
+                        
                         DispatchQueue.main.async {
                             self.collectionView?.reloadData()
                         }
@@ -156,35 +161,6 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
                 }, withCancel: nil)
             }, withCancel: nil)
         }, withCancel: nil)
-    }
-    
-    //Fetch every item in the database without specific user id
-    func fetchMenu() {
-        
-        FIRDatabase.database().reference().child("menu").observe(.childAdded, with: { (snapshot) in
-         
-         //Add firebase
-         //store chef/menu info in "snapshot" and display snapshot
-         if let dictionary = snapshot.value as? [String: AnyObject] {
-         
-         let menu = Menu()
-         
-         self.foodMenu.append(menu)
-         
-         //This calls the entire database for menu input by a user
-         menu.food = dictionary["food"] as? String
-         menu.price = dictionary["price"] as? String
-         menu.foodImageUrl = dictionary["foodImageUrl"] as? String
-         
-         
-         //self.foodMenu.append(menu)
-         DispatchQueue.main.async {
-         self.collectionView?.reloadData()
-         }
-         
-         }
-         
-         }, withCancel: nil)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -202,21 +178,29 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
         
         //Display food image
         if let foodImageUrl = menu.foodImageUrl {
-            let url = URL(string: foodImageUrl)
-            cell.thumbnailImageView.sd_setImage(with: url)
+            cell.thumbnailImageView.sd_setImage(with: URL(string: foodImageUrl))
         } else {
             cell.thumbnailImageView.image = UIImage(named: "test_pizza")
         }
         
         //Display user profile image in menu cell on home page
         if let profileImageUrl = menu.profileImageUrl {
-            let url = URL(string: profileImageUrl)
-            cell.userProfileImage.sd_setImage(with: url)
+            cell.userProfileImage.sd_setImage(with: URL(string: profileImageUrl))
         } else {
             cell.userProfileImage.image = UIImage(named: "defaultImage")
         }
         
         return cell
+    }
+    
+    // var foodCellView: foodCellViewController?
+    
+    //BARBARA: HANDLE ALL click functions for Food Cells
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let menu = self.foodMenu[indexPath.row]
+        showClickedFoodCell(menu: menu)
+        
+        //print(menu.cuisine, menu.foodImageUrl, menu.food, menu.foodDescription, menu.price, menu.customerID)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -228,18 +212,9 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
         return 0
     }
     
-    //BARBARA: HANDLE ALL click functions for Food Cells
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Food Cell Tapped!! Yay")
-        //Change page linked to individual storyboard designed with display
-        //and viewController
-        displayFavorites() //temporary
-    }
-    
-    
     func displayProfilePage() {
         let storyboard = UIStoryboard(name: "ProfilePage", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "InitialController") as UIViewController
+        let controller = storyboard.instantiateViewController(withIdentifier: "InitialController") as! ProfileViewController
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -251,12 +226,28 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
     
     //BARBARA: Handle ALL menu clicks navigation
     //onClick Favorites icon, load fave view storyboard
-    func displayFavorites() {
-        let storyboard = UIStoryboard(name: "favoritesPage", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "FavoritesPage") as UIViewController
-        self.navigationController?.pushViewController(controller, animated: true)
-
+    
+    func displayAllFavorites() {
+    let storyboard = UIStoryboard(name: "favoritesPage", bundle: nil)
+    let controller = storyboard.instantiateViewController(withIdentifier: "FavoritesPage") as UIViewController
+    self.navigationController?.pushViewController(controller, animated: true)
     }
+    
+    func showClickedFoodCell(menu: Menu) {
+        let storyboard = UIStoryboard(name: "mainFoodCell", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "foodCell") as! foodCellViewController
+        controller.menu = menu
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+
+
+    //for menu bar
+    lazy var menuBar: MenuBar = {
+        let mb = MenuBar()
+        //handle navigation
+        mb.homeController = self
+        return mb
+    }()
     
     
 }//end of HomeAfterSignIn class

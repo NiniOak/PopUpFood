@@ -23,18 +23,11 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
         self.navigationItem.hidesBackButton = true
         //DEFAULT PAGE CODE
         navigationController?.navigationBar.isTranslucent = false
-        
-        //SET TITLE TEXT FOR NAVIGATION BAR
-        /*let titleLabel = UILabel(frame: CGRect(x:30, y:0, width:view.frame.width - 32, height:view.frame.height))
-        titleLabel.text = "Popup Food"
-        titleLabel.textColor = UIColor.black
-        titleLabel.font = UIFont.systemFont(ofSize: 21)
-        navigationItem.titleView = titleLabel*/
         logoForNavbar()
         
         collectionView?.backgroundColor = UIColor.white
         //Register cellID
-        collectionView?.register(VideoCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(foodCell.self, forCellWithReuseIdentifier: cellId)
         
         //SET UP NAV BAR BUTTONS
         setupNavBarButtons()
@@ -45,17 +38,17 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
     func logoForNavbar() {
         //Set up home button for profile page
         let button = UIButton.init(type: .custom)
-        button.setImage(UIImage.init(named: "logo2"), for: UIControlState.normal)
-        button.frame = CGRect.init(x: 0, y: 0, width: 120, height: 50)
+        button.setImage(UIImage.init(named: "logo2_new"), for: UIControlState.normal)
+        button.frame = CGRect.init(x: 0, y: 0, width: 120, height: 40)
         let barButton = UIBarButtonItem.init(customView: button)
         self.navigationItem.leftBarButtonItem = barButton
     }
     
     //SET UP NAV BAR FUNC
     func setupNavBarButtons() {
-        let searchImage = UIImage(named: "searchIcon")?.withRenderingMode(.alwaysOriginal)
+        let searchImage = UIImage(named: "search")?.withRenderingMode(.alwaysOriginal)
         let searchBarButtonItem = UIBarButtonItem(image: searchImage, style: .plain, target: self, action: #selector(handleSearch))
-        let profileIconBtn = UIBarButtonItem(image: UIImage(named: "profileIcon")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(showProfile))
+        let profileIconBtn = UIBarButtonItem(image: UIImage(named: "profile")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(showProfile))
         
         navigationItem.rightBarButtonItems = [profileIconBtn, searchBarButtonItem]
 
@@ -122,19 +115,27 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! VideoCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! foodCell
         
         let menu = foodMenu[indexPath.row]
         
         cell.titleLabel.text = menu.food
-        cell.subtitleLabelTextview.text = menu.price
+        cell.subtitleTextView.text = menu.price
         
-        //Display image
+        //Display food image
         if let foodImageUrl = menu.foodImageUrl {
             let url = URL(string: foodImageUrl)
             cell.thumbnailImageView.sd_setImage(with: url)
         } else {
             cell.thumbnailImageView.image = UIImage(named: "test_pizza")
+        }
+        
+        //Display user profile image in menu cell on home page
+        if let profileImageUrl = menu.profileImageUrl {
+            let url = URL(string: profileImageUrl)
+            cell.userProfileImage.sd_setImage(with: url)
+        } else {
+            cell.userProfileImage.image = UIImage(named: "defaultImage")
         }
         
         return cell
@@ -152,8 +153,6 @@ class defaultPageViewController: UICollectionViewController, UICollectionViewDel
     
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        self.navigationController?.isNavigationBarHidden = false
     }
     
     

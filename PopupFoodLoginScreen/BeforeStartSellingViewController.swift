@@ -20,9 +20,7 @@ class BeforeStartSellingViewController: UITableViewController {
     let cellId = "cell"
     
     override func viewDidLoad() {
-        //self.navigationItem.title = "Start Selling"
-        
-        //fetchMenu()
+
         fetchUserMenu()
     }
     
@@ -60,7 +58,7 @@ class BeforeStartSellingViewController: UITableViewController {
         }, withCancel: nil)
     }
 
-    //FETCH ALL MENU FROM DATABASE
+ /*   //FETCH ALL MENU FROM DATABASE
     func fetchMenu() {
 
         FIRDatabase.database().reference().child("menu").observe(.childAdded, with: { (snapshot) in
@@ -69,7 +67,6 @@ class BeforeStartSellingViewController: UITableViewController {
             if let dictionary = snapshot.value as? [String: AnyObject] {
                 
                 let menu = Menu()
-
                 
                 self.foodMenu.append(menu)
 
@@ -77,7 +74,6 @@ class BeforeStartSellingViewController: UITableViewController {
                 menu.food = dictionary["food"] as? String
                 menu.price = dictionary["price"] as? String
                 menu.foodImageUrl = dictionary["foodImageUrl"] as? String
-                
 
                 //self.foodMenu.append(menu)
                 DispatchQueue.main.async {
@@ -87,7 +83,7 @@ class BeforeStartSellingViewController: UITableViewController {
             }
 
         }, withCancel: nil)
-    }
+    }*/
     
     //Set up number of cells in Table view
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -103,11 +99,9 @@ class BeforeStartSellingViewController: UITableViewController {
         let menu = foodMenu[indexPath.row]
         cell.foodLabel.text = menu.food
         cell.foodPrice.text = menu.price
-        //cell.foodImage.image = UIImage(named: menu)
         
         if let foodImageUrl = menu.foodImageUrl {
-            let url = URL(string: foodImageUrl)
-            cell.foodImage.sd_setImage(with: url)
+            cell.foodImage.sd_setImage(with: URL(string: foodImageUrl))
         } else {
             cell.foodImage.image = UIImage(named: "test_pizza")
         }

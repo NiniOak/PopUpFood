@@ -30,9 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         //window?.rootViewController = UINavigationController(rootViewController: defaultPageViewController(collectionViewLayout: layout))
         
         //Modify Navigation Bar Colour
-        UINavigationBar.appearance().barTintColor = UIColor.rgb(red: 16, green: 186, blue: 225, alpha: 1 ) //Original blue
+        UINavigationBar.appearance().barTintColor = UIColor(white: 1, alpha: 1) //White Color
         
-        application.statusBarStyle = .lightContent
+        application.statusBarStyle = .default
         
         //Update Status Bar of Device
         let statusBarbackgroundColor = UIView()

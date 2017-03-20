@@ -52,15 +52,6 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignI
     fileprivate func setupFacebookButton() {
         let customFBButton = facebookButton
         customFBButton?.addTarget(self, action: #selector(handleCustomFBLogin), for: .touchUpInside)
-        //BARBARA: handle login to another screen
-        //hide login button if logged in already
-        //customFBButton?.isHidden = true
-    }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     //FACEBOOK CLICK FUNCTIONALITY
@@ -116,16 +107,13 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignI
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        FIRAuth.auth()?.addStateDidChangeListener{ auth, user in
-            if user != nil {
-                
-                self.displaydefaultPage()
-                
-            }
-            else{
-                //self.displaylandingPage()
-            }
-        }
+    }
+    
+    func displaySignInPage() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "signInPage") as! SignInViewController
+        controller.signUpController = self
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     func displaylandingPage() {
@@ -134,11 +122,4 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignI
         let controller = storyboard.instantiateViewController(withIdentifier: "testing") as UIViewController
         self.navigationController?.pushViewController(controller, animated: true)
     }
-    
-    func displaydefaultPage() {
-        let storyboard = UIStoryboard(name: "HomePage", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "newhomePage") as UIViewController
-        self.navigationController?.pushViewController(controller, animated: true)
-    }
-
 }

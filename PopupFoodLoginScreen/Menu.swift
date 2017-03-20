@@ -9,6 +9,7 @@
 import UIKit
 
 class Menu: NSObject {
+    var menuID: String?
     var customerID: String?
     var food: String?
     var cuisine: String?
@@ -16,5 +17,6 @@ class Menu: NSObject {
     var foodImageUrl: String?
     var foodDescription: String?
     var profileImageUrl: String?
+    var userName: String?
 
 }

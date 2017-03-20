@@ -13,16 +13,16 @@
         <scene sceneID="E7u-o2-thD">
             <objects>
                 <tableViewController storyboardIdentifier="FavoritesPage" id="COL-s6-g1i" customClass="FavoritesViewController" customModule="PopupFood" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZsG-sK-O1a">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZsG-sK-O1a">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="favorites" rowHeight="94" id="A85-P7-L78" customClass="DisplayMenuTableViewCell" customModule="PopupFood" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="94"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationLevel="1" indentationWidth="1" reuseIdentifier="favourites" rowHeight="95" id="A85-P7-L78" customClass="DisplayFavouritesTableViewCell" customModule="PopupFood" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="95"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="A85-P7-L78" id="aoG-Aa-5MI">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="93"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="94"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1g1-kR-qpJ">
@@ -45,6 +45,11 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="foodImage" destination="1g1-kR-qpJ" id="j6l-qk-6ca"/>
+                                    <outlet property="foodLabel" destination="1O0-R3-Y3Q" id="033-dV-eBt"/>
+                                    <outlet property="foodPrice" destination="uUP-ad-gEQ" id="mDt-au-lQq"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -55,7 +60,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jvN-lK-6oq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1201" y="76"/>
+            <point key="canvasLocation" x="1200.8" y="75.112443778110944"/>
         </scene>
     </scenes>
 </document>

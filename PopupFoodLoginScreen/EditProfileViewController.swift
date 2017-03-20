@@ -12,6 +12,9 @@ import FirebaseAuth
 import SDWebImage
 
 class EditProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    var profilePageController: ProfileViewController?
+    
     @IBOutlet weak var usernameText: UITextField!
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
@@ -36,15 +39,13 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     //Save Edited info button
     @IBAction func saveProfile(_ sender: Any) {
         updateProfile()
-        goToProfilePage()
+        profilePageController?.returnHomePage()
     }
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         databaseRef = FIRDatabase.database().reference()
         storageRef = FIRStorage.storage().reference()
-        //defaultProfileImage()
         loadProfileData()
     }
     
@@ -91,8 +92,9 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             //get access to user profile pic storage
             let storageItem = storageRef.child("profile_photo").child(userID)
             //get image from gallery
-            guard let image = updateProfileImage.image
-                else{return}
+            guard let image = updateProfileImage.image else{
+                    return
+            }
             if let newImage = UIImagePNGRepresentation(image){
                 //upload to Firebase storage
                 storageItem.put(newImage, metadata: nil, completion: { (metadata, error) in
@@ -106,16 +108,11 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                             return
                         }
                         if let ProfileImageURL = url?.absoluteString{
-                            guard let newName = self.usernameText.text else { return }
-                            guard let newEmail = self.emailText.text else { return }
-                            guard let newPassword = self.passwordText.text else { return }
-                            
+                            guard let newName = self.usernameText.text, let newEmail = self.emailText.text, let newPassword = self.passwordText.text else {
+                                return
+                            }
                             //save in new entry in object
-                            let newValuesForProfile =
-                                ["photo": ProfileImageURL,
-                                 "name": newName,
-                                 "email": newEmail,
-                                 "password": newPassword]
+                            let newValuesForProfile = ["photo": ProfileImageURL, "name": newName, "email": newEmail, "password": newPassword]
                             
                             //Update the Database
                             self.databaseRef.child("user").child(userID).updateChildValues(newValuesForProfile, withCompletionBlock: { (error, ref) in
@@ -123,37 +120,11 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                                     print(error!)
                                     return
                                 }
-                                self.dismiss(animated: true, completion: nil)
-                                print("Profile details successfully updated")
-                                
                             })
                         }
                     })
-                    
                 })
             }
         }
     }
-    //set user default image in edit profile page
-    func defaultProfileImage() {
-        let uid = FIRAuth.auth()?.currentUser?.uid
-        FIRDatabase.database().reference().child("user").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            if let dictionary = snapshot.value as? [String: AnyObject] {
-                
-                if let profileImage = dictionary["image"] as? UIImage {
-                    self.updateProfileImage.image = profileImage
-                } else {
-                    self.updateProfileImage.image = UIImage (named: "defaultImage")
-                }
-            }
-        }, withCancel: nil)
-    }
-    
-    func goToProfilePage() {
-        let storyboard = UIStoryboard(name: "ProfilePage", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "InitialController") as UIViewController
-        self.navigationController?.pushViewController(controller, animated: true)
-    }
-
 }
