@@ -20,7 +20,7 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     }()
     
     let cellId = "cellId"
-    let imageNames = ["Home", "favorites", "message", "profile"]
+    let imageNames = ["home", "favorites", "message", "profile"]
     
     //instantiate class to call navigation button
     var homeController: HomeAfterSignIn?
@@ -100,12 +100,9 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
             print("selected item is:", indexPath.row)
             
             homeController?.displayAllFavorites()
-       
         } else if (indexPath.row == 3) {
             homeController?.showProfile()
-            
         } else{
-            
             print("Other selected")
         }
     }

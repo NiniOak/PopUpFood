@@ -14,7 +14,6 @@ class FavoritesViewController: UITableViewController {
     
     var foodMenu = [Menu]()
     //Instantiate menu class
-    var menu : Menu?
     
     let cellId = "favourites"
     
@@ -34,11 +33,13 @@ class FavoritesViewController: UITableViewController {
         guard let uid = FIRAuth.auth()?.currentUser?.uid else {
             return
         }
+     
         //Get user table, then userID, in user ID, get the favourites
         let ref = FIRDatabase.database().reference().child("user-favourites").child(uid)
         ref.observe(.childAdded, with: { (snapshot) in
             //Get menuID within favourites
             let menuID = snapshot.key
+            
             let menuReference = FIRDatabase.database().reference().child("menu").child(menuID)
             
             menuReference.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -49,11 +50,18 @@ class FavoritesViewController: UITableViewController {
                     let menu = Menu()
                     
                     self.foodMenu.append(menu)
-                    
+    
                     //This calls the entire database for menu input by a user
                     menu.food = dictionary["food"] as? String
                     menu.price = dictionary["price"] as? String
                     menu.foodImageUrl = dictionary["foodImageUrl"] as? String
+                    
+                    menu.cuisine = dictionary["cuisine"] as? String
+                    menu.foodDescription = dictionary["foodDescription"] as? String
+                    menu.customerID = uid
+                    menu.menuID = menuID
+                   // menu.userName = userName
+
                     
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
@@ -73,7 +81,7 @@ class FavoritesViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! DisplayFavouritesTableViewCell
-        
+
         let menu = foodMenu[indexPath.row]
         cell.foodLabel.text = menu.food
         cell.foodPrice.text = menu.price
@@ -82,7 +90,20 @@ class FavoritesViewController: UITableViewController {
             cell.foodImage.sd_setImage(with: URL(string: foodImageUrl))
         } else {
             cell.foodImage.image = UIImage(named: "test_pizza")
-        }
+        } 
         return (cell)
+    }
+    //Select each row to display menu details
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let menu = self.foodMenu[indexPath.row]
+        showClickedFaveCell(menu: menu)
+        print("Favourites row clicked")
+    }
+    
+    func showClickedFaveCell(menu: Menu) {
+        let storyboard = UIStoryboard(name: "mainFoodCell", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "foodCell") as! foodCellViewController
+        controller.menu = menu
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 }
