@@ -104,8 +104,9 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         } else if (indexPath.row == 3) {
             homeController?.showProfile()
             
-        } else{
-            
+        } else if (indexPath.row == 2) {
+            homeController?.displayMessagesPage()
+        
             print("Other selected")
         }
     }

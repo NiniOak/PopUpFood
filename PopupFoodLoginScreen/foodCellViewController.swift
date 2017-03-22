@@ -40,7 +40,6 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
         
         //Display message button image
         messageBtn()
-       // favouriteBtnClicked()
         //Check if fave is in DB
         checkIfFavouriteExists()
 
@@ -103,7 +102,7 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
     }
 
     @IBAction func messageBtn(_ sender: Any) {
-        displaySendMessagePage()
+        displaySendMessagePage(menu: menu!)
     }
     
     @IBAction func favouriteBtn(_ sender: UIButton) {
@@ -128,7 +127,7 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
         
     }
     
-    func displaySendMessagePage() {
+    func displaySendMessagePage(menu: Menu) {
         let storyboard = UIStoryboard(name: "Messages", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "sendChefMessage") as! sendMessageCollectionController
         controller.menu = menu

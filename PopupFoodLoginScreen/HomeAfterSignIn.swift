@@ -108,6 +108,7 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
         let ref = FIRDatabase.database().reference().child("user")
         ref.observe(.childAdded, with: { (snapshot) in
             
+            
             let userID = snapshot.key
             var profileImageUrl: String? = ""
             var userName: String? = ""
@@ -192,8 +193,6 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let menu = self.foodMenu[indexPath.row]
         showClickedFoodCell(menu: menu)
-        
-        //print(menu.cuisine, menu.foodImageUrl, menu.food, menu.foodDescription, menu.price, menu.customerID)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -224,6 +223,12 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
     let storyboard = UIStoryboard(name: "favoritesPage", bundle: nil)
     let controller = storyboard.instantiateViewController(withIdentifier: "FavoritesPage") as UIViewController
     self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func displayMessagesPage() {
+        let storyboard = UIStoryboard(name: "Messages", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "MessagesDisplayPage") as! messageLogViewController
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     func showClickedFoodCell(menu: Menu) {
