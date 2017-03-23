@@ -142,7 +142,7 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
         //Get user table, then userID, in user ID, get the favourites
         let ref = FIRDatabase.database().reference().child("user-favourites").child(uid)
         ref.observe(.value, with: { (snapshot) in
-            //Get menuID within favourites
+            //Get menuID within favourites≥
             let menuID = snapshot.key
             let menuReference = FIRDatabase.database().reference().child("menu").child(menuID)
             

@@ -32,7 +32,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        passwordTextField.delegate = self
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,7 +48,6 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     //Implementation for Sign In Button
     
     @IBAction func signInBtn(_ sender: UIButton) {
-
     handleSignIn()
     }
     

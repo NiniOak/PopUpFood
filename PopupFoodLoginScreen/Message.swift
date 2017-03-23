@@ -15,6 +15,7 @@ class Message: NSObject {
     var toId: String?
     var text: String?
     var timestamp: NSNumber?
+    var menuId: String?
     
     func chatPartnerId() -> String? {
         return fromId == FIRAuth.auth()?.currentUser?.uid ? toId : fromId

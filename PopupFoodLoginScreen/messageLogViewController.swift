@@ -13,7 +13,8 @@ class messageLogViewController: UITableViewController {
     
     let cellId = "cell"
     
-    var foodMenu = [Menu]()
+//    var foodMenu = [Menu]()
+    var message = [Message]()
     var messagesDictionary = [String: Menu]()
     
     override func viewDidLoad() {
@@ -25,28 +26,15 @@ class messageLogViewController: UITableViewController {
     }
     
     func observeMenuMessages() {
-        var foodImage: String? = ""
-        var foodName: String? = ""
-        var foodPrice: String? = ""
         
         guard let uid = FIRAuth.auth()?.currentUser?.uid else {
             return
         }
         
-        let mainMenuRef = FIRDatabase.database().reference().child("menu")
+        let mainMenuRef = FIRDatabase.database().reference().child("user-messages").child(uid)
         mainMenuRef.observe(.childAdded, with: { (snapshot) in
             
-            let menuID = snapshot.key
-            if let dictionary = snapshot.value as? [String: AnyObject] {
-                foodImage = dictionary["foodImageUrl"] as? String
-                foodName = dictionary["food"] as? String
-                foodPrice = dictionary["price"] as? String
-            }
-
-            let menuRef = FIRDatabase.database().reference().child("menu").child(menuID).child("messages").child(uid)
-            menuRef.observe(.childAdded, with: { (snapshot) in
-                let messageID = snapshot.key
-                print(snapshot)
+            let messageID = snapshot.key
                     
             let messageReference = FIRDatabase.database().reference().child("messages").child(messageID)
             messageReference.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -54,57 +42,67 @@ class messageLogViewController: UITableViewController {
                 //store chef/menu info in "snapshot" and display snapshot
                 if let dictionary = snapshot.value as? [String: AnyObject] {
                     
-                    let menu = Menu()
+                    let message = Message()
                     
-                    self.foodMenu.append(menu)
+                    self.message.append(message)
                     
                     //This calls the entire database for menu input by a user
-                    menu.food = foodName
-                    menu.price = foodPrice
-                    menu.foodImageUrl = foodImage
-                    menu.text = dictionary["text"] as? String
+                    message.text = dictionary["text"] as? String
+                    message.toId = dictionary["toId"] as? String
+                    message.fromId = dictionary["fromId"] as? String
+                    message.menuId = dictionary["menuId"] as? String
+                    message.timestamp = dictionary["timestamp"] as? NSNumber
                     
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                         }
                     }
-                print(snapshot)
-                }, withCancel: nil)
             }, withCancel: nil)
         }, withCancel: nil)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return foodMenu.count
+        return message.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! DisplayMessagesCell
+       
+        //where "newMessage" stores all values in indexPath.row
+        let newMessage = message[indexPath.row]
         
-        let menu = foodMenu[indexPath.row]
-        cell.foodName.text = menu.food
-        cell.foodPrice.text = menu.price
-        cell.messageLabel.text = menu.text
-        if let foodImageUrl = menu.foodImageUrl {
-            cell.foodImage.sd_setImage(with: URL(string: foodImageUrl))
-        } else {
-            cell.foodImage.image = UIImage(named: "test_pizza")
+        cell.messageLabel.text = newMessage.text
+        
+        //The value of each food item is gotten from this code snippet
+        //"foodName" is where data for all menu items is
+        if let foodName = newMessage.menuId {
+            let menuReference = FIRDatabase.database().reference().child("menu").child(foodName)
+            menuReference.observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                if let dictionary = snapshot.value as? [String: AnyObject] {
+                    cell.foodName.text = dictionary["food"] as? String
+                    cell.foodPrice.text = dictionary["price"] as? String
+                    if let foodImage = dictionary["foodImageUrl"] as? String {
+                        cell.foodImage.sd_setImage(with: URL(string: foodImage))
+                    }
+                }
+            }, withCancel: nil)
         }
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let menu = foodMenu[indexPath.row]
-        displaySendMessagePage(menu: menu)
+        let selectedMessage = message[indexPath.row]
+        displaySendMessagePage(message: selectedMessage)
         
     }
     
-    func displaySendMessagePage(menu: Menu) {
+    func displaySendMessagePage(message: Message) {
         let storyboard = UIStoryboard(name: "Messages", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "sendChefMessage") as! sendMessageCollectionController
-        controller.menu = menu
+        controller.messages = message
         self.navigationController?.pushViewController(controller, animated: true)
     }
 

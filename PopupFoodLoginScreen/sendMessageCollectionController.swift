@@ -18,7 +18,6 @@ class sendMessageCollectionController: UICollectionViewController, UICollectionV
     
     var menu: Menu? {
         didSet{
-            
             navigationItem.title = menu?.food
             retrieveMessagesFromDatabase()
         }
@@ -104,7 +103,7 @@ class sendMessageCollectionController: UICollectionViewController, UICollectionV
         let toId = chefId
         let fromId = uid
         let timeStamp: NSNumber = NSNumber(value: Int(NSDate().timeIntervalSince1970))
-        let values = ["text": sendMesageTextField, "toId": toId, "fromId": fromId, "timestamp": timeStamp] as [String : Any]
+        let values = ["text": sendMesageTextField, "toId": toId, "fromId": fromId, "timestamp": timeStamp, "menuId": menuID] as [String : Any]
         
         //Update dB with content entered in values field above
         childRef.updateChildValues(values) { (error, ref) in
@@ -117,17 +116,17 @@ class sendMessageCollectionController: UICollectionViewController, UICollectionV
         //Created a user messages table with
         let messageId = childRef.key
         
-        let userMessagesRef = FIRDatabase.database().reference().child("menu").child(menuID).child("messages").child(fromId)
+//        let menuMessagesRef = FIRDatabase.database().reference().child("menu").child(menuID).child("messages").child(fromId)
+//        menuMessagesRef.updateChildValues([messageId: 1])
+//        
+//        let menuReceipentMessagesRef = FIRDatabase.database().reference().child("menu").child(menuID).child("messages").child(toId)
+//        menuReceipentMessagesRef.updateChildValues([messageId: 1])
+        
+        let userMessagesRef = FIRDatabase.database().reference().child("user-messages").child(fromId)
         userMessagesRef.updateChildValues([messageId: 1])
         
-        let receipentMessagesRef = FIRDatabase.database().reference().child("menu").child(menuID).child("messages").child(toId)
-        receipentMessagesRef.updateChildValues([messageId: 1])
-        
-//        let userMessagesRef = FIRDatabase.database().reference().child("user-messages").child(fromId).child(menuID)
-//        userMessagesRef.updateChildValues([messageId: 1])
-//        
-//        let receipentMessagesRef = FIRDatabase.database().reference().child("user-messages").child(toId).child(menuID)
-//        receipentMessagesRef.updateChildValues([messageId:1])
+        let receipentMessagesRef = FIRDatabase.database().reference().child("user-messages").child(toId)
+        receipentMessagesRef.updateChildValues([messageId:1])
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
