@@ -60,7 +60,7 @@ class sendMessageCollectionController: UICollectionViewController, UICollectionV
             let ref = FIRDatabase.database().reference().child("messages").child(messageId)
             ref.observeSingleEvent(of: .value, with: { (snapshot) in
                 
-                print(snapshot)
+                //print(snapshot)
                 
 //                guard let dictionary = snapshot.value as? [String: AnyObject] else {
 //                return
@@ -116,15 +116,18 @@ class sendMessageCollectionController: UICollectionViewController, UICollectionV
         
         //Created a user messages table with
         let messageId = childRef.key
-        let userMessageChild = FIRDatabase.database().reference().child("user").child(uid).child("messages").child(menuID)
-        userMessageChild.updateChildValues([messageId: 1])
         
-        let userMessagesRef = FIRDatabase.database().reference().child("user-messages").child(fromId)
-        
+        let userMessagesRef = FIRDatabase.database().reference().child("menu").child(menuID).child("messages").child(fromId)
         userMessagesRef.updateChildValues([messageId: 1])
         
-        let receipentMessagesRef = FIRDatabase.database().reference().child("user-messages").child(toId)
-        receipentMessagesRef.updateChildValues([messageId:1])
+        let receipentMessagesRef = FIRDatabase.database().reference().child("menu").child(menuID).child("messages").child(toId)
+        receipentMessagesRef.updateChildValues([messageId: 1])
+        
+//        let userMessagesRef = FIRDatabase.database().reference().child("user-messages").child(fromId).child(menuID)
+//        userMessagesRef.updateChildValues([messageId: 1])
+//        
+//        let receipentMessagesRef = FIRDatabase.database().reference().child("user-messages").child(toId).child(menuID)
+//        receipentMessagesRef.updateChildValues([messageId:1])
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

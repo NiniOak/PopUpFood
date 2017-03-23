@@ -121,7 +121,6 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
             
             //Refer to sub menu after identifying all child keys. User table -> Child key for every table -> All User data
             let UserMenuReference = FIRDatabase.database().reference().child("user").child(userID).child("menu")
-            
             UserMenuReference.observe(.childAdded, with: { (snapshot) in
                 let menuID = snapshot.key
             

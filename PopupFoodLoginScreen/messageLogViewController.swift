@@ -16,11 +16,6 @@ class messageLogViewController: UITableViewController {
     var foodMenu = [Menu]()
     var messagesDictionary = [String: Menu]()
     
-    var menu: Menu? {
-        didSet{
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,32 +25,31 @@ class messageLogViewController: UITableViewController {
     }
     
     func observeMenuMessages() {
-        var messageText: String? = ""
+        var foodImage: String? = ""
+        var foodName: String? = ""
+        var foodPrice: String? = ""
         
         guard let uid = FIRAuth.auth()?.currentUser?.uid else {
             return
         }
-//        let ref = FIRDatabase.database().reference().child("user").child(uid).child("messages")
-//        ref.observe(.childAdded, with: { (snapshot) in
-//            let menuID = snapshot.key
         
-        let ref = FIRDatabase.database().reference().child("user").child(uid).child("messages")
-        ref.observe(.childAdded, with: { (snapshot) in
-            let menuID = snapshot.key
+        let mainMenuRef = FIRDatabase.database().reference().child("menu")
+        mainMenuRef.observe(.childAdded, with: { (snapshot) in
             
-            let menuRef = FIRDatabase.database().reference().child("user").child(uid).child("messages").child(menuID)
+            let menuID = snapshot.key
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+                foodImage = dictionary["foodImageUrl"] as? String
+                foodName = dictionary["food"] as? String
+                foodPrice = dictionary["price"] as? String
+            }
+
+            let menuRef = FIRDatabase.database().reference().child("menu").child(menuID).child("messages").child(uid)
             menuRef.observe(.childAdded, with: { (snapshot) in
                 let messageID = snapshot.key
-                
-                let messageRef = FIRDatabase.database().reference().child("messages").child(messageID)
-                messageRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                print(snapshot)
                     
-                    if let dictionary = snapshot.value as? [String: AnyObject] {
-                        messageText = dictionary["text"] as? String
-                    }
-                    
-            let menuReference = FIRDatabase.database().reference().child("menu").child(menuID)
-            menuReference.observeSingleEvent(of: .value, with: { (snapshot) in
+            let messageReference = FIRDatabase.database().reference().child("messages").child(messageID)
+            messageReference.observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 //store chef/menu info in "snapshot" and display snapshot
                 if let dictionary = snapshot.value as? [String: AnyObject] {
@@ -65,17 +59,16 @@ class messageLogViewController: UITableViewController {
                     self.foodMenu.append(menu)
                     
                     //This calls the entire database for menu input by a user
-                    menu.food = dictionary["food"] as? String
-                    menu.price = dictionary["price"] as? String
-                    menu.foodImageUrl = dictionary["foodImageUrl"] as? String
-                    menu.text = messageText
+                    menu.food = foodName
+                    menu.price = foodPrice
+                    menu.foodImageUrl = foodImage
+                    menu.text = dictionary["text"] as? String
                     
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
-                    }
                         }
-//                      }, withCancel: nil)
-                    }, withCancel: nil)
+                    }
+                print(snapshot)
                 }, withCancel: nil)
             }, withCancel: nil)
         }, withCancel: nil)

@@ -13,7 +13,7 @@ import FBSDKLoginKit //Import Facebook SignIn Kit
 import GoogleSignIn //Import GoogleSignIn kit
 
 //SIGN IN PAGE WITH FACEBOOK AND GOOGLE BUTTONS
-class SignInViewController: UIViewController {
+class SignInViewController: UIViewController, UITextFieldDelegate {
     
     var signUpController: SignUpViewController?
 
@@ -32,6 +32,7 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        passwordTextField.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,6 +69,11 @@ class SignInViewController: UIViewController {
             }
         })
     
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        handleSignIn()
+        return true
     }
     
     func returnHomePage() {
