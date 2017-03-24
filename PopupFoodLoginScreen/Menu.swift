@@ -18,8 +18,4 @@ class Menu: NSObject {
     var foodDescription: String?
     var profileImageUrl: String?
     var userName: String?
-    var fromId: String?
-    var toId: String?
-    var text: String?
-    var timestamp: NSNumber?
 }

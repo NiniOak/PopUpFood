@@ -117,38 +117,66 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="94"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yvc-cV-4r2">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Yvc-cV-4r2">
                                             <rect key="frame" x="8" y="10" width="102" height="73"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qqg-O6-vd3">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qqg-O6-vd3">
                                             <rect key="frame" x="126" y="36" width="96" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="96" id="wFc-lb-IoE"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="1" green="0.26870452319999999" blue="0.19519543719999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Shaffar's Pepproni" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eg2-PZ-PRd">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shaffar's Pepproni" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eg2-PZ-PRd">
                                             <rect key="frame" x="126" y="10" width="241" height="20"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last message sent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pr-sL-ADF">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last message sent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pr-sL-ADF">
                                             <rect key="frame" x="126" y="63" width="241" height="20"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.52060199873096447" green="0.52060199873096447" blue="0.52060199873096447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HH:MM:SS" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMq-ie-har">
+                                            <rect key="frame" x="285" y="36" width="82" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="82" id="fdg-b5-uqh"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <color key="textColor" red="0.52060199870000001" green="0.52060199870000001" blue="0.52060199870000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="yMq-ie-har" firstAttribute="trailing" secondItem="2pr-sL-ADF" secondAttribute="trailing" id="00x-Vk-jxl"/>
+                                        <constraint firstItem="eg2-PZ-PRd" firstAttribute="trailing" secondItem="HeK-bC-ow7" secondAttribute="trailingMargin" id="3aH-GH-1Iq"/>
+                                        <constraint firstItem="qqg-O6-vd3" firstAttribute="top" secondItem="yMq-ie-har" secondAttribute="top" id="9Ev-j0-FK6"/>
+                                        <constraint firstItem="qqg-O6-vd3" firstAttribute="leading" secondItem="2pr-sL-ADF" secondAttribute="leading" id="BW6-Gm-XG9"/>
+                                        <constraint firstItem="eg2-PZ-PRd" firstAttribute="leading" secondItem="qqg-O6-vd3" secondAttribute="leading" id="BgR-Mc-hlS"/>
+                                        <constraint firstItem="Yvc-cV-4r2" firstAttribute="centerY" secondItem="qqg-O6-vd3" secondAttribute="centerY" id="QYG-SF-fYo"/>
+                                        <constraint firstItem="Yvc-cV-4r2" firstAttribute="top" secondItem="eg2-PZ-PRd" secondAttribute="top" id="RRU-H1-Arf"/>
+                                        <constraint firstItem="yMq-ie-har" firstAttribute="leading" secondItem="qqg-O6-vd3" secondAttribute="trailing" constant="63" id="Uvl-cX-tQm"/>
+                                        <constraint firstItem="Yvc-cV-4r2" firstAttribute="bottom" secondItem="2pr-sL-ADF" secondAttribute="bottom" id="VAU-fh-f0o"/>
+                                        <constraint firstItem="Yvc-cV-4r2" firstAttribute="leading" secondItem="HeK-bC-ow7" secondAttribute="leadingMargin" id="VDa-wU-G0m"/>
+                                        <constraint firstItem="eg2-PZ-PRd" firstAttribute="top" secondItem="HeK-bC-ow7" secondAttribute="topMargin" constant="2" id="byw-oz-5Qd"/>
+                                        <constraint firstItem="2pr-sL-ADF" firstAttribute="top" secondItem="qqg-O6-vd3" secondAttribute="bottom" constant="6" id="ckK-A1-CsA"/>
+                                        <constraint firstItem="qqg-O6-vd3" firstAttribute="centerY" secondItem="yMq-ie-har" secondAttribute="centerY" id="due-Sd-xTX"/>
+                                        <constraint firstItem="eg2-PZ-PRd" firstAttribute="trailing" secondItem="yMq-ie-har" secondAttribute="trailing" id="eUp-st-ilO"/>
+                                        <constraint firstItem="qqg-O6-vd3" firstAttribute="top" secondItem="eg2-PZ-PRd" secondAttribute="bottom" constant="6" id="g31-BI-zeN"/>
+                                        <constraint firstItem="Yvc-cV-4r2" firstAttribute="centerY" secondItem="HeK-bC-ow7" secondAttribute="centerY" id="vSZ-fw-goc"/>
+                                        <constraint firstItem="eg2-PZ-PRd" firstAttribute="leading" secondItem="Yvc-cV-4r2" secondAttribute="trailing" constant="16" id="xU2-x1-WV2"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="foodImage" destination="Yvc-cV-4r2" id="9aT-gk-uDE"/>
                                     <outlet property="foodName" destination="eg2-PZ-PRd" id="dOI-41-QeZ"/>
                                     <outlet property="foodPrice" destination="qqg-O6-vd3" id="oOX-rb-FRV"/>
                                     <outlet property="messageLabel" destination="2pr-sL-ADF" id="zha-uW-l23"/>
+                                    <outlet property="timeLabel" destination="yMq-ie-har" id="q0v-gX-8dy"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -160,7 +188,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xPk-h5-TMS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1327" y="-328"/>
+            <point key="canvasLocation" x="1325.5999999999999" y="-328.78560719640183"/>
         </scene>
     </scenes>
 </document>

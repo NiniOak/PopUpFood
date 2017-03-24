@@ -116,12 +116,6 @@ class sendMessageCollectionController: UICollectionViewController, UICollectionV
         //Created a user messages table with
         let messageId = childRef.key
         
-//        let menuMessagesRef = FIRDatabase.database().reference().child("menu").child(menuID).child("messages").child(fromId)
-//        menuMessagesRef.updateChildValues([messageId: 1])
-//        
-//        let menuReceipentMessagesRef = FIRDatabase.database().reference().child("menu").child(menuID).child("messages").child(toId)
-//        menuReceipentMessagesRef.updateChildValues([messageId: 1])
-        
         let userMessagesRef = FIRDatabase.database().reference().child("user-messages").child(fromId)
         userMessagesRef.updateChildValues([messageId: 1])
         

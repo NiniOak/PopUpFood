@@ -13,9 +13,8 @@ class messageLogViewController: UITableViewController {
     
     let cellId = "cell"
     
-//    var foodMenu = [Menu]()
     var message = [Message]()
-    var messagesDictionary = [String: Menu]()
+    var messagesDictionary = [String: Message]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +24,7 @@ class messageLogViewController: UITableViewController {
         observeMenuMessages()
     }
     
+   // This method stores and displays all values in Messages Node in Firebase
     func observeMenuMessages() {
         
         guard let uid = FIRAuth.auth()?.currentUser?.uid else {
@@ -44,14 +44,25 @@ class messageLogViewController: UITableViewController {
                     
                     let message = Message()
                     
-                    self.message.append(message)
-                    
                     //This calls the entire database for menu input by a user
                     message.text = dictionary["text"] as? String
                     message.toId = dictionary["toId"] as? String
                     message.fromId = dictionary["fromId"] as? String
                     message.menuId = dictionary["menuId"] as? String
                     message.timestamp = dictionary["timestamp"] as? NSNumber
+                    
+ //                   self.message.append(message)
+                    
+                    if let menuID = message.menuId {
+                        self.messagesDictionary[menuID] = message
+                        
+                        self.message = Array(self.messagesDictionary.values)
+                        
+                        //Sort each message into place by order of appearance in time value
+                        self.message.sort(by: { (message1, message2) -> Bool in
+                            return (message1.timestamp?.intValue)! > (message2.timestamp?.intValue)!
+                        })
+                    }
                     
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
@@ -69,27 +80,10 @@ class messageLogViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! DisplayMessagesCell
-       
-        //where "newMessage" stores all values in indexPath.row
         let newMessage = message[indexPath.row]
-        
-        cell.messageLabel.text = newMessage.text
-        
-        //The value of each food item is gotten from this code snippet
-        //"foodName" is where data for all menu items is
-        if let foodName = newMessage.menuId {
-            let menuReference = FIRDatabase.database().reference().child("menu").child(foodName)
-            menuReference.observeSingleEvent(of: .value, with: { (snapshot) in
-                
-                if let dictionary = snapshot.value as? [String: AnyObject] {
-                    cell.foodName.text = dictionary["food"] as? String
-                    cell.foodPrice.text = dictionary["price"] as? String
-                    if let foodImage = dictionary["foodImageUrl"] as? String {
-                        cell.foodImage.sd_setImage(with: URL(string: foodImage))
-                    }
-                }
-            }, withCancel: nil)
-        }
+        //Go to "DisplayMessageCell" in Views to find controlling method
+        cell.message = newMessage
+            
         return cell
     }
     
