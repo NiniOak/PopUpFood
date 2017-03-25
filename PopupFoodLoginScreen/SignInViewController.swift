@@ -16,7 +16,7 @@ import GoogleSignIn //Import GoogleSignIn kit
 class SignInViewController: UIViewController {
     
     var signUpController: SignUpViewController?
-
+    
     //Field Declaration
     
     @IBOutlet weak var emailTextField: UITextField!
@@ -40,23 +40,46 @@ class SignInViewController: UIViewController {
         FIRAuth.auth()?.addStateDidChangeListener{ auth, user in
             
             if user != nil {
-            self.returnHomePage()
+                self.returnHomePage()
             }
         }
     }
+    //guard let uid = FIRAuth.auth()?.currentUser?.uid
+    
+    //      print(12345)
+    
+    //else {
+    //  print("dklhvdlvhbdj")
+    //self.returnHomePage()
+    //return
+    //}
+    
+    
+    //If user is signed in, display homepage
+    //FIRAuth.auth()?.addStateDidChangeListener{ auth, user in
+    
+    //    if user != nil {
+    //    self.returnHomePage()
+    //    }
+    //}
+    
+    
+    //}
     
     //Implementation for Sign In Button
     
     @IBAction func signInBtn(_ sender: UIButton) {
-
-    handleSignIn()
+        
+        handleSignIn()
     }
     
     func handleSignIn() {
-        guard let email = emailTextField.text, let password = passwordTextField.text else {
-            print ("Incorrect details entered")
-            return
+        guard let email = emailTextField.text, let password = passwordTextField.text
+            else {
+                print ("Incorrect details entered")
+                return
         }
+        //isUserAuthenticated()
         
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
             
@@ -64,12 +87,27 @@ class SignInViewController: UIViewController {
                 print(error as Any)
                 return
             }
+                
             else{
-//                print("User Logged In")
+                print("User Logged In")
             }
         })
-    
+        
     }
+    
+    
+    
+    //Olek method, try to check if user is authenticated before sign in process!
+    func isUserAuthenticated(){
+        
+        guard (FIRAuth.auth()?.currentUser?.uid) != nil else {
+            return
+        }
+        
+    }//end of isUserAuthenticated
+    
+    
+    
     
     func returnHomePage() {
         let storyboard = UIStoryboard(name: "HomePage", bundle: nil)
@@ -77,12 +115,12 @@ class SignInViewController: UIViewController {
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
-//    func displayLandingPage() {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let controller = storyboard.instantiateViewController(withIdentifier: "landingVC") as UIViewController
-//        self.navigationController?.pushViewController(controller, animated: true)
-//    }
-
+    //    func displayLandingPage() {
+    //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    //        let controller = storyboard.instantiateViewController(withIdentifier: "landingVC") as UIViewController
+    //        self.navigationController?.pushViewController(controller, animated: true)
+    //    }
+    
     @IBAction func backToLandingPage(_ sender: Any) {
         //displayLandingPage()
     }
