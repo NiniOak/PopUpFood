@@ -28,10 +28,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         
         let selectImage = UIImagePickerController()
         selectImage.delegate = self
-        
         selectImage.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        
-        //selectImage.allowsEditing = false
         self.present(selectImage, animated: true)
 
     }
@@ -75,7 +72,6 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                 }else {
                     self.updateProfileImage.image = UIImage (named: "defaultImage")
                 }
-                //self.updateProfileImage.image = values?["photo"]as? UIImage
                 ///////////////////
                 self.usernameText.text = values?["name"] as? String
                 self.emailText.text = values?["email"] as? String

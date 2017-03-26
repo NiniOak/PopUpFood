@@ -23,6 +23,9 @@ class SignInViewController: UIViewController {
     
     @IBOutlet weak var passwordTextField: UITextField!
     
+    func showNavBar() {
+        navigationItem.title = "Sign In"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
