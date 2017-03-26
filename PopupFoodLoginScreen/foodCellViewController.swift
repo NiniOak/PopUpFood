@@ -13,15 +13,12 @@ import FirebaseAuth
 class foodCellViewController: UIViewController, UINavigationControllerDelegate {
 
     @IBOutlet weak var messageButton: UIButton? = nil
-    //@IBOutlet weak var messageButton: UIImageView!
     @IBOutlet weak var favouriteButton: UIButton? = nil
-    //@IBOutlet weak var favouriteButton: UIImageView!
     @IBOutlet weak var foodImage: UIImageView!
     @IBOutlet weak var foodLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var cuisineLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    //@IBOutlet weak var chefUsername: UILabel!
     @IBOutlet weak var chefUsername: UILabel!
     
     //Store Menu in an array
@@ -30,7 +27,6 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
     var menu: Menu? {
         didSet{
             navigationItem.title = menu?.food
-
             displayFoodItems()
         }
     }

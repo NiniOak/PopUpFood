@@ -450,6 +450,7 @@
 				TargetAttributes = {
 					8A0B7A651E3BC48D00C53258 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = UF6K25HJNN;
 						ProvisioningStyle = Automatic;
 					};
 					8A0B7A791E3BC48F00C53258 = {
@@ -842,7 +843,10 @@
 			baseConfigurationReference = F87C6520DE8BA640551DC021 /* Pods-PopupFood.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = UF6K25HJNN;
 				INFOPLIST_FILE = PopupFoodLoginScreen/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Conestoga.PopupFood;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -855,7 +859,10 @@
 			baseConfigurationReference = AFAD723B735CF4836EB8A125 /* Pods-PopupFood.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = UF6K25HJNN;
 				INFOPLIST_FILE = PopupFoodLoginScreen/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Conestoga.PopupFood;
 				PRODUCT_NAME = "$(TARGET_NAME)";

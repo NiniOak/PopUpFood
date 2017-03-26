@@ -96,18 +96,13 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {self.layoutIfNeeded()}, completion: nil)
         
         if (indexPath.row == 1) {
-            //menuController?.displayFavorites()
-            print("selected item is:", indexPath.row)
-            
             homeController?.displayAllFavorites()
-       
-        } else if (indexPath.row == 3) {
-            homeController?.showProfile()
             
         } else if (indexPath.row == 2) {
             homeController?.displayMessagesPage()
-        
-            print("Other selected")
+       
+        } else if (indexPath.row == 3) {
+            homeController?.showProfile()
         }
     }
     
