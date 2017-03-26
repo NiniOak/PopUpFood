@@ -91,7 +91,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="xButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GWY-8Y-sPY">
-                                <rect key="frame" x="16" y="72" width="33" height="34"/>
+                                <rect key="frame" x="16" y="28" width="33" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="9AL-sD-Z9S"/>
                                     <constraint firstAttribute="width" constant="33" id="knA-pT-xWe"/>
@@ -102,7 +102,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_new" translatesAutoresizingMaskIntoConstraints="NO" id="jRp-NN-FNW">
-                                <rect key="frame" x="95" y="160" width="189" height="110"/>
+                                <rect key="frame" x="95" y="116" width="189" height="154"/>
                                 <color key="backgroundColor" red="0.97156583019999998" green="0.97156583019999998" blue="0.97156583019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                         </subviews>
@@ -555,6 +555,9 @@
                                         <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="googleBtn:" destination="vsh-hO-AAH" eventType="touchUpInside" id="Ngn-KU-xOa"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pTK-WU-l7O">
                                 <rect key="frame" x="16" y="543" width="159" height="39"/>
@@ -579,6 +582,9 @@
                                         <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="facebookBtn:" destination="vsh-hO-AAH" eventType="touchUpInside" id="Aka-72-nWl"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RRt-Nr-Ohr">
                                 <rect key="frame" x="63" y="429" width="249" height="40"/>
@@ -718,8 +724,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="emailTextField" destination="4xQ-Gx-eiA" id="dvU-02-kDx"/>
-                        <outlet property="facebookBtn" destination="pTK-WU-l7O" id="Rn1-Sa-GV4"/>
-                        <outlet property="googleBtn" destination="FYS-6y-6b3" id="k7e-o5-Bdh"/>
                         <outlet property="passwordTextField" destination="Ev1-84-ZoV" id="Wqq-G5-7gg"/>
                     </connections>
                 </viewController>
@@ -808,5 +812,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="5cE-wg-eBo"/>
         <segue reference="iFv-dl-Nry"/>
+        <segue reference="cO2-YX-olD"/>
     </inferredMetricsTieBreakers>
 </document>

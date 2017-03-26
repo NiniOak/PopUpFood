@@ -18,5 +18,4 @@ class Menu: NSObject {
     var foodDescription: String?
     var profileImageUrl: String?
     var userName: String?
-
 }
