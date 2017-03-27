@@ -30,11 +30,10 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
         setupMenuBar()//for menu bar
         navigationBar() //for navigationBar
         setupNavBarButtons() //add items to NavBar
-        fetchMenuCollection()
-        //fetchMenu()
+        fetchMenuCollection()  //fetchMenu()
+
     }
-    var foodCellView : foodCellViewController?
-    
+   
     func navigationBar() {
         navigationController?.navigationBar.isTranslucent = false
         
@@ -220,7 +219,7 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
     
     func displayAllFavorites() {
     let storyboard = UIStoryboard(name: "favoritesPage", bundle: nil)
-    let controller = storyboard.instantiateViewController(withIdentifier: "FavoritesPage") as UIViewController
+    let controller = storyboard.instantiateViewController(withIdentifier: "FavoritesPage") as! FavoritesViewController
     self.navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -237,7 +236,6 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
         self.navigationController?.pushViewController(controller, animated: true)
     }
 
-
     //for menu bar
     lazy var menuBar: MenuBar = {
         let mb = MenuBar()
@@ -245,6 +243,5 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
         mb.homeController = self
         return mb
     }()
-    
     
 }//end of HomeAfterSignIn class

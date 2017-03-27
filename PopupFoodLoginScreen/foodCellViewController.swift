@@ -24,6 +24,7 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
     //Store Menu in an array
     var menuArray = [Menu]()
     //Instantiate menu class
+    
     var menu: Menu? {
         didSet{
             navigationItem.title = menu?.food
@@ -38,7 +39,21 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
         messageBtn()
         //Check if fave is in DB
         checkIfFavouriteExists()
-
+        displayFoodItems()
+    }
+    @IBAction func messageBtn(_ sender: Any) {
+        displaySendMessagePage()
+    }
+    
+    @IBAction func favouriteBtn(_ sender: UIButton) {
+        
+        if !favClicked {
+            favouriteBtnClicked()
+        }
+        else {
+            favouriteBtnNotClicked()
+             deleteFavourite()
+        }
     }
     //Get item details from DB and display to screen
     func displayFoodItems() {
@@ -78,10 +93,9 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
         guard let userID = FIRAuth.auth()?.currentUser?.uid, let menuID = menu?.menuID else{
             return
         } //Add user ID to favorites
-        //This remmebers which user likes what
+        //This remembers which user likes what
         let userFaveFood = FIRDatabase.database().reference().child("user-favourites").child(userID)
         userFaveFood.updateChildValues([menuID: 1])
-        
     }
     
     //Declare pressed variable for favourites button
@@ -111,16 +125,16 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
     
+    //Set button to unclick status/colour
     func favouriteBtnNotClicked() {
         favouriteButton?.setImage(favBtn, for: .normal)
         favClicked = false
     }
-    
+    //Click favourite button
     func favouriteBtnClicked() {
         favouriteButton?.setImage(clickFavBtn, for: .normal)
         favClicked = true
         registerFavouritesIntoDatabaseWithUserID()
-        
     }
     
     func displaySendMessagePage(menu: Menu) {
@@ -130,9 +144,10 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
+    //BARBARA: Set red heart button when exists
     func checkIfFavouriteExists() {
-        
-        guard let uid = FIRAuth.auth()?.currentUser?.uid else {
+        //Get menuID for menu
+        guard let menuID = menu?.menuID else {
             return
         }
         //Get user table, then userID, in user ID, get the favourites
@@ -142,20 +157,20 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
             let menuID = snapshot.key
             let menuReference = FIRDatabase.database().reference().child("menu").child(menuID)
             
-            menuReference.observeSingleEvent(of: .value, with: { (snapshot) in
-
-                let values = snapshot.key //as? [String]
-            
-                //store chef/menu info in "snapshot" and display snapshot
-                        if menuID == self.menu?.menuID  {
-                            self.favouriteBtnClicked()
-                        }else {
-                        self.favouriteBtnNotClicked()
-                        }
-                
-                
-            }, withCancel: nil)
-        }, withCancel: nil)
+            //Check if menuID exists in user's favourites
+            if snapshot.exists() == true {
+                self.favouriteBtnClicked()
+            }else {
+                self.favouriteBtnNotClicked()
+            }
+        })
     }
-
+    
+    //ANITA: On click, load message storyboard
+    func displaySendMessagePage() {
+        let storyboard = UIStoryboard(name: "Messages", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "sendChefMessage") as! sendMessageCollectionController
+        controller.menu = menu
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
 }

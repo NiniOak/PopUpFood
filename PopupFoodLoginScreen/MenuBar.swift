@@ -94,7 +94,7 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         
         //Animate cellbar to slide on click
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {self.layoutIfNeeded()}, completion: nil)
-        
+        //Click activities
         if (indexPath.row == 1) {
             homeController?.displayAllFavorites()
             

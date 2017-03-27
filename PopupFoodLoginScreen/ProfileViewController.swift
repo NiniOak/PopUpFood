@@ -158,7 +158,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
         controller.profilePageController = self
         self.navigationController?.pushViewController(controller, animated: true)
     }
-    
+    //Display Home with menu list
     func returnHomePage() {
         let signInViewCOntroller = SignInViewController()
         let nextViewController: UINavigationController = UINavigationController(rootViewController: signInViewCOntroller)
