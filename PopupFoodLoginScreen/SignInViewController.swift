@@ -23,7 +23,7 @@ class SignInViewController: UIViewController {
     
     @IBOutlet weak var passwordTextField: UITextField!
     
-    ////
+    //////
     @IBAction func facebookBtn(_ sender: Any) {
         signUpController?.handleCustomFBLogin()
     }
@@ -44,6 +44,7 @@ class SignInViewController: UIViewController {
             }
         }
     }
+    
     //guard let uid = FIRAuth.auth()?.currentUser?.uid
     
     //      print(12345)
@@ -79,7 +80,7 @@ class SignInViewController: UIViewController {
                 print ("Incorrect details entered")
                 return
         }
-        //isUserAuthenticated()
+        
         
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
             
@@ -94,17 +95,6 @@ class SignInViewController: UIViewController {
         })
         
     }
-    
-    
-    
-    //Olek method, try to check if user is authenticated before sign in process!
-    func isUserAuthenticated(){
-        
-        guard (FIRAuth.auth()?.currentUser?.uid) != nil else {
-            return
-        }
-        
-    }//end of isUserAuthenticated
     
     
     
