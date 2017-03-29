@@ -31,7 +31,7 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
     var menu: Menu? {
         didSet{
             navigationItem.title = menu?.food
-          //  priceLabel.text = menu?.price
+            displayFoodItems()
         }
     }
     
@@ -42,7 +42,13 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
         messageBtn()
         //Check if fave is in DB
         checkIfFavouriteExists()
-        displayFoodItems()
+//        
+//        priceLabel.text = menu?.price
+//        //foodImage.image = menu?.foodImageUrl
+//        foodLabel.text = menu?.food
+//        cuisineLabel.text = menu?.cuisine
+//        descriptionLabel.text = menu?.foodDescription
+//        chefUsername.text = menu?.userName
     }
     @IBAction func messageBtn(_ sender: Any) {
         displaySendMessagePage()

@@ -15,6 +15,8 @@ class FavoritesViewController: UITableViewController {
     var foodMenu = [Menu]()
     //Instantiate menu class
     
+    var menu : Menu?
+    
     let cellId = "favourites"
     
     //Nav Bar
@@ -30,12 +32,22 @@ class FavoritesViewController: UITableViewController {
     }
     //FETCH FAVOURITES FOR INDIVIDUAL USER
     func fetchUserFavourites() {
-        guard let uid = FIRAuth.auth()?.currentUser?.uid else {
-            return
-        }
-     
         //Get user table, then userID, in user ID, get the favourites
-        let ref = FIRDatabase.database().reference().child("user-favourites").child(uid)
+        /*guard let uid = FIRAuth.auth()?.currentUser?.uid else {
+            return
+        }*/
+        //Get username from User Database table
+        let reference = FIRDatabase.database().reference().child("user")//.child(uid)
+        reference.observe(.childAdded, with: { (snapshot) in
+            
+            let userID = snapshot.key
+            var userName: String? = ""
+            
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+                userName = dictionary["name"] as? String
+            }
+        //Get other info from Menu table in DB
+        let ref = FIRDatabase.database().reference().child("user-favourites").child(userID)
         ref.observe(.childAdded, with: { (snapshot) in
             //Get menuID within favourites
             let menuID = snapshot.key
@@ -44,23 +56,23 @@ class FavoritesViewController: UITableViewController {
             
             menuReference.observeSingleEvent(of: .value, with: { (snapshot) in
                 
+                //var userName: String? = ""
                 //store chef/menu info in "snapshot" and display snapshot
                 if let dictionary = snapshot.value as? [String: AnyObject] {
                     
-                    let menu = Menu()
+                    let favemenu = Menu()
                     
-                    self.foodMenu.append(menu)
+                    self.foodMenu.append(favemenu)
     
                     //This calls the entire database for menu input by a user
-                    menu.food = dictionary["food"] as? String
-                    menu.price = dictionary["price"] as? String
-                    menu.foodImageUrl = dictionary["foodImageUrl"] as? String
-                    
-                    menu.cuisine = dictionary["cuisine"] as? String
-                    menu.foodDescription = dictionary["foodDescription"] as? String
-                    menu.customerID = uid
-                    menu.menuID = menuID
-                   // menu.userName = userName
+                    favemenu.food = dictionary["food"] as? String
+                    favemenu.price = dictionary["price"] as? String
+                    favemenu.foodImageUrl = dictionary["foodImageUrl"] as? String
+                    favemenu.cuisine = dictionary["cuisine"] as? String
+                    favemenu.foodDescription = dictionary["foodDescription"] as? String
+                    favemenu.customerID = userID
+                    favemenu.menuID = menuID
+                    favemenu.userName = userName
 
                     
                     DispatchQueue.main.async {
@@ -69,6 +81,7 @@ class FavoritesViewController: UITableViewController {
                 }
             }, withCancel: nil)
         }, withCancel: nil)
+      })
     }
     
     //Set up number of cells in Table view
@@ -96,14 +109,15 @@ class FavoritesViewController: UITableViewController {
     //Select each row to display menu details
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let menu = self.foodMenu[indexPath.row]
-        showClickedFaveCell(menu: menu)
+        showClickedFaveCell(favemenu: menu)
         print("Favourites row clicked")
     }
-    
-    func showClickedFaveCell(menu: Menu) {
+    //Display the favourites menu page
+    func showClickedFaveCell(favemenu: Menu) {
         let storyboard = UIStoryboard(name: "mainFoodCell", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "foodCell") as! foodCellViewController
-        controller.menu = menu
+        //controller.menu = menu
+        controller.menu = favemenu
         self.navigationController?.pushViewController(controller, animated: true)
     }
 }

@@ -97,7 +97,11 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         //Click activities
         if (indexPath.row == 1) {
             homeController?.displayAllFavorites()
-        } else if (indexPath.row == 3) {
+        }
+        else if (indexPath.row == 2) {
+            homeController?.displayMessagesPage()
+        }
+        else if (indexPath.row == 3) {
             homeController?.showProfile()
         } else{
             print("Other selected")

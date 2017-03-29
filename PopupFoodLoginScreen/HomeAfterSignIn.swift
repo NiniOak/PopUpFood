@@ -216,20 +216,20 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
     }
     
     //BARBARA: Handle ALL menu clicks navigation
-    //onClick Favorites icon, load fave view storyboard
+    //onClick Favorites icon, load favourites storyboard
     
     func displayAllFavorites() {
     let storyboard = UIStoryboard(name: "favoritesPage", bundle: nil)
     let controller = storyboard.instantiateViewController(withIdentifier: "FavoritesPage") as! FavoritesViewController
     self.navigationController?.pushViewController(controller, animated: true)
     }
-    
+    //onClick Messages icon, load messages storyboard
     func displayMessagesPage() {
         let storyboard = UIStoryboard(name: "Messages", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "MessagesDisplayPage") as! messageLogViewController
         self.navigationController?.pushViewController(controller, animated: true)
     }
-    
+    //onClick Food image, load menu(foodcell) storyboard
     func showClickedFoodCell(menu: Menu) {
         let storyboard = UIStoryboard(name: "mainFoodCell", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "foodCell") as! foodCellViewController
