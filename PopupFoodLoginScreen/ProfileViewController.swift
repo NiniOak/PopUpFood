@@ -39,7 +39,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBAction func sellingButton(_ sender: Any) {
         //startSelling() move to before page and assign to plus button
-        
         goToBeforeSelling()
     }
     @IBAction func editProfile(_ sender: Any) {

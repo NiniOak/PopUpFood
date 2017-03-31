@@ -21,6 +21,8 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var chefUsername: UILabel!
     
+    //Declare current user
+    let uid = FIRAuth.auth()?.currentUser?.uid
     //Store Menu in an array
     var menuArray = [Menu]()
     //Instantiate menu class
@@ -41,12 +43,13 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
         checkIfFavouriteExists()
         displayFoodItems()
     }
+    
     @IBAction func messageBtn(_ sender: Any) {
-        displaySendMessagePage()
+        displaySendMessagePage(menu: menu!)
     }
     
-    @IBAction func favouriteBtn(_ sender: UIButton) {
-        
+    @IBAction func favouriteBtn(_ sender: Any) {
+
         if !favClicked {
             favouriteBtnClicked()
         }
@@ -90,11 +93,11 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
     //Add Favorites to the Database
     private func registerFavouritesIntoDatabaseWithUserID() {
         
-        guard let userID = FIRAuth.auth()?.currentUser?.uid, let menuID = menu?.menuID else{
+        guard let menuID = menu?.menuID else{
             return
         } //Add user ID to favorites
         //This remembers which user likes what
-        let userFaveFood = FIRDatabase.database().reference().child("user-favourites").child(userID)
+        let userFaveFood = FIRDatabase.database().reference().child("user-favourites").child(uid!)
         userFaveFood.updateChildValues([menuID: 1])
     }
     
@@ -111,18 +114,35 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
 
-    @IBAction func messageBtn(_ sender: Any) {
-        displaySendMessagePage(menu: menu!)
+    //BARBARA: Click favourite to remove from DB and favourites list
+    func deleteFavourite() {
+        guard let menuID = menu?.menuID else {
+            return
+        }
+        FIRDatabase.database().reference().child("user-favourites").child(uid!).child(menuID).removeValue { (error, ref) in
+            if error != nil {
+                print(error as Any)
+            }
+        }
     }
     
-    @IBAction func favouriteBtn(_ sender: UIButton) {
-        
-        if !favClicked {
-            favouriteBtnClicked()
+    //BARBARA: Set red heart button when exists
+    func checkIfFavouriteExists() {
+        //Get menuID for menu
+        guard let menuID = menu?.menuID else {
+            return
         }
-        else {
-            favouriteBtnNotClicked()
-        }
+        //Get user table, then userID, in user ID, get the favourites
+        let menuRef = FIRDatabase.database().reference().child("user-favourites").child(uid!).child(menuID)
+        menuRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            //Check if menuID exists in user's favourites
+            if snapshot.exists() == true {
+                self.favouriteBtnClicked()
+            } else {
+                self.favouriteBtnNotClicked()
+            }
+        })
     }
     
     //Set button to unclick status/colour
@@ -130,6 +150,7 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
         favouriteButton?.setImage(favBtn, for: .normal)
         favClicked = false
     }
+    
     //Click favourite button
     func favouriteBtnClicked() {
         favouriteButton?.setImage(clickFavBtn, for: .normal)
@@ -143,29 +164,7 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
         controller.menu = menu
         self.navigationController?.pushViewController(controller, animated: true)
     }
-    
-    //BARBARA: Set red heart button when exists
-    func checkIfFavouriteExists() {
-        //Get menuID for menu
-        guard let menuID = menu?.menuID else {
-            return
-        }
-        //Get user table, then userID, in user ID, get the favourites
-        let ref = FIRDatabase.database().reference().child("user-favourites").child(uid)
-        ref.observe(.value, with: { (snapshot) in
-            //Get menuID within favourites≥
-            let menuID = snapshot.key
-            let menuReference = FIRDatabase.database().reference().child("menu").child(menuID)
-            
-            //Check if menuID exists in user's favourites
-            if snapshot.exists() == true {
-                self.favouriteBtnClicked()
-            }else {
-                self.favouriteBtnNotClicked()
-            }
-        })
-    }
-    
+
     //ANITA: On click, load message storyboard
     func displaySendMessagePage() {
         let storyboard = UIStoryboard(name: "Messages", bundle: nil)

@@ -14,7 +14,10 @@ class messageLogViewController: UITableViewController {
     let cellId = "cell"
     
     var message = [Message]()
+
     var messagesDictionary = [String: Message]()
+    
+    var menu: Menu?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +76,6 @@ class messageLogViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
         return message.count
     }
     
@@ -83,20 +85,32 @@ class messageLogViewController: UITableViewController {
         let newMessage = message[indexPath.row]
         //Go to "DisplayMessageCell" in Views to find controlling method
         cell.message = newMessage
-            
         return cell
     }
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedMessage = message[indexPath.row]
-        displaySendMessagePage(message: selectedMessage)
+        let messages = message[indexPath.row]
         
+        //This let us know who sent the message and who the menu belongs to
+        //ADD ME LATER! let chatPartnerId = messages.chatPartnerId()
+        guard let menuId = messages.menuId else {
+            return
+        }
+        let ref = FIRDatabase.database().reference().child("menu").child(menuId)
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+                
+                let menu = Menu()
+                menu.food = dictionary["food"] as? String
+                self.displaySendMessagePage(menu: menu)
+            }
+        }, withCancel: nil)
     }
     
-    func displaySendMessagePage(message: Message) {
+    func displaySendMessagePage(menu: Menu) {
         let storyboard = UIStoryboard(name: "Messages", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "sendChefMessage") as! sendMessageCollectionController
-        controller.messages = message
+//        controller.messages = message
+        controller.menu = menu
         self.navigationController?.pushViewController(controller, animated: true)
     }
 

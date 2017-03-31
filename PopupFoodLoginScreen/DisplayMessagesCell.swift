@@ -19,12 +19,12 @@ class DisplayMessagesCell: UITableViewCell {
             messageLabel.text = message?.text
             //convert timestamp to date
             if let seconds = message?.timestamp?.doubleValue {
-                let timestampDate = NSDate(timeIntervalSince1970: seconds)
+                let timestampDate = Date(timeIntervalSince1970: seconds)
                 
                 let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "hh:mm:ss a"
-                timeLabel.text = dateFormatter.string(from: timestampDate as Date)
+                timeLabel.text = dateFormatter.timeSince(from: timestampDate as NSDate, numericDates: true)
             }
+            
         }
     }
 
@@ -43,8 +43,9 @@ class DisplayMessagesCell: UITableViewCell {
     func observeMessagesCell() {
         //The value of each food item is gotten from this code snippet
         //"foodName" is where data for all menu items is
+        
+        
         if let foodName = message?.menuId {
-            
             let menuReference = FIRDatabase.database().reference().child("menu").child(foodName)
             menuReference.observeSingleEvent(of: .value, with: { (snapshot) in
                 

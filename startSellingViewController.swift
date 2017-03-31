@@ -104,8 +104,9 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
                     return
                 }
                 if let foodImageUrl = metadata?.downloadURL()?.absoluteString {
-
-                    let values = ["food": foodName, "foodDescription": foodDescription, "price": "$" + price, "cuisine": cuisine, "foodImageUrl": foodImageUrl, "chefID": chefID]
+                    
+                    let timeStamp: NSNumber = NSNumber(value: Int(NSDate().timeIntervalSince1970))
+                    let values = ["food": foodName, "foodDescription": foodDescription, "price": "$" + price, "cuisine": cuisine, "foodImageUrl": foodImageUrl, "chefID": chefID, "timestamp": timeStamp] as [String : Any]
                     
                     self.registerChefIntoDatabaseWithMenuID(values: values)
                 }
@@ -147,10 +148,6 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
         //navigationItem.title = "Start Selling"
     }
     
-    //Call a new class to instantiate method
-    /*var profileController: BeforeStartSellingViewController?
-     self.profileController?.goBackToLoggedInView()*/
-    
     func goBackToStartSelling() {
         let storyboard = UIStoryboard(name: "startSelling", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "BeforeSellingPage") as UIViewController
@@ -173,4 +170,6 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         cuisineTypeLabel.text = cuisine[row]
     }
+    
+    
 }

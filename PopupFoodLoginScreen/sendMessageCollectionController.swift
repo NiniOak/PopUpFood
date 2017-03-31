@@ -28,7 +28,7 @@ class sendMessageCollectionController: UICollectionViewController, UICollectionV
     }
     
     var sentMessages = [Message]()
-    
+
     @IBAction func sendButton(_ sender: Any) {
         handleSend()
         clearTextFieldInput()

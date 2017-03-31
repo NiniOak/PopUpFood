@@ -26,31 +26,45 @@
                         </collectionViewFlowLayout>
                         <view key="backgroundView" contentMode="scaleToFill" id="laQ-nh-gPD">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder=" Write Message..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5xM-Yc-yFc">
-                                    <rect key="frame" x="8" y="622" width="288" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </textField>
+                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J5W-kE-y94">
+                                    <rect key="frame" x="0.0" y="616" width="375" height="1"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" red="0.62059803300000005" green="0.62059803300000005" blue="0.62059803300000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </view>
                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V2f-bk-StG">
-                                    <rect key="frame" x="304" y="623" width="63" height="43"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <rect key="frame" x="308" y="622" width="63" height="42"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="43" id="bvk-IB-Ta8"/>
+                                        <constraint firstAttribute="width" constant="63" id="osR-fw-AL6"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <state key="normal" title="Send"/>
                                     <connections>
                                         <action selector="sendButton:" destination="OBo-2P-mnY" eventType="touchUpInside" id="y0o-Ro-rUu"/>
                                     </connections>
                                 </button>
-                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="57A-3w-zwg">
-                                    <rect key="frame" x="0.0" y="619" width="375" height="1"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="0.62059803300000005" green="0.62059803300000005" blue="0.62059803300000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </view>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder=" Write Message..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5xM-Yc-yFc">
+                                    <rect key="frame" x="4" y="625" width="296" height="42"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="43" id="jUb-14-534"/>
+                                        <constraint firstAttribute="width" constant="296" id="mM4-te-OqA"/>
+                                    </constraints>
+                                    <nil key="textColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="bottomMargin" secondItem="5xM-Yc-yFc" secondAttribute="bottom" constant="2" id="3d5-qh-gMe"/>
+                                <constraint firstItem="V2f-bk-StG" firstAttribute="leading" secondItem="5xM-Yc-yFc" secondAttribute="trailing" constant="8" id="Axt-8U-ckj"/>
+                                <constraint firstAttribute="trailingMargin" secondItem="V2f-bk-StG" secondAttribute="trailing" constant="4" id="IYQ-Fy-y01"/>
+                                <constraint firstItem="5xM-Yc-yFc" firstAttribute="leading" secondItem="laQ-nh-gPD" secondAttribute="leadingMargin" constant="4" id="LRa-cI-MTJ"/>
+                                <constraint firstAttribute="bottomMargin" secondItem="V2f-bk-StG" secondAttribute="bottom" constant="2" id="aUh-Xn-DvW"/>
+                            </constraints>
                         </view>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="7ZQ-81-j6K" customClass="chatMessageCell" customModule="PopupFood" customModuleProvider="target">
@@ -60,8 +74,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="73"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Wa-ZC-ewq">
-                                            <rect key="frame" x="8" y="35" width="359" height="18"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Wa-ZC-ewq">
+                                            <rect key="frame" x="8" y="35" width="359" height="30"/>
                                             <string key="text">We nearly had some drama at the end and could have gone into extra time, but United hold on and progress to the quarter-finals of the Europa League.</string>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -70,16 +84,9 @@
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="6Wa-ZC-ewq" firstAttribute="trailing" secondItem="7ZQ-81-j6K" secondAttribute="trailingMargin" id="2mZ-09-8SN"/>
-                                    <constraint firstItem="6Wa-ZC-ewq" firstAttribute="trailing" secondItem="7ZQ-81-j6K" secondAttribute="trailingMargin" id="4Q1-Ff-XOL"/>
-                                    <constraint firstItem="6Wa-ZC-ewq" firstAttribute="top" secondItem="7ZQ-81-j6K" secondAttribute="topMargin" constant="27" id="6T9-Ze-uNT"/>
-                                    <constraint firstItem="6Wa-ZC-ewq" firstAttribute="leading" secondItem="7ZQ-81-j6K" secondAttribute="leadingMargin" id="BCu-Kf-axl"/>
-                                    <constraint firstItem="6Wa-ZC-ewq" firstAttribute="top" secondItem="7ZQ-81-j6K" secondAttribute="topMargin" constant="27" id="Bia-qx-Pg6"/>
-                                    <constraint firstItem="6Wa-ZC-ewq" firstAttribute="leading" secondItem="7ZQ-81-j6K" secondAttribute="leadingMargin" id="Tby-zp-Bme"/>
-                                    <constraint firstItem="6Wa-ZC-ewq" firstAttribute="top" secondItem="7ZQ-81-j6K" secondAttribute="topMargin" constant="27" id="n3E-Lq-xh5"/>
-                                    <constraint firstItem="6Wa-ZC-ewq" firstAttribute="trailing" secondItem="7ZQ-81-j6K" secondAttribute="trailingMargin" id="nwQ-29-IzP"/>
-                                    <constraint firstItem="6Wa-ZC-ewq" firstAttribute="leading" secondItem="7ZQ-81-j6K" secondAttribute="leadingMargin" id="peU-mM-u8d"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="6Wa-ZC-ewq" secondAttribute="bottom" constant="12" id="quN-dU-e9q"/>
+                                    <constraint firstItem="6Wa-ZC-ewq" firstAttribute="trailing" secondItem="7ZQ-81-j6K" secondAttribute="trailingMargin" id="Bfi-5M-ceS"/>
+                                    <constraint firstItem="6Wa-ZC-ewq" firstAttribute="top" secondItem="7ZQ-81-j6K" secondAttribute="topMargin" constant="27" id="X3u-ij-Pap"/>
+                                    <constraint firstItem="6Wa-ZC-ewq" firstAttribute="leading" secondItem="7ZQ-81-j6K" secondAttribute="leadingMargin" id="kGn-kI-CC9"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="messageLabel" destination="6Wa-ZC-ewq" id="yUw-Tg-wtv"/>
@@ -91,15 +98,13 @@
                             <outlet property="delegate" destination="OBo-2P-mnY" id="zsd-ZH-sLM"/>
                         </connections>
                     </collectionView>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="667"/>
                     <connections>
                         <outlet property="messageTextField" destination="5xM-Yc-yFc" id="E2P-gb-kR5"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6aG-yM-zik" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="540" y="-327.88605697151428"/>
+            <point key="canvasLocation" x="472.80000000000001" y="-512.29385307346331"/>
         </scene>
         <!--Message Log View Controller-->
         <scene sceneID="AqJ-iE-ysB">
