@@ -32,36 +32,23 @@ class FavoritesViewController: UITableViewController {
     }
     //FETCH FAVOURITES FOR INDIVIDUAL USER
     func fetchUserFavourites() {
-        //Get user table, then userID, in user ID, get the favourites
-        /*guard let uid = FIRAuth.auth()?.currentUser?.uid else {
+        
+        guard let uid = FIRAuth.auth()?.currentUser?.uid else {
             return
-        }*/
-        //Get username from User Database table
-        let reference = FIRDatabase.database().reference().child("user")//.child(uid)
-        reference.observe(.childAdded, with: { (snapshot) in
-            
-            let userID = snapshot.key
-            var userName: String? = ""
-            
-            if let dictionary = snapshot.value as? [String: AnyObject] {
-                userName = dictionary["name"] as? String
-            }
-        //Get other info from Menu table in DB
-        let ref = FIRDatabase.database().reference().child("user-favourites").child(userID)
+        }
+       //Get the user ID, from the favourites table
+        let ref = FIRDatabase.database().reference().child("user-favourites").child(uid)
         ref.observe(.childAdded, with: { (snapshot) in
             //Get menuID within favourites
             let menuID = snapshot.key
-            
+             //Get other info from Menu table in DB
             let menuReference = FIRDatabase.database().reference().child("menu").child(menuID)
             
             menuReference.observeSingleEvent(of: .value, with: { (snapshot) in
                 
-                //var userName: String? = ""
-                //store chef/menu info in "snapshot" and display snapshot
                 if let dictionary = snapshot.value as? [String: AnyObject] {
                     
                     let favemenu = Menu()
-                    
                     self.foodMenu.append(favemenu)
     
                     //This calls the entire database for menu input by a user
@@ -70,9 +57,9 @@ class FavoritesViewController: UITableViewController {
                     favemenu.foodImageUrl = dictionary["foodImageUrl"] as? String
                     favemenu.cuisine = dictionary["cuisine"] as? String
                     favemenu.foodDescription = dictionary["foodDescription"] as? String
-                    favemenu.customerID = userID
+                    favemenu.customerID = uid
                     favemenu.menuID = menuID
-                    favemenu.userName = userName
+                  //  favemenu.userName = dictionary[""] chefName + "'s other food items"
 
                     
                     DispatchQueue.main.async {
@@ -81,7 +68,7 @@ class FavoritesViewController: UITableViewController {
                 }
             }, withCancel: nil)
         }, withCancel: nil)
-      })
+   // })
     }
     
     //Set up number of cells in Table view

@@ -42,13 +42,15 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
         messageBtn()
         //Check if fave is in DB
         checkIfFavouriteExists()
-//        
-//        priceLabel.text = menu?.price
-//        //foodImage.image = menu?.foodImageUrl
-//        foodLabel.text = menu?.food
-//        cuisineLabel.text = menu?.cuisine
-//        descriptionLabel.text = menu?.foodDescription
-//        chefUsername.text = menu?.userName
+// Passing information to screen       
+        priceLabel.text = menu?.price
+        if let foodImage = menu?.foodImageUrl {
+            self.foodImage.sd_setImage(with: URL(string: foodImage))
+        }
+        foodLabel.text = menu?.food
+        cuisineLabel.text = menu?.cuisine
+        descriptionLabel.text = menu?.foodDescription
+        chefUsername.text = menu?.userName
     }
     @IBAction func messageBtn(_ sender: Any) {
         displaySendMessagePage()
