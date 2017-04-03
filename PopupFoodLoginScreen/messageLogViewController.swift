@@ -91,8 +91,8 @@ class messageLogViewController: UITableViewController {
         let messages = message[indexPath.row]
         
         //This let us know who sent the message and who the menu belongs to
-        //ADD ME LATER! let chatPartnerId = messages.chatPartnerId()
-        guard let menuId = messages.menuId else {
+        //ADD ME LATER!
+        guard let menuId = messages.menuId, let chatPartnerId = messages.chatPartnerId() else {
             return
         }
         let ref = FIRDatabase.database().reference().child("menu").child(menuId)
@@ -101,6 +101,7 @@ class messageLogViewController: UITableViewController {
                 
                 let menu = Menu()
                 menu.food = dictionary["food"] as? String
+                menu.customerID = chatPartnerId
                 self.displaySendMessagePage(menu: menu)
             }
         }, withCancel: nil)
@@ -109,7 +110,6 @@ class messageLogViewController: UITableViewController {
     func displaySendMessagePage(menu: Menu) {
         let storyboard = UIStoryboard(name: "Messages", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "sendChefMessage") as! sendMessageCollectionController
-//        controller.messages = message
         controller.menu = menu
         self.navigationController?.pushViewController(controller, animated: true)
     }
