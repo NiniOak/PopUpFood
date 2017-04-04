@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yGb-IK-ujs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yGb-IK-ujs">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -53,6 +53,10 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHO-oo-ypN">
                                 <rect key="frame" x="214" y="424" width="118" height="51"/>
                                 <color key="backgroundColor" red="0.88235294119999996" green="0.67843137249999996" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="118" id="g7Y-8b-h7v"/>
+                                    <constraint firstAttribute="height" constant="51" id="tVL-uq-xPE"/>
+                                </constraints>
                                 <state key="normal" title="SIGN UP">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
@@ -117,9 +121,11 @@
                             <constraint firstItem="Qmn-S1-HHV" firstAttribute="baseline" secondItem="tHO-oo-ypN" secondAttribute="firstBaseline" identifier="id16" id="KHV-bx-alo"/>
                             <constraint firstItem="dhK-tq-5SN" firstAttribute="top" secondItem="1yp-HJ-vru" secondAttribute="bottom" constant="8" symbolic="YES" identifier="id09" id="MiS-vl-0ot"/>
                             <constraint firstItem="1yp-HJ-vru" firstAttribute="centerX" secondItem="dhK-tq-5SN" secondAttribute="centerX" identifier="id07" id="NGY-YM-Ga9"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="tHO-oo-ypN" secondAttribute="bottom" constant="192" id="NGY-ms-tnC"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Qmn-S1-HHV" secondAttribute="bottom" constant="192" identifier="id20" id="OU0-F1-1ZX"/>
                             <constraint firstItem="1yp-HJ-vru" firstAttribute="top" secondItem="jRp-NN-FNW" secondAttribute="bottom" constant="43" id="OW7-KG-2HQ"/>
                             <constraint firstItem="jRp-NN-FNW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="79" id="Sh9-XM-s2N"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tHO-oo-ypN" secondAttribute="trailing" constant="27" id="Xi1-8V-Afb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jRp-NN-FNW" secondAttribute="trailing" constant="75" id="c2v-Lb-6BL"/>
                             <constraint firstItem="GWY-8Y-sPY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" identifier="id01" id="cV6-yR-amK"/>
                             <constraint firstItem="jRp-NN-FNW" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="96" id="cf4-3Z-guz"/>
@@ -736,7 +742,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NavControl" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="yGb-IK-ujs" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="HHP-fV-kLt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HHP-fV-kLt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -756,7 +762,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="uWq-iK-2Mk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uWq-iK-2Mk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -772,10 +778,9 @@
         <!--Navigation Controller-->
         <scene sceneID="8Gg-Ua-gba">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HVJ-fI-AzP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xwe-Cm-iIw" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="3C5-Na-O5s">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3C5-Na-O5s">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -784,6 +789,7 @@
                         <segue destination="vsh-hO-AAH" kind="relationship" relationship="rootViewController" id="5Sr-Mw-ZOL"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HVJ-fI-AzP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2738" y="-654"/>
         </scene>
@@ -792,7 +798,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ahB-6R-Ut8" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="4eE-P5-wXK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4eE-P5-wXK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -810,8 +816,7 @@
         <image name="logo_new" width="317" height="322"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5cE-wg-eBo"/>
-        <segue reference="iFv-dl-Nry"/>
         <segue reference="cO2-YX-olD"/>
+        <segue reference="iFv-dl-Nry"/>
     </inferredMetricsTieBreakers>
 </document>
