@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yGb-IK-ujs">
+    
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -29,7 +30,9 @@
                                 <color key="backgroundColor" white="0.89065212673611116" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51" identifier="id21" id="BTT-VG-pwZ"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="51" id="ZfT-e6-N95"/>
                                     <constraint firstAttribute="width" constant="118" identifier="id22" id="aTO-wZ-CNa"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="118" id="xB8-5f-YgA"/>
                                 </constraints>
                                 <state key="normal" title="SIGN IN">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -108,31 +111,44 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_new" translatesAutoresizingMaskIntoConstraints="NO" id="jRp-NN-FNW">
                                 <rect key="frame" x="95" y="116" width="189" height="154"/>
                                 <color key="backgroundColor" red="0.97156583019999998" green="0.97156583019999998" blue="0.97156583019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="154" id="CR4-HZ-Pn7"/>
+                                    <constraint firstAttribute="width" constant="189" id="xBO-fU-80q"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.97156583019999998" green="0.97156583019999998" blue="0.97156583019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Qmn-S1-HHV" firstAttribute="top" secondItem="dhK-tq-5SN" secondAttribute="bottom" constant="45" identifier="id12" id="0Hf-C7-Zcv"/>
+                            <constraint firstItem="jRp-NN-FNW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="79" id="43N-Z8-Juz"/>
                             <constraint firstItem="tHO-oo-ypN" firstAttribute="leading" secondItem="Qmn-S1-HHV" secondAttribute="trailing" constant="44" identifier="id17" id="96a-el-5ya"/>
+                            <constraint firstItem="Qmn-S1-HHV" firstAttribute="top" secondItem="dhK-tq-5SN" secondAttribute="bottom" constant="45" id="C9p-dd-WSD"/>
                             <constraint firstItem="Qmn-S1-HHV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="36" identifier="id13" id="CGZ-h2-QUP"/>
                             <constraint firstItem="Qmn-S1-HHV" firstAttribute="top" secondItem="tHO-oo-ypN" secondAttribute="top" identifier="id14" id="DEK-wq-6cT"/>
                             <constraint firstItem="tHO-oo-ypN" firstAttribute="baseline" secondItem="Qmn-S1-HHV" secondAttribute="firstBaseline" identifier="id18" id="EaZ-08-yHZ"/>
+                            <constraint firstItem="tHO-oo-ypN" firstAttribute="leading" secondItem="Qmn-S1-HHV" secondAttribute="trailing" constant="44" id="GLR-Wv-UE4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tHO-oo-ypN" secondAttribute="trailing" constant="27" identifier="id19" id="Jro-m1-34r"/>
                             <constraint firstItem="Qmn-S1-HHV" firstAttribute="baseline" secondItem="tHO-oo-ypN" secondAttribute="firstBaseline" identifier="id16" id="KHV-bx-alo"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Qmn-S1-HHV" secondAttribute="bottom" constant="192" id="Mg5-OK-1dX"/>
                             <constraint firstItem="dhK-tq-5SN" firstAttribute="top" secondItem="1yp-HJ-vru" secondAttribute="bottom" constant="8" symbolic="YES" identifier="id09" id="MiS-vl-0ot"/>
                             <constraint firstItem="1yp-HJ-vru" firstAttribute="centerX" secondItem="dhK-tq-5SN" secondAttribute="centerX" identifier="id07" id="NGY-YM-Ga9"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="tHO-oo-ypN" secondAttribute="bottom" constant="192" id="NGY-ms-tnC"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Qmn-S1-HHV" secondAttribute="bottom" constant="192" identifier="id20" id="OU0-F1-1ZX"/>
                             <constraint firstItem="1yp-HJ-vru" firstAttribute="top" secondItem="jRp-NN-FNW" secondAttribute="bottom" constant="43" id="OW7-KG-2HQ"/>
+                            <constraint firstItem="jRp-NN-FNW" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="96" id="PDr-YN-G0l"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jRp-NN-FNW" secondAttribute="trailing" constant="75" id="RAG-bl-ZGH"/>
                             <constraint firstItem="jRp-NN-FNW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="79" id="Sh9-XM-s2N"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tHO-oo-ypN" secondAttribute="trailing" constant="27" id="Xi1-8V-Afb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jRp-NN-FNW" secondAttribute="trailing" constant="75" id="c2v-Lb-6BL"/>
                             <constraint firstItem="GWY-8Y-sPY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" identifier="id01" id="cV6-yR-amK"/>
                             <constraint firstItem="jRp-NN-FNW" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="96" id="cf4-3Z-guz"/>
+                            <constraint firstItem="tHO-oo-ypN" firstAttribute="leading" secondItem="Qmn-S1-HHV" secondAttribute="trailing" constant="44" id="fwU-RF-281"/>
                             <constraint firstItem="GWY-8Y-sPY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" identifier="id02" id="hos-AB-cii"/>
                             <constraint firstAttribute="trailingMargin" secondItem="dhK-tq-5SN" secondAttribute="trailing" constant="-4" identifier="id10" id="lbM-7Q-owT"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="tHO-oo-ypN" secondAttribute="bottom" constant="192" id="tn5-bp-SpV"/>
                             <constraint firstItem="dhK-tq-5SN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" identifier="id11" id="uiw-yt-OjA"/>
                             <constraint firstItem="1yp-HJ-vru" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="42" identifier="id08" id="wBb-dM-GoA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tHO-oo-ypN" secondAttribute="trailing" constant="23" id="yIc-tH-tKE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ASn-tm-2aI"/>
@@ -305,6 +321,16 @@
                     </view>
                     <navigationItem key="navigationItem" title="Sign Up" id="I0p-ac-qi1">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Bc6-6o-t6h"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" style="plain" id="vFs-kr-zt1">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="RuM-IB-6zL">
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" id="o9B-LQ-ItH"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="facebookButton" destination="Pqv-5S-dJP" id="pyF-p2-tbS"/>

@@ -25,8 +25,15 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     
     func showNavBar() {
         navigationItem.title = "Sign In"
+//=======
+//    @IBAction func facebookBtn(_ sender: Any) {
+//        signUpController?.handleCustomFBLogin()
+//    }
+//    @IBAction func googleBtn(_ sender: Any) {
+//        signUpController?.handleCustomGoogleLogin()
+//>>>>>>> origin/Anita
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

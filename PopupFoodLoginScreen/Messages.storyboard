@@ -14,92 +14,26 @@
         <scene sceneID="UKW-vu-LlZ">
             <objects>
                 <collectionViewController storyboardIdentifier="sendChefMessage" id="OBo-2P-mnY" customClass="sendMessageCollectionController" customModule="PopupFood" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="D1z-4a-ZbH">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="D1z-4a-ZbH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0jx-vX-r5X">
-                            <size key="itemSize" width="375" height="73"/>
+                            <size key="itemSize" width="375" height="116"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
-                        <view key="backgroundView" contentMode="scaleToFill" id="laQ-nh-gPD">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder=" Write Message..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5xM-Yc-yFc">
-                                    <rect key="frame" x="8" y="622" width="288" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </textField>
-                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V2f-bk-StG">
-                                    <rect key="frame" x="304" y="623" width="63" height="43"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Send"/>
-                                    <connections>
-                                        <action selector="sendButton:" destination="OBo-2P-mnY" eventType="touchUpInside" id="y0o-Ro-rUu"/>
-                                    </connections>
-                                </button>
-                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="57A-3w-zwg">
-                                    <rect key="frame" x="0.0" y="619" width="375" height="1"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="0.62059803300000005" green="0.62059803300000005" blue="0.62059803300000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </view>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </view>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="7ZQ-81-j6K" customClass="chatMessageCell" customModule="PopupFood" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="73"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="73"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Wa-ZC-ewq">
-                                            <rect key="frame" x="8" y="35" width="359" height="18"/>
-                                            <string key="text">We nearly had some drama at the end and could have gone into extra time, but United hold on and progress to the quarter-finals of the Europa League.</string>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </view>
-                                <constraints>
-                                    <constraint firstItem="6Wa-ZC-ewq" firstAttribute="trailing" secondItem="7ZQ-81-j6K" secondAttribute="trailingMargin" id="2mZ-09-8SN"/>
-                                    <constraint firstItem="6Wa-ZC-ewq" firstAttribute="trailing" secondItem="7ZQ-81-j6K" secondAttribute="trailingMargin" id="4Q1-Ff-XOL"/>
-                                    <constraint firstItem="6Wa-ZC-ewq" firstAttribute="top" secondItem="7ZQ-81-j6K" secondAttribute="topMargin" constant="27" id="6T9-Ze-uNT"/>
-                                    <constraint firstItem="6Wa-ZC-ewq" firstAttribute="leading" secondItem="7ZQ-81-j6K" secondAttribute="leadingMargin" id="BCu-Kf-axl"/>
-                                    <constraint firstItem="6Wa-ZC-ewq" firstAttribute="top" secondItem="7ZQ-81-j6K" secondAttribute="topMargin" constant="27" id="Bia-qx-Pg6"/>
-                                    <constraint firstItem="6Wa-ZC-ewq" firstAttribute="leading" secondItem="7ZQ-81-j6K" secondAttribute="leadingMargin" id="Tby-zp-Bme"/>
-                                    <constraint firstItem="6Wa-ZC-ewq" firstAttribute="top" secondItem="7ZQ-81-j6K" secondAttribute="topMargin" constant="27" id="n3E-Lq-xh5"/>
-                                    <constraint firstItem="6Wa-ZC-ewq" firstAttribute="trailing" secondItem="7ZQ-81-j6K" secondAttribute="trailingMargin" id="nwQ-29-IzP"/>
-                                    <constraint firstItem="6Wa-ZC-ewq" firstAttribute="leading" secondItem="7ZQ-81-j6K" secondAttribute="leadingMargin" id="peU-mM-u8d"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="6Wa-ZC-ewq" secondAttribute="bottom" constant="12" id="quN-dU-e9q"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="messageLabel" destination="6Wa-ZC-ewq" id="yUw-Tg-wtv"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
+                        <cells/>
                         <connections>
                             <outlet property="dataSource" destination="OBo-2P-mnY" id="lf3-5P-mNX"/>
                             <outlet property="delegate" destination="OBo-2P-mnY" id="zsd-ZH-sLM"/>
                         </connections>
                     </collectionView>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="667"/>
-                    <connections>
-                        <outlet property="messageTextField" destination="5xM-Yc-yFc" id="E2P-gb-kR5"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6aG-yM-zik" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="540" y="-327.88605697151428"/>
+            <point key="canvasLocation" x="472.80000000000001" y="-512.29385307346331"/>
         </scene>
         <!--Message Log View Controller-->
         <scene sceneID="AqJ-iE-ysB">
@@ -114,7 +48,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="95"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9RZ-EO-IvZ" id="HeK-bC-ow7">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="94"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="94.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Yvc-cV-4r2">

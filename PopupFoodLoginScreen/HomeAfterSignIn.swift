@@ -14,6 +14,7 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
     
     var cellId = "cellID"
     var foodMenu = [Menu]()
+    var menuDictionary = [String: Menu]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -142,9 +143,21 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
                         //To be used for clicked Cells
                         menu.cuisine = dictionary["cuisine"] as? String
                         menu.foodDescription = dictionary["foodDescription"] as? String
+                        menu.timestamp = dictionary["timestamp"] as? NSNumber
                         menu.customerID = userID
                         menu.menuID = menuID
                         menu.userName = userName
+                        
+                        if let arrangeMenuById = menu.menuID {
+                            self.menuDictionary[arrangeMenuById] = menu
+                            
+                            self.foodMenu = Array(self.menuDictionary.values)
+                            
+                            //Sort each message into place by order of appearance in time value
+                            self.foodMenu.sort(by: { (menu1, menu2) -> Bool in
+                                return (menu1.timestamp?.intValue)! > (menu2.timestamp?.intValue)!
+                            })
+                        }
                         
                         DispatchQueue.main.async {
                             self.collectionView?.reloadData()
@@ -191,7 +204,7 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let menu = self.foodMenu[indexPath.row]
         showClickedFoodCell(menu: menu)
-        
+
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

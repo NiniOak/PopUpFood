@@ -105,6 +105,7 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
             homeController?.showProfile()
         } else{
             print("Other selected")
+
         }
     }
     
