@@ -52,7 +52,7 @@ class sendMessageCollectionController: UICollectionViewController, UICollectionV
                 messages.toId = dictionary["toId"] as? String
                 messages.timestamp = dictionary["timestamp"] as? NSNumber
                 
-                if messages.chatPartnerId() == self.menu?.customerID {
+                if messages.menuId == self.menu?.menuID {
                     self.sentMessages.append(messages)
                 //this is called becausw we are in a background thread. Async is used to call back to main thread
                 DispatchQueue.main.async {
