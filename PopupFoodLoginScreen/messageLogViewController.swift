@@ -23,7 +23,6 @@ class messageLogViewController: UITableViewController {
         super.viewDidLoad()
         
         navigationItem.title = "My Messages"
-        
         observeMenuMessages()
     }
     
@@ -102,6 +101,7 @@ class messageLogViewController: UITableViewController {
                 let menu = Menu()
                 menu.food = dictionary["food"] as? String
                 menu.customerID = chatPartnerId
+                menu.menuID = menuId
                 self.displaySendMessagePage(menu: menu)
             }
         }, withCancel: nil)
