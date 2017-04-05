@@ -41,7 +41,15 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
         messageBtn()
         //Check if fave is in DB
         checkIfFavouriteExists()
-        displayFoodItems()
+// Passing information to screen       
+        priceLabel.text = menu?.price
+        if let foodImage = menu?.foodImageUrl {
+            self.foodImage.sd_setImage(with: URL(string: foodImage))
+        }
+        foodLabel.text = menu?.food
+        cuisineLabel.text = menu?.cuisine
+        descriptionLabel.text = menu?.foodDescription
+        chefUsername.text = menu?.userName
     }
     
     @IBAction func messageBtn(_ sender: Any) {
@@ -114,6 +122,20 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
 
+    
+    //Set button to unclick status/colour
+    func favouriteBtnNotClicked() {
+        favouriteButton?.setImage(favBtn, for: .normal)
+        favClicked = false
+    }
+    //Click favourite button
+    func favouriteBtnClicked() {
+        favouriteButton?.setImage(clickFavBtn, for: .normal)
+        favClicked = true
+        registerFavouritesIntoDatabaseWithUserID()
+    }
+
+
     //BARBARA: Click favourite to remove from DB and favourites list
     func deleteFavourite() {
         guard let menuID = menu?.menuID else {
@@ -132,8 +154,9 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
         guard let menuID = menu?.menuID else {
             return
         }
-        //Get user table, then userID, in user ID, get the favourites
-        let menuRef = FIRDatabase.database().reference().child("user-favourites").child(uid!).child(menuID)
+
+        let menuRef = FIRDatabase.database().reference().child("user-favourites").child(FIRAuth.auth()!.currentUser!.uid).child(menuID)
+
         menuRef.observeSingleEvent(of: .value, with: { (snapshot) in
             
             //Check if menuID exists in user's favourites
@@ -145,18 +168,18 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
         })
     }
     
-    //Set button to unclick status/colour
-    func favouriteBtnNotClicked() {
-        favouriteButton?.setImage(favBtn, for: .normal)
-        favClicked = false
-    }
-    
-    //Click favourite button
-    func favouriteBtnClicked() {
-        favouriteButton?.setImage(clickFavBtn, for: .normal)
-        favClicked = true
-        registerFavouritesIntoDatabaseWithUserID()
-    }
+//    //Set button to unclick status/colour
+//    func favouriteBtnNotClicked() {
+//        favouriteButton?.setImage(favBtn, for: .normal)
+//        favClicked = false
+//    }
+//    
+//    //Click favourite button
+//    func favouriteBtnClicked() {
+//        favouriteButton?.setImage(clickFavBtn, for: .normal)
+//        favClicked = true
+//        registerFavouritesIntoDatabaseWithUserID()
+//    }
     
     func displaySendMessagePage(menu: Menu) {
         let storyboard = UIStoryboard(name: "Messages", bundle: nil)
