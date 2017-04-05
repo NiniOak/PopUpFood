@@ -12,11 +12,17 @@ import FirebaseAuth
 
 class SignUpPageViewController: UIViewController {
 
+    var emailsArray = [User]()
+    
+    var user : User?
+    
     // Fields Declaration
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var RepasswordTextField: UITextField!
+
+    var errorsArray = [String]()
 
     var errorMessage = String()
     
@@ -25,6 +31,16 @@ class SignUpPageViewController: UIViewController {
         let alert = UIAlertController(title: "Warning", message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
         
         alert.addAction(UIAlertAction(title: "Correct It", style: UIAlertActionStyle.default, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    //Alert box for a situation when email is already exists in the database
+    func emailExistsAlert(){
+        let alert = UIAlertController(title: "Warning", message: "Current email already exist", preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "Change It", style: UIAlertActionStyle.default, handler: nil))
         
         self.present(alert, animated: true, completion: nil)
     }
@@ -46,39 +62,99 @@ class SignUpPageViewController: UIViewController {
         
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx).evaluate(with: emailTextField.text!)
         
-        if(emailTest == true){
-            return true
-        }
-        
-        else
-        {
-            emailErrorMessage = "Incorrect format of an email! \n"
+        if(emailTextField.text == ""){
+            errorsArray.append("Email field is empty!");
             return false
         }
+        
+        if(emailTest != true){
+            errorsArray.append("Incorrect format of an email!");
+            return false
+        }
+        return true
     }//end of isValidEmail method
     
     
-    var passwordsMatchErrorMessage = String()
+    //Method is used for username field validation
+    func isUserNameEmpty() -> Bool {
+        if(usernameTextField.text == ""){
+            errorsArray.append("Username field is empty!")
+            return false
+        }
+        return true
+    }//end of username field validation
     
+    
+    //Method is used for password's fields match validation
     func isPaswordsMatch() -> Bool {
         if(passwordTextField.text != RepasswordTextField.text){
             //password fields are not match
-            passwordsMatchErrorMessage = "Passwords are not match! \n"
+            errorsArray.append("Passwords are not match!");
             return false
         }
         return true
     }//end of isPaswordsMatch method
     
-    var passwordsEmptyErrorMessage = String()
     
+    //Method is used for password's fields empty validation
     func isPasswordsEmpty() -> Bool {
         if (passwordTextField.text == "" && RepasswordTextField.text == ""){
             //password fields are empty
-            passwordsEmptyErrorMessage = "Password fields are empty \n"
+            errorsArray.append("Password fields are empty!");
             return false
         }
         return true
     }//end of isPasswordsEmpty method
+
+    
+    
+    /*func getAllEmailsFromDB() {
+        
+        let ref = FIRDatabase.database().reference().child("user")
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? NSDictionary{
+                let emails = dictionary.value(forKey: "email") as? String
+                
+                print(emails as Any)
+//            if let dictionary = snapshot.value as? [String: AnyObject] {
+//                
+//                print(dictionary)
+//                
+//                let user = User()
+//                
+//                self.emailsArray.append(user)
+//                
+//                user.email = dictionary["email"] as? String
+            
+            }
+            
+        }, withCancel: nil)
+    }*/
+    
+    
+    func handleRegister() {
+        
+        //getAllEmailsFromDB()
+
+        errorsArray = [String]()//empty our errorsArray before checks will performe
+        
+        isValidEmail()
+        isUserNameEmpty()
+        isPasswordsEmpty()
+        isPaswordsMatch()
+        
+        if(errorsArray.isEmpty){
+            createUserInDataBase()//create user and send it to databse
+        }
+        
+        else{
+            errorMessage = errorsArray.joined(separator: "\n")//concatinate strings from an array and format an error message from them
+            generalAlert()
+        }
+//Olek/Sara end of else clause where user is adding if password and email matches requirements
+        
+    }//end of handleRegister method
     
     
     func createUserInDataBase()
@@ -93,9 +169,11 @@ class SignUpPageViewController: UIViewController {
         FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user: FIRUser?, error ) in
             
             if error != nil {
+                self.emailExistsAlert()//calls an alert box if email is already exists in a databse Olek
                 print(error as Any)
                 return
             }
+            
             else {
                 print("User Created")
             }
@@ -113,6 +191,8 @@ class SignUpPageViewController: UIViewController {
             let values = ["name": username, "email": email, "password": password]
             usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
                 
+                //add email validation here!!!!!!!!!!!!!
+                
                 if err != nil {
                     print(err as Any)
                     return
@@ -121,44 +201,6 @@ class SignUpPageViewController: UIViewController {
             })
         })
     }//end of createUserInDataBase
-
-    
-    func handleRegister() {
-//please do not delete this block!!!!!!!!!!!! - START
-        /*let pass1 = isPasswordsEmpty()
-        let pass2 = isPaswordsMatch()
-        let email = isValidEmail()
-        
-        if(email){
-            errorMessage = emailErrorMessage
-            print(errorMessage)
-            generalAlert()
-            return
-        }
-        
-        if((pass2) && (email))
-        {
-            errorMessage = emailErrorMessage + passwordsMatchErrorMessage
-            print(errorMessage)
-            generalAlert()
-            return
-        }
-        
-        if(!(pass1 && pass2 && email))
-        {
-            errorMessage = emailErrorMessage + passwordsMatchErrorMessage + passwordsEmptyErrorMessage
-            print(errorMessage)
-            generalAlert()
-            return
-        }*/
-//please do not delete this block!!!!!!!!!!!!!!!! - END
-        //else
-        //{
-            //added this else clause for creating a user and sending them data to database
-            createUserInDataBase()
-        //}//Olek/Sara end of else clause where user is adding if password and email matches requirements
-        
-    }//end of handleRegister method
     
     
     func goToHomePage() {
