@@ -13,7 +13,7 @@ import FBSDKLoginKit //Import Facebook SignIn Kit
 import GoogleSignIn //Import GoogleSignIn kit
 
 //SIGN IN PAGE WITH FACEBOOK AND GOOGLE BUTTONS
-class SignInViewController: UIViewController, UITextFieldDelegate {
+class SignInViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
     
     var signUpController: SignUpViewController?
 
@@ -25,21 +25,17 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     
     func showNavBar() {
         navigationItem.title = "Sign In"
-//=======
-//    @IBAction func facebookBtn(_ sender: Any) {
-//        signUpController?.handleCustomFBLogin()
-//    }
-//    @IBAction func googleBtn(_ sender: Any) {
-//        signUpController?.handleCustomGoogleLogin()
-//>>>>>>> origin/Anita
+
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        showNavBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        self.navigationController?.isNavigationBarHidden = false
         //If user is signed in, display homepage
         FIRAuth.auth()?.addStateDidChangeListener{ auth, user in
             
@@ -83,16 +79,6 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         let storyboard = UIStoryboard(name: "HomePage", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "newhomePage") as! HomeAfterSignIn
         self.navigationController?.pushViewController(controller, animated: true)
-    }
-    
-//    func displayLandingPage() {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let controller = storyboard.instantiateViewController(withIdentifier: "landingVC") as UIViewController
-//        self.navigationController?.pushViewController(controller, animated: true)
-//    }
-
-    @IBAction func backToLandingPage(_ sender: Any) {
-        //displayLandingPage()
     }
     
 }

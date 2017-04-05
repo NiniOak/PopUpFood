@@ -17,6 +17,12 @@ class ViewController: UIViewController {
         displayHomePage()
     }
     
+    @IBAction func signInBtn(_ sender: Any) {
+        displaySignInPage()
+    }
+    @IBAction func signUpBtn(_ sender: Any) {
+        displaySignUpPage()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +42,16 @@ class ViewController: UIViewController {
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
+    func displaySignInPage() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "signInPage") as UIViewController
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    func displaySignUpPage() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "SignUpSocialMedia") as UIViewController
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
     override func viewWillAppear(_ animated: Bool) {
         
         self.navigationController?.isNavigationBarHidden = true

@@ -15,18 +15,26 @@ import FBSDKLoginKit //Import Facebook SignIn Kit
 import GoogleSignIn //Import GoogleSignIn kit
 
 //NEW PROJECT!!!!!
-class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
+class SignUpViewController: UIViewController, UINavigationControllerDelegate, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
     @IBOutlet weak var facebookButton: UIButton!
     @IBOutlet weak var googleButton: UIButton!
+    @IBAction func emailBtn(_ sender: Any) {
+        displaySignUpPage()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        navigationItem.title = "Sign Up"
         
         setupFacebookButton() //Method to set up Facebook button
         
         setupGoogleButton() //Method to set up Google Button
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     //Google Method called here
@@ -106,9 +114,6 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignI
         print("Did log out of facebook")
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-    }
-    
     func displaySignInPage() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "signInPage") as! SignInViewController
@@ -116,10 +121,11 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignI
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
-    func displaylandingPage() {
+    func displaySignUpPage() {
         
-        let storyboard = UIStoryboard(name: "defaultTimeline", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "testing") as UIViewController
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "signUpPage") as UIViewController
         self.navigationController?.pushViewController(controller, animated: true)
     }
+
 }

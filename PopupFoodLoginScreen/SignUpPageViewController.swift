@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class SignUpPageViewController: UIViewController {
+class SignUpPageViewController: UIViewController, UINavigationControllerDelegate {
 
     // Fields Declaration
     @IBOutlet weak var emailTextField: UITextField!
@@ -23,6 +23,17 @@ class SignUpPageViewController: UIViewController {
     @IBAction func signUpBtn(_ sender: UIButton) {
         handleRegister()
         goToHomePage()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationItem.title = "Sign Up"
+        // Do any additional setup after loading the view.
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     func handleRegister() {
@@ -48,12 +59,9 @@ class SignUpPageViewController: UIViewController {
                 return
             }
             //Collect entered User information and input in Database
-            var ref: FIRDatabaseReference!
-        
-            ref = FIRDatabase.database().reference()
-            let usersReference = ref.child("user").child(uid)
+            let ref = FIRDatabase.database().reference().child("user").child(uid)
             let values = ["name": username, "email": email, "password": password]
-            usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
+            ref.updateChildValues(values, withCompletionBlock: { (err, ref) in
                 
                 if err != nil {
                     print(err as Any)
@@ -62,18 +70,19 @@ class SignUpPageViewController: UIViewController {
                 print ("User Data saved to Firebase Database!")
             })
         })
-        
     }
     
     func goToHomePage() {
-        let signInViewCOntroller = SignInViewController()
-        let nextViewController: UINavigationController = UINavigationController(rootViewController: signInViewCOntroller)
-        self.present(nextViewController, animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "HomePage", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "newhomePage") as! HomeAfterSignIn
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+//    func displaySignInPage() {
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let controller = storyboard.instantiateViewController(withIdentifier: "signInPage") as! SignInViewController
+//        self.navigationController?.pushViewController(controller, animated: true)
+//    }
+//    
+   
 }
