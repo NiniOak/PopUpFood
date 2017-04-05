@@ -13,7 +13,6 @@ import FirebaseAuth
 class SignUpPageViewController: UIViewController {
 
     var emailsArray = [User]()
-    
     var user : User?
     
     // Fields Declaration
@@ -38,7 +37,7 @@ class SignUpPageViewController: UIViewController {
     
     //Alert box for a situation when email is already exists in the database
     func emailExistsAlert(){
-        let alert = UIAlertController(title: "Warning", message: "Current email already exist", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Warning", message: "Typed email address is already in use, please input another one", preferredStyle: UIAlertControllerStyle.alert)
         
         alert.addAction(UIAlertAction(title: "Change It", style: UIAlertActionStyle.default, handler: nil))
         
@@ -49,8 +48,6 @@ class SignUpPageViewController: UIViewController {
     //Impelmenation for Sign Up button
     @IBAction func signUpBtn(_ sender: UIButton) {
         handleRegister()
-        
-        goToHomePage()
     }
     
     
@@ -105,32 +102,6 @@ class SignUpPageViewController: UIViewController {
         }
         return true
     }//end of isPasswordsEmpty method
-
-    
-    
-    /*func getAllEmailsFromDB() {
-        
-        let ref = FIRDatabase.database().reference().child("user")
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            if let dictionary = snapshot.value as? NSDictionary{
-                let emails = dictionary.value(forKey: "email") as? String
-                
-                print(emails as Any)
-//            if let dictionary = snapshot.value as? [String: AnyObject] {
-//                
-//                print(dictionary)
-//                
-//                let user = User()
-//                
-//                self.emailsArray.append(user)
-//                
-//                user.email = dictionary["email"] as? String
-            
-            }
-            
-        }, withCancel: nil)
-    }*/
     
     
     func handleRegister() {
@@ -170,7 +141,7 @@ class SignUpPageViewController: UIViewController {
             
             if error != nil {
                 self.emailExistsAlert()//calls an alert box if email is already exists in a databse Olek
-                print(error as Any)
+                //print(error as Any)
                 return
             }
             
@@ -191,15 +162,15 @@ class SignUpPageViewController: UIViewController {
             let values = ["name": username, "email": email, "password": password]
             usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
                 
-                //add email validation here!!!!!!!!!!!!!
-                
                 if err != nil {
                     print(err as Any)
                     return
                 }
                 print ("User Data saved to Firebase Database!")
+                self.goToHomePage()// call goToHomePage method
             })
         })
+
     }//end of createUserInDataBase
     
     
