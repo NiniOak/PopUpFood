@@ -23,13 +23,72 @@ class SignInViewController: UIViewController {
     
     @IBOutlet weak var passwordTextField: UITextField!
     
-    //////
+    //let textField: UITextField!
+    
     @IBAction func facebookBtn(_ sender: Any) {
         signUpController?.handleCustomFBLogin()
     }
+    
     @IBAction func googleBtn(_ sender: Any) {
         signUpController?.handleCustomGoogleLogin()
     }
+    
+    //Forgot password button
+    @IBAction func forgotPasswordBtn(_ sender: Any) {
+        
+        let alert = UIAlertController(title: "Forgot your password?", message: "Please provide your email to reset a password", preferredStyle: UIAlertControllerStyle.alert)
+        
+        
+        alert.addTextField { (textField: UITextField) in
+            textField.placeholder = "Email Address"
+        }
+        
+        
+        let reset = UIAlertAction(title: "Reset", style: UIAlertActionStyle.default){ (action: UIAlertAction) -> Void in
+            let textField = alert.textFields?[0]
+            FIRAuth.auth()?.sendPasswordReset(withEmail: (textField?.text!)!, completion:{(error) in
+                
+                var title = ""
+                var message = ""
+                if(error != nil)
+                {
+                    title = "Something went wrong, please try again"
+                    message = (error?.localizedDescription)!
+                }
+                    
+                else
+                {
+                    title = "Success"
+                    message = "Password was successfully reseted, please check your email!"
+                    textField?.text = ""
+                }
+                
+                
+                //This is an alert box which is come after execution of Reset button was finished, and let us now was it okay or not
+                let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+                
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                
+                self.present(alert, animated: true, completion: nil)
+                
+            })
+        
+        }
+        
+        
+        alert.addAction(reset)// execute a reset functionality after user clicked Reset button
+        
+        
+        //This is Cancel button action block
+        let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
+        
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

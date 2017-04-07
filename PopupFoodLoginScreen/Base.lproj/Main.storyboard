@@ -424,7 +424,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="8"/>
@@ -676,6 +676,9 @@
                                 <state key="normal" title="Forgot Password?">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="forgotPasswordBtn:" destination="vsh-hO-AAH" eventType="touchUpInside" id="JBD-pJ-n7y"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.97156583019999998" green="0.97156583019999998" blue="0.97156583019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -736,7 +739,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NavControl" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="yGb-IK-ujs" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HHP-fV-kLt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="HHP-fV-kLt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -756,7 +759,7 @@
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uWq-iK-2Mk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="uWq-iK-2Mk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -774,7 +777,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xwe-Cm-iIw" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3C5-Na-O5s">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="3C5-Na-O5s">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -792,7 +795,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ahB-6R-Ut8" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4eE-P5-wXK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="4eE-P5-wXK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -810,7 +813,7 @@
         <image name="logo_new" width="317" height="322"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iFv-dl-Nry"/>
+        <segue reference="2Gb-3Y-2am"/>
         <segue reference="5cE-wg-eBo"/>
     </inferredMetricsTieBreakers>
 </document>
