@@ -52,24 +52,50 @@ class SearchFood: UICollectionViewController {
             return
         }*/
         
+//        let ref = FIRDatabase.database().reference().child("menu")
+//        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+//            
+//            if let dictionary = snapshot.value as? [String: AnyObject] {
+//                
+//                let menu = Menu()
+//                
+//                self.imagesArray.append(menu)
+//                
+//                menu.foodImageUrl = dictionary["foodImageUrl"] as? String
+//                
+//                DispatchQueue.main.async {
+//                    self.collectionView?.reloadData()
+//                }
+//            }
+//            
+//        }, withCancel: nil)
+        
+//Olek Search Page fetching images functionality
+        
         let ref = FIRDatabase.database().reference().child("menu")
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
-            if let dictionary = snapshot.value as? [String: AnyObject] {
+            for images in snapshot.children.allObjects as! [FIRDataSnapshot] {
                 
-                let menu = Menu()
-                
-                self.imagesArray.append(menu)
-                
-                menu.foodImageUrl = dictionary["foodImageUrl"] as? String
-                
-                DispatchQueue.main.async {
-                    self.collectionView?.reloadData()
+                if let dictionary = images.value as? [String: AnyObject] {
+                    let menu = Menu()
+
+                    self.imagesArray.append(menu)
+
+                    menu.foodImageUrl = dictionary["foodImageUrl"] as? String
+                    
+                    DispatchQueue.main.async {
+                        self.collectionView?.reloadData()
+                    }
                 }
             }
             
         }, withCancel: nil)
-    }
+
+    }//end of handleFoodImagesFetching method
+
+    
+    
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items

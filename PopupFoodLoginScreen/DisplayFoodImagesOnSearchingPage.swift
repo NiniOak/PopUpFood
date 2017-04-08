@@ -10,7 +10,5 @@ import UIKit
 
 class DisplayFoodImagesOnSearchingPage: UICollectionViewCell {
     
-    //@IBOutlet weak var foodImage: UIImageView!
-    
     @IBOutlet weak var foodImage: UIImageView!
 }
