@@ -13,6 +13,7 @@ import FBSDKCoreKit
 
 class ProfileViewController: UIViewController, UINavigationControllerDelegate {
     
+    
     var user = [User]()
     
     override func viewDidLoad() {
@@ -88,13 +89,9 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
                 ////////
                 if let ProfileImageURL = dictionary["photo"] as? String {
                     //load the photo from ImageViewer id
-                    
-                    self.ImageViewProfilePic.sd_setImage(with: URL(string: ProfileImageURL))
-                }
-                    /////
-                    /* if let profileImage = dictionary["image"] as? UIImage {
-                     self.ImageViewProfilePic.image = profileImage
-                 } */else {
+                self.ImageViewProfilePic.sd_setImage(with: URL(string: ProfileImageURL))
+                      }
+                else {
                     self.ImageViewProfilePic.image = UIImage (named: "defaultImage")
                 }
             }
@@ -116,6 +113,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
             if let photoURL = user.photoURL {
                 let data = NSData(contentsOf: photoURL)
                 self.ImageViewProfilePic.image = UIImage(data: data! as Data)
+
             } else {
                 self.ImageViewProfilePic.image = UIImage(named: "defaultImage")
             }
@@ -142,18 +140,19 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
         } catch let logoutError {
             print(logoutError)
         }
-        
+        dismiss(animated: true, completion: nil)
          displaySignIn()
     }
 
     //Display homepage if not signed in
     func displaySignIn() {
-        //Send user back to home screen
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "landingVC") as! ViewController
-        //self.navigationController?.pushViewController(controller, animated: true)
-        self.present(controller, animated: true, completion: nil)
+//        //Send user back to home screen
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let controller = storyboard.instantiateViewController(withIdentifier: "landingVC") as! ViewController
+//        //self.navigationController?.pushViewController(controller, animated: true)
+//        self.present(controller, animated: true, completion: nil)
         
+        self.navigationController?.popToRootViewController(animated: true)
         /////////////////////////////////////////////////////////////////////////////
     }
     

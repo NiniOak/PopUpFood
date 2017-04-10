@@ -13,11 +13,12 @@ import FirebaseAuth
 
 class BeforeStartSellingViewController: UITableViewController {
     
-    //Test data to display array of food items
-    //let foodMenu = ["test_pizza", "pasta", "defaultImage"]
     //Menu array to display food items
     var foodMenu = [Menu]()
     let cellId = "cell"
+    
+    //instantiate menu class
+    var menu : Menu?
     
     override func viewDidLoad() {
 
@@ -46,6 +47,7 @@ class BeforeStartSellingViewController: UITableViewController {
                     self.foodMenu.append(menu)
                     
                     //This calls the entire database for menu input by a user
+                    menu.menuID = menuID
                     menu.food = dictionary["food"] as? String
                     menu.price = dictionary["price"] as? String
                     menu.foodImageUrl = dictionary["foodImageUrl"] as? String
@@ -58,33 +60,7 @@ class BeforeStartSellingViewController: UITableViewController {
         }, withCancel: nil)
     }
 
- /*   //FETCH ALL MENU FROM DATABASE
-    func fetchMenu() {
 
-        FIRDatabase.database().reference().child("menu").observe(.childAdded, with: { (snapshot) in
-            
-            //store chef/menu info in "snapshot" and display snapshot
-            if let dictionary = snapshot.value as? [String: AnyObject] {
-                
-                let menu = Menu()
-                
-                self.foodMenu.append(menu)
-
-                //This calls the entire database for menu input by a user
-                menu.food = dictionary["food"] as? String
-                menu.price = dictionary["price"] as? String
-                menu.foodImageUrl = dictionary["foodImageUrl"] as? String
-
-                //self.foodMenu.append(menu)
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-
-            }
-
-        }, withCancel: nil)
-    }*/
-    
     //Set up number of cells in Table view
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
@@ -108,6 +84,32 @@ class BeforeStartSellingViewController: UITableViewController {
         return (cell)
     }
     
+    //Edit Menu in Table View
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+       
+            let item = foodMenu[indexPath.row]
+            
+            guard let menuID = item.menuID else {
+                return
+            }
+            if (editingStyle == UITableViewCellEditingStyle.delete) {
+            FIRDatabase.database().reference().child("menu").child(menuID).removeValue(completionBlock: { (error, ref) in
+                if (error != nil) {
+                    print(error as Any)
+                } else {
+                    print(ref)
+                    print("Menu successfully deleted")
+                }
+            })
+       }
+             tableView.reloadData()
+    }
+    
+    
     //plus button functionality
     @IBAction func addButton(_ sender: Any) {
             startSelling()
@@ -122,7 +124,22 @@ class BeforeStartSellingViewController: UITableViewController {
         
         self.navigationController?.isNavigationBarHidden = false
     }
-    
+    //Delete Menu
+    func deleteMenu() {
+        //remove from database
+        guard let menuID = menu?.menuID else {
+            return
+        }
+        //check for menuID in database
+        FIRDatabase.database().reference().child("menu").child(menuID).removeValue(completionBlock: { (error, ref) in
+            if (error != nil) {
+                print(error as Any)
+            } else {
+                print(ref)
+                print("Menu successfully deleted")
+            }
+        })
+    }
     //Call viewcontroller and navigation bar for selling page
     func startSelling() {
      let storyboard = UIStoryboard(name: "startSelling", bundle: nil)

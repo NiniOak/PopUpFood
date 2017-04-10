@@ -24,6 +24,9 @@ class SignUpPageViewController: UIViewController, UINavigationControllerDelegate
         goToHomePage()
     }
     
+    @IBAction func signInBtn(_ sender: Any) {
+        goToSignInPage()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,7 +133,7 @@ class SignUpPageViewController: UIViewController, UINavigationControllerDelegate
         _ = checkPassword()
         
         if(errorArray.isEmpty){
-            createUserInDataBase()//create user and send it to databse
+            createUserInDataBase()//create user and send it to database
         }
             
         else{
@@ -182,6 +185,12 @@ class SignUpPageViewController: UIViewController, UINavigationControllerDelegate
     func goToHomePage() {
         let storyboard = UIStoryboard(name: "HomePage", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "newhomePage") as! HomeAfterSignIn
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func goToSignInPage() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "signInPage")
         self.navigationController?.pushViewController(controller, animated: true)
     }
    

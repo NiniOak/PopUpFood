@@ -38,12 +38,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         application.statusBarStyle = .default
         
         //Update Status Bar of Device
-        let statusBarbackgroundColor = UIView()
-        statusBarbackgroundColor.backgroundColor = UIColor.rgb(red: 15, green: 200, blue: 210, alpha: 1)
-        
-        window?.addSubview(statusBarbackgroundColor)
-        window?.addConstraintsWithFormat(format: "H:|[v0]|", views: statusBarbackgroundColor)
-        window?.addConstraintsWithFormat(format: "V:|[v0(20)]|", views: statusBarbackgroundColor)
+//        let statusBarbackgroundColor = UIView()
+//        statusBarbackgroundColor.backgroundColor = UIColor.rgb(red: 15, green: 200, blue: 210, alpha: 1)
+//        
+//        window?.addSubview(statusBarbackgroundColor)
+//        window?.addConstraintsWithFormat(format: "H:|[v0]|", views: statusBarbackgroundColor)
+//        window?.addConstraintsWithFormat(format: "V:|[v0(20)]|", views: statusBarbackgroundColor)
 
         
         //FACEBOOK CODE

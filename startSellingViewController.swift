@@ -24,6 +24,12 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
 
     var userDetails: User! = nil
     
+    //Form Validation
+    var errorArray = [String]()
+    
+    //Error Message
+    var errorMessage = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,7 +38,8 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
     }
 
     @IBAction func startSellingBtn(_ sender: Any) {
-        handleStartSelling()
+        //handleStartSelling()
+        validateStartSelling()
         goBackToStartSelling()
     }
 
@@ -170,6 +177,31 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         cuisineTypeLabel.text = cuisine[row]
     }
-    
+    //Alert box to pop up errors
+    func errorAlert() {
+        let alert = UIAlertController(title:"Required",  message:errorMessage,  preferredStyle:UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok" , style:UIAlertActionStyle.default , handler:nil ))
+        self.present(alert, animated:true, completion: nil)
+    }
+    //Check for blank fields
+    func checkIfBlank() -> Bool {
+        if (menuNameTextField.text == "" || menuDescriptionTextView.text == "" || enterPriceTextField.text == "" || cuisineTypeLabel.text == "") {
+            errorArray.append("All fields required!")
+        }
+        return false
+    }
+    //Push error if blank
+    func validateStartSelling() {
+        errorArray = [String]() //Set empty array
+        
+        _ = checkIfBlank()
+        
+        if errorArray.isEmpty {
+            handleStartSelling()
+        }else {
+            errorMessage = errorArray.joined(separator: "\n")//concat strings from an array and format an error message from them
+            errorAlert()
+        }
+    }
     
 }
