@@ -9,7 +9,7 @@
 import UIKit
 import FBSDKLoginKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,UINavigationControllerDelegate {
     
     @IBOutlet weak var xButton: UIButton!
     @IBAction func closeBtn(_ sender: UIButton) {
@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.isNavigationBarHidden = true;
+        self.navigationController?.isNavigationBarHidden = true
         closeBtn()
     }
     
@@ -38,24 +38,34 @@ class ViewController: UIViewController {
     
     func displayHomePage() {
         let storyboard = UIStoryboard(name: "defaultTimeline", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "initialController") as UIViewController
+        let controller = storyboard.instantiateViewController(withIdentifier: "initialController") as! defaultPageViewController
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
     func displaySignInPage() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "signInPage") as UIViewController
+        let controller = storyboard.instantiateViewController(withIdentifier: "signInPage") as! SignInViewController
+        //self.present(controller, animated: true, completion: nil)
         self.navigationController?.pushViewController(controller, animated: true)
     }
     func displaySignUpPage() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "SignUpSocialMedia") as UIViewController
+        let controller = storyboard.instantiateViewController(withIdentifier: "SignUpSocialMedia") as! SignUpViewController
         self.navigationController?.pushViewController(controller, animated: true)
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         
-        self.navigationController?.isNavigationBarHidden = true
+        //self.navigationController?.isNavigationBarHidden = false
     }
-    
+
+//    lazy var profilePage: ProfileViewController = {
+//        let storyboard = UIStoryboard(name: "ProfilePage", bundle: nil)
+//        let controller = storyboard.instantiateViewController(withIdentifier: "InitialController") as! ProfileViewController
+//        //handle navigation
+//        controller.displayViewCOntroller = self
+//        return controller
+//    }()
+//    
 
 }

@@ -58,8 +58,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
 
     
      func checkIfUserIsLoggedIn() {
-    
-        displayFacebookandGoogleUsers()
         
         if FIRAuth.auth()?.currentUser?.uid == nil {
             perform(#selector(handleLogOut), with: nil, afterDelay: 0)
@@ -96,6 +94,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
                 }
             }
         }, withCancel: nil)
+        displayFacebookandGoogleUsers()
     }
     
     func displayFacebookandGoogleUsers() {
@@ -138,16 +137,14 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
         } catch let logoutError {
             print(logoutError)
         }
+        dismiss(animated: true, completion: nil)
         displayHomePage()
     }
 
     //Display homepage if not signed in
     func displayHomePage() {
-        //Send user back to home screen
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "landingVC") as! ViewController
-        self.present(controller, animated: true, completion: nil)
-        /////////////////////////////////////////////////////////////////////////////
+        self.navigationController?.popToRootViewController(animated: true)
+
     }
     
     //Display edit profile page
@@ -159,9 +156,15 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
     }
     //Display Home with menu list
     func returnHomePage() {
-        let signInViewCOntroller = SignInViewController()
-        let nextViewController: UINavigationController = UINavigationController(rootViewController: signInViewCOntroller)
-        self.present(nextViewController, animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "HomePage", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "newhomePage") as! HomeAfterSignIn
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func displaySignInPage() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "signInPage") as! SignInViewController
+        self.present(controller, animated: true)
     }
 
 }
