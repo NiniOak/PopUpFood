@@ -54,7 +54,7 @@ class messageLogViewController: UITableViewController {
                     message.timestamp = dictionary["timestamp"] as? NSNumber
                     
                     if let menuID = message.menuId {
-                        self.messagesDictionary[menuID] = message
+                        self.messagesDictionary[menuID] = message //change to append
                         
                         self.message = Array(self.messagesDictionary.values)
                         

@@ -144,7 +144,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
     //Display homepage if not signed in
     func displayHomePage() {
         self.navigationController?.popToRootViewController(animated: true)
-
     }
     
     //Display edit profile page

@@ -56,7 +56,7 @@ class ViewController: UIViewController,UINavigationControllerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        //self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.isNavigationBarHidden = true
     }
 
 //    lazy var profilePage: ProfileViewController = {
