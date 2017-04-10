@@ -63,8 +63,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
     
     //BARBARA: On click, launch edit profile page
      func checkIfUserIsLoggedIn() {
-    
-        displayFacebookandGoogleUsers()
         
         if FIRAuth.auth()?.currentUser?.uid == nil {
             perform(#selector(handleLogOut), with: nil, afterDelay: 0)
@@ -101,6 +99,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
                 }
             }
         }, withCancel: nil)
+        displayFacebookandGoogleUsers()
     }
     
     func displayFacebookandGoogleUsers() {

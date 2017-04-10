@@ -25,7 +25,6 @@ class SignInViewController: UIViewController, UITextFieldDelegate, UINavigationC
     
     func showNavBar() {
         navigationItem.title = "Sign In"
-
     }
 
     override func viewDidLoad() {
@@ -67,7 +66,6 @@ class SignInViewController: UIViewController, UITextFieldDelegate, UINavigationC
 //                print("User Logged In")
             }
         })
-    
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

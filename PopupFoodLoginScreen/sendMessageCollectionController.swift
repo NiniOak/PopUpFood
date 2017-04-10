@@ -73,6 +73,8 @@ class sendMessageCollectionController: UICollectionViewController, UICollectionV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        collectionView?.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 58, right: 0)
         collectionView?.alwaysBounceVertical = true
         collectionView?.backgroundColor = UIColor.white
         // Register cell classes
@@ -91,11 +93,28 @@ class sendMessageCollectionController: UICollectionViewController, UICollectionV
         let messages = sentMessages[indexPath.item]
         cell.textView.text = messages.text
         
+        //This get's the text width
+        cell.bubbleWidthAnchor?.constant = estimatedFrameForText(text: messages.text!).width + 32
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 80)
+        var height: CGFloat = 80
+        
+        //get estimated height
+        if let text = sentMessages[indexPath.item].text {
+            height = estimatedFrameForText(text: text).height + 20
+        }
+        
+        return CGSize(width: view.frame.width, height: height)
+    }
+    
+    private func estimatedFrameForText(text: String) -> CGRect {
+        let size = CGSize(width: 200, height: 1000)
+        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+        
+        return NSString(string: text).boundingRect(with: size, options: options, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 16)], context: nil)
     }
     
     //Design the UI for the Message Collection View
@@ -126,7 +145,7 @@ class sendMessageCollectionController: UICollectionViewController, UICollectionV
         sendButton.heightAnchor.constraint(equalTo: containerView.heightAnchor).isActive = true
         containerView.addSubview(inputTextField)
         
-        inputTextField.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
+        inputTextField.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 8).isActive = true
         inputTextField.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
         inputTextField.rightAnchor.constraint(equalTo: sendButton.leftAnchor).isActive = true
         inputTextField.heightAnchor.constraint(equalTo: containerView.heightAnchor).isActive = true

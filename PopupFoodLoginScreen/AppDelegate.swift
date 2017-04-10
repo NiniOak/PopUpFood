@@ -22,6 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        //Strictly for launching page////////
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "landingVC") as! ViewController
+        let navigationController = UINavigationController(rootViewController: controller)
+        
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = navigationController
+        self.window?.makeKeyAndVisible()
+        ///Strictly for launching page////
+        
         //Modify Navigation Bar Colour
         UINavigationBar.appearance().barTintColor = UIColor(white: 1, alpha: 1) //White Color
         
