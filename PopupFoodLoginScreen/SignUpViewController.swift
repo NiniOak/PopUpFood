@@ -21,6 +21,11 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, FB
     @IBAction func emailBtn(_ sender: Any) {
         displaySignUpPage()
     }
+    @IBAction func signInBtn(_ sender: Any) {
+        displaySignInPage()
+    }
+    
+    @IBOutlet weak var signInButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()

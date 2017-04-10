@@ -13,6 +13,7 @@ import FBSDKCoreKit
 
 class ProfileViewController: UIViewController, UINavigationControllerDelegate {
     
+    
     var user = [User]()
     
     override func viewDidLoad() {
@@ -20,6 +21,11 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
         // Check if user exists in database when logged in
         checkIfUserIsLoggedIn()
         cancelButtonForNavbar()
+        navigationItem.title = "User Profile"
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     func cancelButtonForNavbar() {
@@ -50,13 +56,13 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
         
         //Signout of application
         handleLogOut()
-        FBSDKAccessToken.setCurrent(nil)
         
+        FBSDKAccessToken.setCurrent(nil)
         print("User Logged out")
+        
     }
-    //BARBARA: On click, launch edit profile page
-
     
+    //BARBARA: On click, launch edit profile page
      func checkIfUserIsLoggedIn() {
         
         if FIRAuth.auth()?.currentUser?.uid == nil {
@@ -83,13 +89,9 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
                 ////////
                 if let ProfileImageURL = dictionary["photo"] as? String {
                     //load the photo from ImageViewer id
-                    
-                    self.ImageViewProfilePic.sd_setImage(with: URL(string: ProfileImageURL))
-                }
-                    /////
-                    /* if let profileImage = dictionary["image"] as? UIImage {
-                     self.ImageViewProfilePic.image = profileImage
-                 } */else {
+                self.ImageViewProfilePic.sd_setImage(with: URL(string: ProfileImageURL))
+                      }
+                else {
                     self.ImageViewProfilePic.image = UIImage (named: "defaultImage")
                 }
             }
@@ -111,6 +113,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
             if let photoURL = user.photoURL {
                 let data = NSData(contentsOf: photoURL)
                 self.ImageViewProfilePic.image = UIImage(data: data! as Data)
+
             } else {
                 self.ImageViewProfilePic.image = UIImage(named: "defaultImage")
             }
@@ -138,11 +141,17 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
             print(logoutError)
         }
         dismiss(animated: true, completion: nil)
-        displayHomePage()
+         displaySignIn()
     }
 
     //Display homepage if not signed in
-    func displayHomePage() {
+    func displaySignIn() {
+//        //Send user back to home screen
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let controller = storyboard.instantiateViewController(withIdentifier: "landingVC") as! ViewController
+//        //self.navigationController?.pushViewController(controller, animated: true)
+//        self.present(controller, animated: true, completion: nil)
+        
         self.navigationController?.popToRootViewController(animated: true)
     }
     
@@ -158,12 +167,11 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
         let storyboard = UIStoryboard(name: "HomePage", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "newhomePage") as! HomeAfterSignIn
         self.navigationController?.pushViewController(controller, animated: true)
-    }
-    
-    func displaySignInPage() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "signInPage") as! SignInViewController
-        self.present(controller, animated: true)
+        
+//        let homeViewController = HomeAfterSignIn()
+//        let nextViewController: UINavigationController = UINavigationController(rootViewController: homeViewController)
+//        self.navigationController?.pushViewController(nextViewController, animated: true)
+        
     }
 
 }

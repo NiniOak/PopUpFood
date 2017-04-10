@@ -33,17 +33,26 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
 
     }
     
-    //Save Edited info button
-    @IBAction func saveProfile(_ sender: Any) {
-        updateProfile()
-        profilePageController?.returnHomePage()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "Edit Profile"
+        
         databaseRef = FIRDatabase.database().reference()
         storageRef = FIRStorage.storage().reference()
+        
+        saveButtonForNavbar()
         loadProfileData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
+    //Save Btn
+    func saveButtonForNavbar() {
+        //Set up save button for edit profile page
+        let saveBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: #selector (updateProfile))
+        navigationItem.rightBarButtonItem = saveBtn
     }
     
     //Image Picker

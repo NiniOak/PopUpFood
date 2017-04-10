@@ -182,6 +182,8 @@ class sendMessageCollectionController: UICollectionViewController, UICollectionV
                 print(error!)
                 return
             }
+        //Clear textfield after messages have been sent
+        self.clearTextFieldInput()
         }
         
         //Created a user messages table with
@@ -196,7 +198,6 @@ class sendMessageCollectionController: UICollectionViewController, UICollectionV
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         handleSend()
-        clearTextFieldInput()
         return true
     }
     
