@@ -20,6 +20,11 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
         // Check if user exists in database when logged in
         checkIfUserIsLoggedIn()
         cancelButtonForNavbar()
+        navigationItem.title = "User Profile"
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     func cancelButtonForNavbar() {
@@ -50,13 +55,13 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
         
         //Signout of application
         handleLogOut()
-        FBSDKAccessToken.setCurrent(nil)
         
+        FBSDKAccessToken.setCurrent(nil)
         print("User Logged out")
+        
     }
-    //BARBARA: On click, launch edit profile page
-
     
+    //BARBARA: On click, launch edit profile page
      func checkIfUserIsLoggedIn() {
     
         displayFacebookandGoogleUsers()
@@ -138,15 +143,18 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
         } catch let logoutError {
             print(logoutError)
         }
-        displayHomePage()
+        
+         displaySignIn()
     }
 
     //Display homepage if not signed in
-    func displayHomePage() {
+    func displaySignIn() {
         //Send user back to home screen
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "landingVC") as! ViewController
+        //self.navigationController?.pushViewController(controller, animated: true)
         self.present(controller, animated: true, completion: nil)
+        
         /////////////////////////////////////////////////////////////////////////////
     }
     
@@ -159,9 +167,14 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
     }
     //Display Home with menu list
     func returnHomePage() {
-        let signInViewCOntroller = SignInViewController()
-        let nextViewController: UINavigationController = UINavigationController(rootViewController: signInViewCOntroller)
-        self.present(nextViewController, animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "HomePage", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "newhomePage") as! HomeAfterSignIn
+        self.navigationController?.pushViewController(controller, animated: true)
+        
+//        let homeViewController = HomeAfterSignIn()
+//        let nextViewController: UINavigationController = UINavigationController(rootViewController: homeViewController)
+//        self.navigationController?.pushViewController(nextViewController, animated: true)
+        
     }
 
 }

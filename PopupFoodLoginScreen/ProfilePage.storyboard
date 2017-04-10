@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="koa-sx-Kbk">
-                                <rect key="frame" x="79" y="117" width="215" height="178"/>
+                                <rect key="frame" x="79" y="73" width="215" height="222"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VvM-d7-mAQ">
                                 <rect key="frame" x="25" y="303" width="313" height="44"/>
@@ -61,7 +61,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="ProfileView" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ur2-B4-1Ol">
-                                <rect key="frame" x="284" y="78" width="69" height="15"/>
+                                <rect key="frame" x="284" y="34" width="69" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="69" id="fFX-S2-5U4"/>
                                     <constraint firstAttribute="height" constant="15" id="oOj-zG-nMK"/>
@@ -155,13 +155,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Axf-2w-E7O">
-                                <rect key="frame" x="80" y="110" width="215" height="178"/>
+                                <rect key="frame" x="80" y="66" width="215" height="178"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="178" id="QEy-NT-ckL"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tuu-mq-NfW">
-                                <rect key="frame" x="47" y="433" width="281" height="39"/>
+                                <rect key="frame" x="47" y="389" width="281" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="zWe-tf-n1D"/>
                                 </constraints>
@@ -182,7 +182,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UmK-3j-DjI">
-                                <rect key="frame" x="47" y="492" width="281" height="39"/>
+                                <rect key="frame" x="47" y="448" width="281" height="83"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
@@ -200,7 +200,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="2" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NC3-NR-Z7Z">
-                                <rect key="frame" x="47" y="374" width="281" height="39"/>
+                                <rect key="frame" x="47" y="330" width="281" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="Ma6-vP-qhB"/>
                                 </constraints>
@@ -221,7 +221,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6P-Kw-8RI">
-                                <rect key="frame" x="120" y="303" width="134" height="47"/>
+                                <rect key="frame" x="120" y="259" width="134" height="47"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="47" id="hzO-h7-Nfj"/>
                                     <constraint firstAttribute="width" constant="134" id="isH-s5-zN3"/>
@@ -255,13 +255,7 @@
                             <constraint firstItem="NC3-NR-Z7Z" firstAttribute="leading" secondItem="tuu-mq-NfW" secondAttribute="leading" id="zXk-w3-RjM"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Edit Profile" id="uey-9P-sX4">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="aQN-Ip-HjR">
-                            <connections>
-                                <action selector="saveProfile:" destination="eF4-Ey-y7K" id="vsE-t7-zde"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Edit Profile" id="uey-9P-sX4"/>
                     <connections>
                         <outlet property="emailText" destination="NC3-NR-Z7Z" id="TSt-HP-tVA"/>
                         <outlet property="passwordText" destination="UmK-3j-DjI" id="Rsh-lW-7ud"/>
@@ -271,43 +265,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7b5-iY-rrw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2743.1999999999998" y="96.7016491754123"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Y0r-M3-Pmy">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3xz-NW-iLx" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rQw-2f-HNF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="m7X-bU-Rpi" kind="relationship" relationship="rootViewController" id="VDD-GH-nxa"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qKs-Yg-hbH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-111.2" y="96.7016491754123"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="hpN-wQ-FQi">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fmF-R4-s75" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="LTa-gl-Iem">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="eF4-Ey-y7K" kind="relationship" relationship="rootViewController" id="N9G-OQ-v7r"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ea9-Uk-3pd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1804" y="96.7016491754123"/>
+            <point key="canvasLocation" x="1528" y="97"/>
         </scene>
     </scenes>
 </document>
