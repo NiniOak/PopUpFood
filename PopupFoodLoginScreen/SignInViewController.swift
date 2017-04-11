@@ -33,16 +33,12 @@ class SignInViewController: UIViewController {
         signUpController?.handleCustomGoogleLogin()
     }
     
-    //Forgot password button
-    @IBAction func forgotPasswordBtn(_ sender: Any) {
-        
+    func alertForgotPassword() {
         let alert = UIAlertController(title: "Forgot your password?", message: "Please provide your email to reset a password", preferredStyle: UIAlertControllerStyle.alert)
-        
         
         alert.addTextField { (textField: UITextField) in
             textField.placeholder = "Email Address"
         }
-        
         
         let reset = UIAlertAction(title: "Reset", style: UIAlertActionStyle.default){ (action: UIAlertAction) -> Void in
             let textField = alert.textFields?[0]
@@ -50,7 +46,13 @@ class SignInViewController: UIViewController {
                 
                 var title = ""
                 var message = ""
-                if(error != nil)
+                
+                if(textField?.text! == ""){
+                    title = "Something went wrong, please try again"
+                    message = "Email field is empty, please provide a valid email!"
+                }
+                    
+                else if(error != nil)
                 {
                     title = "Something went wrong, please try again"
                     message = (error?.localizedDescription)!
@@ -67,17 +69,14 @@ class SignInViewController: UIViewController {
                 //This is an alert box which is come after execution of Reset button was finished, and let us now was it okay or not
                 let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
                 
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                 
                 self.present(alert, animated: true, completion: nil)
                 
             })
-        
         }
         
-        
         alert.addAction(reset)// execute a reset functionality after user clicked Reset button
-        
         
         //This is Cancel button action block
         let cancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
@@ -88,6 +87,13 @@ class SignInViewController: UIViewController {
     }
     
     
+    
+    //Forgot password button
+    @IBAction func forgotPasswordBtn(_ sender: Any) {
+        
+        alertForgotPassword()
+
+    }//end of forgotPasswordBtn
     
     
     override func viewDidLoad() {
@@ -104,13 +110,70 @@ class SignInViewController: UIViewController {
         }
     }
     
-    //Implementation for Sign In Button
+    //Implementation for Sign In Button and validation as well
     
     @IBAction func signInBtn(_ sender: UIButton) {
         
-        handleSignIn()
+        errorsArray = [String]()//empty our errorsArray before checks will performe
+
+        isValidEmail()
+        isPasswordEmpty()
+        
+        if(errorsArray.isEmpty){
+            handleSignIn()//create user and send it to databse
+        }
+            
+        else{
+            errorMessage = errorsArray.joined(separator: "\n")//concatinate strings from an array and format an error message from them
+            signInValidationAlert()
+        }
     }
     
+    //Implementetion of Sign In validation fields
+    var errorsArray = [String]()
+    
+    var errorMessage = String()
+    
+    //alert inplementetion here
+    func signInValidationAlert(){
+        let alert = UIAlertController(title: "Warning", message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "Correct It", style: UIAlertActionStyle.default, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    //Method is used for password's fields empty validation
+    @discardableResult func isValidEmail() -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Z0-9a-z.-]+\\.[A-Za-z]{2,4}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx).evaluate(with: emailTextField.text!)
+        
+        if(emailTextField.text == ""){
+            errorsArray.append("Email field is empty!");
+            return false
+        }
+        
+        if(emailTest != true){
+            errorsArray.append("Incorrect format of an email!");
+            return false
+        }
+        return true
+    }//end of isValidEmail method
+    
+    
+    //Method is used for password's field empty validation
+    @discardableResult func isPasswordEmpty() -> Bool {
+        if (passwordTextField.text == ""){
+            //password fields are empty
+            errorsArray.append("Password field is empty!");
+            return false
+        }
+        return true
+    }//end of isPasswordsEmpty method
+
+    
+    //handleSignIn method
     func handleSignIn() {
         guard let email = emailTextField.text, let password = passwordTextField.text
             else {
@@ -122,6 +185,7 @@ class SignInViewController: UIViewController {
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
             
             if error != nil{
+                
                 print(error as Any)
                 return
             }
@@ -131,7 +195,7 @@ class SignInViewController: UIViewController {
             }
         })
         
-    }
+    }//end of handleSignIn method
     
     
     

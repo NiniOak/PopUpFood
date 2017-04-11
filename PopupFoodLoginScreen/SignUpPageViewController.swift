@@ -52,9 +52,9 @@ class SignUpPageViewController: UIViewController {
     
     
     //Olek/Sara method is used for email validation
-    var emailErrorMessage  = String()
+    var emailErrorMessage = String()
     
-    func isValidEmail() -> Bool {
+    @discardableResult func isValidEmail() -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Z0-9a-z.-]+\\.[A-Za-z]{2,4}"
         
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx).evaluate(with: emailTextField.text!)
@@ -73,7 +73,7 @@ class SignUpPageViewController: UIViewController {
     
     
     //Method is used for username field validation
-    func isUserNameEmpty() -> Bool {
+    @discardableResult func isUserNameEmpty() -> Bool {
         if(usernameTextField.text == ""){
             errorsArray.append("Username field is empty!")
             return false
@@ -83,7 +83,7 @@ class SignUpPageViewController: UIViewController {
     
     
     //Method is used for password's fields match validation
-    func isPaswordsMatch() -> Bool {
+    @discardableResult func isPaswordsMatch() -> Bool {
         if(passwordTextField.text != RepasswordTextField.text){
             //password fields are not match
             errorsArray.append("Passwords are not match!");
@@ -94,7 +94,7 @@ class SignUpPageViewController: UIViewController {
     
     
     //Method is used for password's fields empty validation
-    func isPasswordsEmpty() -> Bool {
+    @discardableResult func isPasswordsEmpty() -> Bool {
         if (passwordTextField.text == "" && RepasswordTextField.text == ""){
             //password fields are empty
             errorsArray.append("Password fields are empty!");
@@ -105,8 +105,6 @@ class SignUpPageViewController: UIViewController {
     
     
     func handleRegister() {
-        
-        //getAllEmailsFromDB()
 
         errorsArray = [String]()//empty our errorsArray before checks will performe
         

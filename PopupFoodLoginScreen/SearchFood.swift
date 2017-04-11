@@ -13,7 +13,7 @@ import Firebase
 import FirebaseAuth
 import SDWebImage
 
-class SearchFood: UICollectionViewController {
+class SearchFood: UICollectionViewController, UISearchBarDelegate {
     
     let reuseIdentifier = "FoodImageCell"
     
@@ -35,8 +35,9 @@ class SearchFood: UICollectionViewController {
     //Call a search bar Olek
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
+        let headerView: UICollectionReusableView =  collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SearchFoodHeader", for: indexPath)
+        
         if (kind == UICollectionElementKindSectionHeader) {
-            let headerView:UICollectionReusableView =  collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SearchFoodHeader", for: indexPath)
             
             return headerView
         }
@@ -45,32 +46,9 @@ class SearchFood: UICollectionViewController {
         
     }
     
-    func handleFoodImagesFetching(){
-        
-        
-       /* guard let menuID = menu?.menuID else {
-            return
-        }*/
-        
-//        let ref = FIRDatabase.database().reference().child("menu")
-//        ref.observeSingleEvent(of: .value, with: { (snapshot) in
-//            
-//            if let dictionary = snapshot.value as? [String: AnyObject] {
-//                
-//                let menu = Menu()
-//                
-//                self.imagesArray.append(menu)
-//                
-//                menu.foodImageUrl = dictionary["foodImageUrl"] as? String
-//                
-//                DispatchQueue.main.async {
-//                    self.collectionView?.reloadData()
-//                }
-//            }
-//            
-//        }, withCancel: nil)
-        
+    
 //Olek Search Page fetching images functionality
+    func handleFoodImagesFetching(){
         
         let ref = FIRDatabase.database().reference().child("menu")
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -103,7 +81,6 @@ class SearchFood: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        //let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as UICollectionViewCell
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! DisplayFoodImagesOnSearchingPage
         
@@ -113,8 +90,11 @@ class SearchFood: UICollectionViewController {
             cell.foodImage.sd_setImage(with: URL(string: foodImageUrl))
         }
         
+        // TODO ------- if search bar was clicked hide cells by cell.isHidden = true
+        
         return cell
     }
+    
     
     // MARK: UICollectionViewDelegate
     
