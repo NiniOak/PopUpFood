@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         //Update Status Bar of Device
 //        let statusBarbackgroundColor = UIView()
-//        statusBarbackgroundColor.backgroundColor = UIColor.rgb(red: 15, green: 200, blue: 210, alpha: 1)
+//        statusBarbackgroundColor.backgroundColor = UIColor.rgb(red: 240, green: 240, blue: 240, alpha: 1)
 //        
 //        window?.addSubview(statusBarbackgroundColor)
 //        window?.addConstraintsWithFormat(format: "H:|[v0]|", views: statusBarbackgroundColor)

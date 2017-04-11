@@ -88,9 +88,16 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
         //Scroll menu bar away when scrolling
         navigationController?.hidesBarsOnSwipe = true
         
+        //Remove gap when scrolling
+        let whiteView = UIView()
+        whiteView.backgroundColor = UIColor.rgb(red: 255, green: 255, blue: 255, alpha: 1)
+        view.addSubview(whiteView)
+        view.addConstraintsWithFormat(format: "H:|[v0]|", views: whiteView)
+        view.addConstraintsWithFormat(format: "V:[v0(50)]", views: whiteView)
+        
         view.addSubview(menuBar)
         view.addConstraintsWithFormat(format: "H:|[v0]|", views: menuBar)
-        view.addConstraintsWithFormat(format: "V:|[v0(50)]|", views: menuBar)
+        view.addConstraintsWithFormat(format: "V:[v0(50)]", views: menuBar)
         
         //lock menu bar to top of page
         menuBar.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
