@@ -153,7 +153,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
 //        self.present(controller, animated: true, completion: nil)
         
         self.navigationController?.popToRootViewController(animated: true)
-        /////////////////////////////////////////////////////////////////////////////
     }
     
     //Display edit profile page

@@ -48,13 +48,13 @@ class messageLogViewController: UITableViewController {
                     
                     //This calls the entire database for menu input by a user
                     message.text = dictionary["text"] as? String
-                    message.toId = dictionary["toId"] as? String
                     message.fromId = dictionary["fromId"] as? String
                     message.menuId = dictionary["menuId"] as? String
+                    message.toId = dictionary["toId"] as? String
                     message.timestamp = dictionary["timestamp"] as? NSNumber
-                    
+
                     if let menuID = message.menuId {
-                        self.messagesDictionary[menuID] = message
+                        self.messagesDictionary[menuID] = message //change to append
                         
                         self.message = Array(self.messagesDictionary.values)
                         
@@ -64,12 +64,21 @@ class messageLogViewController: UITableViewController {
                         })
                     }
                     
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                        }
+                 //This timer delay prevents firebase from reloading the wrong images to cell.
+                //Timer is invalidated everytime we get a new message
+                self.timer?.invalidate()
+                self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.handleReloadTable), userInfo: nil, repeats: false)
                     }
             }, withCancel: nil)
         }, withCancel: nil)
+    }
+    
+    var timer: Timer?
+    
+    func handleReloadTable() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

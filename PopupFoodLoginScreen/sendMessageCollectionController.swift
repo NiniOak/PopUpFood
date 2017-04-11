@@ -47,7 +47,7 @@ class sendMessageCollectionController: UICollectionViewController, UICollectionV
                 let messages = Message()
                 
                 messages.text = dictionary["text"] as? String
-                messages.fromId = uid
+                messages.fromId = dictionary["fromId"] as? String
                 messages.menuId = dictionary["menuId"] as? String
                 messages.toId = dictionary["toId"] as? String
                 messages.timestamp = dictionary["timestamp"] as? NSNumber
@@ -89,14 +89,49 @@ class sendMessageCollectionController: UICollectionViewController, UICollectionV
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! chatMessageCell
+        let message = sentMessages[indexPath.item]
+        cell.textView.text = message.text
         
-        let messages = sentMessages[indexPath.item]
-        cell.textView.text = messages.text
-        
-        //This get's the text width
-        cell.bubbleWidthAnchor?.constant = estimatedFrameForText(text: messages.text!).width + 32
-        
+        setupCell(cell: cell, message: message)
         return cell
+    }
+    
+    //This function controls the chat bubble color
+    private func setupCell(cell: chatMessageCell, message: Message) {
+        
+        //Get user profile Image to be used in chat
+        guard let userID = self.menu?.customerID else {
+            return
+        }
+        
+        let ref = FIRDatabase.database().reference().child("user").child(userID)
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+                if let profileImageUrl = dictionary["photo"] as? String {
+                    cell.profileImageView.sd_setImage(with: URL(string: profileImageUrl))
+                }
+            }
+        }, withCancel: nil)
+        
+        if message.fromId == FIRAuth.auth()?.currentUser?.uid {
+            //outgoing Blue
+            cell.bubbleView.backgroundColor = chatMessageCell.blueColor
+            cell.textView.textColor = UIColor.white
+            cell.profileImageView.isHidden = true
+            
+            cell.bubbleViewRightAnchor?.isActive = true
+            cell.bubbleViewLeftAnchor?.isActive = false
+        } else {
+            //Incoming gray
+            cell.bubbleView.backgroundColor = UIColor.rgb(red: 240, green: 240, blue: 240, alpha: 1)
+            cell.textView.textColor = UIColor.black
+            cell.profileImageView.isHidden = false
+            
+            cell.bubbleViewRightAnchor?.isActive = false
+            cell.bubbleViewLeftAnchor?.isActive = true
+        }
+        //This get's the text width
+        cell.bubbleWidthAnchor?.constant = estimatedFrameForText(text: message.text!).width + 32
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

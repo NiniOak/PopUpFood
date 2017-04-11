@@ -23,7 +23,7 @@ class chatMessageCell: UICollectionViewCell {
     //This code creates the bubble where the chat messages will be displayed in
     let bubbleView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(red: 0, green: 135, blue: 249, alpha: 1)
+        view.backgroundColor = UIColor(red: 0, green: 191, blue: 255, alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 16
         view.layer.masksToBounds = true
