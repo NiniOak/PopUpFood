@@ -78,7 +78,7 @@ class sendMessageCollectionController: UICollectionViewController, UICollectionV
         collectionView?.alwaysBounceVertical = true
         collectionView?.backgroundColor = UIColor.white
         // Register cell classes
-        collectionView?.register(chatMessageCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
         setupInputComponent()
     }
     
@@ -88,7 +88,7 @@ class sendMessageCollectionController: UICollectionViewController, UICollectionV
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! chatMessageCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChatMessageCell
         let message = sentMessages[indexPath.item]
         cell.textView.text = message.text
         
@@ -97,7 +97,7 @@ class sendMessageCollectionController: UICollectionViewController, UICollectionV
     }
     
     //This function controls the chat bubble color
-    private func setupCell(cell: chatMessageCell, message: Message) {
+    private func setupCell(cell: ChatMessageCell, message: Message) {
         
         //Get user profile Image to be used in chat
         guard let userID = self.menu?.customerID else {
@@ -115,7 +115,7 @@ class sendMessageCollectionController: UICollectionViewController, UICollectionV
         
         if message.fromId == FIRAuth.auth()?.currentUser?.uid {
             //outgoing Blue
-            cell.bubbleView.backgroundColor = chatMessageCell.blueColor
+            cell.bubbleView.backgroundColor = ChatMessageCell.blueColor
             cell.textView.textColor = UIColor.white
             cell.profileImageView.isHidden = true
             
