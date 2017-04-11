@@ -45,7 +45,7 @@ class DisplayMessagesCell: UITableViewCell {
         //"foodName" is where data for all menu items is
         
         
-        if let menuId = message?.menuId , let userId = message?.chatPartnerId() {
+        if let menuId = message?.menuId {
             let menuReference = FIRDatabase.database().reference().child("menu").child(menuId)
             menuReference.observeSingleEvent(of: .value, with: { (snapshot) in
                 
@@ -55,14 +55,27 @@ class DisplayMessagesCell: UITableViewCell {
                         self.foodName.text = foodName
                         //Assigning content to message class to be used in MessageLogClass to group data
                     }
-                    if let foodPrice = dictionary["price"] as? String {
-                        self.foodPrice.text = foodPrice
-                    }
+//                    if let foodPrice = dictionary["price"] as? String {
+//                        self.foodPrice.text = foodPrice
+//                    }
 //                    self.foodPrice.text = userName
                     
                     if let foodImage = dictionary["foodImageUrl"] as? String {
                         self.foodImage.sd_setImage(with: URL(string: foodImage))
                         //        self.message?.foodImageUrl = messagedFoodImage
+                    }
+                }
+            }, withCancel: nil)
+        }
+        
+        if let userId = message?.chatPartnerId() {
+            let menuReference = FIRDatabase.database().reference().child("user").child(userId)
+            menuReference.observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                if let dictionary = snapshot.value as? [String: AnyObject] {
+
+                    if let userName = dictionary["name"] as? String {
+                        self.foodPrice.text = userName
                     }
                 }
             }, withCancel: nil)
