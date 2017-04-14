@@ -48,6 +48,11 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         self.navigationController?.isNavigationBarHidden = false
     }
     
+    override func viewDidLayoutSubviews() {
+        updateProfileImage.layer.cornerRadius = updateProfileImage.frame.size.width/2
+        updateProfileImage.clipsToBounds = true
+    }
+    
     //Save Btn
     func saveButtonForNavbar() {
         //Set up save button for edit profile page

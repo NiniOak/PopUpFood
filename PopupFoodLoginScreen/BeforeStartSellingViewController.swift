@@ -11,7 +11,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class BeforeStartSellingViewController: UITableViewController {
+class BeforeStartSellingViewController: UITableViewController, UINavigationControllerDelegate {
     
     //Menu array to display food items
     var foodMenu = [Menu]()
@@ -22,7 +22,23 @@ class BeforeStartSellingViewController: UITableViewController {
     
     override func viewDidLoad() {
 
+        navigationItem.title = "Your Menu"
         fetchUserMenu()
+    }
+    
+    //plus button functionality
+    @IBAction func addButton(_ sender: Any) {
+            startSelling()
+    }
+    
+    @IBAction func cancelButton(_ sender: Any) {
+        goBackToLoggedInView()
+    }
+
+    //This methid displays navigation Bar
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     //FETCH ITEMS BY SINGLE USER ENTRY
@@ -38,7 +54,7 @@ class BeforeStartSellingViewController: UITableViewController {
             let menuReference = FIRDatabase.database().reference().child("menu").child(menuID)
             
             menuReference.observeSingleEvent(of: .value, with: { (snapshot) in
-
+                
                 //store chef/menu info in "snapshot" and display snapshot
                 if let dictionary = snapshot.value as? [String: AnyObject] {
                     
@@ -59,12 +75,12 @@ class BeforeStartSellingViewController: UITableViewController {
             }, withCancel: nil)
         }, withCancel: nil)
     }
-
-
+    
+    
     //Set up number of cells in Table view
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-     return foodMenu.count
+        return foodMenu.count
     }
     
     //Display images, test and amount in cells
@@ -90,13 +106,13 @@ class BeforeStartSellingViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-       
-            let item = foodMenu[indexPath.row]
-            
-            guard let menuID = item.menuID else {
-                return
-            }
-            if (editingStyle == UITableViewCellEditingStyle.delete) {
+        
+        let item = foodMenu[indexPath.row]
+        
+        guard let menuID = item.menuID else {
+            return
+        }
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
             FIRDatabase.database().reference().child("menu").child(menuID).removeValue(completionBlock: { (error, ref) in
                 if (error != nil) {
                     print(error as Any)
@@ -105,25 +121,10 @@ class BeforeStartSellingViewController: UITableViewController {
                     print("Menu successfully deleted")
                 }
             })
-       }
-             tableView.reloadData()
+        }
+        tableView.reloadData()
     }
     
-    
-    //plus button functionality
-    @IBAction func addButton(_ sender: Any) {
-            startSelling()
-    }
-    
-    @IBAction func cancelButton(_ sender: Any) {
-        goBackToLoggedInView()
-    }
-
-    //This methid displays navigation Bar
-    override func viewWillAppear(_ animated: Bool) {
-        
-        self.navigationController?.isNavigationBarHidden = false
-    }
     //Delete Menu
     func deleteMenu() {
         //remove from database

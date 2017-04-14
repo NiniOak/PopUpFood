@@ -290,24 +290,6 @@
             </objects>
             <point key="canvasLocation" x="2229.5999999999999" y="-0.44977511244377816"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="d0D-PT-ZI7">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xKF-m1-5pv" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ESi-pa-mHa">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="2c8-Qq-Eff" kind="relationship" relationship="rootViewController" id="2kL-Mc-Ho3"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ohr-Vr-ruR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1230" y="0.0"/>
-        </scene>
     </scenes>
     <resources>
         <image name="test_pizza" width="1024" height="750"/>

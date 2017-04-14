@@ -28,15 +28,11 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
         self.navigationController?.isNavigationBarHidden = false
     }
     
-    func cancelButtonForNavbar() {
-        //Set up home button for profile page
-        let button = UIButton.init(type: .custom)
-        button.setImage(UIImage.init(named: "home"), for: UIControlState.normal)
-        button.addTarget(self, action:#selector(returnHomePage), for: UIControlEvents.touchUpInside)
-        button.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30)
-        let barButton = UIBarButtonItem.init(customView: button)
-        self.navigationItem.leftBarButtonItem = barButton
+    override func viewDidLayoutSubviews() {
+        ImageViewProfilePic.layer.cornerRadius = ImageViewProfilePic.frame.size.height/2
+        ImageViewProfilePic.clipsToBounds = true
     }
+
     //FEATURES
     @IBOutlet weak var ImageViewProfilePic: UIImageView!
     @IBOutlet weak var labelName: UILabel!
@@ -62,6 +58,16 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
         
     }
     
+    func cancelButtonForNavbar() {
+        //Set up home button for profile page
+        let button = UIButton.init(type: .custom)
+        button.setImage(UIImage.init(named: "home"), for: UIControlState.normal)
+        button.addTarget(self, action:#selector(returnHomePage), for: UIControlEvents.touchUpInside)
+        button.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30)
+        let barButton = UIBarButtonItem.init(customView: button)
+        self.navigationItem.leftBarButtonItem = barButton
+    }
+    
     //BARBARA: On click, launch edit profile page
      func checkIfUserIsLoggedIn() {
         
@@ -82,7 +88,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
         //PULL USERS IMAGE FROM FIREBASE
         FIRDatabase.database().reference().child("user").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
             
-            self.makeProfileImageRound()
             if let dictionary = snapshot.value as? [String: AnyObject] {
                 let name = dictionary["name"] as? String
                 self.labelName.text = name
@@ -119,13 +124,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
             }
         }
     }
-    
-    func makeProfileImageRound() {
-        //BARBARA: Make profile picture round
-        self.ImageViewProfilePic.layer.cornerRadius = self.ImageViewProfilePic.frame.size.height/89
-        self.ImageViewProfilePic.clipsToBounds = true
-    }
-    
+
     //Olek refactoring to insert SELLING view before startSellingViewController
     func goToBeforeSelling() {
         let storyboard = UIStoryboard(name: "startSelling", bundle: nil)
@@ -146,12 +145,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
 
     //Display homepage if not signed in
     func displaySignIn() {
-//        //Send user back to home screen
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let controller = storyboard.instantiateViewController(withIdentifier: "landingVC") as! ViewController
-//        //self.navigationController?.pushViewController(controller, animated: true)
-//        self.present(controller, animated: true, completion: nil)
-        
         self.navigationController?.popToRootViewController(animated: true)
     }
     
@@ -167,13 +160,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate {
         let storyboard = UIStoryboard(name: "HomePage", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "newhomePage") as! HomeAfterSignIn
         self.navigationController?.pushViewController(controller, animated: true)
-        
-//        let homeViewController = HomeAfterSignIn()
-//        let nextViewController: UINavigationController = UINavigationController(rootViewController: homeViewController)
-//        self.navigationController?.pushViewController(nextViewController, animated: true)
-        
     }
-
 }
 
 //
