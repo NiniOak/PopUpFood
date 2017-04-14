@@ -141,6 +141,7 @@ class sendMessageCollectionController: UICollectionViewController, UICollectionV
             cell.bubbleViewLeftAnchor?.isActive = false
             cell.timeTextViewRightAnchor?.isActive = true
             cell.timeTextViewLeftAnchor?.isActive = false
+            cell.timeTextView.textAlignment = .right
         } else {
             //Incoming gray
             cell.bubbleView.backgroundColor = UIColor.rgb(red: 240, green: 240, blue: 240, alpha: 1)

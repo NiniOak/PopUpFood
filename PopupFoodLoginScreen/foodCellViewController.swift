@@ -21,8 +21,6 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var chefUsername: UILabel!
     
-    //Declare current user
-    let uid = FIRAuth.auth()?.currentUser?.uid
     //Store Menu in an array
     var menuArray = [Menu]()
     //Instantiate menu class
@@ -37,11 +35,10 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Display message button image
-        messageBtn()
-        //Check if fave is in DB
-        checkIfFavouriteExists()
-// Passing information to screen       
+        messageBtn() //Display message button image
+        checkIfFavouriteExists() //Check if fave is in DB
+        
+//      Passing information to screen
         priceLabel.text = menu?.price
         if let foodImage = menu?.foodImageUrl {
             self.foodImage.sd_setImage(with: URL(string: foodImage))
@@ -54,9 +51,11 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBAction func messageBtn(_ sender: Any) {
         displaySendMessagePage(menu: menu!)
+        handleLogOut() //Check if user is signed in
     }
     
     @IBAction func favouriteBtn(_ sender: Any) {
+        handleLogOut() //Check if user is signed in
 
         if !favClicked {
             favouriteBtnClicked()
@@ -101,16 +100,17 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
     //Add Favorites to the Database
     private func registerFavouritesIntoDatabaseWithUserID() {
         
-        guard let menuID = menu?.menuID else{
+        guard let menuID = menu?.menuID, let uid = FIRAuth.auth()?.currentUser?.uid else{
             return
         } //Add user ID to favorites
         //This remembers which user likes what
-        let userFaveFood = FIRDatabase.database().reference().child("user-favourites").child(uid!)
+        let userFaveFood = FIRDatabase.database().reference().child("user-favourites").child(uid)
         userFaveFood.updateChildValues([menuID: 1])
     }
     
     //Declare pressed variable for favourites button
     var favClicked = false
+    
     //Declare images for favourite button
     let favBtn = UIImage(named: "favorites")?.withRenderingMode(.alwaysOriginal)
     let clickFavBtn = UIImage(named: "full_heart")?.withRenderingMode(.alwaysOriginal)
@@ -128,6 +128,7 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
         favouriteButton?.setImage(favBtn, for: .normal)
         favClicked = false
     }
+    
     //Click favourite button
     func favouriteBtnClicked() {
         favouriteButton?.setImage(clickFavBtn, for: .normal)
@@ -138,10 +139,10 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
 
     //BARBARA: Click favourite to remove from DB and favourites list
     func deleteFavourite() {
-        guard let menuID = menu?.menuID else {
+        guard let menuID = menu?.menuID, let uid = FIRAuth.auth()?.currentUser?.uid else {
             return
         }
-        FIRDatabase.database().reference().child("user-favourites").child(uid!).child(menuID).removeValue { (error, ref) in
+        FIRDatabase.database().reference().child("user-favourites").child(uid).child(menuID).removeValue { (error, ref) in
             if error != nil {
                 print(error as Any)
             }
@@ -151,11 +152,11 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
     //BARBARA: Set red heart button when exists
     func checkIfFavouriteExists() {
         //Get menuID for menu
-        guard let menuID = menu?.menuID else {
+        guard let menuID = menu?.menuID, let uid = FIRAuth.auth()?.currentUser?.uid else {
             return
         }
 
-        let menuRef = FIRDatabase.database().reference().child("user-favourites").child(FIRAuth.auth()!.currentUser!.uid).child(menuID)
+        let menuRef = FIRDatabase.database().reference().child("user-favourites").child(uid).child(menuID)
 
         menuRef.observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -181,5 +182,31 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
         let controller = storyboard.instantiateViewController(withIdentifier: "sendChefMessage") as! sendMessageCollectionController
         controller.menu = menu
         self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func checkIfUserIsLoggedIn() {
+        
+        if FIRAuth.auth()?.currentUser?.uid == nil {
+            perform(#selector(handleLogOut), with: nil, afterDelay: 0.01)
+        }
+    }
+    
+    func handleLogOut() {
+        do {
+            try FIRAuth.auth()!.signOut()
+        } catch let logoutError {
+            print(logoutError)
+        }
+        dismiss(animated: true, completion: nil)
+        perform(#selector(displaySignIn), with: nil, afterDelay: 0.01)
+    }
+    
+    //Display homepage if not signed in
+    func displaySignIn() {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        favouriteButton?.setImage(favBtn, for: .normal)
     }
 }
