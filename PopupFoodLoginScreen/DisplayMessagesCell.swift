@@ -17,6 +17,7 @@ class DisplayMessagesCell: UITableViewCell {
             observeMessagesCell()
             
             messageLabel.text = message?.text
+            
             //convert timestamp to date
             if let seconds = message?.timestamp?.doubleValue {
                 let timestampDate = Date(timeIntervalSince1970: seconds)
@@ -24,7 +25,6 @@ class DisplayMessagesCell: UITableViewCell {
                 let dateFormatter = DateFormatter()
                 timeLabel.text = dateFormatter.timeSince(from: timestampDate as NSDate, numericDates: true)
             }
-            
         }
     }
 

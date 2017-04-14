@@ -20,6 +20,15 @@ class ChatMessageCell: UICollectionViewCell {
         return tv
     }()
     
+    let timeTextView: UITextView = {
+        let timeTv = UITextView()
+        timeTv.text = "Let this be sample time"
+        timeTv.font = UIFont.systemFont(ofSize: 10)
+        timeTv.translatesAutoresizingMaskIntoConstraints = false
+        timeTv.textColor = .gray
+        return timeTv
+    }()
+    
     static let blueColor = UIColor.rgb(red: 0, green: 137, blue: 249, alpha: 1)
     
     //This code creates the bubble where the chat messages will be displayed in
@@ -45,12 +54,17 @@ class ChatMessageCell: UICollectionViewCell {
     var bubbleViewRightAnchor: NSLayoutConstraint?
     var bubbleViewLeftAnchor: NSLayoutConstraint?
     
+    var timeTextViewWidthAnchor: NSLayoutConstraint?
+    var timeTextViewRightAnchor: NSLayoutConstraint?
+    var timeTextViewLeftAnchor: NSLayoutConstraint?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         addSubview(bubbleView)
         addSubview(textView)
         addSubview(profileImageView)
+        addSubview(timeTextView)
         
         //Profileview COnstraints
         profileImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
@@ -72,6 +86,21 @@ class ChatMessageCell: UICollectionViewCell {
         bubbleWidthAnchor?.isActive = true
         
         bubbleView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+        
+        //TIMETEXTVIEW CONSTRAINTS
+        //TimeTextView RIGHT AND LEFT Constraints
+        timeTextViewRightAnchor = timeTextView.rightAnchor.constraint(equalTo: bubbleView.rightAnchor, constant: 40)
+        timeTextViewRightAnchor?.isActive = true
+        timeTextViewLeftAnchor = timeTextView.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 8)
+        
+        //TimeTextView TOP AND BOTTOM Constraints
+        timeTextView.topAnchor.constraint(equalTo: bubbleView.bottomAnchor).isActive = true
+//        timeTextView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        
+        //TimeTextView WIDTH AND HEIGHT Constraints
+        timeTextViewWidthAnchor = timeTextView.widthAnchor.constraint(equalToConstant: 100)
+        timeTextViewWidthAnchor?.isActive = true
+        timeTextView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
         
         //textView Constraints
         textView.leftAnchor.constraint(equalTo: bubbleView.leftAnchor, constant: 8).isActive = true

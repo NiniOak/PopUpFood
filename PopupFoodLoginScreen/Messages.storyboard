@@ -14,7 +14,7 @@
         <scene sceneID="UKW-vu-LlZ">
             <objects>
                 <collectionViewController storyboardIdentifier="sendChefMessage" id="OBo-2P-mnY" customClass="sendMessageCollectionController" customModule="PopupFood" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="D1z-4a-ZbH">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="D1z-4a-ZbH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -48,35 +48,35 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="95"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9RZ-EO-IvZ" id="HeK-bC-ow7">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="94.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="94"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Yvc-cV-4r2">
                                             <rect key="frame" x="8" y="10" width="102" height="73"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qqg-O6-vd3">
-                                            <rect key="frame" x="126" y="36" width="96" height="21"/>
+                                            <rect key="frame" x="126" y="38" width="142" height="18"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="96" id="wFc-lb-IoE"/>
+                                                <constraint firstAttribute="width" constant="142" id="wFc-lb-IoE"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" red="1" green="0.26870452319999999" blue="0.19519543719999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shaffar's Pepproni" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eg2-PZ-PRd">
-                                            <rect key="frame" x="126" y="10" width="241" height="20"/>
+                                            <rect key="frame" x="126" y="10" width="241" height="22"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last message sent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pr-sL-ADF">
-                                            <rect key="frame" x="126" y="63" width="241" height="20"/>
+                                            <rect key="frame" x="126" y="62" width="241" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.52060199873096447" green="0.52060199873096447" blue="0.52060199873096447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HH:MM:SS" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMq-ie-har">
-                                            <rect key="frame" x="285" y="36" width="82" height="20"/>
+                                            <rect key="frame" x="285" y="38" width="82" height="17"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="82" id="fdg-b5-uqh"/>
                                             </constraints>
@@ -93,7 +93,7 @@
                                         <constraint firstItem="eg2-PZ-PRd" firstAttribute="leading" secondItem="qqg-O6-vd3" secondAttribute="leading" id="BgR-Mc-hlS"/>
                                         <constraint firstItem="Yvc-cV-4r2" firstAttribute="centerY" secondItem="qqg-O6-vd3" secondAttribute="centerY" id="QYG-SF-fYo"/>
                                         <constraint firstItem="Yvc-cV-4r2" firstAttribute="top" secondItem="eg2-PZ-PRd" secondAttribute="top" id="RRU-H1-Arf"/>
-                                        <constraint firstItem="yMq-ie-har" firstAttribute="leading" secondItem="qqg-O6-vd3" secondAttribute="trailing" constant="63" id="Uvl-cX-tQm"/>
+                                        <constraint firstItem="yMq-ie-har" firstAttribute="leading" secondItem="qqg-O6-vd3" secondAttribute="trailing" constant="17" id="Uvl-cX-tQm"/>
                                         <constraint firstItem="Yvc-cV-4r2" firstAttribute="bottom" secondItem="2pr-sL-ADF" secondAttribute="bottom" id="VAU-fh-f0o"/>
                                         <constraint firstItem="Yvc-cV-4r2" firstAttribute="leading" secondItem="HeK-bC-ow7" secondAttribute="leadingMargin" id="VDa-wU-G0m"/>
                                         <constraint firstItem="eg2-PZ-PRd" firstAttribute="top" secondItem="HeK-bC-ow7" secondAttribute="topMargin" constant="2" id="byw-oz-5Qd"/>
