@@ -92,6 +92,14 @@ class sendMessageCollectionController: UICollectionViewController, UICollectionV
         let message = sentMessages[indexPath.item]
         cell.textView.text = message.text
         
+        //convert timestamp to date for time message sent
+        if let seconds = message.timestamp?.doubleValue {
+            let timestampDate = Date(timeIntervalSince1970: seconds)
+            
+            let dateFormatter = DateFormatter()
+            cell.timeTextView.text = dateFormatter.timeSince(from: timestampDate as NSDate, numericDates: true)
+        }
+        
         setupCell(cell: cell, message: message)
         return cell
     }
@@ -121,6 +129,8 @@ class sendMessageCollectionController: UICollectionViewController, UICollectionV
             
             cell.bubbleViewRightAnchor?.isActive = true
             cell.bubbleViewLeftAnchor?.isActive = false
+            cell.timeTextViewRightAnchor?.isActive = true
+            cell.timeTextViewLeftAnchor?.isActive = false
         } else {
             //Incoming gray
             cell.bubbleView.backgroundColor = UIColor.rgb(red: 240, green: 240, blue: 240, alpha: 1)
@@ -129,6 +139,8 @@ class sendMessageCollectionController: UICollectionViewController, UICollectionV
             
             cell.bubbleViewRightAnchor?.isActive = false
             cell.bubbleViewLeftAnchor?.isActive = true
+            cell.timeTextViewRightAnchor?.isActive = false
+            cell.timeTextViewLeftAnchor?.isActive = true
         }
         //This get's the text width
         cell.bubbleWidthAnchor?.constant = estimatedFrameForText(text: message.text!).width + 32

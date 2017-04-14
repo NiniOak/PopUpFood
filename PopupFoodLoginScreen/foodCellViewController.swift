@@ -168,19 +168,6 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
         })
     }
     
-//    //Set button to unclick status/colour
-//    func favouriteBtnNotClicked() {
-//        favouriteButton?.setImage(favBtn, for: .normal)
-//        favClicked = false
-//    }
-//    
-//    //Click favourite button
-//    func favouriteBtnClicked() {
-//        favouriteButton?.setImage(clickFavBtn, for: .normal)
-//        favClicked = true
-//        registerFavouritesIntoDatabaseWithUserID()
-//    }
-    
     func displaySendMessagePage(menu: Menu) {
         let storyboard = UIStoryboard(name: "Messages", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "sendChefMessage") as! sendMessageCollectionController
