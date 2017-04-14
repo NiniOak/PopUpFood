@@ -54,13 +54,23 @@ class sendMessageCollectionController: UICollectionViewController, UICollectionV
                 
                 if messages.menuId == self.menu?.menuID {
                     self.sentMessages.append(messages)
-                //this is called becausw we are in a background thread. Async is used to call back to main thread
-                DispatchQueue.main.async {
-                    self.collectionView?.reloadData()
-                }
+                //this is called because we are in a background thread. Async is used to call back to main thread
+                //Timer is invalidated everytime we get a new message
+                    self.timer?.invalidate()
+                    self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.handleReloadTable), userInfo: nil, repeats: false)
                     }
             }, withCancel: nil)
         }, withCancel: nil)
+    }
+    
+    //This timer prevents the messages in the table from reloading more than once.
+    var timer: Timer?
+    
+    func handleReloadTable() {
+        DispatchQueue.main.async {
+            self.collectionView?.reloadData()
+//            print("I am reloaded")
+        }
     }
     
     lazy var inputTextField: UITextField = {

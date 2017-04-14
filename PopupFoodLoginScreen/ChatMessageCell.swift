@@ -89,7 +89,7 @@ class ChatMessageCell: UICollectionViewCell {
         
         //TIMETEXTVIEW CONSTRAINTS
         //TimeTextView RIGHT AND LEFT Constraints
-        timeTextViewRightAnchor = timeTextView.rightAnchor.constraint(equalTo: bubbleView.rightAnchor, constant: 40)
+        timeTextViewRightAnchor = timeTextView.rightAnchor.constraint(equalTo: bubbleView.rightAnchor, constant: 35)
         timeTextViewRightAnchor?.isActive = true
         timeTextViewLeftAnchor = timeTextView.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 8)
         
@@ -98,9 +98,10 @@ class ChatMessageCell: UICollectionViewCell {
 //        timeTextView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         
         //TimeTextView WIDTH AND HEIGHT Constraints
-        timeTextViewWidthAnchor = timeTextView.widthAnchor.constraint(equalToConstant: 100)
+        timeTextViewWidthAnchor = timeTextView.widthAnchor.constraint(equalToConstant: 110)
         timeTextViewWidthAnchor?.isActive = true
-        timeTextView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+        timeTextView.heightAnchor.constraint(equalToConstant: 32).isActive = true
+//        timeTextView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
         
         //textView Constraints
         textView.leftAnchor.constraint(equalTo: bubbleView.leftAnchor, constant: 8).isActive = true
