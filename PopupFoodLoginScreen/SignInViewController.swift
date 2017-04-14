@@ -215,5 +215,4 @@ class SignInViewController: UIViewController {
     @IBAction func backToLandingPage(_ sender: Any) {
         //displayLandingPage()
     }
-    
 }

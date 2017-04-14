@@ -813,7 +813,7 @@
         <image name="logo_new" width="317" height="322"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2Gb-3Y-2am"/>
         <segue reference="5cE-wg-eBo"/>
+        <segue reference="iFv-dl-Nry"/>
     </inferredMetricsTieBreakers>
 </document>
