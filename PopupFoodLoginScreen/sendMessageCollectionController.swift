@@ -257,5 +257,14 @@ class sendMessageCollectionController: UICollectionViewController, UICollectionV
     override func viewWillAppear(_ animated: Bool) {
         self.view.window?.endEditing(true)
     }
-    
+    //Check for characters to be sent
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+       // print("Total Characters: \(textField.text!.characters.count)")
+        if textField.text!.characters.count > 256 && range.length == 0 {
+            print("You have entered more than 256 characters, enter 255")
+            return false
+        }
+        return true
+    }
+
 }

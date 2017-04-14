@@ -11,7 +11,7 @@ import Firebase
 import FirebaseAuth
 import SDWebImage
 
-class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     @IBOutlet weak var cuisineTypeLabel: UILabel!
     @IBOutlet weak var cuisineTypePickerView: UIPickerView!
     @IBOutlet weak var menuNameTextField: UITextField!
@@ -177,6 +177,17 @@ class startSellingViewController: UIViewController, UIPickerViewDelegate, UIPick
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         cuisineTypeLabel.text = cuisine[row]
     }
+    //Set character limit in textView textbox
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        print("\(menuDescriptionTextView.text.characters.count)\(menuDescriptionTextView)")
+        
+        if menuDescriptionTextView.text.characters.count > 20 && range.length == 0 {
+            print("You have entered more than 20 characters, enter 19")
+            return false
+        }
+        return true
+    }
+    
     //Alert box to pop up errors
     func errorAlert() {
         let alert = UIAlertController(title:"Required",  message:errorMessage,  preferredStyle:UIAlertControllerStyle.alert)

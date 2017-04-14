@@ -61,7 +61,6 @@ class FavoritesViewController: UITableViewController {
                     favemenu.menuID = menuID
                   //  favemenu.userName = dictionary[""] chefName + "'s other food items"
 
-                    
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
