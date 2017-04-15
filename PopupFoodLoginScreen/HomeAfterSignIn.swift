@@ -59,7 +59,8 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
     }
     
     func handleSearch() {
-        print("Will add search functionality in the future")
+        let newSearchTableViewController = SearchTableViewController()
+        self.present(newSearchTableViewController,  animated: true, completion: nil)
     }
     
     //Pass to show Profile class or method

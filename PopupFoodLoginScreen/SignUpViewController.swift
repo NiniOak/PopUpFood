@@ -52,6 +52,10 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, FB
         
         GIDSignIn.sharedInstance().uiDelegate = self
         
+        //Calling save method to push the user information into the database
+        saveData(userProvider: "Google")
+        
+        
     }
     
     func handleCustomGoogleLogin() {
@@ -104,6 +108,9 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, FB
             print("Successfully logged in with our user: ", user as Any)
         })
         
+        //Calling save method to push the user information into the database
+        saveData(userProvider: "Facebook")
+        
         FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email"]).start { (connection, result, err) in
             
             if err != nil {
@@ -132,5 +139,58 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, FB
         let controller = storyboard.instantiateViewController(withIdentifier: "signUpPage") as UIViewController
         self.navigationController?.pushViewController(controller, animated: true)
     }
+    //Save Data to the Firebase realtime database
+    func saveData( userProvider : String  ){
+        
+        
+        //Creating reference to the database
+        var ref: FIRDatabaseReference!
+        
+        ref = FIRDatabase.database().reference(fromURL: "https://popup-food.firebaseio.com/")
+        
+        //Creating an authentication listener to be triggered when user sign up
+        FIRAuth.auth()!.addStateDidChangeListener() { (auth, user) in
+            
+            if let user = user {
+                
+                
+                
+                //Creating array to hold user information
+                let newUser = [
+                    
+                    "provider" : userProvider,
+                    "email":user.email as Any ,
+                    "name":user.displayName as Any,
+                    "photo":user.photoURL?.absoluteString as Any
+                    
+                    ] as [String : Any]
+                // Create a child path with a key set to the uid underneath the "customers" node
+                // This creates a URL path like the following:
+                //  - https://<YOUR-FIREBASE-APP>.firebaseio.com/customers/<uid>
+                
+                // Create a child path with a key set to the uid underneath the "customers" node
+                // This creates a URL path like the following:
+                //  - https://<YOUR-FIREBASE-APP>.firebaseio.com/customers/<uid>
+                
+                let usersReference = ref.child("customers").child(user.uid)
+                usersReference.updateChildValues(newUser, withCompletionBlock: { (err, ref) in
+                    
+                    
+                    if err != nil {
+                        return
+                    }
+                        
+                    else {
+                        print("No user is signed in.")
+                    }
+                    
+                })
+                
+                
+            }
+        }
+        
+    }
+
 
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 import FBSDKLoginKit
 
 class ViewController: UIViewController,UINavigationControllerDelegate {
@@ -53,10 +54,25 @@ class ViewController: UIViewController,UINavigationControllerDelegate {
         let controller = storyboard.instantiateViewController(withIdentifier: "SignUpSocialMedia") as! SignUpViewController
         self.navigationController?.pushViewController(controller, animated: true)
     }
+    func returnHomePage() {
+        let storyboard = UIStoryboard(name: "HomePage", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "newhomePage") as! HomeAfterSignIn
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         
-        self.navigationController?.isNavigationBarHidden = true
+        //If user is signed in, display homepage
+        FIRAuth.auth()?.addStateDidChangeListener{ auth, user in
+            
+            if user != nil {
+                self.returnHomePage()
+            }
+            else{
+                self.navigationController?.isNavigationBarHidden = true
+                
+            }
+        }
     }
 
 //    lazy var profilePage: ProfileViewController = {
