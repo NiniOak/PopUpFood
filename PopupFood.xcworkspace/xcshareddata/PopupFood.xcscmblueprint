@@ -1,0 +1,44 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "65EC63693A06DA0CBF500E0C12161973D64F4C16",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "D98659622E01DF32AFDDE252D4EDBB5701BC1B13" : 9223372036854775807,
+    "65EC63693A06DA0CBF500E0C12161973D64F4C16" : 9223372036854775807,
+    "E264EA550F6F03748A0AE8EBCD626ACE88566E88" : 9223372036854775807,
+    "2BD72DB460FD179CFD698CB1393597E12425750B" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "65A9C804-6B7E-4CA7-89F6-790D8CDDDAFC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "D98659622E01DF32AFDDE252D4EDBB5701BC1B13" : "",
+    "65EC63693A06DA0CBF500E0C12161973D64F4C16" : "MergeSaraAndBarb\/",
+    "E264EA550F6F03748A0AE8EBCD626ACE88566E88" : "PopupFoodLoginScreen\/",
+    "2BD72DB460FD179CFD698CB1393597E12425750B" : "PopupFood_19.03.2017\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "PopupFood",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "PopupFood.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/NiniOak\/PopupFood.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2BD72DB460FD179CFD698CB1393597E12425750B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/NiniOak\/PopupFood.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "65EC63693A06DA0CBF500E0C12161973D64F4C16"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/NiniOak\/PopUpFood.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D98659622E01DF32AFDDE252D4EDBB5701BC1B13"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/NiniOak\/PopupFood.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E264EA550F6F03748A0AE8EBCD626ACE88566E88"
+    }
+  ]
+}
