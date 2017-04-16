@@ -55,7 +55,9 @@ class SearchFood: UICollectionViewController {
         let ref = FIRDatabase.database().reference().child("menu")
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             
-            if let dictionary = snapshot.value as? [String: AnyObject] {
+            for images in snapshot.children.allObjects as! [FIRDataSnapshot] {
+            
+            if let dictionary = images.value as? [String: AnyObject] {
                 
                 let menu = Menu()
                 
@@ -66,6 +68,7 @@ class SearchFood: UICollectionViewController {
                 DispatchQueue.main.async {
                     self.collectionView?.reloadData()
                 }
+            }
             }
             
         }, withCancel: nil)
