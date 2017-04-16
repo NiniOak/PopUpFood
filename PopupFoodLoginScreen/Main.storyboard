@@ -426,29 +426,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FYS-6y-6b3">
-                                <rect key="frame" x="47" y="554" width="281" height="39"/>
-                                <color key="backgroundColor" red="1" green="0.2324164641" blue="0.25760022789999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <state key="normal" title="CONNECT WITH GOOGLE">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="googleBtn:" destination="vsh-hO-AAH" eventType="touchUpInside" id="Ngn-KU-xOa"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RRt-Nr-Ohr">
                                 <rect key="frame" x="47" y="445" width="281" height="40"/>
                                 <color key="backgroundColor" red="0.88235294119999996" green="0.67843137249999996" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
@@ -518,7 +495,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbm-EF-ekW">
-                                <rect key="frame" x="171.5" y="501" width="32" height="21"/>
+                                <rect key="frame" x="172" y="501" width="32" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="QIZ-ZC-0E0"/>
                                     <constraint firstAttribute="width" constant="32" id="QWe-b3-ICv"/>
@@ -539,9 +516,12 @@
                                 <state key="normal" title="Forgot Password?">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="forgotPasswordBtn:" destination="vsh-hO-AAH" eventType="touchUpInside" id="fQJ-NX-rbD"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pTK-WU-l7O">
-                                <rect key="frame" x="47" y="507" width="281" height="39"/>
+                                <rect key="frame" x="47" y="498" width="281" height="39"/>
                                 <color key="backgroundColor" red="0.26215922139999998" green="0.57878404449999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="281" id="62F-TC-geE"/>
@@ -576,6 +556,29 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FYS-6y-6b3">
+                                <rect key="frame" x="47" y="549" width="281" height="39"/>
+                                <color key="backgroundColor" red="1" green="0.2324164641" blue="0.25760022789999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <state key="normal" title="CONNECT WITH GOOGLE">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="googleBtn:" destination="vsh-hO-AAH" eventType="touchUpInside" id="Ngn-KU-xOa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.97156583019999998" green="0.97156583019999998" blue="0.97156583019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -583,19 +586,19 @@
                             <constraint firstItem="FYS-6y-6b3" firstAttribute="leading" secondItem="pTK-WU-l7O" secondAttribute="trailing" constant="-281" id="1Fm-fw-7qN"/>
                             <constraint firstItem="FYS-6y-6b3" firstAttribute="trailing" secondItem="q5M-et-OON" secondAttribute="trailingMargin" constant="-31" id="2Vr-9U-pyq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="foe-FV-Arh" secondAttribute="trailing" constant="63" id="2lc-ca-u4O"/>
-                            <constraint firstItem="pTK-WU-l7O" firstAttribute="bottom" secondItem="FYS-6y-6b3" secondAttribute="bottom" constant="-47" id="9BE-jl-jpN"/>
+                            <constraint firstItem="pTK-WU-l7O" firstAttribute="bottom" secondItem="FYS-6y-6b3" secondAttribute="bottom" constant="-51" id="9BE-jl-jpN"/>
                             <constraint firstItem="Dja-XV-Tx8" firstAttribute="top" secondItem="vCJ-XG-YbL" secondAttribute="bottom" constant="27" id="Cgs-qg-VSI"/>
                             <constraint firstItem="4xQ-Gx-eiA" firstAttribute="leading" secondItem="q5M-et-OON" secondAttribute="leadingMargin" constant="31" id="DEZ-pi-k5z"/>
                             <constraint firstItem="l4L-6z-Zdy" firstAttribute="centerX" secondItem="q5M-et-OON" secondAttribute="centerX" id="JMc-rR-etE"/>
-                            <constraint firstItem="vCJ-XG-YbL" firstAttribute="top" secondItem="pTK-WU-l7O" secondAttribute="bottom" constant="64" id="Kg1-RE-w29"/>
+                            <constraint firstItem="vCJ-XG-YbL" firstAttribute="top" secondItem="pTK-WU-l7O" secondAttribute="bottom" constant="73" id="Kg1-RE-w29"/>
                             <constraint firstItem="Ev1-84-ZoV" firstAttribute="top" secondItem="4xQ-Gx-eiA" secondAttribute="bottom" constant="19" id="LQG-Vv-eJC"/>
                             <constraint firstItem="rbm-EF-ekW" firstAttribute="centerX" secondItem="vCJ-XG-YbL" secondAttribute="centerX" id="MSk-Z5-Xb9"/>
-                            <constraint firstItem="pTK-WU-l7O" firstAttribute="top" secondItem="FYS-6y-6b3" secondAttribute="top" constant="-47" id="Qr0-Ze-rPH"/>
+                            <constraint firstItem="pTK-WU-l7O" firstAttribute="top" secondItem="FYS-6y-6b3" secondAttribute="top" constant="-51" id="Qr0-Ze-rPH"/>
                             <constraint firstItem="Ev1-84-ZoV" firstAttribute="centerX" secondItem="RRt-Nr-Ohr" secondAttribute="centerX" id="Qs3-Qk-c2E"/>
                             <constraint firstItem="4xQ-Gx-eiA" firstAttribute="leading" secondItem="Ev1-84-ZoV" secondAttribute="leading" id="R04-HN-rXd"/>
                             <constraint firstItem="RRt-Nr-Ohr" firstAttribute="top" secondItem="Ev1-84-ZoV" secondAttribute="bottom" constant="24" id="Yd9-EU-Wy9"/>
                             <constraint firstItem="RRt-Nr-Ohr" firstAttribute="leading" secondItem="q5M-et-OON" secondAttribute="leadingMargin" constant="31" id="ZcS-o3-SLZ"/>
-                            <constraint firstItem="pTK-WU-l7O" firstAttribute="top" secondItem="rbm-EF-ekW" secondAttribute="bottom" constant="-15" id="aKr-md-Q1B"/>
+                            <constraint firstItem="pTK-WU-l7O" firstAttribute="top" secondItem="rbm-EF-ekW" secondAttribute="bottom" constant="-24" id="aKr-md-Q1B"/>
                             <constraint firstItem="4xQ-Gx-eiA" firstAttribute="trailing" secondItem="Ev1-84-ZoV" secondAttribute="trailing" id="cAd-uk-Lz8"/>
                             <constraint firstItem="4xQ-Gx-eiA" firstAttribute="top" secondItem="l4L-6z-Zdy" secondAttribute="bottom" constant="24" id="doG-g5-EZR"/>
                             <constraint firstItem="l4L-6z-Zdy" firstAttribute="top" secondItem="foe-FV-Arh" secondAttribute="bottom" constant="23" id="eVa-O9-l9D"/>
