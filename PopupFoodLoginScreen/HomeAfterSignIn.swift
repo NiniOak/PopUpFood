@@ -32,9 +32,9 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
         navigationBar() //for navigationBar
         setupNavBarButtons() //add items to NavBar
         fetchMenuCollection()  //fetchMenu()
+        
+        }
 
-    }
-   
     func navigationBar() {
         navigationController?.navigationBar.isTranslucent = false
         
@@ -81,7 +81,6 @@ class HomeAfterSignIn: UICollectionViewController, UICollectionViewDelegateFlowL
                 
                 //If user is NOT logged in, show signup storyboard
                 self.displaySignUpPage()
-                
             }
         }
     }

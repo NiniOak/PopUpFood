@@ -26,6 +26,8 @@ class ChatMessageCell: UICollectionViewCell {
         timeTv.font = UIFont.systemFont(ofSize: 10)
         timeTv.translatesAutoresizingMaskIntoConstraints = false
         timeTv.textColor = .gray
+        timeTv.backgroundColor = UIColor.clear
+        timeTv.contentInset = UIEdgeInsetsMake(-9.0, 0.0, 0, 0.0)
         return timeTv
     }()
     
@@ -89,18 +91,19 @@ class ChatMessageCell: UICollectionViewCell {
         
         //TIMETEXTVIEW CONSTRAINTS
         //TimeTextView RIGHT AND LEFT Constraints
-        timeTextViewRightAnchor = timeTextView.rightAnchor.constraint(equalTo: bubbleView.rightAnchor, constant: 40)
+        timeTextViewRightAnchor = timeTextView.rightAnchor.constraint(equalTo: bubbleView.rightAnchor)
         timeTextViewRightAnchor?.isActive = true
         timeTextViewLeftAnchor = timeTextView.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 8)
+        timeTextViewLeftAnchor?.isActive = true
         
         //TimeTextView TOP AND BOTTOM Constraints
-        timeTextView.topAnchor.constraint(equalTo: bubbleView.bottomAnchor).isActive = true
+        timeTextView.topAnchor.constraint(equalTo: textView.bottomAnchor).isActive = true
 //        timeTextView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         
         //TimeTextView WIDTH AND HEIGHT Constraints
-        timeTextViewWidthAnchor = timeTextView.widthAnchor.constraint(equalToConstant: 100)
+        timeTextViewWidthAnchor = timeTextView.widthAnchor.constraint(equalToConstant: 110)
         timeTextViewWidthAnchor?.isActive = true
-        timeTextView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+        timeTextView.heightAnchor.constraint(equalToConstant: 10).isActive = true
         
         //textView Constraints
         textView.leftAnchor.constraint(equalTo: bubbleView.leftAnchor, constant: 8).isActive = true
