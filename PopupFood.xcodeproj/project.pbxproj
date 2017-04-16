@@ -37,6 +37,9 @@
 		3170FA4E1E52859D00203E3B /* startSelling.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3170FA4D1E52859D00203E3B /* startSelling.storyboard */; };
 		3170FA501E52864500203E3B /* startSellingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3170FA4F1E52864500203E3B /* startSellingViewController.swift */; };
 		31A5C3EC1E6F932C00E0FC94 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A5C3EB1E6F932C00E0FC94 /* FavoritesViewController.swift */; };
+		31CFF1581EA426E000AAB8DE /* SearchFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CFF1571EA426E000AAB8DE /* SearchFood.swift */; };
+		31CFF15A1EA4271800AAB8DE /* SearchFood.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31CFF1591EA4271800AAB8DE /* SearchFood.storyboard */; };
+		31CFF15C1EA4273E00AAB8DE /* DisplayFoodImagesOnSearchingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CFF15B1EA4273E00AAB8DE /* DisplayFoodImagesOnSearchingPage.swift */; };
 		31FD7C791E64B34E00575A60 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FD7C781E64B34E00575A60 /* EditProfileViewController.swift */; };
 		3F3FBE841E5D283F0099EE97 /* BeforeStartSellingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3FBE831E5D283F0099EE97 /* BeforeStartSellingViewController.swift */; };
 		8A0B7A6A1E3BC48F00C53258 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0B7A691E3BC48F00C53258 /* AppDelegate.swift */; };
@@ -97,6 +100,9 @@
 		3170FA4D1E52859D00203E3B /* startSelling.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = startSelling.storyboard; path = ../startSelling.storyboard; sourceTree = "<group>"; };
 		3170FA4F1E52864500203E3B /* startSellingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = startSellingViewController.swift; path = ../startSellingViewController.swift; sourceTree = "<group>"; };
 		31A5C3EB1E6F932C00E0FC94 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		31CFF1571EA426E000AAB8DE /* SearchFood.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFood.swift; sourceTree = "<group>"; };
+		31CFF1591EA4271800AAB8DE /* SearchFood.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SearchFood.storyboard; sourceTree = "<group>"; };
+		31CFF15B1EA4273E00AAB8DE /* DisplayFoodImagesOnSearchingPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayFoodImagesOnSearchingPage.swift; sourceTree = "<group>"; };
 		31FD7C781E64B34E00575A60 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		3F3FBE831E5D283F0099EE97 /* BeforeStartSellingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeforeStartSellingViewController.swift; sourceTree = "<group>"; };
 		805B9759F4FA6C96C02B3A61 /* Pods_PopupFoodUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PopupFoodUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -251,6 +257,7 @@
 		08F4D0E61E4D61EE007EF202 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				31CFF15B1EA4273E00AAB8DE /* DisplayFoodImagesOnSearchingPage.swift */,
 				08DA4DDF1E81B6F4009C6B85 /* DisplayMessagesCell.swift */,
 				08F103EF1E7C74BA00663B6B /* ChatMessageCell.swift */,
 				3133D2711E7D932300AC4ED3 /* DisplayFavouritesTableViewCell.swift */,
@@ -264,6 +271,7 @@
 		08F4D0E91E4D628C007EF202 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				31CFF1561EA426AD00AAB8DE /* SearchFoodGroup */,
 				08F103EA1E7C731200663B6B /* MessagesGroup */,
 				087721A21E78754300E2DE63 /* FoodCellGroup */,
 				31A5C3EA1E6F92D900E0FC94 /* FavouritesGroup */,
@@ -299,6 +307,14 @@
 			name = FavouritesGroup;
 			sourceTree = "<group>";
 		};
+		31CFF1561EA426AD00AAB8DE /* SearchFoodGroup */ = {
+			isa = PBXGroup;
+			children = (
+				31CFF1571EA426E000AAB8DE /* SearchFood.swift */,
+			);
+			name = SearchFoodGroup;
+			sourceTree = "<group>";
+		};
 		8A0B7A5D1E3BC48D00C53258 = {
 			isa = PBXGroup;
 			children = (
@@ -329,6 +345,7 @@
 				08F4D0E61E4D61EE007EF202 /* Views */,
 				08F4D0E31E4D6046007EF202 /* Helpers */,
 				8A0B7A691E3BC48F00C53258 /* AppDelegate.swift */,
+				31CFF1591EA4271800AAB8DE /* SearchFood.storyboard */,
 				316FC0011E9456FA0054FC3B /* Main.storyboard */,
 				08B421431E51E57C005399D6 /* defaultTimeline.storyboard */,
 				087721A01E786E2C00E2DE63 /* mainFoodCell.storyboard */,
@@ -496,6 +513,7 @@
 				087721A11E786E2D00E2DE63 /* mainFoodCell.storyboard in Resources */,
 				8A0B7A711E3BC48F00C53258 /* Assets.xcassets in Resources */,
 				316FC0021E9456FA0054FC3B /* Main.storyboard in Resources */,
+				31CFF15A1EA4271800AAB8DE /* SearchFood.storyboard in Resources */,
 				08B421421E513748005399D6 /* ProfilePage.storyboard in Resources */,
 				08B421461E5263AB005399D6 /* HomePage.storyboard in Resources */,
 				3159F4DF1E672D1E00BD1164 /* favoritesPage.storyboard in Resources */,
@@ -682,6 +700,7 @@
 				08F9C6A81E57746400312520 /* ViewController.swift in Sources */,
 				080233EF1E6A051100806B69 /* PresentViewController.swift in Sources */,
 				087721A41E78757400E2DE63 /* foodCellViewController.swift in Sources */,
+				31CFF15C1EA4273E00AAB8DE /* DisplayFoodImagesOnSearchingPage.swift in Sources */,
 				08F103EC1E7C737100663B6B /* messageLogViewController.swift in Sources */,
 				3133D2721E7D932300AC4ED3 /* DisplayFavouritesTableViewCell.swift in Sources */,
 				08B421401E5130A7005399D6 /* ProfileViewController.swift in Sources */,
@@ -689,6 +708,7 @@
 				08F4D0E51E4D60AF007EF202 /* Extentions.swift in Sources */,
 				31A5C3EC1E6F932C00E0FC94 /* FavoritesViewController.swift in Sources */,
 				3170FA501E52864500203E3B /* startSellingViewController.swift in Sources */,
+				31CFF1581EA426E000AAB8DE /* SearchFood.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -91,17 +91,9 @@ class messageLogViewController: UITableViewController {
         let newMessage = message[indexPath.row]
         //Go to "DisplayMessageCell" in Views to find controlling method
         cell.message = newMessage
-        
-//        if cell.isSelected {
-//            cell.messageLabel.font = UIFont.systemFont(ofSize: 14)
-//            cell.foodPrice.font = UIFont.systemFont(ofSize: 15)
-//        }
-//        else {
-//            cell.messageLabel.font = UIFont.boldSystemFont(ofSize: 14)
-//            cell.foodPrice.font = UIFont.boldSystemFont(ofSize: 15)
-//        }
-        
         return cell
+        
+        
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let messages = message[indexPath.row]
