@@ -15,15 +15,8 @@ class MainNavigationController: UINavigationController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        if FIRAuth.auth()?.currentUser?.uid != nil {
-            
-            let homeController = TestHomeController()
-            viewControllers = [homeController]
-            print("HOMEPAGE")
-        } else {
-            perform(#selector(showLoginController), with: nil, afterDelay: 0.01)
-            print("SIGNIN PAGE")
-        }
+        isUserSignedIn() //Declare start up
+        
 //        
 //        // Check IF User is Logged In
 //        if IsLoggedIn() {
@@ -33,7 +26,19 @@ class MainNavigationController: UINavigationController {
 //            perform(#selector(showLoginController), with: nil, afterDelay: 0.01)
 //        }
 }
-//    
+    
+    func isUserSignedIn() {
+        if FIRAuth.auth()?.currentUser?.uid != nil {
+            
+            let homeController = TestHomeController()
+            viewControllers = [homeController]
+            print("HOMEPAGE")
+        } else {
+            perform(#selector(showLoginController), with: nil, afterDelay: 0.01)
+            print("SIGNIN PAGE")
+        }
+    }
+
 //    fileprivate func IsLoggedIn() -> Bool {
 //        if FIRAuth.auth()?.currentUser?.uid != nil {
 //            

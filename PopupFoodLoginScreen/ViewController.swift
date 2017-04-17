@@ -23,15 +23,15 @@ class ViewController: UIViewController,UINavigationControllerDelegate {
     
     @IBOutlet weak var xButton: UIButton!
     @IBAction func closeBtn(_ sender: UIButton) {
-        
         perform(#selector(displayHomePage), with: nil, afterDelay: 0.01)
     }
     
     @IBAction func signInBtn(_ sender: Any) {
-        displaySignInPage()
+        perform(#selector(displaySignInPage), with: nil, afterDelay: 0.01)
     }
     @IBAction func signUpBtn(_ sender: Any) {
-        displaySignUpPage()
+        
+        perform(#selector(displaySignUpPage), with: nil, afterDelay: 0.01)
     }
 
     

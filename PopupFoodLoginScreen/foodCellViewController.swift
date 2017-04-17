@@ -51,11 +51,11 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBAction func messageBtn(_ sender: Any) {
         displaySendMessagePage(menu: menu!)
-        handleLogOut() //Check if user is signed in
+        checkIfUserIsLoggedIn() //Check if user is signed in
     }
     
     @IBAction func favouriteBtn(_ sender: Any) {
-        handleLogOut() //Check if user is signed in
+        checkIfUserIsLoggedIn() //Check if user is signed in
 
         if !favClicked {
             favouriteBtnClicked()
@@ -203,7 +203,8 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
     
     //Display homepage if not signed in
     func displaySignIn() {
-        self.navigationController?.popToRootViewController(animated: true)
+//        self.navigationController?.popToRootViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {

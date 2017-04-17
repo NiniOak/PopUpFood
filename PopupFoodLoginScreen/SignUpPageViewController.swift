@@ -67,8 +67,7 @@ class SignUpPageViewController: UIViewController, UINavigationControllerDelegate
         
         self.present(alert, animated: true, completion: nil)
     }
-    
-    //////////////////////////////
+
     /////////////////////////////
     //Olek/Sara method is used for email validation
     var emailErrorMessage  = String()

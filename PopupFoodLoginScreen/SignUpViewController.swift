@@ -62,7 +62,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, FB
     
     //ADD CUSTOM FACEBOOK BUTTON HERE
     
-    fileprivate func setupFacebookButton() {
+    func setupFacebookButton() {
         let customFBButton = facebookButton
         customFBButton?.addTarget(self, action: #selector(handleCustomFBLogin), for: .touchUpInside)
     }
