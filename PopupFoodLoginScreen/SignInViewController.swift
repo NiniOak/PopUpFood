@@ -15,6 +15,10 @@ import GoogleSignIn //Import GoogleSignIn kit
 //SIGN IN PAGE WITH FACEBOOK AND GOOGLE BUTTONS
 class SignInViewController: UIViewController {
     
+    var errorsArray = [String]()
+    
+    var errorMessage = String()
+    
     var signUpController: SignUpViewController?
     
     //Field Declaration
@@ -33,6 +37,49 @@ class SignInViewController: UIViewController {
         signUpController?.handleCustomGoogleLogin()
     }
     
+    //Forgot password button
+
+    @IBAction func forgotPasswordBtn(_ sender: Any) {
+        
+        alertForgotPassword()
+
+    }//end of forgotPasswordBtn
+
+    //Implementation for Sign In Button and validation as well
+    
+    @IBAction func signInBtn(_ sender: UIButton) {
+        
+        errorsArray = [String]()//empty our errorsArray before checks will performe
+
+        isValidEmail()
+        isPasswordEmpty()
+        
+        if(errorsArray.isEmpty){
+            handleSignIn()//create user and send it to databse
+        }
+            
+        else{
+            errorMessage = errorsArray.joined(separator: "\n")//concatinate strings from an array and format an error message from them
+            signInValidationAlert()
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //If user is signed in, display homepage
+        FIRAuth.auth()?.addStateDidChangeListener{ auth, user in
+            
+            if user != nil {
+                self.returnHomePage()
+            }
+        }
+    }
+    
+    //Implementetion of Sign In validation fields
+
     func alertForgotPassword() {
         let alert = UIAlertController(title: "Forgot Password", message: "Please provide an email to reset your password", preferredStyle: UIAlertControllerStyle.alert)
         
@@ -85,56 +132,6 @@ class SignInViewController: UIViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
-    
-    
-    
-    //Forgot password button
-
-    @IBAction func forgotPasswordBtn(_ sender: Any) {
-        
-        alertForgotPassword()
-
-    }//end of forgotPasswordBtn
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        //If user is signed in, display homepage
-        FIRAuth.auth()?.addStateDidChangeListener{ auth, user in
-            
-            if user != nil {
-                self.returnHomePage()
-            }
-        }
-    }
-    
-    //Implementation for Sign In Button and validation as well
-    
-    @IBAction func signInBtn(_ sender: UIButton) {
-        
-        errorsArray = [String]()//empty our errorsArray before checks will performe
-
-        isValidEmail()
-        isPasswordEmpty()
-        
-        if(errorsArray.isEmpty){
-            handleSignIn()//create user and send it to databse
-        }
-            
-        else{
-            errorMessage = errorsArray.joined(separator: "\n")//concatinate strings from an array and format an error message from them
-            signInValidationAlert()
-        }
-    }
-    
-    //Implementetion of Sign In validation fields
-    var errorsArray = [String]()
-    
-    var errorMessage = String()
-    
     //alert inplementetion here
     func signInValidationAlert(){
         let alert = UIAlertController(title: "Warning", message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
@@ -161,7 +158,6 @@ class SignInViewController: UIViewController {
         }
         return true
     }//end of isValidEmail method
-    
     
     //Method is used for password's field empty validation
     @discardableResult func isPasswordEmpty() -> Bool {
@@ -197,23 +193,11 @@ class SignInViewController: UIViewController {
         })
         
     }//end of handleSignIn method
-    
-    
-    
-    
+   
     func returnHomePage() {
         let storyboard = UIStoryboard(name: "HomePage", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "newhomePage") as! HomeAfterSignIn
         self.navigationController?.pushViewController(controller, animated: true)
     }
-    
-    //    func displayLandingPage() {
-    //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    //        let controller = storyboard.instantiateViewController(withIdentifier: "landingVC") as UIViewController
-    //        self.navigationController?.pushViewController(controller, animated: true)
-    //    }
-    
-    @IBAction func backToLandingPage(_ sender: Any) {
-        //displayLandingPage()
-    }
+
 }

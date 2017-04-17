@@ -13,7 +13,7 @@ import Firebase
 import FirebaseAuth
 import SDWebImage
 
-class SearchFood: UICollectionViewController {
+class SearchFood: UICollectionViewController, UINavigationControllerDelegate {
     
     let reuseIdentifier = "FoodImageCell"
     
@@ -32,6 +32,10 @@ class SearchFood: UICollectionViewController {
         handleFoodImagesFetching()
     }
     
+    @IBAction func searchButton(_ sender: Any) {
+         let newSearchTableViewController = SearchTableViewController()
+         self.navigationController?.pushViewController(newSearchTableViewController, animated: true)
+    }
     //Call a search bar Olek
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
