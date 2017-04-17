@@ -51,11 +51,11 @@ class foodCellViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBAction func messageBtn(_ sender: Any) {
         displaySendMessagePage(menu: menu!)
-        handleLogOut() //Check if user is signed in
+       // handleLogOut() //Check if user is signed in
     }
     
     @IBAction func favouriteBtn(_ sender: Any) {
-        handleLogOut() //Check if user is signed in
+     //   handleLogOut() //Check if user is signed in
 
         if !favClicked {
             favouriteBtnClicked()

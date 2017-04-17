@@ -70,7 +70,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
             if let dictionary = snapshot.value as? Dictionary<String, Any> {
                 
                 let user = User()
-                self.users.append( user)
+                self.users.append(user)
                 
                 user.name = dictionary["name"] as? String
                 // user.email = dictionary["email"] as? String
@@ -134,8 +134,6 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
         }
         
     }
-    
-    
     
     @available(iOS 8.0, *)
     func updateSearchResults(for searchController: UISearchController) {

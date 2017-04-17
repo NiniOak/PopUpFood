@@ -31,6 +31,9 @@ class SearchFood: UICollectionViewController, UINavigationControllerDelegate {
         
         handleFoodImagesFetching()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.title = "Search"
+    }
     
     @IBAction func searchButton(_ sender: Any) {
          let newSearchTableViewController = SearchTableViewController()

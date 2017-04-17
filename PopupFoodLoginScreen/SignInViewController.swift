@@ -29,13 +29,7 @@ class SignInViewController: UIViewController {
     
     //let textField: UITextField!
     
-    @IBAction func facebookBtn(_ sender: Any) {
-        signUpController?.handleCustomFBLogin()
-    }
-    
-    @IBAction func googleBtn(_ sender: Any) {
-        signUpController?.handleCustomGoogleLogin()
-    }
+
     
     //Forgot password button
 
@@ -182,7 +176,8 @@ class SignInViewController: UIViewController {
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
             
             if error != nil{
-                
+                //throw login error
+                 self.userLogInFailed()
                 print(error as Any)
                 return
             }
@@ -193,6 +188,30 @@ class SignInViewController: UIViewController {
         })
         
     }//end of handleSignIn method
+    
+    @IBAction func facebookBtn(_ sender: Any) {
+        perform(#selector(goToFacebook), with: nil, afterDelay: 0.1)
+        print("I AM FACEBOOK")    }
+    
+    @IBAction func googleBtn(_ sender: Any) {
+        perform(#selector(goToGoogle), with: nil, afterDelay: 0.1)
+        print("I AM GOOGLE")    }
+    
+    func goToFacebook() {
+          signUpController?.handleCustomFBLogin()
+    }
+    func goToGoogle() {
+        signUpController?.handleCustomGoogleLogin()
+    }
+    
+    func userLogInFailed() {
+        
+        let alert = UIAlertController(title: "Login Failed", message: "Please provide correct email and password.", preferredStyle: UIAlertControllerStyle.alert)
+        //This is Cancel button action block
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
    
     func returnHomePage() {
         let storyboard = UIStoryboard(name: "HomePage", bundle: nil)
